@@ -320,7 +320,7 @@
   }
 
   #main header .header-img {
-    width: clamp(20px, 26vw, 580px);
+    width: clamp(20px, 23vw, 580px);
     margin: auto;
     position: absolute;
     bottom: 0;
