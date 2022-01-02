@@ -1,0 +1,45 @@
+.centerMain {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+.bodyText {
+  order: 0;
+  align-self: auto;
+  height: auto;
+  width: 75vw;
+  margin: 0;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left 0.5s;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.main-section {
+  width: 75vw;
+  min-height: 100vh;
+  position: absolute;
+
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-template-rows: auto auto auto auto;
+  gap: 0px 0%;
+}
+
+.horizontal-line {
+  height: 1px;
+  width: 100%;
+  margin: 0px;
+  margin-bottom: 1rem;
+  background: var(--main-text-color);
+}

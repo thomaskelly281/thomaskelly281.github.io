@@ -1,0 +1,362 @@
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .sidenav a {
+    font-size: 1.4rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+    margin-top: 0.6rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  #main header .header-img {
+    width: 30vh;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - (30vh / 2));
+  }
+
+  .down-arrow-icon {
+    margin-top: 2rem;
+    bottom: 3rem;
+  }
+
+  .work-card {
+    width: 100%;
+    padding-right: 1rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 12px;
+  }
+
+  .extras-section h5 {
+    font-size: 14px;
+  }
+
+  p,
+  .about-me-section button {
+    font-size: 12px;
+  }
+
+  .work-card h4 {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .about-me-text-container {
+    width: 100%;
+  }
+
+  .about-me-img-div {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    height: 300px;
+    background: blue;
+  }
+
+  .extras-section .list-flex-box {
+    width: 100%;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .sidenav a {
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  #main header .header-img {
+    width: 30vh;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+
+    left: calc(50% - (30vh / 2));
+  }
+
+  .work-card {
+    width: 100%;
+    padding-right: 1rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  .extras-section h5 {
+    font-size: 16px;
+  }
+
+  p,
+  .about-me-section button {
+    font-size: 14px;
+  }
+
+  .work-card h4 {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .about-me-text-container {
+    width: 100%;
+  }
+
+  .about-me-img-div {
+    width: 100%;
+    margin: auto;
+    height: 300px;
+    background: blue;
+  }
+
+  .extras-section .list-flex-box {
+    width: 100%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .sidenav a {
+    font-size: 1.6rem;
+  }
+
+  h1 {
+    font-size: 3.4rem;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-top: 0.6rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  .work-card {
+    width: 100%;
+  }
+
+  .work-card h4 {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .work-card h5 {
+    padding: 0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  .extras-section h5 {
+    font-size: 16px;
+  }
+
+  p,
+  .about-me-section button {
+    font-size: 14px;
+  }
+
+  .hamburger-icon {
+    position: fixed;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  h1 {
+    font-size: 3.8rem;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    margin-top: 0.6rem;
+  }
+
+  h3 {
+    font-size: 2.4rem;
+  }
+
+  #main header .header-img {
+    width: 35vh;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - (30vh / 2));
+  }
+
+  h4 {
+    font-size: 1.8rem;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  .extras-section h5 {
+    font-size: 20px;
+  }
+
+  p,
+  .about-me-section button {
+    font-size: 18px;
+  }
+
+  .work-card-container {
+    display: flex;
+  }
+
+  .work-card {
+    width: 35vw;
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .work-card h4 {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .work-card h5 {
+    margin-bottom: 2rem;
+  }
+
+  #left-side {
+    margin-right: 2.5vw;
+  }
+
+  #right-side {
+    margin-left: 2.5vw;
+  }
+
+  .external-link {
+    font-size: 1.3rem;
+  }
+
+  .about-me-text-container {
+    width: 45%;
+  }
+
+  .about-me-img-div {
+    width: 45%;
+    right: 0;
+    min-height: 50vh;
+    margin-right: 0;
+  }
+
+  .about-me-text-flex {
+    display: flex;
+  }
+
+  .about-me-section .about-me-text-container button {
+    margin-bottom: 1rem;
+  }
+
+  .extras-section .list-flex-box {
+    width: 60%;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .sidenav a {
+    font-size: 1.2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-top: 0.6rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  #main header .header-img {
+    width: clamp(20px, 26vw, 580px);
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .work-card h4 {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .about-me-section .about-me-text-container button {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  #main header {
+    padding-top: 20vh;
+  }
+
+  h1 {
+    font-size: 5vw;
+  }
+
+  h2 {
+    font-size: 2vw;
+  }
+
+  h3 {
+    font-size: 2vw;
+  }
+
+  .work-card h4 {
+    padding: 0;
+    margin-top: 0;
+  }
+}

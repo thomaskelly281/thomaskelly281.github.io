@@ -1,0 +1,46 @@
+.extras-section {
+  width: 100%;
+  margin-top: 20vh;
+}
+
+.extras-section ul {
+  text-decoration: none;
+  list-style: none;
+  padding-left: 0;
+}
+
+.extras-section .list-flex-box {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.extras-section a {
+  text-decoration: underline;
+  text-decoration-color: var(--main-text-color);
+}
+
+.extras-section li p:hover,
+.extras-section li h5:hover {
+  color: var(--main-accent-color);
+}
+
+.extras-section h5 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.extras-section .flex-box-1 h5 {
+  margin-bottom: 2rem;
+}
+
+.extras-section .flex-box-1 {
+  border-right: 1px solid var(--text-accent-color);
+  padding-right: 2rem;
+}
+
+.extras-section .flex-box-1,
+.extras-section .flex-box-2,
+.extras-section .flex-box-3 {
+  margin-right: 2rem;
+  min-width: 100px;
+}

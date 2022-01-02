@@ -1,0 +1,122 @@
+ <section class="work-section">
+                    <h3>Work</h3>   
+
+                    <div class="horizontal-line"></div> 
+
+                      <div class="work-card-container">
+
+                        <!--This is the card for Passive Pals-->
+                        <a href="#">
+                        <div class="work-card" id="left-side"> 
+                          <div class="work-card-image">
+                            <img src="../images/work-placeholder-img.png">  
+                          </div>
+                            
+                          <div class="work-card-description">
+                            <h4>Passive Pals</h4>
+                            <h5><i>Tags: User Research, Ergonomics, Cognitive Psychology</i></h5>
+                            <p>The 'Passive Pals' are a line of children's distraction toys, designed over a 2 week period. The goal of the project was to create a beneficial product and to explore how the material, polythylene, could be used in manufacturing. </p>
+                          </div>
+                        </div>
+                        </a>
+
+                  
+
+                        <!--This is a blank card so far-->
+                        <a href="#" id="right-side">
+                          <div class="work-card"> 
+                            <div class="work-card-image">
+                              <img src="../images/work-placeholder-img.png">  
+                            </div>
+                              
+                            <div class="work-card-description">
+                              <h4>Passive Pals</h4>
+                              <h5><i>Tags: User Research, Ergonomics, Cognitive Psychology</i></h5>
+                              <p>The 'Passive Pals' are a line of children's distraction toys, designed over a 2 week period. The goal of the project was to create a beneficial product and to explore how the material, polythylene, could be used in manufacturing. </p>
+                            </div>
+                          </div>
+                        </a>
+
+                      </div>
+
+                      <div class="work-card-container">
+
+                        <!--This is the card for Passive Pals-->
+                        <a href="#">
+                        <div class="work-card" id="left-side"> 
+                          <div class="work-card-image">
+                            <img src="../images/work-placeholder-img.png">  
+                          </div>
+                            
+                          <div class="work-card-description">
+                            <h4>Passive Pals</h4>
+                            <h5><i>Tags: User Research, Ergonomics, Cognitive Psychology</i></h5>
+                            <p>The 'Passive Pals' are a line of children's distraction toys, designed over a 2 week period. The goal of the project was to create a beneficial product and to explore how the material, polythylene, could be used in manufacturing. </p>
+                          </div>
+                        </div>
+                        </a>
+
+                  
+
+                        <!--This is a blank card so far-->
+                        <a href="#" id="right-side">
+                          <div class="work-card"> 
+                            <div class="work-card-image">
+                              <img src="../images/work-placeholder-img.png">  
+                            </div>
+                              
+                            <div class="work-card-description">
+                              <h4>Passive Pals</h4>
+                              <h5><i>Tags: User Research, Ergonomics, Cognitive Psychology</i></h5>
+                              <p>The 'Passive Pals' are a line of children's distraction toys, designed over a 2 week period. The goal of the project was to create a beneficial product and to explore how the material, polythylene, could be used in manufacturing. </p>
+                            </div>
+                          </div>
+                        </a>
+
+                      </div>
+
+                    <div class="horizontal-line"></div> 
+
+                    <a href="#" class="external-link">View All</a>
+
+                </section>
+
+              <section class="about-me-section">
+
+                <h3>About Me</h3>   
+
+                <div class="horizontal-line"></div> 
+
+                <div class="about-me-text-container">
+                 <p>Hi, I’m Thomas <i>(he/him)</i>.
+                 <br>
+                 <br>
+                  I am a UX designer and Interaction design specialist focussed on designing future technologies, such as AI, VR and other creative technologies.
+                 <br>
+                 <br>
+                 Currently, I am studying for a Bachelor's Degree in Interaction Design at the <a>National College of Art & Design</a> <abbr>(NCAD)</abbr>, Dublin. During the course of my degree, I have gained experience in the UX design process, from research methods, such as user interviews and usability tests to product development, such as programming and prototyping.
+                 <br>
+                 <br>
+                 In May 2021, I graduated the <a>Google UX Design Professional Certificate</a> where I refined UX and IxD practices as well as getting an insight into how the UX design process is implimented and what techniques are favoured in certain situations in an industry settings.
+                 <br>
+                 <br>
+                 Email: <a>@thomaskelly281@gmail.com</a></p>
+                 <br>
+                 <br>
+                 <div>
+                 <a href="#"><button class="about-me-button-1">Video about me</button></a>
+                 <a href="#"><button class="about-me-button-2">In-depth reading about me</button></a>
+                 </div>
+                 <br>
+                 <br>
+                 <a href="#"><button class="about-me-button-3">My resume</button></a>
+                </div>
+
+
+                <div class="about-me-img-div">
+                  <img src="">
+                </div>
+              </section> 
+
+              <section class="extras-section"></section>
+                

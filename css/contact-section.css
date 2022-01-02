@@ -1,0 +1,28 @@
+.contact-section {
+  width: 100%;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
+}
+
+.contact-section a {
+  text-decoration: underline;
+  text-decoration-color: var(--main-text-color);
+}
+
+.contact-section ul {
+  margin-top: 3rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.contact-section a {
+  color: var(--main-text-color);
+}
+
+.contact-section li a:hover {
+  color: var(--main-accent-color);
+}
+
+.contact-section span {
+  font-weight: 600;
+}
