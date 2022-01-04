@@ -19,6 +19,7 @@
 
 .about-me-section a {
   text-decoration: underline;
+  color: var(--main-text-color)
 }
 
 .about-me-section button {

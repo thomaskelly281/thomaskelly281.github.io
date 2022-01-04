@@ -294,3 +294,7 @@ button:hover {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+.about-me-text-container a {
+  color: var(--main-text-color);
+}
