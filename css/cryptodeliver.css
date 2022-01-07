@@ -1,0 +1,39 @@
+.header-image {
+  width: 100%;
+}
+
+#cryptodeliver-main section {
+  margin-bottom: clamp(3rem, 10vh, 300px);
+}
+
+#cryptodeliver-main h4 {
+  margin-bottom: 0;
+}
+
+#cryptodeliver-main .flex {
+  display: flex;
+  width: 100%;
+}
+
+#cryptodeliver-main .overview .flex .div-1 {
+  width: 50%;
+  margin-right: 3rem;
+  padding-right: 3rem;
+  border-right: 1px solid var(--main-text-color);
+}
+
+#cryptodeliver-main .overview .flex .div-2 {
+  align-items: center;
+}
+
+#cryptodeliver-main .empathising .flex .div-1,
+#cryptodeliver-main .empathising .flex .div-2 {
+  width: 50%;
+  padding: 2rem;
+}
+
+#cryptodeliver-main .empathising li {
+  padding: 0;
+  margin: 0;
+  color: var(--main-text-color);
+}

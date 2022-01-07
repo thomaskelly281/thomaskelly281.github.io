@@ -54,6 +54,10 @@
     font-size: 12px;
   }
 
+  #cryptodeliver-main .empathising li {
+    font-size: 12px;
+  }
+
   .work-card h4 {
     padding: 0;
     margin-top: 0;
@@ -73,6 +77,10 @@
 
   .extras-section .list-flex-box {
     width: 100%;
+  }
+
+  #cryptodeliver-main .empathising img {
+    width: 48%;
   }
 }
 
@@ -125,6 +133,10 @@
     font-size: 14px;
   }
 
+  #cryptodeliver-main .empathising li {
+    font-size: 12px;
+  }
+
   .work-card h4 {
     padding: 0;
     margin-top: 0;
@@ -143,6 +155,10 @@
 
   .extras-section .list-flex-box {
     width: 100%;
+  }
+
+  #cryptodeliver-main .empathising img {
+    width: 48%;
   }
 }
 
@@ -198,6 +214,10 @@
     font-size: 14px;
   }
 
+  #cryptodeliver-main .empathising li {
+    font-size: 14px;
+  }
+
   .hamburger-icon {
     position: fixed;
   }
@@ -241,6 +261,10 @@
 
   p,
   .about-me-section button {
+    font-size: 18px;
+  }
+
+  #cryptodeliver-main .empathising li {
     font-size: 18px;
   }
 
@@ -296,6 +320,10 @@
 
   .extras-section .list-flex-box {
     width: 60%;
+  }
+
+  #cryptodeliver-main .empathising img {
+    width: 23%;
   }
 }
 
