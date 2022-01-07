@@ -54,7 +54,7 @@
     font-size: 12px;
   }
 
-  #cryptodeliver-main .empathising li {
+  #cryptodeliver-main li {
     font-size: 12px;
   }
 
@@ -81,6 +81,14 @@
 
   #cryptodeliver-main .empathising img {
     width: 48%;
+  }
+
+  #cryptodeliver-main .defining img {
+    width: 98%;
+  }
+
+  #cryptodeliver-main .final-designs .div-1 {
+    width: 98%;
   }
 }
 
@@ -133,7 +141,7 @@
     font-size: 14px;
   }
 
-  #cryptodeliver-main .empathising li {
+  #cryptodeliver-main li {
     font-size: 12px;
   }
 
@@ -159,6 +167,14 @@
 
   #cryptodeliver-main .empathising img {
     width: 48%;
+  }
+
+  #cryptodeliver-main .defining img {
+    width: 98%;
+  }
+
+  #cryptodeliver-main .final-designs .div-1 {
+    width: 98%;
   }
 }
 
@@ -214,7 +230,7 @@
     font-size: 14px;
   }
 
-  #cryptodeliver-main .empathising li {
+  #cryptodeliver-main li {
     font-size: 14px;
   }
 
@@ -264,7 +280,7 @@
     font-size: 18px;
   }
 
-  #cryptodeliver-main .empathising li {
+  #cryptodeliver-main li {
     font-size: 18px;
   }
 
@@ -324,6 +340,14 @@
 
   #cryptodeliver-main .empathising img {
     width: 23%;
+  }
+
+  #cryptodeliver-main .defining img {
+    width: 32%;
+  }
+
+  #cryptodeliver-main .final-designs .div-1 {
+    width: 48%;
   }
 }
 
