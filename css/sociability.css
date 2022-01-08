@@ -48,3 +48,22 @@
 #sociability-main .style-flex div {
   width: 100%;
 }
+
+#sociability-main .final-ui-flex {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#sociability-main .final-ui-flex div {
+  margin-bottom: 4rem;
+}
+
+#sociability-main .final-ui-flex div img {
+  width: 100%;
+}
+#sociability-main .final-ui-flex div p {
+  padding-right: 3rem;
+}

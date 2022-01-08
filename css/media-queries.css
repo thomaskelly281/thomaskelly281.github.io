@@ -105,6 +105,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
+  #sociability-main .final-ui-flex div {
+    width: 100%;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -205,6 +209,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  #sociability-main .final-ui-flex div {
+    width: 100%;
   }
 }
 
@@ -386,6 +394,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+  }
+
+  #sociability-main .final-ui-flex div {
+    width: 48%;
   }
 }
 
