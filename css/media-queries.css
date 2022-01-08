@@ -54,7 +54,8 @@
     font-size: 12px;
   }
 
-  #cryptodeliver-main li {
+  #cryptodeliver-main li,
+  #sociability-main li {
     font-size: 12px;
   }
 
@@ -141,7 +142,8 @@
     font-size: 14px;
   }
 
-  #cryptodeliver-main li {
+  #cryptodeliver-main li,
+  #sociability-main li {
     font-size: 12px;
   }
 
@@ -280,7 +282,8 @@
     font-size: 18px;
   }
 
-  #cryptodeliver-main li {
+  #cryptodeliver-main li,
+  #sociability-main li {
     font-size: 18px;
   }
 

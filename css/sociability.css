@@ -1,0 +1,45 @@
+.header-image {
+  width: 100%;
+}
+
+#sociability-main section {
+  margin-bottom: clamp(3rem, 10vh, 300px);
+}
+
+#sociability-main h4 {
+  margin-bottom: 0;
+}
+
+#sociability-main .flex {
+  display: flex;
+  width: 100%;
+}
+
+#sociability-main .overview .flex .div-1 {
+  width: 50%;
+  margin-right: 3rem;
+  padding-right: 3rem;
+  border-right: 1px solid var(--main-text-color);
+}
+
+#sociability-main .overview .flex .div-2 {
+  align-items: center;
+}
+
+#sociability-main li {
+  padding: 0;
+  margin: 0;
+  color: var(--main-text-color);
+}
+
+#sociability-main .flex .div-1 p,
+#sociability-main .flex .div-1 ul {
+  margin: 0;
+}
+
+#sociability-main .wireframing-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
