@@ -91,6 +91,20 @@
   #cryptodeliver-main .final-designs .div-1 {
     width: 98%;
   }
+
+  #sociability-main .wireframing-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #sociability-main .style-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -177,6 +191,20 @@
 
   #cryptodeliver-main .final-designs .div-1 {
     width: 98%;
+  }
+
+  #sociability-main .wireframing-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #sociability-main .style-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
 
@@ -352,6 +380,13 @@
   #cryptodeliver-main .final-designs .div-1 {
     width: 48%;
   }
+
+  #sociability-main .wireframing-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
@@ -389,6 +424,10 @@
 
   .about-me-section .about-me-text-container button {
     margin-bottom: 0.5rem;
+  }
+
+  #sociability-main .style-flex {
+    flex-wrap: nowrap;
   }
 }
 
