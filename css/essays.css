@@ -31,3 +31,8 @@
   padding-left: 0;
   padding-right: 3rem;
 }
+
+.essay-date p,
+.essay-duration p {
+  color: var(--lighter-text-color);
+}
