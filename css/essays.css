@@ -1,0 +1,33 @@
+.essay-tile {
+  width: 100%;
+  height: auto;
+  padding: 2rem;
+  border-left: 1px solid var(--main-text-color);
+  margin: 2rem 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.essay-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 1px -10px 18px 2px rgba(211, 211, 211, 0.75);
+  -webkit-box-shadow: 1px -10px 18px 2px rgba(211, 211, 211, 0.75);
+  -moz-box-shadow: 1px -10px 18px 2px rgba(211, 211, 211, 0.75);
+}
+
+.essay-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+.essay-flex h5 {
+  padding: 0;
+}
+
+.essay-duration {
+  padding-left: 0;
+  padding-right: 3rem;
+}
