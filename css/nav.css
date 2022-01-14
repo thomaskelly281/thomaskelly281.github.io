@@ -67,3 +67,16 @@ span img {
 .nav-container a:active {
   color: var(--main-accent-color);
 }
+
+.breadcrumbs {
+  margin: 1rem 0;
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+  color: var(--main-text-color);
+}
+
+.breadcrumbs a:hover {
+  color: var(--main-accent-color);
+}
