@@ -6,6 +6,16 @@
   --text-accent-color: #cccccc;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg-color: #1b1b1b;
+    --main-text-color: #e7e7e7;
+    --lighter-text-color: #a7a7a7;
+    --main-accent-color: #f3f3f3;
+    --text-accent-color: #535353;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
