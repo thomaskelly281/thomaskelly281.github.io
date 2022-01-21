@@ -1,3 +1,26 @@
 .home-logo:hover {
   filter: contrast(150);
 }
+
+button:hover {
+  transform: scale(1.1);
+  filter: contrast(150);
+}
+
+.about-me-section button:hover {
+  transform: scale(1.1);
+  filter: contrast(150);
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  transform: scale(1.1);
+  filter: contrast(150);
+}
+
+.hamburger-icon:hover,
+.back-arrow:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  filter: contrast(150);
+}

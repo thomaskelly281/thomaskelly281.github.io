@@ -19,7 +19,7 @@
 
 .about-me-section a {
   text-decoration: underline;
-  color: var(--main-text-color)
+  color: var(--main-text-color);
 }
 
 .about-me-section button {
@@ -33,10 +33,6 @@
 
 .about-me-section span:hover {
   color: var(--main-accent-color);
-}
-
-.about-me-section button:hover {
-  transform: scale(1.1);
 }
 
 .about-me-button-1 {

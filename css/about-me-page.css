@@ -238,10 +238,6 @@ button {
   margin-bottom: 2rem;
 }
 
-button:hover {
-  transform: scale(1.1);
-}
-
 .skills {
   margin-top: 3rem;
 }

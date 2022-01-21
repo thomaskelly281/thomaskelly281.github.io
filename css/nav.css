@@ -40,11 +40,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  transform: scale(1.1);
-}
-
 /* Position and style the close button (top right corner) */
 .sidenav .closebtn {
   position: absolute;
@@ -56,12 +51,6 @@ span img {
   height: auto;
   width: auto;
   margin: 1.6rem;
-}
-
-.hamburger-icon:hover,
-.back-arrow:hover {
-  transform: scale(1.1);
-  cursor: pointer;
 }
 
 .nav-container a:active {
@@ -87,6 +76,6 @@ span img {
 }
 
 .home-logo {
-  font-size: 24px;
+  font-size: 26px;
   padding: 0;
 }
