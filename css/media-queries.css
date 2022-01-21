@@ -105,6 +105,10 @@
   #sociability-main .final-ui-flex div {
     width: 100%;
   }
+
+  .home-logo {
+    display: none;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -206,6 +210,10 @@
   #sociability-main .final-ui-flex div {
     width: 100%;
   }
+
+  .home-logo {
+    display: none;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -262,6 +270,10 @@
 
   .hamburger-icon {
     position: fixed;
+  }
+
+  .home-logo {
+    display: block;
   }
 }
 
