@@ -79,3 +79,13 @@ span img {
   font-size: 26px;
   padding: 0;
 }
+
+.skip-nav-link {
+  position: absolute;
+  color: var(--main-text-color);
+  transform: translateY(-150%);
+}
+
+.skip-nav-link:focus {
+  transform: translateY(0);
+}
