@@ -59,3 +59,7 @@
   color: var(--main-bg-color);
   border: 4px solid var(--lighter-text-color);
 }
+
+.about-me-img-div img {
+  max-height: 600px;
+}

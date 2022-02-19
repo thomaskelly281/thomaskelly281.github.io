@@ -67,9 +67,8 @@
   .about-me-img-div {
     width: 100%;
     max-width: 700px;
-    margin: auto;
+
     height: 300px;
-    background: blue;
   }
 
   .extras-section .list-flex-box {
@@ -172,9 +171,7 @@
 
   .about-me-img-div {
     width: 100%;
-    margin: auto;
-    height: 300px;
-    background: rgb(14, 250, 85);
+    margin-left: 2rem;
   }
 
   .extras-section .list-flex-box {

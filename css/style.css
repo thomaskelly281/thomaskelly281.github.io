@@ -14,6 +14,12 @@
     --main-accent-color: #f3f3f3;
     --text-accent-color: #b3b3b3;
   }
+
+  .work-card:hover {
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  }
 }
 
 html {
