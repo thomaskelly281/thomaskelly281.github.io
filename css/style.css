@@ -8,11 +8,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --main-bg-color: #1b1b1b;
-    --main-text-color: #e7e7e7;
+    --main-bg-color: #0f0f0f;
+    --main-text-color: #f1f1f1;
     --lighter-text-color: #a7a7a7;
     --main-accent-color: #f3f3f3;
-    --text-accent-color: #b3b3b3;
+    --text-accent-color: rgb(160, 160, 160);
   }
 
   .work-card:hover {
