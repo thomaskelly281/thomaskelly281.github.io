@@ -64,3 +64,13 @@
 #cryptodeliver-main .final-designs .div-1 {
   margin-bottom: 3rem;
 }
+
+#cryptodeliver-main p {
+  max-width: 700px;
+  margin: 3vh 0;
+}
+
+#cryptodeliver-main ul {
+  max-width: 700px;
+  line-height: 150%;
+}

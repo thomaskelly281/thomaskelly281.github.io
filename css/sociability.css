@@ -67,3 +67,13 @@
 #sociability-main .final-ui-flex div p {
   padding-right: 3rem;
 }
+
+#sociability-main p {
+  max-width: 700px;
+  margin: 3vh 0;
+}
+
+#sociability-main ul {
+  max-width: 700px;
+  line-height: 150%;
+}

@@ -3,3 +3,16 @@
   min-height: 85vh;
   overflow-y: hidden;
 }
+
+#main header #scroll-indicator{
+  text-align: center;
+  position: absolute;
+  bottom: 5vh;
+  left: 50vw;
+  color: var(--main-text-color);
+  text-decoration: underline;
+}
+
+#main header #scroll-indicator a{
+  color: var(--main-text-color);
+}
