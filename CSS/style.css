@@ -5,6 +5,7 @@
   --main-text-color: #fefefe;
   --main-accent-color: #581dff;
   --secondary-accent-color: #6a6a6a;
+  --tertiary-accent-color: #1d1d1d;
 
     /* Text Variables */
     --h1-xl-size: 5rem;
@@ -20,9 +21,6 @@
 body {
   box-sizing: border-box;
   margin: 0;
-
-  font-family: "Nunito Sans", sans-serif;
-  font-family: "Syne", sans-serif;
   scroll-behavior: smooth;
   background: var(--main-bg-color);
 }
@@ -137,6 +135,9 @@ aside ul {
 aside a {
     color: var(--secondary-accent-color);
     text-decoration: none;
+    font-family: "Syne", sans-serif;
+    font-weight: 400;
+    font-size: var(--p-xl-size);
 }
 
 aside .email-link {
@@ -145,8 +146,8 @@ aside .email-link {
 
     /* This positions the email in the center of the aside
     They are random numbers, so if it breaks, change them till you get it centered */
-    right: -85px;
-    top: -85px
+    right: -103px;
+    top: -105px
 }
 
 aside img {
@@ -280,7 +281,7 @@ header .arrow img {
 #intrusty-tile {
     background-image: url("/Images/intrusty-tile-image.png");
     background-size: cover;
-    background-position: 65%;
+    background-position: 55%;
 }
 
 
@@ -299,6 +300,109 @@ header .arrow img {
 
 #about .about-image{
     width: 30vw
+}
+
+#contact {
+    margin-top: 40vh;
+}
+
+#contact input,
+#contact button,
+#contact textarea {
+    display: block;
+}
+
+#contact .flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#contact form {
+    width: 55%;
+}
+
+#contact #name {
+    width: 15rem;
+    margin-right: 2rem;
+}
+
+#contact #email {
+    width: 40rem;
+}
+
+#contact textarea {
+    width: 60rem;
+    margin-bottom: 2rem;
+}
+
+#contact input,
+#contact textarea {
+    padding: 0.5rem 1rem;
+    font-size: var(--p-xl-size)
+}
+
+#contact textarea, #contact input {
+    background: var(--tertiary-accent-color);
+    border: 1px solid var(--main-text-color);
+    text-align: left;
+    margin-top: 0.4rem;
+    min-height: 2.4rem;
+    color: var(--main-text-color);
+}
+
+#contact button {
+    background: var(--main-bg-color);
+    border: 1px solid var(--main-text-color);
+    text-align: center;
+    padding: 1rem 8rem;
+    margin-top: 3rem;
+}
+
+footer {
+    background-image: url(/Images/perlinNoiseTerrain.jpg);
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    min-height: 30vh;
+    margin-top: 40vh;
+    padding-bottom: 40vh;
+}
+
+footer .contact-info {
+    margin-right: 10vw;
+}
+
+footer .flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: top;
+    margin-bottom: 30vh;
+}
+
+footer ul, 
+footer a {
+    color: var(--main-text-color);
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+    font-size: var(--p-xl-size);
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer li {
+    margin: 0;
+    padding: 0;
+    line-height: 200%;
 }
 
 

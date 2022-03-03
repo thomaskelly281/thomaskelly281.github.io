@@ -20,14 +20,14 @@
     <div class="container">
       <nav>
         <div>
-          <p style="margin-left: 0">Thomas Kelly</p>
+          <p style="margin-left: 0"><a href="#">Thomas Kelly</a></p>
         </div>
         <div class="right">
           <ul>
-            <li><a href="">Work</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">Resume</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Resume</a></li>
           </ul>
         </div>
       </nav>
@@ -130,7 +130,7 @@
             </div>
             <div>
               <img
-                src="/Images/83F4E528-DD67-4B14-B9FB-107DBE0EDE3D 2.JPG"
+                src="/Images/about-me-image.JPG"
                 alt="Thomas giving a presentation"
                 class="about-image"
               />
@@ -138,8 +138,67 @@
           </div>
         </div>
       </section>
+
+      <section id="contact">
+        <div class="container">
+          <h2>Contact Me</h2>
+          <form
+            action="mailto:thomaskelly281@gmail.com"
+            method="post"
+            enctype="text/plain"
+            autocomplete="on"
+          >
+            <div class="flex">
+              <div>
+                <label for="name" class="label">Name:</label>
+                <input type="text" id="name" placeholder="Jane Doe" />
+              </div>
+              <div>
+                <label for="email" class="label">Email:</label>
+                <input
+                  type="text"
+                  id="email"
+                  placeholder="janedoe@example.com"
+                />
+              </div>
+            </div>
+            <label for="message" class="label">Message:</label>
+            <textarea
+              name="message"
+              cols="30"
+              rows="10"
+              id="message"
+            ></textarea>
+            <button class="button">Send</button>
+          </form>
+        </div>
+      </section>
     </main>
 
-    <footer></footer>
+    <footer>
+      <div class="container">
+        <div class="flex">
+          <div class="contact-info">
+            <h2>Contact Info</h2>
+            <ul>
+              <li>Email: <a href="#">thomaskelly281@gmail.com</a></li>
+              <li>LinkedIn: <a href="#">Thomas Kelly</a></li>
+              <li>Instagram: <a href="#">@ux.thomask</a></li>
+              <li>CodePen: <a href="#">thomaskellly</a></li>
+              <li>GitHub: <a href="#">thomaskelly281</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Extras</h2>
+            <ul>
+              <li><a href="#">Thesis</a></li>
+              <li><a href="#">Essays</a></li>
+              <li><a href="#">Small Projects</a></li>
+              <li><a href="#">Awards</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
