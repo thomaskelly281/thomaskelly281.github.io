@@ -22,7 +22,7 @@ body {
 
   font-family: "Nunito Sans", sans-serif;
   font-family: "Syne", sans-serif;
-
+  scroll-behavior: smooth;
   background: var(--main-bg-color);
 }
 
@@ -58,14 +58,14 @@ p {
     color: var(--main-text-color);
     font-family: "Nunito Sans", sans-serif;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
 .label {
     color: var(--main-text-color);
     font-family: "Nunito Sans", sans-serif;
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 nav p,
@@ -174,7 +174,36 @@ header .arrow img {
     height: 2rem;
 }
 
+#mission-statement {
+    background-image: url(/Images/dotGrid.jpg);
+    background-size: cover;
+    height: 70vh;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
 
+#testimonials {
+    height: auto;
+    min-height: 70vh;
+}
+
+#testimonials h3 {
+    display: none;
+}
+
+.testimonial {
+    margin: 30vh 0;
+}
+
+#right {
+    text-align: right;
+
+}
 
 
 
