@@ -1,0 +1,202 @@
+:root {
+
+    /* Color Variables */
+  --main-bg-color: #000000;
+  --main-text-color: #fefefe;
+  --main-accent-color: #581dff;
+  --secondary-accent-color: #6a6a6a;
+
+    /* Text Variables */
+    --h1-xl-size: 5rem;
+    --h2-xl-size: 4rem;
+    --h3-xl-size: 3rem;
+    --h4-xl-size: 3rem;
+
+    /* Width Variables */
+    --container-xl-width: 70vw; 
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+
+  font-family: "Nunito Sans", sans-serif;
+  font-family: "Syne", sans-serif;
+
+  background: var(--main-bg-color);
+}
+
+h1 {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  color: var(--main-text-color);
+  font-size: var(--h1-xl-size);
+}
+
+h2 {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  color: var(--main-text-color);
+  font-size: var(--h2-xl-size);
+}
+
+h3 {
+    font-family: "Syne", sans-serif;
+    font-weight: 400;
+    color: var(--main-text-color);
+    font-size: var(--h3-xl-size);
+}
+
+h4 {
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    color: var(--main-text-color);
+    font-size: var(--h4-xl-size);
+}
+
+p {
+    color: var(--main-text-color);
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.label {
+    color: var(--main-text-color);
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+
+nav p,
+nav a, 
+nav li,
+nav ul {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+    color: var(--secondary-accent-color);
+    font-size: 1.2rem;
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+}
+
+nav {
+    width: var(--container-xl-width);
+    background: var(--main-bg-color);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(0,0,0,0.7819721638655462) 83%, rgba(0, 0, 0, 0.5) 100%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+nav p,
+nav li {
+    margin: 2rem;
+}
+
+nav ul {
+    margin: 0;
+}
+
+nav div {
+    display: flex;
+}
+
+aside {
+    position: fixed;
+    right: 2rem;
+    top: 50vh;
+}
+
+aside ul {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+aside a {
+    color: var(--secondary-accent-color);
+    text-decoration: none;
+}
+
+aside .email-link {
+    position: absolute;
+    transform: rotate(90deg);
+
+    /* This positions the email in the center of the aside
+    They are random numbers, so if it breaks, change them till you get it centered */
+    right: -85px;
+    top: -85px
+}
+
+aside img {
+    margin: 0.6rem 0;
+    height: 2rem;
+}
+
+.container {
+    width: var(--container-xl-width);
+    margin: auto;
+}
+
+header .container {
+    background: url('/Videos/Ring_v2_3.6MB.gif') no-repeat center center;
+    background-size: contain;
+    height: 70vh;
+    max-height: 100vh;
+    margin-top: 0;
+    padding: 15vh;
+}
+
+header h2 {
+    margin-top: 14vh;
+}
+
+header h1 {
+    padding-top: 10vh;
+    max-height: 90vh;
+    text-align: right ;
+}
+
+header .arrow {
+    text-align: center;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+}
+
+header .arrow img {
+    height: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Small devices (landscape phones, 576px and up)
+//@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+//@media (min-width: 768px) { ... }
+
+ Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) { ... }
+
+
