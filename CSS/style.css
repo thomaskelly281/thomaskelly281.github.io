@@ -127,10 +127,30 @@ nav a {
     transition: ease-in-out all 0.2s;
 }
 
+nav #end{
+    margin-right: 11rem;
+}
+
 nav a:hover,
 nav a:focus {
     color: var(--main-text-color);
     transform: translateY(-3px);
+}
+
+.resume-button {
+    border: 1px solid var(--main-text-color);
+    position: absolute;
+    padding:0.4rem 0.8rem;
+    top: -0.4rem;
+    right: 0;
+}
+
+.resume-button a {
+    color: var(--main-text-color);
+}
+
+.resume-button:hover {
+    background: var(--tertiary-accent-color);
 }
 
 aside {
@@ -249,13 +269,20 @@ header .arrow img {
     transition: ease-in-out all 0.2s;
 }
 
-#tile-text {
+/* Add new ids from tiles to make hover effects work*/
+#intrusty-tile-heading,
+#intrusty-tile-subheading,
+#intrusty-tile-tags {
     opacity: 0;
     transition: ease-in-out all 0.2s;
 }
 
-#work .work-tile:hover #tile-text,
-#work .work-tile:focus #tile-text {
+#work .work-tile:hover #intrusty-tile-heading,
+#work .work-tile:focus #intrusty-tile-heading,
+#work .work-tile:hover #intrusty-tile-subheading,
+#work .work-tile:focus #intrusty-tile-subheading,
+#work .work-tile:hover #intrusty-tile-tags,
+#work .work-tile:focus #intrusty-tile-tags {
     opacity: 1;
     filter: contrast(150%);
 }

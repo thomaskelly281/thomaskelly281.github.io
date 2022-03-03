@@ -20,14 +20,16 @@
     <div class="container">
       <nav>
         <div>
-          <p style="margin-left: 0"><a href="#">Thomas Kelly</a></p>
+          <p style="margin-left: 0">
+            <a href="#">Thomas Kelly</a>
+          </p>
         </div>
         <div class="right">
           <ul>
             <li><a href="#work">Work</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#">Resume</a></li>
+            <li id="end"><a href="#contact">Contact</a></li>
+            <li class="resume-button"><a href="#">Resume</a></li>
           </ul>
         </div>
       </nav>
@@ -95,14 +97,18 @@
           </div>
           <div class="flex-2">
             <!-- Intrusty Tile-->
+            <!-- Make sure to change id tags on h4 and p tags because the hover effects will break otherwise -->
             <a href="#">
               <div class="work-tile" id="intrusty-tile">
                 <div class="title">
-                  <h4 id="tile-text">Intrusty</h4>
-                  <p id="tile-text">Project</p>
+                  <h4 id="intrusty-tile-heading">Intrusty</h4>
+                  <p id="intrusty-tile-subheading">Project</p>
                 </div>
                 <div class="tags">
-                  <p id="tile-text">Tags: Service Design, UX</p>
+                  <p id="intrusty-tile-tags">
+                    Tags: Service Design, Service Blueprint, Co-Creation,
+                    Competitive Audit, Prototyping
+                  </p>
                 </div>
               </div>
             </a>
