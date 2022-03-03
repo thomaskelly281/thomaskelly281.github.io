@@ -277,6 +277,30 @@ header .arrow img {
     text-decoration: none;
 }
 
+#intrusty-tile {
+    background-image: url("/Images/intrusty-tile-image.png");
+    background-size: cover;
+    background-position: 65%;
+}
+
+
+#about {
+    margin-top: 40vh;
+}
+
+#about .flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+#about .about-image{
+    width: 30vw
+}
+
 
 
 
