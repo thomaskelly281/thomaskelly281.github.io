@@ -73,12 +73,14 @@ p {
     color: var(--main-text-color);
     font-size: var(--p-xl-size);
     text-decoration: underline;
+    transition: ease-in-out 0.2s;
 }
 
 .button-border {
     border: 1px solid var(--main-text-color);
     text-align: center;
     margin-top: 1rem;
+    transition: ease-in-out 0.2s;
 }
 
 nav p,
@@ -121,6 +123,16 @@ nav div {
     display: flex;
 }
 
+nav a {
+    transition: ease-in-out all 0.2s;
+}
+
+nav a:hover,
+nav a:focus {
+    color: var(--main-text-color);
+    transform: translateY(-3px);
+}
+
 aside {
     position: fixed;
     right: 2rem;
@@ -138,6 +150,7 @@ aside a {
     font-family: "Syne", sans-serif;
     font-weight: 400;
     font-size: var(--p-xl-size);
+    transition: ease-in-out all 0.2s;
 }
 
 aside .email-link {
@@ -153,6 +166,16 @@ aside .email-link {
 aside img {
     margin: 0.6rem 0;
     height: 2rem;
+}
+
+aside a:hover,
+aside a:focus {
+    color: var(--main-text-color);
+}
+
+aside img:hover,
+aside img:focus {
+    filter: brightness(200);
 }
 
 .container {
@@ -223,6 +246,23 @@ header .arrow img {
 
 #work a {
     color: var(--main-text-color);
+    transition: ease-in-out all 0.2s;
+}
+
+#tile-text {
+    opacity: 0;
+    transition: ease-in-out all 0.2s;
+}
+
+#work .work-tile:hover #tile-text,
+#work .work-tile:focus #tile-text {
+    opacity: 1;
+    filter: contrast(150%);
+}
+
+#work .work-tile:hover,
+#work .work-tile:focus {
+    filter: contrast(90%);
 }
 
 #work .flex {
@@ -243,6 +283,10 @@ header .arrow img {
     align-items: center;
 }
 
+.view-all-button:hover {
+    transform: translateY(-3px);
+}
+
 .work-tile {
     width: 20vw;
     height: 20vw;
@@ -254,6 +298,7 @@ header .arrow img {
     margin-bottom: 3rem;
     position: relative;
     margin: 0.8vw;
+    transition: ease-in-out all 0.2s;
 }
 
 .work-tile .title {
@@ -361,6 +406,14 @@ header .arrow img {
     text-align: center;
     padding: 1rem 8rem;
     margin-top: 3rem;
+    transition: all ease-in-out 0.2s;
+}
+
+#contact button:hover,
+#contact button:focus,
+.button-border:hover,
+.button-border:focus {
+    background: var(--tertiary-accent-color);
 }
 
 footer {
@@ -403,6 +456,10 @@ footer li {
     margin: 0;
     padding: 0;
     line-height: 200%;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 
