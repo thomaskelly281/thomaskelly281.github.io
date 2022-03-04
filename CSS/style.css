@@ -233,6 +233,63 @@ header .arrow img {
     height: 2rem;
 }
 
+.scroll-text {
+    animation: jump-up 2s ease-in-out infinite 4s;
+}
+
+@keyframes jump-up {
+    100% {
+      transform: translateX(0%);
+    }
+    
+    50% {
+      transform: translateY(-10px)
+    }
+    
+    0% {
+      transform: translateX(0%)
+    }
+  }
+
+.fade-in-left,
+.fade-in-right {
+    opacity: 0;
+    -moz-transition: opacity 1.5s;
+    -webkit-transition: opacity 1.5s;
+    -o-transition: opacity 1.5s;
+    transition: opacity 1.5s;
+}
+
+body.loaded .fade-in-left {
+    animation: move-in-from-left 2s ease-in-out forwards;
+}
+
+body.loaded .fade-in-right {
+    animation: move-in-from-right 2s ease-in-out forwards;
+}
+
+@keyframes move-in-from-left {
+    0% {
+        transform: translateX(-10%);
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes move-in-from-right {
+    0% {
+        transform: translateX(10%);
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
 #mission-statement {
     background-image: url(/Images/dotGrid.jpg);
     background-size: cover;
