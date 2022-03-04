@@ -13,6 +13,12 @@
   --h4-xl-size: 3rem;
   --p-xl-size: 1.2rem;
 
+  --h1-m-size: 4rem;
+  --h2-m-size: 3rem;
+  --h3-m-size: 2.4rem;
+  --h4-m-size: 1.8rem;
+  --p-m-size: 1rem;
+
   --h1-s-size: 3rem;
   --h2-s-size: 2.4rem;
   --h3-s-size: 1.8rem;
@@ -119,6 +125,7 @@ nav {
   align-items: center;
   position: fixed;
   top: 0;
+  z-index: 2;
 }
 
 nav p,
@@ -342,7 +349,7 @@ body.loaded .fade-in-right {
 }
 
 .testimonial.is-visible {
-  animation: move-in 2s 0.25s ease-in-out forwards;
+  animation: move-in 2s 0.1s ease-in-out forwards;
 }
 
 @keyframes move-in {
@@ -586,8 +593,104 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Small devices (landscape phones, 576px and up)
-//@media (min-width: 576px) { ... }
+/*
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+.
+.
+.
+*/
+
+@media (max-width: 1400px) {
+  h1 {
+    font-size: var(--h1-m-size);
+  }
+
+  h2 {
+    font-size: var(--h2-m-size);
+  }
+
+  h3 {
+    font-size: var(--h3-m-size);
+  }
+
+  h4 {
+    font-size: var(--h4-m-size);
+  }
+
+  p {
+    font-size: var(--p-m-size);
+  }
+
+  .label {
+    font-size: 1rem;
+  }
+
+  .resume-button {
+    display: none;
+  }
+
+  nav #end {
+    margin-right: 0;
+  }
+
+  aside {
+    display: none;
+  }
+
+  #contact .flex {
+    width: var(--container-xl-width);
+  }
+
+  #contact form {
+    width: 55%;
+  }
+
+  #contact #name {
+    width: 30vw;
+    min-width: var(--container-xl-width) / 2 - 2rem;
+    margin-right: 2rem;
+  }
+
+  #contact #email {
+    width: 30vw;
+    min-width: var(--container-xl-width) / 2 - 2rem;
+  }
+
+  #contact textarea {
+    width: var(--container-xl-width);
+  }
+
+  #contact button:hover,
+  #contact button:focus,
+  .button-border:hover,
+  .button-border:focus {
+    background: var(--tertiary-accent-color);
+  }
+}
 
 /*
 .
@@ -620,7 +723,7 @@ footer a:hover {
 .
 */
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   /* Mobile Nav */
 
   body {
@@ -831,7 +934,7 @@ footer a:hover {
   /* Position the close button (top right corner) */
   .overlay .closebtn {
     position: absolute;
-    top: 2rem;
+    top: 0rem;
     right: 2rem;
     font-size: 60px;
   }
@@ -847,7 +950,6 @@ footer a:hover {
 @media (min-width: 992px) { ... }
 
 // X-Large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
 
 // XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1400px) { ... }
