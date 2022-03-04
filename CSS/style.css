@@ -473,6 +473,15 @@ body.loaded .fade-in-right {
   align-items: center;
 }
 
+#about .about-me-text {
+  width: 30vw;
+  max-width: 50rem;
+}
+
+#about .about-me-text .main-text {
+  margin-bottom: 4rem;
+}
+
 #about .about-image {
   width: 30vw;
 }
@@ -850,6 +859,10 @@ footer a:hover {
 
   #about .flex {
     display: block;
+  }
+
+  #about .about-me-text {
+    width: var(--container-s-width);
   }
 
   #about h2 {
