@@ -314,12 +314,36 @@ body.loaded .fade-in-right {
 
 .testimonial {
     margin: 30vh 0;
+    /*Below is for the animation*/
+    opacity: 0;
+    -moz-transition: opacity 1.5s;
+    -webkit-transition: opacity 1.5s;
+    -o-transition: opacity 1.5s;
+    transition: opacity 1.5s;
 }
+
+.testimonial.is-visible {
+    animation: move-in 2s .25s ease-in-out forwards; 
+}
+
+@keyframes move-in {
+    0% {
+        transform: translateX(-10%);
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
 
 #right {
     text-align: right;
 
 }
+
+
 
 #work a {
     color: var(--main-text-color);
