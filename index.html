@@ -20,7 +20,7 @@
   <body>
     <div class="container">
       <nav>
-        <div>
+        <div class="logo">
           <p style="margin-left: 0">
             <a href="#">Thomas Kelly</a>
           </p>
@@ -35,6 +35,31 @@
         </div>
       </nav>
     </div>
+
+    <!-- Mobile Nav -->
+
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <span onclick="openNav()" class="menu-icon"
+      ><img src="Images/nav-icon.png" alt="Navigation icon" class="nav-icon"
+    /></span>
+
+    <!-- End of mobile nav -->
 
     <aside>
       <a href="#" class="email-link">thomaskelly281@gmail.com</a>
@@ -68,10 +93,12 @@
 
     <main>
       <section id="mission-statement">
-        <h3>
-          I am a UX and Interaction designer who improves AI and Machine
-          Learning
-        </h3>
+        <div class="container">
+          <h3>
+            I am a UX and Interaction designer who improves AI and Machine
+            Learning
+          </h3>
+        </div>
       </section>
 
       <section id="testimonials">
@@ -195,7 +222,7 @@
               <li>GitHub: <a href="#">thomaskelly281</a></li>
             </ul>
           </div>
-          <div>
+          <div class="extras">
             <h2>Extras</h2>
             <ul>
               <li><a href="#">Thesis</a></li>
