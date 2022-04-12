@@ -185,11 +185,17 @@
               </a>
             </div>
             <div>
-              <img
-                src="/Images/about-me-image.JPG"
-                alt="Thomas giving a presentation"
-                class="about-image"
-              />
+              <picture>
+                <source
+                  media="(max-width: 700px)"
+                  srcset="/Images/about-me-image-compressed.JPG"
+                />
+                <img
+                  src="/Images/about-me-image.JPG"
+                  alt="Thomas giving a presentation"
+                  class="about-image"
+                />
+              </picture>
             </div>
           </div>
         </div>

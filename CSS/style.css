@@ -218,10 +218,6 @@ aside img {
 aside a:hover,
 aside a:focus {
   color: var(--main-text-color);
-}
-
-aside img:hover,
-aside img:focus {
   filter: brightness(200);
 }
 
@@ -835,7 +831,7 @@ footer a:hover {
 
   .nav-icon:hover,
   .nav-icon:focus {
-    fill: var(--main-text-color-color);
+    filter: brightness(200);
   }
 
   .work-tile {
