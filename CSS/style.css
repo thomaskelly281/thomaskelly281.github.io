@@ -71,6 +71,7 @@ textarea {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 400;
   font-size: var(--p-xl-size);
+  line-height: 150%;
 }
 
 .label {
@@ -964,3 +965,32 @@ footer a:hover {
 // XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1400px) { ... }
 */
+
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/
+/*** Project CSS ***/
