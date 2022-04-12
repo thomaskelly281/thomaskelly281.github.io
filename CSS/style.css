@@ -1,7 +1,7 @@
 :root {
   /* Color Variables */
   --main-bg-color: #000000;
-  --main-text-color: #fefefe;
+  --main-text-color: #eeeeee;
   --main-accent-color: #581dff;
   --secondary-accent-color: #6a6a6a;
   --tertiary-accent-color: #1d1d1d;
@@ -11,7 +11,7 @@
   --h2-xl-size: 4rem;
   --h3-xl-size: 3rem;
   --h4-xl-size: 3rem;
-  --p-xl-size: 1.2rem;
+  --p-xl-size: 1.4rem;
 
   --h1-m-size: 4rem;
   --h2-m-size: 3rem;
@@ -201,7 +201,7 @@ aside a {
   text-decoration: none;
   font-family: "Syne", sans-serif;
   font-weight: 400;
-  font-size: var(--p-xl-size);
+  font-size: var(--p-s-size);
   transition: ease-in-out all 0.2s;
 }
 
@@ -464,6 +464,12 @@ body.loaded .fade-in-right {
 
 #work .flex-2 a {
   text-decoration: none;
+}
+
+#work .button-border {
+  width: 44vw;
+  margin: auto;
+  margin-top: 4rem;
 }
 
 #intrusty-tile {
