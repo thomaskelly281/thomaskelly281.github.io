@@ -405,6 +405,7 @@ body.loaded .fade-in-right {
 #work .work-tile:hover,
 #work .work-tile:focus {
   filter: contrast(90%);
+  background-blend-mode: overlay;
 }
 
 #work .flex {
@@ -432,7 +433,7 @@ body.loaded .fade-in-right {
 .work-tile {
   width: 20vw;
   height: 20vw;
-  background: rebeccapurple;
+  background: var(--main-accent-color);
   padding: 1rem;
   white-space: normal;
   overflow: hidden;
