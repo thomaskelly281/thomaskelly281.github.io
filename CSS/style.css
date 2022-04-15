@@ -66,12 +66,23 @@ h4 {
 }
 
 p,
-textarea {
+textarea,
+li,
+li span {
   color: var(--main-text-color);
   font-family: "Nunito Sans", sans-serif;
   font-weight: 400;
   font-size: var(--p-xl-size);
   line-height: 150%;
+}
+
+li span {
+  font-weight: 600;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
 }
 
 hr {
@@ -132,6 +143,10 @@ nav {
   position: fixed;
   top: 0;
   z-index: 2;
+}
+
+.logo a {
+  font-family: "Syne", sans-serif;
 }
 
 nav p,
@@ -508,6 +523,30 @@ body.loaded .fade-in-right {
   padding: 20px;
 }
 
+.about-page-flex {
+  width: var(--container-xl-width);
+  margin: auto;
+}
+
+.about-page-flex .flex {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: top;
+}
+
+.about-page-flex .flex ul {
+  padding-left: 20px;
+  border-left: 2px solid var(--main-accent-color);
+}
+
+.about-page-flex .flex li {
+  margin-top: 10px;
+}
+
 #contact {
   margin-top: 20vh;
 }
@@ -675,7 +714,10 @@ footer a:hover {
     font-size: var(--h4-m-size);
   }
 
-  p {
+  p,
+  textarea,
+  li,
+  li span {
     font-size: var(--p-m-size);
   }
 
@@ -899,6 +941,15 @@ footer a:hover {
     width: var(--container-s-width);
   }
 
+  .about-page-flex {
+    width: var(--container-s-width);
+  }
+
+  .about-page-flex .flex {
+    margin-top: 100px;
+    display: block;
+  }
+
   #contact input,
   #contact button,
   #contact textarea {
@@ -980,6 +1031,7 @@ footer a:hover {
   nav {
     display: none;
   }
+
   /* End of mobile nav */
 }
 
