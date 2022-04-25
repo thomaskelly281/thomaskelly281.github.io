@@ -11,7 +11,7 @@
   --h2-xl-size: 4rem;
   --h3-xl-size: 3rem;
   --h4-xl-size: 3rem;
-  --h5-xl-size: 2rem;
+  --h5-xl-size: 1.8rem;
   --p-xl-size: 1.4rem;
 
   --h1-m-size: 4rem;
@@ -71,6 +71,14 @@ h5, summary {
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h5-xl-size);
+}
+
+summary {
+  margin-bottom: 1rem;
+}
+
+summary::marker {
+  color: var(--main-accent-color);
 }
 
 p,
@@ -532,9 +540,8 @@ body.loaded .fade-in-right {
   padding: 20px;
 }
 
-
-
 #about ul {
+  margin-left: 10px;
   padding-left: 20px;
   border-left: 2px solid var(--main-accent-color);
 }
