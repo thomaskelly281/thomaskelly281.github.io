@@ -81,6 +81,10 @@ summary::marker {
   color: var(--main-accent-color);
 }
 
+abbr {
+  text-decoration: none;
+}
+
 p,
 textarea,
 li,
@@ -1039,7 +1043,7 @@ footer a:hover {
 }
 
 /*
- Large devices (desktops, 992px and up)
+Large devices (desktops, 992px and up)
 @media (min-width: 992px) { ... }
 
 // X-Large devices (large desktops, 1200px and up)
