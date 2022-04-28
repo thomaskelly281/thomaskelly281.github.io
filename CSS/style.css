@@ -8,26 +8,29 @@
 
   /* Text Variables */
   --h1-xl-size: 5rem;
-  --h2-xl-size: 4rem;
-  --h3-xl-size: 3rem;
-  --h4-xl-size: 3rem;
-  --h5-xl-size: 1.8rem;
-  --p-xl-size: 1.4rem;
+  --h2-xl-size: 3rem;
+  --h3-xl-size: 2.8rem;
+  --h4-xl-size: 2.6rem;
+  --h5-xl-size: 1.6rem;
+  --p-xl-size: 1.2rem;
 
   --h1-m-size: 4rem;
   --h2-m-size: 3rem;
   --h3-m-size: 2.4rem;
   --h4-m-size: 1.8rem;
+  --h5-s-size: 1.4rem;
   --p-m-size: 1rem;
 
   --h1-s-size: 3rem;
   --h2-s-size: 2.4rem;
   --h3-s-size: 1.8rem;
   --h4-s-size: 1.6rem;
+  --h5-s-size: 1.2rem;
   --p-s-size: 1.2rem;
 
   /* Width Variables */
   --container-xl-width: 70vw;
+  --container-m-width: 50vw;
   --container-s-width: 70vw;
 }
 
@@ -36,6 +39,8 @@ body {
   margin: 0;
   scroll-behavior: smooth;
   background: var(--main-bg-color);
+  scroll-behavior: smooth;
+  scroll-snap-align: top;
 }
 
 h1 {
@@ -267,8 +272,13 @@ aside a:focus {
   margin: auto;
 }
 
+.container-2 {
+  width: var(--container-m-width);
+  margin: auto;
+}
+
 header .container {
-  background: url("/Videos/Ring_v2_3.6MB.gif") no-repeat center center;
+  background: url("/Videos/Ring_v2_3.6MB.gif") no-repeat center right;
   background-size: contain;
   height: 70vh;
   max-height: 100vh;
@@ -277,13 +287,14 @@ header .container {
 }
 
 header h2 {
-  margin-top: 14vh;
+  margin-top: 100px;
+  line-height: 150%;;
 }
 
 header h1 {
   padding-top: 10vh;
   max-height: 90vh;
-  text-align: right;
+  text-align: left;
 }
 
 header .arrow {
@@ -507,6 +518,10 @@ body.loaded .fade-in-right {
   width: 44vw;
   margin: auto;
   margin-top: 4rem;
+}
+
+#work {
+  margin-top: 10vh;
 }
 
 #intrusty-tile {
@@ -740,6 +755,10 @@ footer a:hover {
     margin-right: 0;
   }
 
+  summary {
+    font-size: var(--h5-m-size);
+    }
+
   aside {
     display: none;
   }
@@ -862,6 +881,10 @@ footer a:hover {
 
   header h2 {
     margin-top: 20vh;
+  }
+
+  summary {
+  font-size: var(--h5-s-size);
   }
 
   header h1 {
