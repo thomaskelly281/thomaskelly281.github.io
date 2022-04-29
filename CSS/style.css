@@ -432,6 +432,8 @@ body.loaded .fade-in-right {
 }
 
 /* Add new ids from tiles to make hover effects work*/
+/*
+
 #intrusty-tile-heading,
 #intrusty-tile-subheading,
 #intrusty-tile-tags {
@@ -455,6 +457,8 @@ body.loaded .fade-in-right {
   background-blend-mode: overlay;
 }
 
+*/
+
 #work .flex {
   display: flex;
   flex-direction: row;
@@ -464,6 +468,8 @@ body.loaded .fade-in-right {
   align-items: center;
 }
 
+
+
 #work .flex-2 {
   display: flex;
   flex-direction: row;
@@ -471,11 +477,34 @@ body.loaded .fade-in-right {
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin: 50vh auto;
+}
+
+#work .flex-3 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-content: space-between;
+  align-items: center;
+  height: 400px
+}
+
+.work-tile h4 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.work-tile-text {
+  width: 25vw;
+  padding-left: 5vw;
 }
 
 .view-all-button:hover {
   transform: translateY(-3px);
 }
+
+/*
 
 .work-tile {
   width: 20vw;
@@ -514,14 +543,40 @@ body.loaded .fade-in-right {
   text-decoration: none;
 }
 
-#work .button-border {
-  width: 44vw;
-  margin: auto;
-  margin-top: 4rem;
+*/
+
+.work-tile {
+  width: 30vw;
+  max-width: 800px;
+  height: 400px;
+  max-height: 50vh;
 }
+
 
 #work {
   margin-top: 10vh;
+}
+
+#work .view-project-button {
+  width: 20vw;
+  max-width: 400px;
+  min-width: 100px;
+  height: auto;
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--main-text-color);
+  text-align: center;
+  padding: 1rem;
+}
+
+#work .view-project-button:hover,
+#work .view-project-button:focus {
+  background: var(--tertiary-accent-color);
+}
+
+#work .view-project-button a:hover,
+#work .view-project-button a:focus {
+  color: var(--main-text-color);
+  transform: translateY(-3px);
 }
 
 #intrusty-tile {
@@ -973,6 +1028,18 @@ footer a:hover {
 
   .about-page-flex {
     width: var(--container-s-width);
+  }
+
+  #work .flex-3 {
+    width: var(--container-s-width);
+  }
+
+  #work .work-tile-text {
+    padding-left: 0;
+  }
+
+  #work .view-project-button {
+    width: auto;
   }
 
   .about-page-flex .flex {
