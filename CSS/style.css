@@ -30,7 +30,7 @@
 
   /* Width Variables */
   --container-xl-width: 70vw;
-  --container-m-width: 50vw;
+  --container-m-width: 60vw;
   --container-s-width: 70vw;
 }
 
@@ -55,6 +55,7 @@ h2 {
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h2-xl-size);
+  text-align: center;
 }
 
 h3 {
@@ -288,7 +289,9 @@ header .container {
 
 header h2 {
   margin-top: 100px;
-  line-height: 150%;;
+  line-height: 150%;
+  text-align: left;
+
 }
 
 header h1 {
@@ -395,6 +398,25 @@ body.loaded .fade-in-right {
   -webkit-transition: opacity 1.5s;
   -o-transition: opacity 1.5s;
   transition: opacity 1.5s;
+}
+.testimonial-flex-1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.testimonial-flex-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.testimonial-text {
+  padding: 0 20px;
 }
 
 #testimonials #left {
@@ -570,7 +592,7 @@ body.loaded .fade-in-right {
 
 #work .view-project-button:hover,
 #work .view-project-button:focus {
-  background: var(--tertiary-accent-color);
+  background: var(--main-accent-color);
 }
 
 #work .view-project-button a:hover,
@@ -589,11 +611,15 @@ body.loaded .fade-in-right {
   margin-top: 40vh;
 }
 
+#about h2 {
+  margin-bottom: 20vh;
+}
+
 #about .flex {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
   align-items: top;
 }
@@ -601,6 +627,7 @@ body.loaded .fade-in-right {
 #about .about-me-text {
   width: 30vw;
   max-width: 50rem;
+  padding-right: 5vw;
 }
 
 #about .about-me-text .main-text {
