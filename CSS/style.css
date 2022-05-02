@@ -573,10 +573,19 @@ body.loaded .fade-in-right {
   max-height: 50vh;
 }
 
+#work .work-tile-text {
+  padding: 0 2.5vw;
+  background-color: var(--tertiary-accent-color);
+} 
 
 #work {
   margin-top: 10vh;
 }
+
+#work .work-tile-text .title {
+  margin-top: 2rem;
+}
+
 
 #work .view-project-button {
   width: 20vw;
@@ -587,6 +596,7 @@ body.loaded .fade-in-right {
   border: 1px solid var(--main-text-color);
   text-align: center;
   padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 #work .view-project-button:hover,
@@ -649,6 +659,31 @@ body.loaded .fade-in-right {
 #about li {
   margin-top: 10px;
 }
+
+#skills {
+  margin-top: 5rem;
+}
+
+#skills .flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: top;
+
+}
+
+#skills .t-skill {
+  background-color: var(--tertiary-accent-color);
+  height: auto;
+  width: 9vw;
+  text-align: center;
+  min-width: 200px;
+  margin: 2rem 0.5rem;
+  padding-top: 30px;
+}
+
 
 #contact {
   margin-top: 20vh;
