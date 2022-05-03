@@ -684,6 +684,14 @@ body.loaded .fade-in-right {
   padding-top: 30px;
 }
 
+#skills #soft-skills {
+  margin-top: 20vh;
+}
+
+#skills #technical-skills {
+  margin-top: 20vh;
+}
+
 #skills .flex-2 {
   display: flex;
   flex-direction: row;
@@ -879,14 +887,21 @@ footer .contact-info {
 footer .flex {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: top;
-  margin-bottom: 30vh;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+  margin: 0 auto 30vh auto;
+  justify-content: space-evenly;
 }
 
-footer ul,
+#contact-info {
+  margin: auto;
+}
+
+footer h2 {
+  margin-bottom: 10vh;
+}
+
 footer a {
   color: var(--main-text-color);
   font-family: "Nunito Sans", sans-serif;
@@ -898,15 +913,20 @@ footer a {
   padding: 0;
 }
 
-footer li {
-  margin: 0;
-  padding-left: 20px;
-  line-height: 200%;
-  border-left: 2px solid var(--main-accent-color);
+footer .flex a div {
+  margin: auto 2rem 4rem 2rem;
+}
+
+footer .flex img {
+  margin-left: 40%;
 }
 
 footer a:hover {
   text-decoration: underline;
+}
+
+footer a:hover img {
+  filter: brightness(200%); 
 }
 
 /*
