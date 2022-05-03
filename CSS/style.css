@@ -575,7 +575,7 @@ body.loaded .fade-in-right {
 
 #work .work-tile-text {
   padding: 0 2.5vw;
-  background-color: var(--tertiary-accent-color);
+  /*background-color: var(--tertiary-accent-color);*/
 } 
 
 #work {
@@ -684,6 +684,111 @@ body.loaded .fade-in-right {
   padding-top: 30px;
 }
 
+#skills .flex-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: flex-start;
+}
+
+.shimmer,
+.shimmer-2 {
+  color: rgba(255,255,255,0.1);
+  background: -webkit-gradient(linear, left top, right top, from(rgb(50, 18, 80)), to(rgb(50, 18, 80)), color-stop(0.8, rgb(119, 0, 255)));
+  background: -moz-gradient(linear, left top, right top, from(rgb(50, 18, 80)), to(rgb(50, 18, 80)), color-stop(0.8, rgb(119, 0, 255)));
+  background: gradient(linear, left top, right top, from(rgb(50, 18, 80)), to(rgb(50, 18, 80)), color-stop(0.8, rgb(119, 0, 255)));
+  -webkit-background-size: 125px 100%;
+  -moz-background-size: 125px 100%;
+  background-size: 125px 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-animation-name: shimmer;
+  -moz-animation-name: shimmer;
+  animation-name: shimmer;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: #222;
+}
+@-moz-keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  50% {
+    background-position: top right;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  50% {
+    background-position: top right;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+@-o-keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  50% {
+    background-position: top right;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  50% {
+    background-position: top right;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+
+#skills h5 {
+  text-align: center;
+}
+
+#skills .s-skill p {
+  font-size: var(--h5-xl-size);
+  font-weight: 600;
+}
+
+#skills .s-skill {
+  margin: 1rem;
+  padding: 10px;
+}
+
+#skills .s-skill div p {
+  margin-left: 15px;
+}
+
+#skills .s-skill div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-content: center;
+  align-items: center;
+}
 
 #contact {
   margin-top: 20vh;
