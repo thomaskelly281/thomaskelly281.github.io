@@ -1,10 +1,15 @@
 :root {
   /* Color Variables */
-  --main-bg-color: #000000;
-  --main-text-color: #eeeeee;
-  --main-accent-color: #581dff;
-  --secondary-accent-color: #6a6a6a;
-  --tertiary-accent-color: #1d1d1d;
+  --main-bg-color: #343258;
+  --main-text-color: #f8f8f8;
+  --main-accent-color: #FC17AA;
+  --accent-1:#FC17AA;
+  --accent-2:#FDAF00;
+  --accent-3:#0468FF;
+  --accent-4:#FD3A5C;
+  --accent-5:#46C7CC;
+  --secondary-accent-color: #726fc0;
+  --tertiary-accent-color: #444274;
 
   /* Text Variables */
   --h1-xl-size: 5rem;
@@ -44,14 +49,14 @@ body {
 }
 
 h1 {
-  font-family: "Syne", sans-serif;
+  font-family: 'Syne' ,sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h1-xl-size);
 }
 
 h2 {
-  font-family: "Syne", sans-serif;
+  font-family: 'Syne' ,sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h2-xl-size);
@@ -59,21 +64,21 @@ h2 {
 }
 
 h3 {
-  font-family: "Syne", sans-serif;
+  font-family: 'Inter','Syne' ,sans-serif;
   font-weight: 400;
   color: var(--main-text-color);
   font-size: var(--h3-xl-size);
 }
 
 h4 {
-  font-family: "Syne", sans-serif;
+  font-family: 'Inter','Syne' ,sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h4-xl-size);
 }
 
 h5, summary {
-  font-family: "Syne", sans-serif;
+  font-family: 'Inter','Syne' ,sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h5-xl-size);
@@ -96,7 +101,7 @@ textarea,
 li,
 li span {
   color: var(--main-text-color);
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Inter','Nunito Sans' ,sans-serif;
   font-weight: 400;
   font-size: var(--p-xl-size);
   line-height: 150%;
@@ -118,13 +123,13 @@ hr {
 
 .label {
   color: var(--main-text-color);
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Inter','Nunito Sans' ,sans-serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
 .button {
-  font-family: "Syne", sans-serif;
+  font-family: 'Inter',"Syne", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--p-xl-size);
@@ -143,7 +148,7 @@ nav p,
 nav a,
 nav li,
 nav ul {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Inter','Nunito Sans' ,sans-serif;
   font-weight: 400;
   color: var(--secondary-accent-color);
   font-size: 1.2rem;
@@ -157,9 +162,9 @@ nav {
   background: var(--main-bg-color);
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 1) 45%,
-    rgba(0, 0, 0, 0.7819721638655462) 83%,
-    rgba(0, 0, 0, 0.5) 100%
+    rgba(52, 50, 88) 40%,
+    rgba(52, 50, 88, 0.75) 80%,
+    rgba(52, 50, 88, 0.0) 100%
   );
   display: flex;
   flex-direction: row;
@@ -173,7 +178,7 @@ nav {
 }
 
 .logo a {
-  font-family: "Syne", sans-serif;
+  font-family: 'Inter', "Syne", sans-serif;
 }
 
 nav p,
@@ -241,7 +246,7 @@ aside ul {
 aside a {
   color: var(--secondary-accent-color);
   text-decoration: none;
-  font-family: "Syne", sans-serif;
+  font-family: 'Inter',"Syne", sans-serif;
   font-weight: 400;
   font-size: var(--p-s-size);
   transition: ease-in-out all 0.2s;
@@ -253,8 +258,8 @@ aside .email-link {
 
   /* This positions the email in the center of the aside
     They are random numbers, so if it breaks, change them till you get it centered */
-  right: -103px;
-  top: -105px;
+  right: -111px;
+  top: -120px;
 }
 
 aside img {
