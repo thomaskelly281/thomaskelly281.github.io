@@ -204,10 +204,28 @@ nav #end {
 
 nav a:hover,
 nav a:focus {
-  color: var(--main-text-color);
   transform: translateY(-3px);
+  text-shadow: 0px 4px 5px rgba(0,0,0,0.31);
 }
 
+nav .nav-1:hover,
+nav .nav-1:focus {
+ color: var(--accent-1);
+}
+
+nav .nav-2:hover,
+nav .nav-2:focus {
+ color: var(--accent-2);
+}
+
+nav .nav-3:hover,
+nav .nav-3:focus {
+ color: var(--accent-3);
+}
+nav .nav-4:hover,
+nav .nav-4:focus {
+ color: var(--accent-4);
+}
 .overlay {
   display: none;
 }
@@ -229,7 +247,7 @@ nav a:focus {
 }
 
 .resume-button:hover {
-  background: var(--tertiary-accent-color);
+  background: var(--accent-5);
 }
 
 aside {
@@ -249,13 +267,11 @@ aside a {
   font-family: 'Inter',"Syne", sans-serif;
   font-weight: 400;
   font-size: var(--p-s-size);
-  transition: ease-in-out all 0.2s;
 }
 
 aside .email-link {
   position: absolute;
   transform: rotate(90deg);
-
   /* This positions the email in the center of the aside
     They are random numbers, so if it breaks, change them till you get it centered */
   right: -111px;
@@ -267,11 +283,29 @@ aside img {
   height: 2rem;
 }
 
-aside a:hover,
-aside a:focus {
-  color: var(--main-text-color);
-  filter: brightness(200);
+aside .email-link:hover,
+aside .email-link:focus {
+  color: var(--accent-1);
 }
+
+aside .linkedin-aside:hover,
+aside .linkedin-aside:focus {
+  filter: invert(61%) sepia(99%) saturate(697%) hue-rotate(359deg) brightness(99%) contrast(106%);
+}
+
+aside .instagram-aside:hover,
+aside .instagram-aside:focus {
+  filter: invert(36%) sepia(83%) saturate(5130%) hue-rotate(211deg) brightness(102%) contrast(108%);}
+
+aside .github-aside:hover,
+aside .github-aside:focus {
+  filter: invert(37%) sepia(31%) saturate(4912%) hue-rotate(327deg) brightness(98%) contrast(104%);}
+
+aside .codepen-aside:hover,
+aside .codepen-aside:focus {
+  filter: invert(76%) sepia(61%) saturate(449%) hue-rotate(127deg) brightness(120%) contrast(89%);}
+
+
 
 .container {
   width: var(--container-xl-width);
@@ -457,34 +491,6 @@ body.loaded .fade-in-right {
   transition: ease-in-out all 0.2s;
 }
 
-/* Add new ids from tiles to make hover effects work*/
-/*
-
-#intrusty-tile-heading,
-#intrusty-tile-subheading,
-#intrusty-tile-tags {
-  opacity: 0;
-  transition: ease-in-out all 0.2s;
-}
-
-#work .work-tile:hover #intrusty-tile-heading,
-#work .work-tile:focus #intrusty-tile-heading,
-#work .work-tile:hover #intrusty-tile-subheading,
-#work .work-tile:focus #intrusty-tile-subheading,
-#work .work-tile:hover #intrusty-tile-tags,
-#work .work-tile:focus #intrusty-tile-tags {
-  opacity: 1;
-  filter: contrast(150%);
-}
-
-#work .work-tile:hover,
-#work .work-tile:focus {
-  filter: contrast(90%);
-  background-blend-mode: overlay;
-}
-
-*/
-
 #work .flex {
   display: flex;
   flex-direction: row;
@@ -530,46 +536,6 @@ body.loaded .fade-in-right {
   transform: translateY(-3px);
 }
 
-/*
-
-.work-tile {
-  width: 20vw;
-  height: 20vw;
-  background: var(--main-accent-color);
-  padding: 1rem;
-  white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipse;
-  margin-bottom: 3rem;
-  position: relative;
-  margin: 0.8vw;
-  transition: ease-in-out all 0.2s;
-}
-
-.work-tile .title {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 18vw;
-}
-
-.work-tile .tags {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  width: 18vw;
-}
-
-.work-tile h4,
-.work-tile p {
-  margin: 0;
-}
-
-#work .flex-2 a {
-  text-decoration: none;
-}
-
-*/
 
 .work-tile {
   width: 30vw;
@@ -703,7 +669,7 @@ body.loaded .fade-in-right {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
   align-items: flex-start;
 }
@@ -789,7 +755,9 @@ body.loaded .fade-in-right {
 
 #skills .s-skill {
   margin: 1rem;
-  padding: 10px;
+  padding: 10px 40px;
+  border-radius: 20px;
+  background-color: var(--tertiary-accent-color);
 }
 
 #skills .s-skill div p {
@@ -932,9 +900,33 @@ footer a:hover {
   text-decoration: underline;
 }
 
-footer a:hover img {
-  filter: brightness(200%); 
+footer .email-icon:hover img,
+footer .email-icon:focus img {
+  filter: invert(24%) sepia(100%) saturate(3598%) hue-rotate(305deg) brightness(97%) contrast(106%);
 }
+
+footer .linkedin-icon:hover img,
+footer .linkedin-icon:focus img {
+  filter: invert(61%) sepia(99%) saturate(697%) hue-rotate(359deg) brightness(99%) contrast(106%);
+}
+
+footer .instagram-icon:hover img,
+footer .instagram-icon:focus img {
+  filter: invert(36%) sepia(83%) saturate(5130%) hue-rotate(211deg) brightness(102%) contrast(108%);
+}
+
+footer .github-icon:hover img,
+footer .github-icon:focus img {
+  filter: invert(37%) sepia(31%) saturate(4912%) hue-rotate(327deg) brightness(98%) contrast(104%);
+}
+
+footer .codepen-icon:hover img,
+footer .codepen-icon:focus img {
+  filter: invert(76%) sepia(61%) saturate(449%) hue-rotate(127deg) brightness(120%) contrast(89%);
+}
+
+
+
 
 /*
 .
