@@ -49,14 +49,14 @@ body {
 }
 
 h1 {
-  font-family: "Syne", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h1-xl-size);
 }
 
 h2 {
-  font-family: "Syne", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h2-xl-size);
@@ -64,14 +64,14 @@ h2 {
 }
 
 h3 {
-  font-family: "Inter", "Syne", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 400;
   color: var(--main-text-color);
   font-size: var(--h3-xl-size);
 }
 
 h4 {
-  font-family: "Inter", "Syne", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h4-xl-size);
@@ -79,7 +79,7 @@ h4 {
 
 h5,
 summary {
-  font-family: "Inter", "Syne", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h5-xl-size);
@@ -102,7 +102,7 @@ textarea,
 li,
 li span {
   color: var(--main-text-color);
-  font-family: "Inter", "Nunito Sans", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 400;
   font-size: var(--p-xl-size);
   line-height: 150%;
@@ -123,13 +123,13 @@ hr {
 
 .label {
   color: var(--main-text-color);
-  font-family: "Inter", "Nunito Sans", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
 .button {
-  font-family: "Inter", "Syne", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--p-xl-size);
@@ -148,10 +148,10 @@ nav p,
 nav a,
 nav li,
 nav ul {
-  font-family: "Inter", "Nunito Sans", sans-serif;
-  font-weight: 400;
+  font-family: "Overpass", sans-serif;
+  font-weight: 500;
   color: var(--secondary-accent-color);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-decoration: none;
   list-style: none;
   display: flex;
@@ -178,7 +178,7 @@ nav {
 }
 
 .logo a {
-  font-family: "Inter", "Syne", sans-serif;
+  font-family: "Overpass", sans-serif;
 }
 
 nav p,
@@ -264,7 +264,7 @@ aside ul {
 aside a {
   color: var(--secondary-accent-color);
   text-decoration: none;
-  font-family: "Inter", "Syne", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 400;
   font-size: var(--p-s-size);
 }
@@ -274,8 +274,8 @@ aside .email-link {
   transform: rotate(90deg);
   /* This positions the email in the center of the aside
     They are random numbers, so if it breaks, change them till you get it centered */
-  right: -111px;
-  top: -120px;
+  right: -104px;
+  top: -117px;
 }
 
 aside img {
@@ -424,7 +424,7 @@ body.loaded .fade-in-right {
 }
 
 #mission-statement {
-  background-image: url(/Images/dotGrid-purple.jpg);
+  background-image: url(/Images/dotGrid-\(1\).jpg);
   background-size: cover;
   height: 70vh;
   text-align: center;
@@ -912,7 +912,7 @@ footer h2 {
 
 footer a {
   color: var(--main-text-color);
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 400;
   font-size: var(--p-xl-size);
   text-decoration: none;
@@ -1137,7 +1137,7 @@ footer .codepen-icon:focus img {
   }
 
   .button {
-    font-family: "Syne", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-weight: 700;
     color: var(--main-text-color);
     font-size: var(--p-xl-size);
@@ -1320,7 +1320,7 @@ footer .codepen-icon:focus img {
 
   /* The navigation links inside the overlay */
   .overlay a {
-    font-family: "Syne", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-weight: 700;
     padding: 1rem;
     line-height: 200%;
