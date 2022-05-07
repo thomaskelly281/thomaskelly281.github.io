@@ -877,7 +877,7 @@ body.loaded .fade-in-right {
 }
 
 footer {
-  background-image: url(/Images/perlinNoiseTerrain.jpg);
+  background-image: url(/Images/perlinNoiseTerrainVid-0027-min.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom center;
@@ -885,7 +885,7 @@ footer {
   height: auto;
   min-height: 100px;
   margin-top: 20vh;
-  padding-bottom: 1vh;
+  padding-bottom: 8vh;
 }
 
 footer .contact-info {
