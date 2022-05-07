@@ -11,11 +11,12 @@
       rel="stylesheet"
     />
     <!--New Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="/CSS/style.css" />
     <script src="main.js"></script>
@@ -28,9 +29,7 @@
       <nav>
         <div class="logo">
           <p style="margin-left: 0">
-            <a href="index.html" class="nav-1">
-              Thomas Kelly</a
-            >
+            <a href="index.html" class="nav-1"> Thomas Kelly</a>
           </p>
         </div>
         <div class="right">
@@ -76,23 +75,33 @@
       <ul>
         <li>
           <a
-            href="https://www.linkedin.com/in/thomas-kelly-337ab01b7/" class="linkedin-aside"
+            href="https://www.linkedin.com/in/thomas-kelly-337ab01b7/"
+            class="linkedin-aside"
             target="_blank"
             ><img src="Images/linkedin-icon.svg" alt="LinkedIn icon"
           /></a>
         </li>
         <li>
-          <a href="https://www.instagram.com/ux.thomask/" class="instagram-aside" target="_blank"
+          <a
+            href="https://www.instagram.com/ux.thomask/"
+            class="instagram-aside"
+            target="_blank"
             ><img src="Images/instagram-icon.svg" alt="Instagram icon"
           /></a>
         </li>
         <li>
-          <a href="https://github.com/thomaskelly281" class="github-aside" target="_blank"
+          <a
+            href="https://github.com/thomaskelly281"
+            class="github-aside"
+            target="_blank"
             ><img src="Images/github-icon.svg" alt="GitHub icon"
           /></a>
         </li>
         <li>
-          <a href="https://codepen.io/thomaskellly" class="codepen-aside" target="_blank"
+          <a
+            href="https://codepen.io/thomaskellly"
+            class="codepen-aside"
+            target="_blank"
             ><img src="Images/codepen-icon.svg" alt="Codepen icon"
           /></a>
         </li>
@@ -101,9 +110,16 @@
 
     <header>
       <div class="container">
-        <h1 class="fade-in-left">Thomas Kelly</h1>
-        <h2 class="fade-in-left">UX and Interaction Designer <br>for Artificial Intelligence.</h2>
-        <!--<h3 class="fade-in-right">I help improve AI</h3>-->
+        <div class="header-flex">
+          <div>
+            <h1>Thomas Kelly</h1>
+            <h2>UX and Interaction Designer for Artificial Intelligence.</h2>
+          </div>
+          <div>
+            <video src="/Videos/Comp 1_1_4.mp4" autoplay loop muted></video>
+          </div>
+        </div>
+
         <div class="arrow">
           <p class="label scroll-text">Scroll</p>
           <img src="/Images/arrow.png" alt="Down arrow icon" />
@@ -126,26 +142,33 @@
           <h2>Work</h2>
 
           <!--Intrusty Tile-->
-          <div class="flex-2" style="margin-top: 20vh;">
-              <div class="work-tile" id="intrusty-tile">
+          <div class="flex-2" style="margin-top: 20vh">
+            <div class="work-tile" id="intrusty-tile"></div>
+            <div class="work-tile-text flex-3">
+              <div class="title">
+                <h4
+                  id="intrusty-tile-heading"
+                  style="margin-top: 0; margin-bottom: 0"
+                >
+                  Intrusty
+                </h4>
+                <hr />
+                <p id="intrusty-tile-subheading">Academic Feedback App</p>
               </div>
-              <div class="work-tile-text flex-3">
-                <div class="title">
-                  <h4 id="intrusty-tile-heading" style="margin-top: 0; margin-bottom: 0;">Intrusty</h4>
-                  <hr>
-                  <p id="intrusty-tile-subheading">Academic Feedback App</p>
-                </div>
-                <div class="tags">
-                  <p id="intrusty-tile-tags">
-                    Tags: Service Design, Service Blueprint, Co-Creation,
-                    Competitive Audit, Prototyping
-                  </p>
-                </div>
-                <a href="intrusty.html"><button class="view-project-button button button-border">View Project</button></a>
+              <div class="tags">
+                <p id="intrusty-tile-tags">
+                  Tags: Service Design, Service Blueprint, Co-Creation,
+                  Competitive Audit, Prototyping
+                </p>
               </div>
+              <a href="intrusty.html"
+                ><button class="view-project-button button button-border">
+                  View Project
+                </button></a
+              >
+            </div>
           </div>
           <!--End of Intrusty Tile-->
-
         </div>
       </section>
 
@@ -171,17 +194,16 @@
                 >), Dublin.
               </p>
 
-            <details>
-              <summary>Education</summary>
-              <ul>
-              
+              <details>
+                <summary>Education</summary>
+                <ul>
                   <li>
                     <span>National College of Art & Design (NCAD)</span
-                    ><br />Interaction Design (BA)<br />Class Representitive<br />2020 - Current
+                    ><br />Interaction Design (BA)<br />Class Representitive<br />2020
+                    - Current
                   </li>
-                
-              </ul>
-            </details>
+                </ul>
+              </details>
             </div>
             <div>
               <picture>
@@ -205,39 +227,75 @@
           <h5>Technical Skills</h5>
           <div class="flex">
             <div id="figma" class="t-skill">
-              <img src="/Images/figma-logo.png" alt="Figma Logo" style="height:100px; width:auto;">
+              <img
+                src="/Images/figma-logo.png"
+                alt="Figma Logo"
+                style="height: 100px; width: auto"
+              />
               <p>Figma & Figjam</p>
             </div>
             <div class="t-skill">
-              <img src="/Images/miro-logo.png" alt="Miro Logo"  style="height:100px; width:auto;">
+              <img
+                src="/Images/miro-logo.png"
+                alt="Miro Logo"
+                style="height: 100px; width: auto"
+              />
               <p>Miro</p>
             </div>
             <div class="t-skill">
-              <img src="/Images/hotjar-logo.webp" alt="Hotjar Logo"  style="height:100px; width:auto;">
+              <img
+                src="/Images/hotjar-logo.webp"
+                alt="Hotjar Logo"
+                style="height: 100px; width: auto"
+              />
               <p>Hotjar</p>
             </div>
             <div class="t-skill">
-              <img src="/Images/google-analytics-logo.png" alt="Google Analytic Logo"  style="height:100px; width:auto;;">
+              <img
+                src="/Images/google-analytics-logo.png"
+                alt="Google Analytic Logo"
+                style="height: 100px; width: auto"
+              />
               <p>Google Analytics</p>
             </div>
             <div class="t-skill">
-              <img src="/Images/html-logo.png" alt="HTML Symbol"  style="height:100px; width:auto;">
+              <img
+                src="/Images/html-logo.png"
+                alt="HTML Symbol"
+                style="height: 100px; width: auto"
+              />
               <p>HTML, CSS & JS</p>
             </div>
             <div class="t-skill">
-              <img src="/Images/arduino-logo.png" alt="Arduino Logo"  style="height:100px; width:auto;">
+              <img
+                src="/Images/arduino-logo.png"
+                alt="Arduino Logo"
+                style="height: 100px; width: auto"
+              />
               <p>Arduino</p>
             </div>
             <div class="t-skill">
-              <img src="/Images/processing-logo.svg" alt="Processing Logo"  style="height:100px; width:auto;">
+              <img
+                src="/Images/processing-logo.svg"
+                alt="Processing Logo"
+                style="height: 100px; width: auto"
+              />
               <p>Processing & p5.js</p>
             </div>
             <div class="t-skill">
-              <img src="/Images/adobe-logo.png" alt="Adobe CC Logo"  style="height:100px; width:auto;">
+              <img
+                src="/Images/adobe-logo.png"
+                alt="Adobe CC Logo"
+                style="height: 100px; width: auto"
+              />
               <p>Adobe CC</p>
             </div>
             <div class="t-skill">
-              <img src="/Images/sketch-logo.png" alt="Sketch Logo"  style="height:100px; width:auto;">
+              <img
+                src="/Images/sketch-logo.png"
+                alt="Sketch Logo"
+                style="height: 100px; width: auto"
+              />
               <p>Sketch</p>
             </div>
           </div>
@@ -247,61 +305,101 @@
           <div class="flex-2">
             <div class="s-skill">
               <div>
-                <img src="/Images/informationArchitecure-icon.svg" alt="" style="height:auto; width:40px;">
+                <img
+                  src="/Images/informationArchitecure-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
                 <p>Information Architecture</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/ceativeTech-icon.svg" alt="" style="height:auto; width:35px;">
+                <img
+                  src="/Images/ceativeTech-icon.svg"
+                  alt=""
+                  style="height: auto; width: 35px"
+                />
                 <p>Creative Technologies</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/ux-icon.svg" alt="" style="height:auto; width:40px;">
+                <img
+                  src="/Images/ux-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
                 <p>UX & IxD</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/collaboration-icon.svg" alt="" style="height:auto; width:40px;;">
+                <img
+                  src="/Images/collaboration-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
                 <p>Collaboration</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/userResearch-icon.svg" alt="" style="height:auto; width:40px;">
+                <img
+                  src="/Images/userResearch-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
                 <p>User Research</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/projectManagement-icon.svg" alt="" style="height:auto; width:40px;">
+                <img
+                  src="/Images/projectManagement-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
                 <p>Project Managment</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/empathy-icon.svg" alt="" style="height:auto; width:40px;">
+                <img
+                  src="/Images/empathy-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
                 <p>Empathy</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/facilitation-icon.svg" alt="" style="height:auto; width:30px;">
+                <img
+                  src="/Images/facilitation-icon.svg"
+                  alt=""
+                  style="height: auto; width: 30px"
+                />
                 <p>Facilitation</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/usability-icon.svg" alt="" style="height:auto; width:40px;">
+                <img
+                  src="/Images/usability-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
                 <p>Usability</p>
               </div>
             </div>
             <div class="s-skill">
               <div>
-                <img src="/Images/prototyping-icon.svg" alt="" style="height:auto; width:40px;">
+                <img
+                  src="/Images/prototyping-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
                 <p>Prototyping</p>
               </div>
             </div>
@@ -314,7 +412,11 @@
           <h3>Testimonials</h3>
           <div class="testimonial show-on-scroll" id="left">
             <div class="testimonial-flex-1">
-              <img src="Images/testimonial-example-img.png" alt="Circular image of man smiling" style="height: 80px">
+              <img
+                src="Images/testimonial-example-img.png"
+                alt="Circular image of man smiling"
+                style="height: 80px"
+              />
               <div class="testimonial-text">
                 <p>Thomas is a great designer!!!</p>
                 <p class="label">-John Doe</p>
@@ -325,30 +427,79 @@
             <div class="testimonial-flex-2">
               <div class="testimonial-text">
                 <p>
-                  I loved working with Thomas Kelly. I never met someone so smart
+                  I loved working with Thomas Kelly. I never met someone so
+                  smart
                 </p>
                 <p class="label">-Jane Doe</p>
               </div>
-              <img src="Images/testimonial-example-img.png" alt="Circular image of man smiling" style="height: 80px">
+              <img
+                src="Images/testimonial-example-img.png"
+                alt="Circular image of man smiling"
+                style="height: 80px"
+              />
             </div>
           </div>
         </div>
       </section>
-
     </main>
 
     <footer>
       <div class="container-2">
-          <div class="contact-info" id="contact-info">
-            <h2 style="text-align: center;">Contact Info</h2>
-            <div class="flex">
-              <a href="mailto:thomaskelly281@gmail.com" class="email-icon"><div><img src="/Images/email-icon.svg" alt="" style="height: 50px;"><p>Email: <span>thomaskelly281@gmail.com</span></p></div></a>
-              <a href="https://www.linkedin.com/in/thomas-kelly-337ab01b7/" class="linkedin-icon"><div><img src="/Images/linkedin-icon.svg" alt="" style="height: 50px;"><p>LinkedIn: <span>Thomas Kelly</span></p></div></a>
-              <a href="https://www.instagram.com/ux.thomask/" class="instagram-icon"><div><img src="/Images/instagram-icon.svg" alt="" style="height: 50px;"><p>Instagram: <span>@ux.thomask</span></p></div></a>
-              <a href="https://github.com/thomaskelly281" class="github-icon"><div><img src="/Images/github-icon.svg" alt="" style="height: 50px;"><p>GitHub: <span>thomaskelly281</span></p></div></a>
-              <a href="https://codepen.io/thomaskellly" class="codepen-icon"><div><img src="/Images/codepen-icon.svg" alt="" style="height: 50px;"><p>CodePen: <span>thomaskellly</span></p></div></a>
-            </div>
+        <div class="contact-info" id="contact-info">
+          <h2 style="text-align: center">Contact Info</h2>
+          <div class="flex">
+            <a href="mailto:thomaskelly281@gmail.com" class="email-icon"
+              ><div>
+                <img src="/Images/email-icon.svg" alt="" style="height: 50px" />
+                <p>Email: <span>thomaskelly281@gmail.com</span></p>
+              </div></a
+            >
+            <a
+              href="https://www.linkedin.com/in/thomas-kelly-337ab01b7/"
+              class="linkedin-icon"
+              ><div>
+                <img
+                  src="/Images/linkedin-icon.svg"
+                  alt=""
+                  style="height: 50px"
+                />
+                <p>LinkedIn: <span>Thomas Kelly</span></p>
+              </div></a
+            >
+            <a
+              href="https://www.instagram.com/ux.thomask/"
+              class="instagram-icon"
+              ><div>
+                <img
+                  src="/Images/instagram-icon.svg"
+                  alt=""
+                  style="height: 50px"
+                />
+                <p>Instagram: <span>@ux.thomask</span></p>
+              </div></a
+            >
+            <a href="https://github.com/thomaskelly281" class="github-icon"
+              ><div>
+                <img
+                  src="/Images/github-icon.svg"
+                  alt=""
+                  style="height: 50px"
+                />
+                <p>GitHub: <span>thomaskelly281</span></p>
+              </div></a
+            >
+            <a href="https://codepen.io/thomaskellly" class="codepen-icon"
+              ><div>
+                <img
+                  src="/Images/codepen-icon.svg"
+                  alt=""
+                  style="height: 50px"
+                />
+                <p>CodePen: <span>thomaskellly</span></p>
+              </div></a
+            >
           </div>
+        </div>
       </div>
     </footer>
 

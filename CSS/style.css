@@ -323,8 +323,8 @@ aside .codepen-aside:focus {
 }
 
 header .container {
-  background: url("/Videos/Ring_v2_3.6MB.gif") no-repeat center right;
-  background-size: contain;
+  /* background: url("/Videos/Ring_v2_3.6MB.gif") no-repeat center right; */
+  /* background-size: contain; */
   height: 70vh;
   max-height: 100vh;
   margin-top: 0;
@@ -338,9 +338,21 @@ header h2 {
 }
 
 header h1 {
-  padding-top: 10vh;
+  padding-top: 15vh;
   max-height: 90vh;
   text-align: left;
+}
+
+header .header-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+
+header video {
+  height: 70vh;
 }
 
 header .arrow {
@@ -412,7 +424,7 @@ body.loaded .fade-in-right {
 }
 
 #mission-statement {
-  background-image: url(/Images/dotGrid.jpg);
+  background-image: url(/Images/dotGrid-purple.jpg);
   background-size: cover;
   height: 70vh;
   text-align: center;
