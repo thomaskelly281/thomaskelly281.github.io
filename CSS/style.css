@@ -2,12 +2,12 @@
   /* Color Variables */
   --main-bg-color: #343258;
   --main-text-color: #f8f8f8;
-  --main-accent-color: #FC17AA;
-  --accent-1:#FC17AA;
-  --accent-2:#FDAF00;
-  --accent-3:#0468FF;
-  --accent-4:#FD3A5C;
-  --accent-5:#46C7CC;
+  --main-accent-color: #fc17aa;
+  --accent-1: #fc17aa;
+  --accent-2: #fdaf00;
+  --accent-3: #0468ff;
+  --accent-4: #fd3a5c;
+  --accent-5: #46c7cc;
   --secondary-accent-color: #726fc0;
   --tertiary-accent-color: #444274;
 
@@ -49,14 +49,14 @@ body {
 }
 
 h1 {
-  font-family: 'Syne' ,sans-serif;
+  font-family: "Syne", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h1-xl-size);
 }
 
 h2 {
-  font-family: 'Syne' ,sans-serif;
+  font-family: "Syne", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h2-xl-size);
@@ -64,21 +64,22 @@ h2 {
 }
 
 h3 {
-  font-family: 'Inter','Syne' ,sans-serif;
+  font-family: "Inter", "Syne", sans-serif;
   font-weight: 400;
   color: var(--main-text-color);
   font-size: var(--h3-xl-size);
 }
 
 h4 {
-  font-family: 'Inter','Syne' ,sans-serif;
+  font-family: "Inter", "Syne", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h4-xl-size);
 }
 
-h5, summary {
-  font-family: 'Inter','Syne' ,sans-serif;
+h5,
+summary {
+  font-family: "Inter", "Syne", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--h5-xl-size);
@@ -101,12 +102,11 @@ textarea,
 li,
 li span {
   color: var(--main-text-color);
-  font-family: 'Inter','Nunito Sans' ,sans-serif;
+  font-family: "Inter", "Nunito Sans", sans-serif;
   font-weight: 400;
   font-size: var(--p-xl-size);
   line-height: 150%;
 }
-
 
 li span {
   font-weight: 600;
@@ -123,13 +123,13 @@ hr {
 
 .label {
   color: var(--main-text-color);
-  font-family: 'Inter','Nunito Sans' ,sans-serif;
+  font-family: "Inter", "Nunito Sans", sans-serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
 .button {
-  font-family: 'Inter',"Syne", sans-serif;
+  font-family: "Inter", "Syne", sans-serif;
   font-weight: 700;
   color: var(--main-text-color);
   font-size: var(--p-xl-size);
@@ -148,7 +148,7 @@ nav p,
 nav a,
 nav li,
 nav ul {
-  font-family: 'Inter','Nunito Sans' ,sans-serif;
+  font-family: "Inter", "Nunito Sans", sans-serif;
   font-weight: 400;
   color: var(--secondary-accent-color);
   font-size: 1.2rem;
@@ -164,7 +164,7 @@ nav {
     180deg,
     rgba(52, 50, 88) 40%,
     rgba(52, 50, 88, 0.75) 80%,
-    rgba(52, 50, 88, 0.0) 100%
+    rgba(52, 50, 88, 0) 100%
   );
   display: flex;
   flex-direction: row;
@@ -178,7 +178,7 @@ nav {
 }
 
 .logo a {
-  font-family: 'Inter', "Syne", sans-serif;
+  font-family: "Inter", "Syne", sans-serif;
 }
 
 nav p,
@@ -205,26 +205,26 @@ nav #end {
 nav a:hover,
 nav a:focus {
   transform: translateY(-3px);
-  text-shadow: 0px 4px 5px rgba(0,0,0,0.31);
+  text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.31);
 }
 
 nav .nav-1:hover,
 nav .nav-1:focus {
- color: var(--accent-1);
+  color: var(--accent-1);
 }
 
 nav .nav-2:hover,
 nav .nav-2:focus {
- color: var(--accent-2);
+  color: var(--accent-2);
 }
 
 nav .nav-3:hover,
 nav .nav-3:focus {
- color: var(--accent-3);
+  color: var(--accent-3);
 }
 nav .nav-4:hover,
 nav .nav-4:focus {
- color: var(--accent-4);
+  color: var(--accent-4);
 }
 .overlay {
   display: none;
@@ -264,7 +264,7 @@ aside ul {
 aside a {
   color: var(--secondary-accent-color);
   text-decoration: none;
-  font-family: 'Inter',"Syne", sans-serif;
+  font-family: "Inter", "Syne", sans-serif;
   font-weight: 400;
   font-size: var(--p-s-size);
 }
@@ -290,22 +290,27 @@ aside .email-link:focus {
 
 aside .linkedin-aside:hover,
 aside .linkedin-aside:focus {
-  filter: invert(61%) sepia(99%) saturate(697%) hue-rotate(359deg) brightness(99%) contrast(106%);
+  filter: invert(61%) sepia(99%) saturate(697%) hue-rotate(359deg)
+    brightness(99%) contrast(106%);
 }
 
 aside .instagram-aside:hover,
 aside .instagram-aside:focus {
-  filter: invert(36%) sepia(83%) saturate(5130%) hue-rotate(211deg) brightness(102%) contrast(108%);}
+  filter: invert(36%) sepia(83%) saturate(5130%) hue-rotate(211deg)
+    brightness(102%) contrast(108%);
+}
 
 aside .github-aside:hover,
 aside .github-aside:focus {
-  filter: invert(37%) sepia(31%) saturate(4912%) hue-rotate(327deg) brightness(98%) contrast(104%);}
+  filter: invert(37%) sepia(31%) saturate(4912%) hue-rotate(327deg)
+    brightness(98%) contrast(104%);
+}
 
 aside .codepen-aside:hover,
 aside .codepen-aside:focus {
-  filter: invert(76%) sepia(61%) saturate(449%) hue-rotate(127deg) brightness(120%) contrast(89%);}
-
-
+  filter: invert(76%) sepia(61%) saturate(449%) hue-rotate(127deg)
+    brightness(120%) contrast(89%);
+}
 
 .container {
   width: var(--container-xl-width);
@@ -500,8 +505,6 @@ body.loaded .fade-in-right {
   align-items: center;
 }
 
-
-
 #work .flex-2 {
   display: flex;
   flex-direction: row;
@@ -519,7 +522,7 @@ body.loaded .fade-in-right {
   justify-content: left;
   align-content: space-between;
   align-items: center;
-  height: 400px
+  height: 400px;
 }
 
 .work-tile h4 {
@@ -536,7 +539,6 @@ body.loaded .fade-in-right {
   transform: translateY(-3px);
 }
 
-
 .work-tile {
   width: 30vw;
   max-width: 800px;
@@ -547,7 +549,7 @@ body.loaded .fade-in-right {
 #work .work-tile-text {
   padding: 0 2.5vw;
   /*background-color: var(--tertiary-accent-color);*/
-} 
+}
 
 #work {
   margin-top: 10vh;
@@ -556,7 +558,6 @@ body.loaded .fade-in-right {
 #work .work-tile-text .title {
   margin-top: 2rem;
 }
-
 
 #work .view-project-button {
   width: 20vw;
@@ -642,7 +643,6 @@ body.loaded .fade-in-right {
   justify-content: center;
   align-content: center;
   align-items: top;
-
 }
 
 #skills .t-skill {
@@ -676,10 +676,31 @@ body.loaded .fade-in-right {
 
 .shimmer,
 .shimmer-2 {
-  color: rgba(255,255,255,0.1);
-  background: -webkit-gradient(linear, left top, right top, from(rgb(50, 18, 80)), to(rgb(50, 18, 80)), color-stop(0.8, rgb(119, 0, 255)));
-  background: -moz-gradient(linear, left top, right top, from(rgb(50, 18, 80)), to(rgb(50, 18, 80)), color-stop(0.8, rgb(119, 0, 255)));
-  background: gradient(linear, left top, right top, from(rgb(50, 18, 80)), to(rgb(50, 18, 80)), color-stop(0.8, rgb(119, 0, 255)));
+  color: rgba(255, 255, 255, 0.1);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgb(50, 18, 80)),
+    to(rgb(50, 18, 80)),
+    color-stop(0.8, rgb(119, 0, 255))
+  );
+  background: -moz-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgb(50, 18, 80)),
+    to(rgb(50, 18, 80)),
+    color-stop(0.8, rgb(119, 0, 255))
+  );
+  background: gradient(
+    linear,
+    left top,
+    right top,
+    from(rgb(50, 18, 80)),
+    to(rgb(50, 18, 80)),
+    color-stop(0.8, rgb(119, 0, 255))
+  );
   -webkit-background-size: 125px 100%;
   -moz-background-size: 125px 100%;
   background-size: 125px 100%;
@@ -902,31 +923,33 @@ footer a:hover {
 
 footer .email-icon:hover img,
 footer .email-icon:focus img {
-  filter: invert(24%) sepia(100%) saturate(3598%) hue-rotate(305deg) brightness(97%) contrast(106%);
+  filter: invert(24%) sepia(100%) saturate(3598%) hue-rotate(305deg)
+    brightness(97%) contrast(106%);
 }
 
 footer .linkedin-icon:hover img,
 footer .linkedin-icon:focus img {
-  filter: invert(61%) sepia(99%) saturate(697%) hue-rotate(359deg) brightness(99%) contrast(106%);
+  filter: invert(61%) sepia(99%) saturate(697%) hue-rotate(359deg)
+    brightness(99%) contrast(106%);
 }
 
 footer .instagram-icon:hover img,
 footer .instagram-icon:focus img {
-  filter: invert(36%) sepia(83%) saturate(5130%) hue-rotate(211deg) brightness(102%) contrast(108%);
+  filter: invert(36%) sepia(83%) saturate(5130%) hue-rotate(211deg)
+    brightness(102%) contrast(108%);
 }
 
 footer .github-icon:hover img,
 footer .github-icon:focus img {
-  filter: invert(37%) sepia(31%) saturate(4912%) hue-rotate(327deg) brightness(98%) contrast(104%);
+  filter: invert(37%) sepia(31%) saturate(4912%) hue-rotate(327deg)
+    brightness(98%) contrast(104%);
 }
 
 footer .codepen-icon:hover img,
 footer .codepen-icon:focus img {
-  filter: invert(76%) sepia(61%) saturate(449%) hue-rotate(127deg) brightness(120%) contrast(89%);
+  filter: invert(76%) sepia(61%) saturate(449%) hue-rotate(127deg)
+    brightness(120%) contrast(89%);
 }
-
-
-
 
 /*
 .
@@ -997,7 +1020,7 @@ footer .codepen-icon:focus img {
 
   summary {
     font-size: var(--h5-m-size);
-    }
+  }
 
   aside {
     display: none;
@@ -1124,7 +1147,7 @@ footer .codepen-icon:focus img {
   }
 
   summary {
-  font-size: var(--h5-s-size);
+    font-size: var(--h5-s-size);
   }
 
   header h1 {
