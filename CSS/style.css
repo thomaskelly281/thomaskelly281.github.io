@@ -2,13 +2,10 @@
   /* Color Variables */
   --main-bg-color: #343258;
   --main-text-color: #f8f8f8;
-  --main-accent-color: #fc17aa;
-  --accent-1: #fc17aa;
-  --accent-2: #fdaf00;
-  --accent-3: #0468ff;
-  --accent-4: #fd3a5c;
-  --accent-5: #46c7cc;
-  --secondary-accent-color: #726fc0;
+  /* --main-accent-color: #fc17aa; */
+  --hover-color: #d4d3f2;
+  /* --secondary-accent-color: #726fc0; */
+  --secondary-accent-color: #b7b5e7;
   --tertiary-accent-color: #444274;
 
   /* Text Variables */
@@ -206,26 +203,9 @@ nav a:hover,
 nav a:focus {
   transform: translateY(-3px);
   text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.31);
+  color: var(--hover-color);
 }
 
-nav .nav-1:hover,
-nav .nav-1:focus {
-  color: var(--accent-1);
-}
-
-nav .nav-2:hover,
-nav .nav-2:focus {
-  color: var(--accent-2);
-}
-
-nav .nav-3:hover,
-nav .nav-3:focus {
-  color: var(--accent-3);
-}
-nav .nav-4:hover,
-nav .nav-4:focus {
-  color: var(--accent-4);
-}
 .overlay {
   display: none;
 }
@@ -247,7 +227,7 @@ nav .nav-4:focus {
 }
 
 .resume-button:hover {
-  background: var(--accent-5);
+  background: var(--tertiary-accent-color);
 }
 
 aside {
@@ -283,33 +263,14 @@ aside img {
   height: 2rem;
 }
 
-aside .email-link:hover,
-aside .email-link:focus {
-  color: var(--accent-1);
+aside img:hover,
+aside img:focus {
+  filter: brightness(120%);
 }
 
-aside .linkedin-aside:hover,
-aside .linkedin-aside:focus {
-  filter: invert(61%) sepia(99%) saturate(697%) hue-rotate(359deg)
-    brightness(99%) contrast(106%);
-}
-
-aside .instagram-aside:hover,
-aside .instagram-aside:focus {
-  filter: invert(36%) sepia(83%) saturate(5130%) hue-rotate(211deg)
-    brightness(102%) contrast(108%);
-}
-
-aside .github-aside:hover,
-aside .github-aside:focus {
-  filter: invert(37%) sepia(31%) saturate(4912%) hue-rotate(327deg)
-    brightness(98%) contrast(104%);
-}
-
-aside .codepen-aside:hover,
-aside .codepen-aside:focus {
-  filter: invert(76%) sepia(61%) saturate(449%) hue-rotate(127deg)
-    brightness(120%) contrast(89%);
+aside a:hover,
+aside a:focus {
+  color: var(--hover-color);
 }
 
 .container {
@@ -475,12 +436,12 @@ body.loaded .fade-in-right {
 }
 
 #testimonials #left {
-  border-left: 2px solid var(--main-accent-color);
+  border-left: 2px solid var(--secondary-accent-color);
   padding-left: 20px;
 }
 
 #testimonials #right {
-  border-right: 2px solid var(--main-accent-color);
+  border-right: 2px solid var(--secondary-accent-color);
   padding-right: 20px;
 }
 
@@ -585,7 +546,7 @@ body.loaded .fade-in-right {
 
 #work .view-project-button:hover,
 #work .view-project-button:focus {
-  background: var(--main-accent-color);
+  background: var(--tertiary-accent-color);
 }
 
 #work .view-project-button a:hover,
@@ -630,14 +591,14 @@ body.loaded .fade-in-right {
 
 #about .about-image {
   width: 23vw;
-  border: 2px solid var(--main-accent-color);
+  border: 2px solid var(--secondary-accent-color);
   padding: 20px;
 }
 
 #about ul {
   margin-left: 10px;
   padding-left: 20px;
-  border-left: 2px solid var(--main-accent-color);
+  border-left: 2px solid var(--secondary-accent-color);
 }
 
 #about li {
@@ -933,34 +894,9 @@ footer a:hover {
   text-decoration: underline;
 }
 
-footer .email-icon:hover img,
-footer .email-icon:focus img {
-  filter: invert(24%) sepia(100%) saturate(3598%) hue-rotate(305deg)
-    brightness(97%) contrast(106%);
-}
-
-footer .linkedin-icon:hover img,
-footer .linkedin-icon:focus img {
-  filter: invert(61%) sepia(99%) saturate(697%) hue-rotate(359deg)
-    brightness(99%) contrast(106%);
-}
-
-footer .instagram-icon:hover img,
-footer .instagram-icon:focus img {
-  filter: invert(36%) sepia(83%) saturate(5130%) hue-rotate(211deg)
-    brightness(102%) contrast(108%);
-}
-
-footer .github-icon:hover img,
-footer .github-icon:focus img {
-  filter: invert(37%) sepia(31%) saturate(4912%) hue-rotate(327deg)
-    brightness(98%) contrast(104%);
-}
-
-footer .codepen-icon:hover img,
-footer .codepen-icon:focus img {
-  filter: invert(76%) sepia(61%) saturate(449%) hue-rotate(127deg)
-    brightness(120%) contrast(89%);
+footer img:hover,
+footer img:focus {
+  filter: brightness(120%);
 }
 
 /*
