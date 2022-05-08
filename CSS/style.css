@@ -491,6 +491,7 @@ body.loaded .fade-in-right {
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin: 5vh 0;
 }
 
 #work .work-tile {
