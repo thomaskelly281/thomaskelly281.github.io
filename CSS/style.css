@@ -293,8 +293,6 @@ aside a:focus {
 }
 
 header .container {
-  /* background: url("/Videos/Ring_v2_3.6MB.gif") no-repeat center right; */
-  /* background-size: contain; */
   height: 70vh;
   max-height: 100vh;
   margin-top: 0;
@@ -321,8 +319,9 @@ header .header-flex {
   align-content: flex-start;
 }
 
-header video {
+header .orb img {
   height: 70vh;
+  width: auto;
 }
 
 header .arrow {
@@ -497,38 +496,51 @@ body.loaded .fade-in-right {
 #work .work-tile {
   width: 30vw;
   background: var(--tertiary-accent-color);
-  max-width: 2000px;
+  max-width: 800px;
   min-width: 400px;
   border-radius: 20px;
-  min-height: 70vh;
-  height: auto;
+  max-height: 800px;
+  height: 60vh;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-height: 1000px;
+  position: relative;
+  box-shadow: 0px 4px 200px 24px #282542;
 }
 
 #work .work-tile img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 40vh;
+  height: 50%;
+  max-height: 500px;
   border-radius: 20px 20px 0 0;
   object-fit: cover;
   overflow: hidden;
 }
 
 #work .work-tile .work-tile-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 2rem;
   align-content: space-around;
   flex-wrap: nowrap;
   align-items: flex-start;
-  height: 30vh;
+  height: auto;
+  max-height: 400px;
 }
 
 #work .work-tile .work-tile-text h4,
 #work .work-tile .work-tile-text h5 {
   margin: 0;
+  margin-bottom: 0.6rem;
 }
 
 #work .work-tile .work-tile-text div {
@@ -536,15 +548,16 @@ body.loaded .fade-in-right {
 }
 
 #work button {
-  width: 20vw;
-  max-width: 400px;
-  min-width: 200px;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 90%;
+  margin-right: 5%;
   height: auto;
   background-color: var(--main-bg-color);
   border: 1px solid var(--main-text-color);
   text-align: center;
   padding: 1rem;
-  margin-bottom: 2rem;
   border-radius: 4px;
 }
 
@@ -559,6 +572,13 @@ body.loaded .fade-in-right {
 #work button:focus,
 #work button:hover {
   background: var(--tertiary-accent-color);
+}
+
+#work .awty {
+  background-image: url(/Images/awty_background.png);
+  background-size: contain;
+  background-position: cover;
+  box-shadow: inset 0px 4px 7px 12px var(--main-bg-color);
 }
 
 /* #work a {
@@ -1096,7 +1116,7 @@ footer a:focus img {
     width: 40vw;
   }
 
-  header video {
+  header .orb img {
     width: 30vw;
   }
 
@@ -1229,7 +1249,6 @@ footer a:focus img {
   }
 
   header .container {
-    background: url("/Videos/Ring_v2_3.6MB.gif") no-repeat top center;
     background-size: contain;
     height: 70vh;
     max-height: 100vh;
@@ -1255,7 +1274,7 @@ footer a:focus img {
     display: none;
   }
 
-  header video {
+  header img {
     display: none;
   }
 
