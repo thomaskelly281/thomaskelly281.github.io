@@ -149,6 +149,35 @@ hr {
   transition: ease-in-out 0.2s;
 }
 
+#page-not-found div {
+  margin: auto;
+  width: auto;
+  height: auto;
+  padding: 20vh;
+  overflow: hidden;
+  background: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+#page-not-found button {
+  width: 300px;
+  height: auto;
+  padding: 2rem;
+  background: var(--tertiary-accent-color);
+  border-radius: 8px;
+  border: 2px solid var(--secondary-accent-color);
+}
+
+#page-not-found button:hover,
+#page-not-found button:focus {
+  background: var(--secondary-accent-color);
+  color: var(--main-bg-color);
+}
+
 nav p,
 nav a,
 nav li,
