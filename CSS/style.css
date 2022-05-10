@@ -149,6 +149,18 @@ hr {
   transition: ease-in-out 0.2s;
 }
 
+.skip-to-content {
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  background: var(--tertiary-accent-color);
+}
+
+.skip-to-content:focus {
+  top: -0px;
+  left: 0px;
+}
+
 #page-not-found div {
   margin: auto;
   width: auto;
@@ -520,6 +532,9 @@ body.loaded .fade-in-right {
   align-content: center;
   align-items: center;
   margin: 5vh 0;
+  box-shadow: inset 0px 4px 7px 12px var(--main-bg-color);
+  background-size: contain;
+  background-position: center;
 }
 
 #work .work-tile {
@@ -590,7 +605,7 @@ body.loaded .fade-in-right {
   border-radius: 4px;
 }
 
-#work a {
+#work a button {
   color: var(--main-text-color);
   font-family: "Overpass", sans-serif;
   font-weight: 700;
@@ -602,18 +617,15 @@ body.loaded .fade-in-right {
 #work button:hover {
   background: var(--secondary-accent-color);
   cursor: pointer;
-}
-
-#work button:focus a,
-#work button:hover a {
   color: var(--main-bg-color);
 }
 
 #work .awty {
   background-image: url(/Images/awty_background.png);
-  background-size: contain;
-  background-position: cover;
-  box-shadow: inset 0px 4px 7px 12px var(--main-bg-color);
+}
+
+#work .trigger-remover {
+  background-image: url(/Images/trigger-remover-background.png);
 }
 
 #about {
@@ -651,14 +663,14 @@ body.loaded .fade-in-right {
   border-radius: 4px;
 }
 
-#about ul {
+/* #about ul {
   margin-left: 10px;
   padding-left: 20px;
   border-left: 2px solid var(--secondary-accent-color);
-}
+} */
 
 #about li {
-  margin-top: 10px;
+  margin-top: 2rem;
 }
 
 #skills {
@@ -680,7 +692,7 @@ body.loaded .fade-in-right {
   width: 9vw;
   text-align: center;
   min-width: 200px;
-  margin: 2rem 0.5rem;
+  margin: 2rem 1rem;
   padding-top: 40px;
   padding-bottom: 20px;
   border-radius: 20px;
