@@ -302,8 +302,8 @@ aside .email-link {
   transform: rotate(90deg);
   /* This positions the email in the center of the aside
     They are random numbers, so if it breaks, change them till you get it centered */
-  right: -104px;
-  top: -117px;
+  right: -95px;
+  top: -112px;
 }
 
 aside img {
@@ -1250,6 +1250,11 @@ footer a:focus img {
 
   footer .extras {
     display: none;
+  }
+
+  footer a {
+    justify-content: center;
+    text-align: center;
   }
 
   /* The Overlay (background) */
