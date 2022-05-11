@@ -2,9 +2,7 @@
   /* Color Variables */
   --main-bg-color: #343258;
   --main-text-color: #f8f8f8;
-  /* --main-accent-color: #fc17aa; */
   --hover-color: #d4d3f2;
-  /* --secondary-accent-color: #726fc0; */
   --secondary-accent-color: #b7b5e7;
   --tertiary-accent-color: #444274;
 
@@ -591,6 +589,10 @@ body.loaded .fade-in-right {
   display: block;
 }
 
+#work .ux-methods {
+  display: block;
+}
+
 #work button {
   position: absolute;
   bottom: 5%;
@@ -642,7 +644,7 @@ body.loaded .fade-in-right {
   flex-wrap: nowrap;
   justify-content: center;
   align-content: center;
-  align-items: top;
+  align-items: flex-start;
 }
 
 #about .about-me-text {
@@ -653,7 +655,7 @@ body.loaded .fade-in-right {
 
 #about .about-me-text .main-text {
   margin-bottom: 4rem;
-  padding-top: 3rem;
+  /* padding-top: 3rem; */
 }
 
 #about .about-image {
@@ -957,6 +959,12 @@ footer a:focus img {
 .
 */
 
+@media (max-height: 940px) {
+  #work .ux-methods {
+    display: none;
+  }
+}
+
 @media (max-width: 1400px) {
   h1 {
     font-size: var(--h1-m-size);
@@ -1234,6 +1242,10 @@ footer a:focus img {
 
   #skills .container-2 {
     width: var(--container-s-width);
+  }
+
+  #skills {
+    display: none;
   }
 
   footer .extras {
