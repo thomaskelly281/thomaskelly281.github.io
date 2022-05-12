@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <script src="main.js"></script>
+
+    <title>Thomas Kelly - Portfolio</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/Images/thomas-kelly-favicon (1).svg"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".slider").bxSlider();
+      });
+
+      var sliderWidths;
+
+      if ($(window).width() < 420) {
+        sliderWidths = 380;
+      } else if ($(window).width() < 768) {
+        sliderWidths = 700;
+      } else if ($(window).width() < 1200) {
+        sliderWidths = 800;
+      } else {
+        sliderWidths = 900;
+      }
+
+      $(function () {
+        $(".bxslider").bxSlider({
+          mode: "fade",
+          captions: true,
+          sliderWidth: sliderWidths,
+        });
+      });
+    </script>
+  </head>
+
+  <body id="tr" class="project">
+    <a href="#header"
+      ><button class="skip-to-content button button-border">
+        Skip To Content
+      </button></a
+    >
+
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <p style="margin-left: 0">
+            <a href="index.html" class="nav-1"> Thomas Kelly</a>
+          </p>
+        </div>
+        <div class="right">
+          <ul>
+            <li><a href="#work" class="nav-2">Work</a></li>
+            <li><a href="#about" class="nav-3">About</a></li>
+            <li id="end"><a href="#contact-info" class="nav-4">Contact</a></li>
+            <li class="resume-button"><a href="#">Resume</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact-info">Contact</a>
+        <a href="#">Resume</a>
+      </div>
+    </div>
+
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <span onclick="openNav()" class="menu-icon"
+      ><img src="Images/nav-icon.png" alt="Navigation icon" class="nav-icon"
+    /></span>
+
+    <!-- End of mobile nav -->
+
+    <header>
+      <div class="container">
+        <img
+          src="/Images/trigger-remover-header-img.jpg"
+          alt="Mockup of Trigger Remover UI"
+        />
+        <div class="project-overview">
+          <div class="overview">
+            <h4>Trigger Remover</h4>
+            <h5>Overview</h5>
+            <p>
+              Trigger Remover is a Chrome Extension aimed to make using the web
+              less stressful and trigger inducing for users with mental
+              disorders such as PTSD, anxiety, or eating disorders.
+            </p>
+          </div>
+          <div class="info">
+            <p><span class="heading-span">Role:</span> Lead Designer</p>
+            <p>
+              <span class="heading-span">Duration:</span> 4th - 29th April 2022
+            </p>
+            <button id="condensed-or-expanded">View Expanded Project</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="tr-background">
+        <h5>Background</h5>
+        <p>
+          The initial stages of this project started as an exploration into how
+          users with mental health issues experienced the web and how this
+          experience could be improved upon.
+          <br />
+          <br />
+          I interviewed a 19 year old, female, paranoid schizophrenic
+          <span class="intext-span">(let’s call her Janet)</span>, to gain
+          better insight into how someone with a mental disorder uses the web
+          and how their disorder affects their experience. Janet referred to an
+          instance where she saw an image of a monster online and then had the
+          monster reappear in her room as a hallucination during a following
+          schizophrenic episode.
+          <br />
+          <br />
+          After my interview with Janet, I interviewed a psychologist
+          <span class="intext-span">(let's call them Alex)</span>. I asked Alex
+          about their knowledge of people with mental health disorders using the
+          internet. They explained to me how...
+        </p>
+        <br />
+        <br />
+        <div class="purple-box">
+          <blockquote>
+            “...the internet is full of triggers, and apps and sites, such as
+            most social media, can be dangerous or have negative implications
+            for people who may be vulnerable to specific content.”
+          </blockquote>
+        </div>
+        <br />
+        <br />
+        <p>
+          With the information given to me by Janet and Alex, I defined the
+          problem and decided upon a concept;
+        </p>
+        <br />
+        <br />
+        <div class="purple-box">
+          <p>
+            <span class="intext-span">Problem:</span> Triggering content on the
+            web.
+          </p>
+        </div>
+        <br />
+        <br />
+        <div class="purple-box">
+          <p>
+            <span class="intext-span">Concept:</span> Smart trigger warning.
+          </p>
+        </div>
+      </section>
+
+      <section id="tr-research">
+        <h5>Research</h5>
+        <p>
+          After defining the problem of triggering content, I began researching
+          triggers. I learned that a trigger is a psychological stimulus that
+          could be anything from a smell, sound or sight that reminds the person
+          of a feeling of trauma
+          <span class="intext-span"
+            >(Trigger - GoodTherapy.org Therapy Blog, 2022)</span
+          >.
+          <br />
+          <br />
+          Another point I read was that thinking of a trigger could be enough of
+          a trigger itself to cause a response. In the same study, it was shown
+          that people are too good at word association to see a trigger warning
+          and not think of the triggers they would be stimulated by
+          <span class="intext-span">(Nast, 2022)</span>. This suggested to me
+          that there was a possibility for not just warning people about
+          triggers, but, for deleting triggers.
+          <br />
+          <br />
+          One interesting project I found was by student staff at PARC
+          <span class="intext-span"
+            >(Prevention, Advocacy & Resource Center)</span
+          >, Brandeis University. The project was a collection of words and
+          phrases which have negative connotations, violent histories or be
+          triggering. The project entitled “Suggested Language List” was to
+          educate people on how the language they use could do harm and how they
+          can accommodate for this
+          <span class="intext-span">(PARC, 2022)</span>.
+        </p>
+      </section>
+
+      <section id="tr-ideation">
+        <p></p>
+        <h5>Ideation</h5>
+        <p>
+          Crazy Eights with the prompt of “smart trigger warning” led the
+          ideation phase.
+        </p>
+        <img src="/Images/trigger-remover-header-img.jpg" alt="" />
+        <p>
+          The ideas of removing named triggers from webpages, removing search
+          results containing triggers and a trigger handling system were all
+          ideas which had some merit in pursuing and further development.
+          <br />
+          <br />
+          I amplified the idea's scope and details, and then tried merging them
+          into one larger concept.
+        </p>
+        <img src="/Images/trigger-remover-header-img.jpg" alt="" />
+      </section>
+
+      <section id="tr-idea">
+        <h5>The Idea</h5>
+        <p>
+          After merging the three concepts from the ideation phase the concept
+          of having users input their triggers into a form, and then having an
+          AI image and text recognition algorithm remove content containing the
+          user's triggers from webpages was generated.
+        </p>
+        <img src="/Images/trigger-remover-header-img.jpg" alt="" />
+      </section>
+
+      <section id="tr-before-prototyping">
+        <h5>Before Prototyping</h5>
+        <p>
+          In preparation for building the first prototype, I ideated multiple
+          methods of covering, disguising and hiding triggers.
+        </p>
+        <img src="/Images/trigger-remover-header-img.jpg" alt="" />
+        <p>
+          Also, I defined levels of trigger removal depending on the severity of
+          the triggering content. This allows for the user to have more choice
+          in what they choose to see and the knowledge that some content may
+          affect them less than other content on the page.
+        </p>
+        <img src="/Images/trigger-remover-header-img.jpg" alt="" />
+        <p>
+          The web also contains multiple types of content, from text to images,
+          to videos. I decided to design trigger removal/censoring methods for
+          each, to ensure all bases were covered and so the user wouldn’t be
+          caught off guard while thinking they were having a safer browsing
+          experience, resulting in the user finding an edge case.
+        </p>
+      </section>
+
+      <section id="tr-how-testing-was-conducted">
+        <h5>How Testing Was Conducted</h5>
+        <p>
+          For testing the prototype, I wanted qualitative and quantitative data,
+          to enforce the user feedback given during and after the prototype. The
+          testing consisted of moderated usability studies so the facilitator
+          (me) could make note of the body language the user makes as well as
+          ask the user questions. The test ended with a series of questions
+          about the user’s experience, how they found the interactions and their
+          opinion on the levels of triggering content. I gathered quantitive
+          data using Emojify, an AI emotion tracker where the user’s facial
+          expressions would give us insight into how they feel about specific
+          content <span class="intext-span">(Emojify, 2022)</span>.
+        </p>
+        <img src="/Images/trigger-remover-header-img.jpg" alt="" />
+        <p>
+          Before the prototype began, a disclaimer was given to each tester that
+          they would be seeing trigger and sensitive content, so they were may
+          aware they could stop, take a break at any time or not look at any
+          content if they didn’t want to. For each prototype 7 testing
+          participants were used each from varying age ranges and with different
+          mental health disorders
+          <span class="intext-span"
+            >(for their privacy I will not be using any further information
+            about the participants)</span
+          >.
+        </p>
+      </section>
+
+      <section id="tr-prototype-1">
+        <h5>Prototype & Testing - Round 1</h5>
+        <p>
+          The first prototype was made using a news article containing some
+          graphic content. The graphic content was then covered using different
+          levels of resistance. Using Emojify we got a baseline of 30.2% of the
+          time reading the graphic content that participants were nervous.
+        </p>
+        <div class="bxslider">
+          <div>
+            <img
+              src="/Images/trigger-remover-header-img.jpg"
+              title="Happy trees"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/trigger-remover-header-img.jpg"
+              title="Happy trees"
+            />
+          </div>
+        </div>
+        <ul>
+          <li><strong>Results from testing:</strong></li>
+          <li>
+            <span class="heading-span">7/7</span> thought pop-up modal got
+            annoying and repetitive.
+          </li>
+          <li>
+            <span class="heading-span">4/7</span> particiapants thought the blur
+            effect was too fun to be seen with caution in mind.
+          </li>
+          <li>
+            <span class="heading-span">3/7</span> thought ‘Hold to Reveal’ and
+            ‘double-click’ trigger covers were somewhat unnecessary.
+          </li>
+          <li>
+            <span class="heading-span">3/7</span> participants didn’t read the
+            extra information provided.
+          </li>
+          <li>
+            <span class="heading-span">21%</span> of the test duration, the
+            participants had an unhappy, nervous, or related emotional state.
+            That is a <span class="intext-span">9.2%</span> improvement over the
+            baseline.
+          </li>
+        </ul>
+      </section>
+
+      <section id="tr-prototype-2">
+        <h5>Prototype & Testing - Round 2</h5>
+        <p>
+          The second prototype addressed some of the problems the first
+          prototype faced.
+        </p>
+        <div class="bxslider">
+          <div>
+            <img
+              src="/Images/trigger-remover-header-img.jpg"
+              title="Happy trees"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/trigger-remover-header-img.jpg"
+              title="Happy trees"
+            />
+          </div>
+        </div>
+        <ul>
+          <li><strong>Results from testing:</strong></li>
+          <li>
+            <span class="heading-span">5/7</span> thought ‘Hide’ button was too
+            hard to read behind text.
+          </li>
+          <li>
+            <span class="heading-span">4/7</span> liked the description of
+            images.
+          </li>
+          <li>
+            <span class="heading-span">2/7</span> thought the fold on the top
+            left of images is where they were meant to close the image blur.
+          </li>
+          <li>
+            <span class="heading-span">2/7</span> thought ‘X’ button would
+            delete trigger.
+          </li>
+          <li>
+            <span class="heading-span">10.2%</span> of the test duration, the
+            participants had an unhappy, nervous, or related emotional state.
+            This is a <span class="intext-span">10.8%</span> improvement from
+            the first prototype.
+          </li>
+        </ul>
+      </section>
+
+      <section id="tr-prototype-final">
+        <h5>Prototype & Testing - Final Prototype</h5>
+        <ul>
+          <li><strong>The final prototype addressed and added...</strong></li>
+          <li>
+            Descriptions on each trigger cover, due to test participants
+            responding well to descriptions of images.
+          </li>
+          <li>A toggle visbility button for each cover.</li>
+          <li>
+            When loading a webpage, all triggers are removed and can be added
+            back to the webpage by selecting the Chrome Extension icon.
+          </li>
+        </ul>
+        <div class="bxslider">
+          <div>
+            <img
+              src="/Images/trigger-remover-header-img.jpg"
+              title="Happy trees"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/trigger-remover-header-img.jpg"
+              title="Happy trees"
+            />
+          </div>
+        </div>
+        <p>
+          Participants only had unhappy emotions an average of 7.9% of the
+          duration of the tests. This is a 2.3% improvement over prototype 2 and
+          a 13.1% improvement over prototype 1.
+        </p>
+      </section>
+
+      <section id="tr-results">
+        <div class="purple-box">
+          <div>
+            <h5>Results</h5>
+            <h1>22.3%</h1>
+            <p>
+              Percentage less time users felt anxious, nervous or unhappy
+              reading graphic content.
+            </p>
+          </div>
+          <div class="takeaways">
+            <h5>Takeaways</h5>
+            <p>
+              In the early stages of concept development, interviewing people
+              with experience and industry professionals can be extremely
+              beneficial to make sure the project goes in the right direction.
+            </p>
+            <p>
+              Using facial emotion recognition was an effective method of
+              gathering quantitive data to justify design decisions and
+              effectiveness. In future, I would consider including additional
+              methods of gathering quantitative data, such as using Hotjar in
+              unison with other methods.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tr-proof-of-concept">
+        <h5>Proof of Concept</h5>
+        <p>
+          To ensure that the designs I created are viable and possible to build,
+          I made sure to find methods in which they could be created, most
+          possibly as a first iteration.
+          <br />
+          <br />
+          <span class="heading-span">Image Blurring:</span> For the image
+          bluring trigger cover, I found ImageMagik, a function of the Google
+          Cloud which allows for image blurring. Google Cloud also include
+          documentation on how to set this up using the Google Cloud API, in
+          languages such as Node.JS, Python or Java.
+          <span class="intext-span"
+            >(My recommendation would be using Node.JS as the other proof of
+            concepts coming up use vanilla JS and JSON). (Google Cloud,
+            2022)</span
+          >
+        </p>
+        <img src="" alt="" />
+        <p>
+          <span class="heading-span">Triggering Content Recognition:</span> In
+          order for triggers in images to be covered some form of image
+          recognition is needed that can also recognise if the content is
+          triggering. The Google Cloud Vision API contains a ‘Safe Search’
+          function which recognises any potentially unwanted properties or
+          objects in images, in our case, triggers.<span class="intext-span">
+            (Google Cloud, 2022)</span
+          >
+        </p>
+        <img src="" alt="" />
+        <p>
+          <span class="heading-span">Paraphrasing Tool:</span>
+          <span class="intext-span">(HealthyTechGuy, 2022)</span>
+        </p>
+        <img src="" alt="" />
+        <p>
+          <span class="heading-span">Removing Search Results:</span> Removing
+          triggers from search results completely is the easiest to accomplish
+          of each of these tasks. Dorking is a method of searching the web with
+          more specificity. If we injected the trigger with a minus sign in
+          front of it <span class="intext-span">(-trigger)</span>, no search
+          results containing that trigger will be displayed.
+        </p>
+        <img src="" alt="" />
+      </section>
+
+      <section id="tr-references">
+        <h5>References</h5>
+        <p>
+          Emojify.info. 2022. Emojify. [online] Available at:
+          <https://emojify.info/> [Accessed 12 May 2022]. <br /><br />
+          GoodTherapy.org Therapy Blog. 2022. Trigger - GoodTherapy.org Therapy
+          Blog. [online] Available at:
+          <https://www.goodtherapy.org/blog/psychpedia/trigger> [Accessed 11 May
+          2022].
+          <br /><br />
+          Google Cloud. 2022. ImageMagick Tutorial | Cloud Functions
+          Documentation | Google Cloud. [online] Available at:
+          <https://cloud.google.com/functions/docs/tutorials/imagemagick>
+          [Accessed 12 May 2022].
+          <br /><br />
+          Google Cloud. 2022. Vision AI | Derive Image Insights via ML | Cloud
+          Vision API | Google Cloud. [online] Available at:
+          <https://cloud.google.com/vision#section-2> [Accessed 12 May 2022].
+          <br /><br />
+          HealthTechGuy, 2022. GitHub - HealthyTechGuy/paraphrasingTool: A
+          simple React app that uses a paraphrasing Tool API to rewrite text.
+          [online] GitHub. Available at:
+          <https://github.com/HealthyTechGuy/paraphrasingTool> [Accessed 12 May
+          2022].
+          <br /><br />
+          Nast, C., 2022. What if Trigger Warnings Don’t Work?. [online] The New
+          Yorker. Available at:
+          <https://www.newyorker.com/news/our-columnists/what-if-trigger-warnings-dont-work>
+          [Accessed 11 May 2022].
+          <br /><br />
+          PARC, 2022. Categories. [online] Sites.google.com. Available at:
+          <https://sites.google.com/brandeis.edu/parcsuggestedlanguagelist/categories>
+          [Accessed 11 May 2022].
+        </p>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

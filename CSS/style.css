@@ -39,6 +39,7 @@
   --container-xl-width: 70vw;
   --container-m-width: 60vw;
   --container-s-width: 70vw;
+  --container-project-width: 50vw;
 }
 
 body {
@@ -103,7 +104,9 @@ abbr {
 p,
 textarea,
 li,
-li span {
+li span,
+blockquote,
+span {
   color: var(--main-text-color);
   font-family: "Overpass", sans-serif;
   font-weight: 400;
@@ -331,7 +334,7 @@ aside a:focus {
   margin: auto;
 }
 
-header .container {
+#home-page header .container {
   height: 70vh;
   max-height: 100vh;
   margin-top: 0;
@@ -937,7 +940,10 @@ footer a:focus img {
     font-size: var(--h5-l-size);
   }
 
-  p {
+  p,
+  blockquote,
+  li,
+  span {
     font-size: var(--p-l-size);
   }
 }
@@ -990,7 +996,9 @@ footer a:focus img {
   p,
   textarea,
   li,
-  li span {
+  li span,
+  blockquote,
+  span {
     font-size: var(--p-m-size);
   }
 
@@ -1083,7 +1091,10 @@ footer a:focus img {
     font-size: var(--h4-s-size);
   }
 
-  p {
+  p,
+  li,
+  span,
+  blockquote {
     font-size: var(--p-s-size);
   }
 
@@ -1312,6 +1323,10 @@ footer a:focus img {
     display: none;
   }
 
+  .project main {
+    width: var(--container-s-width);
+  }
+
   /* End of mobile nav */
 }
 
@@ -1353,3 +1368,102 @@ Large devices (desktops, 992px and up)
 *
 */
 /*** Project CSS ***/
+
+.project main {
+  width: var(--container-project-width);
+  margin: auto;
+}
+
+.project header img {
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.project header .project-overview .info {
+  margin-left: 5vw;
+  width: 500px;
+}
+
+.project header {
+  padding-top: 11vh;
+}
+
+.project header .project-overview {
+  height: auto;
+  padding: 5vw;
+  background: var(--tertiary-accent-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: stretch;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.project header .project-overview .overview p {
+  max-width: 500px;
+}
+
+.project main p,
+.roject main blockquote {
+  max-width: 700px;
+}
+
+.project header .project-overview .overview h4 {
+  margin: 0;
+}
+
+.project .heading-span {
+  font-weight: 600;
+  color: var(--secondary-accent-color);
+}
+
+.project .intext-span {
+  color: var(--secondary-accent-color);
+}
+
+.project .purple-box {
+  background: var(--tertiary-accent-color);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.project section {
+  margin-bottom: 100px;
+}
+
+.project main img {
+  width: 100%;
+}
+
+.project .bxslider {
+  width: 100%;
+}
+
+.project main ul {
+  margin-top: 0;
+  list-style-type: square;
+}
+
+.project main ul li:first-child {
+  list-style-type: none;
+}
+
+.project main li {
+  max-width: 700px;
+}
+
+#tr main #tr-results .purple-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+#tr main #tr-results .purple-box div {
+  margin: 0 20px;
+}
