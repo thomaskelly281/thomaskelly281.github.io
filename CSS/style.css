@@ -1402,6 +1402,29 @@ Large devices (desktops, 992px and up)
   border-radius: 20px;
 }
 
+.project #condensed-or-expanded {
+  padding: 1rem 2rem;
+  background: var(--main-bg-color);
+  border: 1px solid white;
+  color: white;
+  border-radius: 4px;
+}
+
+.project #condensed-or-expanded p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.project #condensed-or-expanded:hover,
+.project #condensed-or-expanded:focus {
+  background: var(--secondary-accent-color);
+}
+
+.project #condensed-or-expanded:hover p,
+.project #condensed-or-expanded:focus p {
+  color: var(--main-bg-color);
+}
+
 .project header .project-overview .overview p {
   max-width: 500px;
 }
