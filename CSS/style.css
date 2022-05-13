@@ -965,7 +965,7 @@ footer a:focus img {
 .
 */
 
-@media (max-height: 940px) {
+@media (max-height: 1000px) {
   #work .ux-methods {
     display: none;
   }
@@ -1064,6 +1064,10 @@ footer a:focus img {
 
 @media (max-width: 700px) {
   /* Mobile Nav */
+
+  .project .bx-caption {
+    font-size: var(--p-s-size);
+  }
 
   body {
     width: auto;
@@ -1387,6 +1391,36 @@ Large devices (desktops, 992px and up)
 
 .project header {
   padding-top: 11vh;
+}
+
+.project .bx-wrapper {
+  border: 5px solid var(--tertiary-accent-color);
+  box-shadow: none;
+}
+
+.project .bx-caption {
+  background: rgba(52, 50, 88, 0.9);
+  font-family: "Overpass", sans-serif;
+  font-size: var(--p-xl-size);
+}
+
+.project .bx-pager,
+.project .bx-default-pager {
+  color: var(--tertiary-accent-color);
+}
+
+.project .bx-pager-item {
+  color: var(--tertiary-accent-color);
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a {
+  background: var(--tertiary-accent-color);
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active,
+.bx-wrapper .bx-pager.bx-default-pager a:focus {
+  background: var(--hover-color);
 }
 
 .project header .project-overview {

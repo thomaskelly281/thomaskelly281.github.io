@@ -10,7 +10,6 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="/CSS/style.css" />
     <script src="main.js"></script>
 
     <title>Thomas Kelly - Portfolio</title>
@@ -47,12 +46,16 @@
 
       $(function () {
         $(".bxslider").bxSlider({
-          mode: "fade",
+          mode: "horizontal",
           captions: true,
           sliderWidth: sliderWidths,
+          captions: true,
+          speed: 300,
         });
       });
     </script>
+
+    <link rel="stylesheet" href="/CSS/style.css" />
   </head>
 
   <body id="tr" class="project">
@@ -118,6 +121,9 @@
             <h4>Trigger Remover</h4>
             <h5>Overview</h5>
             <p>
+              *This project contains sensitive content and topics*
+              <br />
+              <br />
               Trigger Remover is a Chrome Extension aimed to make using the web
               less stressful and trigger inducing for users with mental
               disorders such as PTSD, anxiety, or eating disorders.
@@ -238,8 +244,8 @@
           ideas which had some merit in pursuing and further development.
           <br />
           <br />
-          I amplified the idea's scope and details, and then tried merging them
-          into one larger concept.
+          I expanded the idea's scope and details, and then merged them into one
+          larger concept.
         </p>
         <img src="/Images/trigger-remover-header-img.jpg" alt="" />
       </section>
@@ -318,14 +324,32 @@
         <div class="bxslider">
           <div>
             <img
-              src="/Images/trigger-remover-header-img.jpg"
-              title="Happy trees"
+              src="/Images/p1-1-min.jpg"
+              title="Pop-up disclaimer about triggering content that can be found on the page."
             />
           </div>
           <div>
             <img
-              src="/Images/trigger-remover-header-img.jpg"
-              title="Happy trees"
+              src="/Images/p1-2-min.jpg"
+              title="Expandable information about the triggers found on page and about their severity."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p1-3-min.jpg"
+              title="Pop-up confimation modal when ‘Click to reveal’ trigger cover is pressed."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p1-4-min.jpg"
+              title="‘Hide’ button for content which has been revealed."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p1-5-min.jpg"
+              title="Slider to reveal blurred image, so users have control over how much they see."
             />
           </div>
         </div>
@@ -365,14 +389,32 @@
         <div class="bxslider">
           <div>
             <img
-              src="/Images/trigger-remover-header-img.jpg"
-              title="Happy trees"
+              src="/Images/p2-1-min.jpg"
+              title="Tab to control how triggers are handled. The tab can be expanded for extra information or collapsed and moved, this addressed users getting annoyed about repeatedly having to control triggers."
             />
           </div>
           <div>
             <img
-              src="/Images/trigger-remover-header-img.jpg"
-              title="Happy trees"
+              src="/Images/p2-2-min.jpg"
+              title="Trigger covered with “X” icon to reveal text beneath. This change was due to users not liking the large “Hide” button."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p2-3-min.jpg"
+              title="Trigger covers being revealed, and “Hide” being revealed."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p2-4-min.jpg"
+              title="Image reveal button with button to reveal a description about image. The slider from Prototype 1 was removed due to users finding it too enticing to try, without thinking  of what may be unveiled."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p2-5-min.jpg"
+              title="Brief, not graphic, description of what the blurred image contains."
             />
           </div>
         </div>
@@ -420,14 +462,38 @@
         <div class="bxslider">
           <div>
             <img
-              src="/Images/trigger-remover-header-img.jpg"
-              title="Happy trees"
+              src="/Images/p3-1-min.jpg"
+              title="Extension icon added to open control tab. Number of triggers on page also displayed on icon as a signifier that there are triggers located on the page."
             />
           </div>
           <div>
             <img
-              src="/Images/trigger-remover-header-img.jpg"
-              title="Happy trees"
+              src="/Images/p3-2-min.jpg"
+              title="Tab redesign made info button smaller, due to participants not often using it."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p3-3-min.jpg"
+              title="Increased contrast on “View Image Description” button, so users can see it. The visibility icon was also added to images, so there is consistency between text and image covers."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p3-4-min.jpg"
+              title="Descriptions added to text covers. They are toggled by pressing info button."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p3-5-min.jpg"
+              title="When visibility is toggled, the cover collapses to the right side, to show it hasn’t been competely deleted."
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/p3-6-min.jpg"
+              title="Display when triggers have been completely deleted from webpage. This will carry over to other webpages, at if triggers are completely, it is user preference to have no triggers at all displayed. This action can be undone."
             />
           </div>
         </div>
@@ -485,7 +551,10 @@
             2022)</span
           >
         </p>
-        <img src="" alt="" />
+        <img
+          src="/Images/imageMagik-img-min.jpg"
+          alt="Google Cloud Image Magik tutorial page"
+        />
         <p>
           <span class="heading-span">Triggering Content Recognition:</span> In
           order for triggers in images to be covered some form of image
@@ -496,12 +565,23 @@
             (Google Cloud, 2022)</span
           >
         </p>
-        <img src="" alt="" />
+        <img
+          src="/Images/image-recognition-img-min.jpg"
+          alt="Google Cloud image object recognition page, displaying that no graphic content can be seen in image"
+        />
         <p>
-          <span class="heading-span">Paraphrasing Tool:</span>
+          <span class="heading-span">Paraphrasing Tool:</span> To remove the
+          lowest level of trigger in the prototype, words that could be
+          triggering but aren’t guaranteed to have an effect were altered to
+          other synonyms. To do this on a site we would need access to a
+          paraphrasing tool. I found multiple open-source paraphrasers on
+          GitHub.
           <span class="intext-span">(HealthyTechGuy, 2022)</span>
         </p>
-        <img src="" alt="" />
+        <img
+          src="/Images/paraphrase-img-min.jpg"
+          alt="Github repository of paraphrasing tool"
+        />
         <p>
           <span class="heading-span">Removing Search Results:</span> Removing
           triggers from search results completely is the easiest to accomplish
@@ -510,7 +590,6 @@
           front of it <span class="intext-span">(-trigger)</span>, no search
           results containing that trigger will be displayed.
         </p>
-        <img src="" alt="" />
       </section>
 
       <section id="tr-references">
