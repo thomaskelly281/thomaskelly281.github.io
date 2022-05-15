@@ -1384,6 +1384,10 @@ Large devices (desktops, 992px and up)
   margin-bottom: 20px;
 }
 
+.project img {
+  border-radius: 4px;
+}
+
 .project header .project-overview .info {
   margin-left: 5vw;
   width: 500px;
