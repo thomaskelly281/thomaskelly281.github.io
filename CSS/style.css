@@ -1071,16 +1071,18 @@ footer a:focus img {
     font-size: 1rem;
   }
 
+  summary {
+    font-size: var(--h5-m-size);
+  }
+}
+
+@media (max-width: 1000px) {
   .resume-button {
     display: none;
   }
 
   nav #end {
     margin-right: 0;
-  }
-
-  summary {
-    font-size: var(--h5-m-size);
   }
 
   aside {
