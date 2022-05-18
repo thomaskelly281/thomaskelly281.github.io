@@ -39,6 +39,7 @@
   --container-xl-width: 70vw;
   --container-m-width: 60vw;
   --container-s-width: 70vw;
+  --project-container-s-width: 90vw;
   --container-project-width: 50vw;
 }
 
@@ -1217,7 +1218,7 @@ footer a:focus img {
     display: none;
   }
 
-  header img {
+  #home-page header img {
     display: none;
   }
 
@@ -1450,8 +1451,8 @@ Large devices (desktops, 992px and up)
 /*** Project CSS ***/
 
 .project main {
-  width: var(--container-project-width);
   margin: auto;
+  width: var(--container-project-width);
 }
 
 .project header img {
@@ -1542,6 +1543,41 @@ Large devices (desktops, 992px and up)
   align-items: center;
   border-radius: 20px;
 }
+
+@media (max-width: 700px) {
+  .project header .project-overview {
+    flex-direction: column;
+  }
+
+  .project {
+    width: var(--project-container-s-width);
+    margin: auto;
+  }
+
+  .project main {
+    width: var(--project-container-s-width);
+    margin: auto;
+  }
+
+  header .container {
+    height: auto;
+  }
+}
+
+/* @media (min-width: 701px) {
+  .project {
+    width: var(--container-project-width);
+  }
+
+  .project main {
+    width: var(--container-project-width);
+    margin: auto;
+  }
+
+  header .container {
+    height: auto;
+  }
+} */
 
 .project #condensed-or-expanded {
   padding: 1rem 2rem;
