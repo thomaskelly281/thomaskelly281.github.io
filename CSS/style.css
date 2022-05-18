@@ -341,6 +341,12 @@ aside a:focus {
   padding: 15vh;
 }
 
+#home-page header {
+  background-image: url(/Images/header-bg-image-v1.png);
+  background-size: contain;
+  background-position: center;
+}
+
 header h2 {
   margin-top: 100px;
   line-height: 150%;
@@ -437,6 +443,7 @@ body.loaded .fade-in-right {
 #mission-statement {
   background-image: url(/Images/dotGrid-\(1\).jpg);
   background-size: cover;
+  background-position: center;
   height: 70vh;
   text-align: center;
   display: flex;
@@ -1388,6 +1395,33 @@ Large devices (desktops, 992px and up)
   border-radius: 4px;
 }
 
+.project main p {
+  margin-top: 3rem;
+  line-height: 170%;
+}
+
+.project section {
+  margin-top: clamp(3rem, 10vh, 700px);
+}
+
+.project #expandButton {
+  margin-top: 3rem;
+  width: auto;
+  padding: 0.5rem 2rem;
+  background: var(--tertiary-accent-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 20px;
+}
+
+.project #expandButton:hover {
+  background: var(--secondary-accent-color);
+  border: 1px solid var(--main-bg-color);
+}
+
+.project #expandButton:hover p {
+  color: var(--main-bg-color);
+}
+
 .project header .project-overview .info {
   margin-left: 5vw;
   width: 500px;
@@ -1528,3 +1562,11 @@ Large devices (desktops, 992px and up)
 #tr main #tr-results .purple-box div {
   margin: 0 20px;
 }
+
+/* #tr-research,
+#tr-before-prototyping,
+#tr-how-testing-was-conducted,
+#tr-proof-of-concept,
+#tr-references {
+  display: none;
+} */
