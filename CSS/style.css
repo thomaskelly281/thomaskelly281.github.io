@@ -147,6 +147,12 @@ hr {
   font-size: 1rem;
 }
 
+@media (max-width: 700px) {
+  #home-page header .container {
+    padding: 0;
+  }
+}
+
 .button {
   font-family: "Overpass", sans-serif;
   font-weight: 700;
@@ -1122,10 +1128,6 @@ footer a:focus img {
 
   body {
     width: 100vw;
-  }
-
-  #home-page header .container {
-    padding: 0;
   }
 
   .container {
