@@ -52,6 +52,34 @@ body {
   overflow-x: hidden;
 }
 
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+  background: #2b2949;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+}
+
+.loader img {
+  width: clamp(50px, 5vw, 400px);
+}
+
 h1 {
   font-family: "Overpass", sans-serif;
   font-weight: 700;

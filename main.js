@@ -1,3 +1,9 @@
+
+$(window).on("load",function(){
+  $(".loader-wrapper").fadeOut()
+});
+
+
 window.onload = function() {
     document.body.className += " loaded";
 }
