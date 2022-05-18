@@ -1640,6 +1640,10 @@ footer a:focus img {
   align-items: flex-start;
 }
 
+#tr-references {
+  margin-top: clamp(3rem, 20vh, 1000px);
+}
+
 #tr main #tr-results .purple-box div {
   margin: 0 20px;
 }
