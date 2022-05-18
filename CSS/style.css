@@ -343,8 +343,8 @@ aside a:focus {
 
 #home-page header {
   background-image: url(/Images/header-bg-image-v1.png);
-  background-size: contain;
   background-position: center;
+  background-size: contain;
 }
 
 header h2 {
