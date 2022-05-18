@@ -52,22 +52,6 @@ body {
   overflow-x: hidden;
 }
 
-.loader-wrapper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: stretch;
-  align-items: center;
-  background: #2b2949;
-  z-index: 1000;
-}
-
 .loader {
   display: flex;
   flex-direction: column;
@@ -351,6 +335,22 @@ aside img:focus {
 aside a:hover,
 aside a:focus {
   color: var(--hover-color);
+}
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+  background: #2b2949;
+  z-index: 9999;
 }
 
 .container {
