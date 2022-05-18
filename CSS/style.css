@@ -923,10 +923,12 @@ footer a {
 
 footer .flex a div {
   margin: auto 2rem 4rem 2rem;
-}
-
-footer .flex img {
-  margin-left: 40%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
 }
 
 footer a:hover,
@@ -954,7 +956,16 @@ footer a:focus img {
 .
 .
 .
+.
+.
+.
+.
+.
+.
+.
+.
 */
+
 @media (max-width: 1650px) {
   h1 {
     font-size: var(--h1-l-size);
@@ -981,6 +992,10 @@ footer a:focus img {
   li,
   span {
     font-size: var(--p-l-size);
+  }
+
+  header .orb img {
+    width: 40vw;
   }
 }
 /*
@@ -1106,7 +1121,11 @@ footer a:focus img {
   }
 
   body {
-    width: auto;
+    width: 100vw;
+  }
+
+  #home-page header .container {
+    padding: 0;
   }
 
   .container {
