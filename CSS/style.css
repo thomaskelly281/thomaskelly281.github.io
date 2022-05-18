@@ -337,6 +337,18 @@ aside a:focus {
   color: var(--hover-color);
 }
 
+aside .email-link:hover,
+aside .email-link:focus {
+  color: var(--hover-color);
+  top: -115px;
+}
+
+aside a:hover img,
+aside a:focus img {
+  color: var(--hover-color);
+  transform: translateY(-3px);
+}
+
 .loader-wrapper {
   width: 100%;
   height: 100%;
