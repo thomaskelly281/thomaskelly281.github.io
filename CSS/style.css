@@ -1412,16 +1412,6 @@ footer a:focus img {
 }
 
 /*
-Large devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-// X-Large devices (large desktops, 1200px and up)
-
-// XX-Large devices (larger desktops, 1400px and up)
-@media (min-width: 1400px) { ... }
-*/
-
-/*
 *
 *
 *
@@ -1564,21 +1554,6 @@ Large devices (desktops, 992px and up)
   }
 }
 
-/* @media (min-width: 701px) {
-  .project {
-    width: var(--container-project-width);
-  }
-
-  .project main {
-    width: var(--container-project-width);
-    margin: auto;
-  }
-
-  header .container {
-    height: auto;
-  }
-} */
-
 .project #condensed-or-expanded {
   padding: 1rem 2rem;
   background: var(--main-bg-color);
@@ -1667,11 +1642,3 @@ Large devices (desktops, 992px and up)
 #tr main #tr-results .purple-box div {
   margin: 0 20px;
 }
-
-/* #tr-research,
-#tr-before-prototyping,
-#tr-how-testing-was-conducted,
-#tr-proof-of-concept,
-#tr-references {
-  display: none;
-} */
