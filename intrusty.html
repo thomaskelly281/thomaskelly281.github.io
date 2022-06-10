@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="main.js"></script>
+
+    <title>Thomas Kelly - Portfolio</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/Images/thomas-kelly-favicon (1).svg"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".slider").bxSlider();
+      });
+
+      var sliderWidths;
+
+      if ($(window).width() < 420) {
+        sliderWidths = 380;
+      } else if ($(window).width() < 768) {
+        sliderWidths = 700;
+      } else if ($(window).width() < 1200) {
+        sliderWidths = 800;
+      } else {
+        sliderWidths = 900;
+      }
+
+      $(function () {
+        $(".bxslider").bxSlider({
+          mode: "horizontal",
+          captions: true,
+          sliderWidth: sliderWidths,
+          captions: true,
+          speed: 300,
+        });
+      });
+    </script>
+
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+
+  <body id="int" class="project">
+    <a href="#header"
+      ><button class="skip-to-content button button-border">
+        Skip To Content
+      </button></a
+    >
+
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <p style="margin-left: 0">
+            <a href="index.html" class="nav-1"> Thomas Kelly</a>
+          </p>
+        </div>
+        <div class="right">
+          <ul>
+            <li><a href="index.html#work" class="nav-2">Work</a></li>
+            <li><a href="index.html#about" class="nav-3">About</a></li>
+            <li id="end">
+              <a href="index.html#contact-info" class="nav-4">Contact</a>
+            </li>
+            <li class="resume-button">
+              <a
+                href="https://docs.google.com/document/d/e/2PACX-1vQFM4zqx9jFOn2LhDfwo1G7nbeunD67lEJe5IuQJyCrWfxvar2RBGGbJxAVbSUWnO-TNMTHY2haeRxg/pub"
+                target="_blank"
+                rel="noopener"
+                >Resume</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact-info">Contact</a>
+        <a
+          href="https://docs.google.com/document/d/e/2PACX-1vQFM4zqx9jFOn2LhDfwo1G7nbeunD67lEJe5IuQJyCrWfxvar2RBGGbJxAVbSUWnO-TNMTHY2haeRxg/pub"
+          target="_blank"
+          rel="noopener"
+          >Resume</a
+        >
+      </div>
+    </div>
+
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <span onclick="openNav()" class="menu-icon"
+      ><img src="Images/nav-icon.png" alt="Navigation icon" class="nav-icon"
+    /></span>
+
+    <!-- End of mobile nav -->
+
+    <header>
+      <div class="container">
+        <img
+          src="/Images/intrusty_tile_img-min.jpg"
+          alt="Mockup of Intrusty app"
+        />
+        <div class="project-overview">
+          <div class="overview">
+            <h4>Intrusty</h4>
+            <h5>Overview</h5>
+            <p>
+              ‘Intrusty’ is a service used to connect students to lecturers and
+              industry professionals so the students can get feedback on their
+              work and projects. In exchange for participating in providing
+              feedback on student work, lecturers and industry professionals
+              gain LinkedIn skill endorsements.
+            </p>
+          </div>
+          <div class="info">
+            <br />
+            <br />
+            <p><span class="heading-span">Role:</span> UX Desinger</p>
+            <p>
+              <span class="heading-span">Duration:</span> 31st Jan - 25th Feb,
+              2022
+            </p>
+            <p>
+              <span class="heading-span">Team:</span> Me,
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener"
+                style="text-decoration: none"
+                ><span>Eimear Kelly</span></a
+              >
+            </p>
+            <p><span class="heading-span">Platform:</span> Mobile & Desktop</p>
+            <p>
+              <span class="heading-span">Tools:</span> Figma, Miro, Photoshop
+            </p>
+            <!-- <button onclick="expandProject()" id="expandButton">
+              <p>View Expanded Project</p>
+            </button> -->
+          </div>
+        </div>
+        <hr />
+      </div>
+    </header>
+
+    <main>
+      <section id="int-brief">
+        <div class="purple-box">
+          <p>
+            <span class="intext-span">Brief:</span> Form a better connection
+            between students and the college experience.
+          </p>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section id="int-research">
+        <h5>Research</h5>
+        <p>
+          To understand some ‌problems students have with their college
+          experience, we conducted co-creation sessions. After synthesising the
+          insights gained from the co-creations into themes and patterns, we
+          developed personas of students. The persona my team pursued had the
+          following problem;
+        </p>
+        <div class="int-flex">
+          <div>
+            <p>
+              “My lecturers keep giving me biased and unhelpful feedback on my
+              work. It feels like they don’t want to help me improve.” <span class="intext-span"> - Hans,
+                User Persona.</span> 
+            </p>
+          </div>
+          <div>
+            <img
+              src="/Images/intrusty_hans_img-min.jpg"
+              alt="Headshot of Hans, the user persona"
+              style="
+                border-radius: 20%;
+                max-width: 200px;
+                margin-top: 50px;
+                margin-left: 50px;
+              "
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Problem statement -->
+      <section id="int-problem">
+        <div class="purple-box">
+          <p>
+            <span class="intext-span">Problem Statement:</span> Hans Kingston is
+            a hard-working student who needs to ‌contact a professional outside
+            of his college because his lecturers are biased and unhelpful in
+            giving feedback on his work.
+          </p>
+        </div>
+      </section>
+
+      <!-- Insights -->
+      <section id="int-insights">
+        <p>
+          After defining the problem, we interviewed other students to develop
+          an understanding of how they would go about getting a second opinion
+          on their work. Some of the insights we found were;
+        </p>
+        <div class="int-flex-wrap">
+          <div class="int-insight-box">
+            <h5><span class="heading-span">Insight 1</span></h5>
+            <p>
+              Not all educational institutions provide a professional support
+              network.
+            </p>
+          </div>
+          <div class="int-insight-box">
+            <h5><span class="heading-span">Insight 2</span></h5>
+            <p>
+              Students get nervous contacting professionals because they don’t
+              feel good enough.
+            </p>
+          </div>
+          <div class="int-insight-box">
+            <h5><span class="heading-span">Insight 3</span></h5>
+            <p>
+              The majority of students find professionals on LinkedIn, but
+              contact them through other methods.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ideation -->
+      <section id="int-ideation">
+        <h5>Ideation</h5>
+        <p>
+          From the insights, we first created a user journey map of the
+          experience of contacting a professional on LinkedIn. From this we
+          developed ‘How Might We’ statements based on the pain points which we
+          found. We ideated numerous concepts, and voted on the following to
+          continue developing;
+        </p>
+        <div class="purple-box">
+          <p>
+            <span class="intext-span">Concept:</span> A forum for students that
+            is provided by their college. Students upload work and all lectures
+            and invited professionals can review and give feedback which is then
+            rewarded.
+          </p>
+        </div>
+      </section>
+
+      <!-- Design -->
+      <section id="int-ideation">
+        <p>
+          Familiarising ourselves with features, proposition values and
+          accessibility considerations which are used in services similar to our
+          concept we conducted a competitive audit of both direct and indirect
+          competitors. After, we created a rough service blueprint and sitemap
+          to align ourselves on the direction we would take in our prototypes.
+        </p>
+        <img
+          src="/Images/intrusty_inital_serv_blueprint-min.jpg"
+          alt="Initial service blueprint to align the team"
+        />
+      </section>
+
+      <!-- Lofi -->
+      <section id="int-lofi">
+        <p>
+          We designed wireframes and a low fidelity mock-up for both mobile (as
+          that is the most common device among students) and desktop (as that is
+          the most popular device type used for work). This prototype allowed
+          for students to submit their work for different classes, and have the
+          invited professionals and lecturers give feedback.
+        </p>
+        <div class="bxslider">
+          <div>
+            <img
+              src="/Images/intrusty_lofi_1-min.jpg"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/intrusty_lofi_2-min.jpg"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/intrusty_lofi_3-min.jpg"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <ul>
+          <li><span class="heading-span">Insights from Protoype 1:</span></li>
+          <li>
+            We found that the industry professionals testing participants
+            brought up the issues of them not having incentive to give feedback
+            on amateur work.
+          </li>
+          <li>Students struggled with navigating to ask for feedback.</li>
+        </ul>
+      </section>
+
+      <!-- Mid-fi -->
+      <section id="int-midfi">
+        <p>
+          For the Mid-fi prototype, we created an incentive for professionals to
+          give feedback, as they would receive automated endorsements towards
+          their skills on LinkedIn. We also made the methods of students to ask
+          for feedback for visible. The feature of adding media such as video
+          and PDFs was also added.
+        </p>
+        <div class="bxslider">
+          <div>
+            <img
+              src="/Images/intrusty_midfi_1-min.jpg"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/intrusty_midfi_2-min.jpg"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/intrusty_midfi_3-min.jpg"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/intrusty_midfi_4-min.jpg"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <ul>
+          <li><span class="heading-span">Insights from Protoype 2:</span></li>
+          <li>
+            Lecturers felt the need for more integration with tools such as
+            Google Classroom, as they wouldn’t want to have to add each student
+            to a class individually.
+          </li>
+          <li>
+            Giving grades was not a favourable method of providing students with
+            qualitative feedback by some lecturers.
+          </li>
+        </ul>
+      </section>
+
+      <!-- hifi -->
+      <section id="int-hifi">
+        <p>
+          Before our final prototype, we designed an integration for Google
+          Classroom, Canvas and Moodle. We also added multiple methods of giving
+          quantitative feedback, such as stickers, and gold-stars.
+        </p>
+        <p>
+          We ensured our final prototype still solved our problem statement.
+          Then continued by designing a style-tile to ensure consistency between
+          our mobile and desktop designs
+        </p>
+        <div class="bxslider">
+          <div>
+            <img
+              src="/Images/intrusty_hifi_1-min.jpg"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/intrusty_hifi_2-min.jpg"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <img
+              src="/Images/intrusty_hifi_3-min.jpg"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Final Blueprint & Hero Shots -->
+      <section id="int-final">
+        <p>
+          A final service blueprint displayed how a user would experience the
+          service and demonstrated the interactions, background actions and
+          support processes that could be used.
+        </p>
+        <img src="/Images/intrusty_final_service_blueprint-min.jpg" alt="" />
+        <p>
+          Our final design allowed students to upload any form of work or
+          projects to the service, where lecturers and industry professionals
+          are rewarded after giving valuable feedback, creating an ecosystem of
+          asking for and receiving feedback. This solves Han’s initial problem
+          of not having a place to ask for unbiased and useful feedback.
+        </p>
+        <img
+          src="/Images/intrusty_hero_img_1-min.jpg"
+          alt="Over the shoulder shot of student using the Intrusty app"
+        />
+      </section>
+
+      <!-- Results -->
+      <section id="int-results">
+        <div class="purple-box">
+            <h5><span class="heading-span">If I got to do this project again...</span></h5>
+            <p>
+                <ul>
+                    <li>I would focus on role-play prototypes, to gain better insight into how the interactions from the student submitting work to receiving feedback from professionals would play out.</li>
+                </ul>
+            </p>
+            <p>
+                <ul>
+                    <li>More collection of quantitive data and use of KPIs in user testing would have been beneficial in justifying design decisions rather than just qualitative data.</li>
+                </ul>
+            </p>
+          </div>
+      </section>
+    </main>
+
+    <footer>
+        <h4>View Other Projects</h4>
+        <div class="flex">
+          <a href="intrusty.html">Intrusty</a>
+          <a href="trigger-remover.html">Trigger Remover</a>
+        </div>
+      </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
