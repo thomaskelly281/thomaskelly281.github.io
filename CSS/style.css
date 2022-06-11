@@ -1547,7 +1547,7 @@ footer a:focus img {
 .project header .project-overview {
   height: auto;
   padding: 5vw 0px;
-  /* width: var(--container-project-width); */
+  width: var(--container-project-width);
   margin: auto;
   /* background: var(--tertiary-accent-color); */
   display: flex;
@@ -1620,6 +1620,10 @@ footer a:focus img {
 
   #int .int-flex-wrap {
     justify-content: center;
+  }
+
+  #int .int-insight-box {
+    width: 100%;
   }
 }
 
@@ -1780,6 +1784,10 @@ footer a:focus img {
 
   .tooltip:hover .tooltip-img {
     display: none;
+  }
+
+  .project header .project-overview {
+    width: auto;
   }
 }
 
