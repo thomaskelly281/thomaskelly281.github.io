@@ -399,6 +399,7 @@ aside a:focus img {
   background-image: url(/Images/header-bg-image-v1.png);
   background-position: center;
   background-size: contain;
+  min-height: 90vh;
 }
 
 header h2 {
