@@ -1209,9 +1209,12 @@ footer a:focus img {
 
   header .container {
     background-size: contain;
-    height: 70vh;
     text-align: center;
     padding: 0;
+  }
+
+  #home-page header .container {
+    height: 70vh;
   }
 
   #home-page header .container {
