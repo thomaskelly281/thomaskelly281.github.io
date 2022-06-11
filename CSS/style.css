@@ -686,6 +686,12 @@ body.loaded .fade-in-right {
   color: var(--main-bg-color);
 }
 
+.length-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--secondary-accent-color);
+}
+
 #work .awty {
   background-image: url(/Images/awty_background.png);
 }
@@ -1188,6 +1194,10 @@ footer a:focus img {
     font-size: 1rem;
   }
 
+  .length-label {
+    font-size: 1rem;
+  }
+
   .button {
     font-family: "Overpass", sans-serif;
     font-weight: 700;
@@ -1466,7 +1476,8 @@ footer a:focus img {
 }
 
 .project section {
-  margin-top: clamp(3rem, 10vh, 700px);
+  /* margin-top: clamp(3rem, 10vh, 700px); */
+  padding-top: clamp(3rem, 8vh, 500px);
 }
 
 .project #expandButton {
@@ -1711,4 +1722,100 @@ footer a:focus img {
 .project footer {
   text-align: center;
   padding: 0 0 12vh 0;
+}
+
+.tooltip {
+  text-decoration: none;
+  position: relative;
+}
+
+.tooltip .tooltip-img {
+  display: none;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  color: black;
+  background: var(--tertiary-accent-color);
+}
+
+.tooltip .tooptip-img img {
+  width: 40vw;
+  max-width: 1000px;
+}
+
+.tooltip:hover .tooltip-img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: auto;
+  max-width: 50vw;
+  width: 40vw;
+  min-width: 800px;
+  min-height: 128px;
+  border: 1px solid var(--secondary-accent-color);
+  margin-top: 15px;
+  margin-left: 10px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+@media (max-width: 1650px) {
+  .tooltip:hover .tooltip-img {
+    left: -300px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .tooltip .tooltip-img {
+    display: none;
+  }
+
+  .tooltip:hover .tooltip-img {
+    display: none;
+  }
+}
+
+.project .project-nav {
+  position: fixed;
+  top: 30%;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: flex-start;
+  max-width: 300px;
+}
+
+#int .project-nav {
+  top: 30%;
+}
+
+#tr .project-nav {
+  top: 25%;
+}
+
+.project .project-nav a {
+  color: var(--secondary-accent-color);
+  font-family: "Overpass", sans-serif;
+  font-weight: 400;
+  font-size: var(--h5-l-size);
+  text-decoration: none;
+  margin: 1rem 0;
+  transition: all 0.1s ease-in-out;
+}
+
+.project .project-nav a:hover {
+  transform: scale(1.1);
+  transform: translateX(10px);
+  filter: brightness(130%);
+}
+
+@media (max-width: 1250px) {
+  .project .project-nav {
+    display: none;
+  }
 }
