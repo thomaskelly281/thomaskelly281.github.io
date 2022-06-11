@@ -1210,9 +1210,12 @@ footer a:focus img {
   header .container {
     background-size: contain;
     height: 70vh;
-    max-height: 100vh;
     text-align: center;
     padding: 0;
+  }
+
+  #home-page header .container {
+    max-height: 100vh;
   }
 
   header h2 {
@@ -1541,7 +1544,7 @@ footer a:focus img {
 .project header .project-overview {
   height: auto;
   padding: 5vw 0px;
-  width: var(--container-project-width);
+  /* width: var(--container-project-width); */
   margin: auto;
   /* background: var(--tertiary-accent-color); */
   display: flex;
