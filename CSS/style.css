@@ -319,7 +319,7 @@ aside .email-link {
   transform: rotate(90deg);
   /* This positions the email in the center of the aside
     They are random numbers, so if it breaks, change them till you get it centered */
-  right: -95px;
+  right: -104px;
   top: -112px;
 }
 
