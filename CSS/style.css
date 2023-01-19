@@ -40,7 +40,7 @@
   --container-m-width: 60vw;
   --container-s-width: 70vw;
   --project-container-s-width: 90vw;
-  --container-project-width: 50vw;
+  --container-project-width: 60vw;
 }
 
 body {
@@ -1034,6 +1034,7 @@ footer a:focus img {
     width: 40vw;
   }
 }
+
 /*
 .
 .
@@ -1117,6 +1118,46 @@ footer a:focus img {
 
   aside {
     display: none;
+  }
+
+  .project header .project-overview {
+    height: auto;
+    /* padding: 5vw 0px; */
+    width: var(--container-project-width);
+    margin: auto;
+    border-radius: 20px;
+  }
+
+  .project header .overview {
+    height: auto;
+    padding: 0 0 5vw 0;
+    width: var(--container-project-width);
+    margin: auto;
+    /* background: var(--tertiary-accent-color); */
+    display: block;
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
+  }
+
+  .project header .project-overview .info {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1001px) {
+  .project header .overview {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: flex-start;
+    border-radius: 20px;
+  }
+
+  .project header .project-overview .info {
+    margin-left: 2vw;
   }
 }
 
@@ -1430,7 +1471,11 @@ footer a:focus img {
     width: var(--container-s-width);
   }
 
-  /* End of mobile nav */
+  .project header img {
+    max-height: 600px;
+    object-fit: cover;
+    height: 30vh;
+  }
 }
 
 /*
@@ -1471,6 +1516,8 @@ footer a:focus img {
   width: 100%;
   border-radius: 14px;
   margin-bottom: 20px;
+  object-fit: cover;
+  aspect-ratio: 10/3;
 }
 
 .project img {
@@ -1506,8 +1553,9 @@ footer a:focus img {
 }
 
 .project header .project-overview .info {
-  margin-left: 5vw;
-  width: 500px;
+  width: 400px;
+  max-width: 500px;
+  align-self: flex-start;
 }
 
 .project header {
@@ -1547,17 +1595,16 @@ footer a:focus img {
 
 .project header .project-overview {
   height: auto;
-  padding: 5vw 0px;
   width: var(--container-project-width);
   margin: auto;
-  /* background: var(--tertiary-accent-color); */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-content: stretch;
-  align-items: center;
   border-radius: 20px;
+}
+
+.project header .overview {
+  height: auto;
+  padding: 0 0 5vw 0;
+  width: var(--container-project-width);
+  margin: auto;
 }
 
 #int .int-insight-box {
@@ -1615,6 +1662,10 @@ footer a:focus img {
     height: auto;
   }
 
+  .project header .container {
+    text-align: left;
+  }
+
   #int .int-flex {
     flex-direction: column;
   }
@@ -1625,6 +1676,10 @@ footer a:focus img {
 
   #int .int-insight-box {
     width: 100%;
+  }
+
+  .project header .project-overview .info {
+    width: auto;
   }
 }
 
@@ -1656,8 +1711,13 @@ footer a:focus img {
 }
 
 .project main p,
-.roject main blockquote {
-  max-width: 700px;
+.project main blockquote {
+  max-width: 1000px;
+}
+
+.project main blockquote {
+  color: var(--hover-color);
+  font-size: var(--h5-l-size);
 }
 
 .project header .project-overview .overview h4 {
@@ -1696,7 +1756,8 @@ footer a:focus img {
   list-style-type: square;
 }
 
-.project main ul li:first-child {
+#int main ul li:first-child,
+#tr main ul li:first-child {
   list-style-type: none;
 }
 
@@ -1787,8 +1848,8 @@ footer a:focus img {
     display: none;
   }
 
-  .project header .project-overview {
-    width: auto;
+  .unseen-research-box .flex-box {
+    flex-wrap: wrap;
   }
 }
 
@@ -1839,4 +1900,56 @@ footer a:focus img {
   .project .project-nav a {
     margin: 0.5rem 0;
   }
+}
+
+.project #unseen-research ul {
+  list-style: inside;
+  padding-left: 20px;
+}
+
+.unseen-research-box {
+  height: auto;
+  position: relative;
+}
+
+.unseen-research-box h5 {
+  padding: 40px 0 0 20px;
+}
+
+.unseen-background-box {
+  position: absolute;
+  background: var(--tertiary-accent-color);
+  width: 100vw;
+  height: calc(100% + 50px);
+  top: 0;
+  left: -20vw;
+  z-index: -1;
+}
+
+.unseen-research-box .flex-box {
+  padding-left: 20px;
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex-direction: row;
+}
+
+#unseen-interview-img {
+  width: 20vw;
+  margin-left: 50px;
+}
+
+#unseen main p {
+  margin-top: 0rem;
+}
+
+.unseen-research-box blockquote {
+  text-align: center;
+  font-weight: 700;
+}
+
+.unseen-research-box .survey-box {
+  padding: 0 0 0 20px;
 }

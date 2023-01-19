@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="main.js"></script>
+
+    <title>Thomas Kelly - Portfolio</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/Images/thomas-kelly-favicon (1).svg"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".slider").bxSlider();
+      });
+
+      var sliderWidths;
+
+      if ($(window).width() < 420) {
+        sliderWidths = 380;
+      } else if ($(window).width() < 768) {
+        sliderWidths = 700;
+      } else if ($(window).width() < 1200) {
+        sliderWidths = 800;
+      } else {
+        sliderWidths = 900;
+      }
+
+      $(function () {
+        $(".bxslider").bxSlider({
+          mode: "horizontal",
+          captions: true,
+          sliderWidth: sliderWidths,
+          captions: true,
+          speed: 300,
+        });
+      });
+    </script>
+
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+
+  <body id="unseen" class="project">
+    <a href="#header"
+      ><button class="skip-to-content button button-border">
+        Skip To Content
+      </button></a
+    >
+
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <p style="margin-left: 0">
+            <a href="index.html" class="nav-1"> Thomas Kelly</a>
+          </p>
+        </div>
+        <div class="right">
+          <ul>
+            <li><a href="index.html#work" class="nav-2">Work</a></li>
+            <li><a href="index.html#about" class="nav-3">About</a></li>
+            <li id="end">
+              <a href="index.html#contact-info" class="nav-4">Contact</a>
+            </li>
+            <li class="resume-button">
+              <a
+                href="Images/thomas_kelly_CV.pdf"
+                target="_blank"
+                rel="noopener"
+                >Resume</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact-info">Contact</a>
+        <a href="Images/thomas_kelly_CV.pdf" target="_blank" rel="noopener"
+          >Resume</a
+        >
+      </div>
+    </div>
+
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <span onclick="openNav()" class="menu-icon"
+      ><img src="Images/nav-icon.png" alt="Navigation icon" class="nav-icon"
+    /></span>
+
+    <!-- End of mobile nav -->
+
+    <!-- Start of project Nav -->
+
+    <div class="project-nav">
+      <a href="#">Overview</a>
+      <a href="#unseen-research">Research</a>
+      <a href="#unseen-define">Define</a>
+      <a href="#unseen-design">Design</a>
+      <a href="#unseen-conclusion">Conclusion</a>
+    </div>
+
+    <!-- End of project Nav -->
+
+    <header>
+      <div class="container">
+        <img
+          src="/Images/unseen-mockup.jpg"
+          alt="Mockup of Unseen app being used on train"
+        />
+        <div class="project-overview">
+          <h4>Unseen</h4>
+          <h5>Overview</h5>
+          <div class="overview">
+            <div class="write-up">
+              <p>
+                Unseen is a service to detect, notify and deal with antisocial
+                behaviour (ASB) on public transport. This was a project
+                developed in response to a brief from "Accenture The Dock" to
+                improve urban citizens' transportation experiences.
+              </p>
+            </div>
+
+            <div class="info">
+              <p>
+                <span class="heading-span">Role:</span> Interaction Designer
+              </p>
+              <p>
+                <span class="heading-span">Duration:</span> 8th Nov - 16th Dec,
+                2022
+              </p>
+              <p>
+                <span class="heading-span">Stakeholders:</span> Accenture, NCAD
+              </p>
+              <!-- <button onclick="expandProject()" id="expandButton">
+              <p>View Expanded Project</p>
+            </button> -->
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </header>
+
+    <main>
+      <section id="unseen-research">
+        <h5>Research</h5>
+        <p>
+          The aim of the research phase was to identify issues with transport in
+          the city. To identify areas for improvement, we conducted:
+        </p>
+        <ul>
+          <li>Surveys</li>
+          <li>Interviews</li>
+          <li>Ethnographic Studies</li>
+          <li>Secondary Research</li>
+        </ul>
+        <div class="unseen-research-box">
+          <div class="unseen-background-box"></div>
+          <h5>Interviews</h5>
+          <div class="flex-box">
+            <div style="min-width: 600px">
+              <p>
+                Through more than 20 interviews, we gained valuable information
+                about how city inhabitants use transportation and the challenges
+                they encounter. The following quotes are some we heard;
+              </p>
+              <br />
+              <br />
+              <blockquote>
+                “I always feel a bit on edge on public transport”
+              </blockquote>
+              <br />
+              <br />
+              <blockquote>
+                “My kids use the LUAS and you should hear the stories they be
+                telling me”
+              </blockquote>
+            </div>
+            <div>
+              <img src="/Images/unseen-garda.jpg" id="unseen-interview-img" />
+            </div>
+          </div>
+          <h5>Surveys</h5>
+          <div class="survey-box">
+            <p>
+              We received a substantial number of comments and stories
+              concerning anti-social behaviour in the hundreds of replies to the
+              multiple surveys we distributed.
+            </p>
+            <p>
+              We spoke with various persons who had informed us about antisocial
+              behaviour since so many people had commented on it previously. We
+              acquired data for our problem statement from these interviews.
+            </p>
+            <br /><br />
+            <blockquote>
+              "I just look out the window to stay out of the situation"
+            </blockquote>
+            <br /><br />
+            <blockquote>"Sure the driver does nothing"</blockquote>
+            <br /><br />
+            <p>
+              In Dublin, according to our surveys, about 90% of people have
+              observed antisocial behaviour on public transportation, but less
+              than 10% have reported it.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="unseen-define"></section>
+      <section id="unseen-design"></section>
+      <section id="unseen-conclusion"></section>
+    </main>
+
+    <footer>
+      <h4>View Other Projects</h4>
+      <div class="flex">
+        <a href="intrusty.html">Intrusty</a>
+        <a href="trigger-remover.html">Trigger Remover</a>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
