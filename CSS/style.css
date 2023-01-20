@@ -1920,7 +1920,7 @@ footer a:focus img {
 .unseen-background-box {
   position: absolute;
   background: var(--tertiary-accent-color);
-  width: 100vw;
+  width: 200vw;
   height: calc(100% + 50px);
   top: 0;
   left: -20vw;
@@ -2060,4 +2060,43 @@ footer a:focus img {
 
 .kept-in-loop div {
   margin-top: clamp(100px, 10vw, 600px);
+}
+
+#unseen-conclusion ul {
+  margin-left: 2rem;
+}
+
+@media (max-width: 700px) {
+  #unseen .flex-box,
+  #unseen .unseen-flexbox {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  #unseen .flex-box div,
+  #unseen .unseen-flexbox div {
+    max-width: 100%;
+  }
+
+  .unseen-user-card {
+    width: 80%;
+  }
+
+  .unseen-user-card img {
+    max-width: 100%;
+    width: 100%;
+    height: clamp(100px, 60%, 300px);
+    object-fit: cover;
+    filter: saturate(150%);
+  }
+
+  #unseen .flex-box img,
+  #unseen .unseen-flexbox img {
+    max-width: 100%;
+  }
+
+  #unseen .kept-in-loop p {
+    min-width: 80%;
+    max-width: 100%;
+  }
 }
