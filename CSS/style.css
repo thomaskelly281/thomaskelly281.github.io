@@ -1848,7 +1848,8 @@ footer a:focus img {
     display: none;
   }
 
-  .unseen-research-box .flex-box {
+  .unseen-research-box .flex-box,
+  .unseen-flexbox {
     flex-wrap: wrap;
   }
 }
@@ -1952,4 +1953,111 @@ footer a:focus img {
 
 .unseen-research-box .survey-box {
   padding: 0 0 0 20px;
+}
+
+.unseen-flexbox {
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.unseen-user-card {
+  width: clamp(200px, 27vw, 1000px);
+  min-width: 200px;
+  height: auto;
+  min-height: 25px;
+  display: flex;
+  flex-direction: column;
+  background: var(--tertiary-accent-color);
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 12px;
+}
+
+.unseen-user-card img {
+  width: 100%;
+  height: clamp(100px, 12vw, 500px);
+  object-fit: cover;
+  filter: saturate(150%);
+}
+
+.unseen-user-card div:nth-child(2) {
+  padding: 20px 20px 0px 20px;
+  min-height: 160px;
+}
+
+.unseen-user-card ul {
+  padding-left: 2rem;
+}
+
+.unseen-user-card li {
+  list-style: outside;
+}
+
+#unseen-design .unseen-flexbox h5 {
+  padding: 0;
+  margin-top: 0;
+}
+
+#unseen-design .unseen-flexbox img {
+  max-width: 25vw;
+}
+
+#unseen-design .unseen-flexbox div,
+#unseen-design .kept-in-loop p {
+  max-width: 30vw;
+  margin-right: 2rem;
+}
+
+.unseen-design-box {
+  height: auto;
+  margin-top: 3rem;
+  position: relative;
+  padding-top: 3rem;
+}
+
+.unseen-design-box .flex-box,
+#unseen-design .flex-box {
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex-direction: row;
+  padding-bottom: 0;
+}
+
+.unseen-design-box .flex-box div,
+#unseen-design .flex-box div {
+  margin-top: clamp(100px, 5vw, 600px);
+}
+
+.unseen-design-box .flex-box div blockquote {
+  margin-top: 5vw;
+}
+
+.unseen-design-box .flex-box img {
+  max-width: 20vw;
+}
+
+#unseen-timeline-img {
+  max-width: 20vw;
+}
+
+.unseen-design-box .flex-box h5,
+#unseen-design .flex-box h5 {
+  margin-top: 1rem;
+}
+
+.kept-in-loop {
+  margin-top: 6rem;
+}
+
+.kept-in-loop div {
+  margin-top: clamp(100px, 10vw, 600px);
 }
