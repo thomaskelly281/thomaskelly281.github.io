@@ -701,6 +701,10 @@ body.loaded .fade-in-right {
   background-image: url(/Images/trigger-remover-background.png);
 }
 
+#work .unseen {
+  background-image: url(/Images/unseen-tile-background.png);
+}
+
 #work .intrusty {
   background-image: url(/Images/intrusty_tile_background_img.png);
 }
@@ -1158,6 +1162,10 @@ footer a:focus img {
 
   .project header .project-overview .info {
     margin-left: 2vw;
+  }
+
+  #unseen .unseen-research-box .flex-box img {
+    margin-top: -3rem;
   }
 }
 
@@ -1851,6 +1859,11 @@ footer a:focus img {
   .unseen-research-box .flex-box,
   .unseen-flexbox {
     flex-wrap: wrap;
+  }
+
+  #unseen .unseen-research-box .flex-box img {
+    width: 100%;
+    max-width: 80%;
   }
 }
 
