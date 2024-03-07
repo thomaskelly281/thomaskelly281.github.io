@@ -1618,6 +1618,10 @@ footer a:focus img {
   max-width: 50%;
 }
 
+#air #air-prototyping {
+  margin-top: 15svh;
+}
+
 #air-proposal,
 #air-research,
 #air-concepting,
@@ -1769,10 +1773,6 @@ position: relative;
 #air-testing,
 #air-deliverables {
   margin-top: 25svh;
-}
-
-#air-prototyping {
-  margin-top: 15svh;
 }
 
 #air-deliverables .box-right ul{
