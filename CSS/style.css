@@ -1907,6 +1907,11 @@ margin-right: 2rem;
   margin-bottom: 20svh;
 }
 
+#air #air-prototyping {
+  margin-top: 10svh;
+  margin-bottom: 10svh;
+}
+
 
 @media (max-width: 1200px) {
   #air-research-quotes .quote-name-label,
