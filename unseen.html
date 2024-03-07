@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="main.js"></script>
+
+    <title>Thomas Kelly - Portfolio</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/Images/thomas-kelly-favicon (1).svg"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".slider").bxSlider();
+      });
+
+      var sliderWidths;
+
+      if ($(window).width() < 420) {
+        sliderWidths = 380;
+      } else if ($(window).width() < 768) {
+        sliderWidths = 700;
+      } else if ($(window).width() < 1200) {
+        sliderWidths = 800;
+      } else {
+        sliderWidths = 900;
+      }
+
+      $(function () {
+        $(".bxslider").bxSlider({
+          mode: "horizontal",
+          captions: true,
+          sliderWidth: sliderWidths,
+          captions: true,
+          speed: 300,
+        });
+      });
+    </script>
+
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+
+  <body id="unseen" class="project">
+    <a href="#header"
+      ><button class="skip-to-content button button-border">
+        Skip To Content
+      </button></a
+    >
+
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <p style="margin-left: 0">
+            <a href="index.html" class="nav-1"> Thomas Kelly</a>
+          </p>
+        </div>
+        <div class="right">
+          <ul>
+            <li><a href="index.html#work" class="nav-2">Work</a></li>
+            <li><a href="index.html#about" class="nav-3">About</a></li>
+            <li id="end">
+              <a href="index.html#contact-info" class="nav-4">Contact</a>
+            </li>
+            <li class="resume-button">
+              <a
+                href="Images/thomas_kelly_CV.pdf"
+                target="_blank"
+                rel="noopener"
+                >Resume</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact-info">Contact</a>
+        <a href="Images/thomas_kelly_CV.pdf" target="_blank" rel="noopener"
+          >Resume</a
+        >
+      </div>
+    </div>
+
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <span onclick="openNav()" class="menu-icon"
+      ><img src="Images/nav-icon.png" alt="Navigation icon" class="nav-icon"
+    /></span>
+
+    <!-- End of mobile nav -->
+
+    <!-- Start of project Nav -->
+
+    <div class="project-nav">
+      <a href="#">Overview</a>
+      <a href="#unseen-research">Research</a>
+      <a href="#unseen-define">Define</a>
+      <a href="#unseen-user-needs">User Needs</a>
+      <a href="#unseen-design">Design</a>
+      <a href="#unseen-conclusion">Conclusion</a>
+    </div>
+
+    <!-- End of project Nav -->
+
+    <header>
+      <div class="container">
+        <img
+          src="/Images/unseen-mockup-min.jpg"
+          alt="Mockup of Unseen app being used on train"
+        />
+        <div class="project-overview">
+          <h4>Unseen</h4>
+          <h5>Overview</h5>
+          <div class="overview">
+            <div class="write-up">
+              <p>
+                Unseen is a service to detect, notify and deal with antisocial
+                behaviour (ASB) on public transport. This was a project
+                developed in response to a brief from "Accenture The Dock" to
+                improve urban citizens' transportation experiences.
+              </p>
+            </div>
+
+            <div class="info">
+              <p>
+                <span class="heading-span">Role:</span> Interaction Designer
+              </p>
+              <p>
+                <span class="heading-span">Duration:</span> 8th Nov - 16th Dec,
+                2022
+              </p>
+              <p>
+                <span class="heading-span">Stakeholders:</span> Accenture, NCAD
+              </p>
+              <!-- <button onclick="expandProject()" id="expandButton">
+              <p>View Expanded Project</p>
+            </button> -->
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </header>
+
+    <main>
+      <section id="unseen-research">
+        <h5>Research</h5>
+        <p>
+          The aim of the research phase was to identify issues with transport in
+          the city. To identify areas for improvement, we conducted:
+        </p>
+        <ul>
+          <li>Surveys</li>
+          <li>Interviews</li>
+          <li>Ethnographic Studies</li>
+          <li>Secondary Research</li>
+        </ul>
+        <div class="unseen-research-box">
+          <div class="unseen-background-box"></div>
+          <h5>Interviews</h5>
+          <div class="flex-box">
+            <div>
+              <p>
+                Through more than 20 interviews, we gained valuable information
+                about how city inhabitants use transportation and the challenges
+                they encounter. The following quotes are some we heard;
+              </p>
+              <br />
+              <br />
+              <blockquote>
+                “I always feel a bit on edge on public transport”
+              </blockquote>
+              <br />
+              <br />
+              <blockquote>
+                “My kids use the LUAS and you should hear the stories they be
+                telling me”
+              </blockquote>
+            </div>
+            <div>
+              <img
+                src="/Images/unseen-interview.jpg"
+                id="unseen-interview-img"
+              />
+            </div>
+          </div>
+          <h5>Surveys</h5>
+          <div class="survey-box">
+            <p>
+              We received a substantial number of comments and stories
+              concerning anti-social behaviour in the hundreds of replies to the
+              multiple surveys we distributed.
+            </p>
+            <p>
+              We spoke with various persons who had informed us about antisocial
+              behaviour since so many people had commented on it previously. We
+              acquired data for our problem statement from these interviews.
+            </p>
+            <br /><br />
+            <blockquote>
+              "I just look out the window to stay out of the situation"
+            </blockquote>
+            <br /><br />
+            <blockquote>"Sure the driver does nothing"</blockquote>
+            <br /><br />
+            <p>
+              In Dublin, according to our surveys, about 90% of people have
+              observed antisocial behaviour on public transportation, but less
+              than 10% have reported it.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="unseen-define">
+        <h5>Defining the Problem</h5>
+        <p>
+          The common themes that emerged from our research synthesis provided
+          justification for investigating the issue of
+          <strong>antisocial behaviour on public transportation.</strong>
+        </p>
+        <p>
+          The procedures for reporting antisocial behaviour were perceived by
+          users of public transportation to be insufficient and largely useless,
+          according to our interviews.  This presented us with an opportunity to
+          develop a system for reporting and dealing with antisocial behaviour.
+        </p>
+      </section>
+      <section id="unseen-user-needs">
+        <h5>User Needs</h5>
+        <p>
+          To help us identify the users for whom we were seeking to find a
+          solution, we developed user personas. These included the driver,
+          passengers waiting for the vehicle, individuals using public
+          transportation, and emergency service personnel.
+        </p>
+        <p>
+          From interviews with people from each role of our personas we outlined
+          what each user needed from our service:
+        </p>
+        <div class="unseen-flexbox">
+          <div class="unseen-user-card">
+            <div>
+              <img
+                src="/Images/unseen-passangers.jpg"
+                alt="Passangers on pubic transport"
+              />
+            </div>
+            <div>
+              <p><strong>Public Transport Users</strong></p>
+              <ul>
+                <li>A method of reporting antisocial behaviour</li>
+                <li>Confidentiality when reporting</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unseen-user-card">
+            <div>
+              <img
+                src="/Images/unseen-waiting.jpg"
+                alt="People waiting for public transport"
+              />
+            </div>
+            <div>
+              <p><strong>People Waiting for Transport</strong></p>
+              <ul>
+                <li>To be notified if there is antisocial behaviour</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unseen-user-card">
+            <div>
+              <img src="/Images/unseen-driver.jpg" alt="Dublin Bus driver" />
+            </div>
+            <div>
+              <p><strong>Drivers</strong></p>
+              <ul>
+                <li>To be able to concentrate</li>
+                <li>Not have to worry about passengers</li>
+              </ul>
+            </div>
+          </div>
+          <div class="unseen-user-card">
+            <div>
+              <img src="/Images/unseen-garda.jpg" alt="Garda car" />
+            </div>
+            <div>
+              <p><strong>Emergency Services</strong></p>
+              <ul>
+                <li>Method of knowing public transport location</li>
+                <li>Knowing what kind of antisocial behaviour is occurring</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="unseen-design">
+        <h5>Design</h5>
+        <div class="unseen-flexbox">
+          <div>
+            <h5 style="color: var(--secondary-accent-color)">
+              System Blueprint
+            </h5>
+            <p>
+              Our design stage began with iterating on a system blueprint, which
+              we altered with the help of public transport drivers who knew the
+              current systems in place better than we did.
+            </p>
+          </div>
+          <img src="/Images/unseen-driver.jpg" alt="" />
+        </div>
+        <h5 style="color: var(--secondary-accent-color)">Detecting ASB</h5>
+        <p>
+          We designed an application, a sensor module to detect antisocial
+          behaviour and a notification system to confirm the detection of
+          antisocial behaviour, which would work together to both detect and
+          solve antisocial behaviour.
+        </p>
+        <p>
+          The sensor would detect noise levels and speech in transport, which
+          would use an onboard AI to determine if there could be Antisocial
+          Behaviour.
+        </p>
+        <img
+          src="/Images/unseen-sensor.jpg"
+          alt="Mockup of a sensor on the roof of a Dublin Bus being used to detect antisocial behaviour"
+        />
+        <h5 style="color: var(--secondary-accent-color)">The App</h5>
+        <p>
+          If ASB was detected by the sensor, people on that vehicle would be
+          prompted to report the behaviour through a notification from the app.
+        </p>
+        <img
+          src="/Images/unseen-mockup-min.jpg"
+          alt="Woman on a train using the Unseen app after being notified that antisocial behaviour has been detected."
+        />
+        <div class="unseen-design-box">
+          <div class="unseen-background-box"></div>
+          <div class="flex-box">
+            <div>
+              <h5>Reporting Flow</h5>
+              <p>
+                If people confirm there is ASB onboard the vehicle, the app
+                brings to user to fill our the reporting flow, which takes less
+                than a minute to complete, and is completely anonymous. The
+                features of it being quick, discreet and anonymous was important
+                due to this quote we got from an interviewee regrading reporting
+                ASB:
+              </p>
+              <blockquote>
+                “There would be consequences & I might get attacked”
+              </blockquote>
+            </div>
+            <img
+              src="/Images/unseen-reporting.png"
+              alt="App mockup of the Unseen reporting flow"
+            />
+          </div>
+        </div>
+        <div class="flex-box kept-in-loop">
+          <div>
+            <h5>Being Kept in the Loop</h5>
+            <p>
+              After reporting the ASB the emergency services will be notified of
+              the location and ASB type, and the reporter will be kept up to
+              date with how to situation is being handled. Keeping the user
+              in-the-know with continuous feedback was a key touchpoint of our
+              interviews on what users wish they had.
+            </p>
+          </div>
+          <img
+            src="/Images/unseen-timeline.png"
+            alt="Mockup of the reporting timeline on the Unseen app, giving users feedback on the status of their report."
+            id="unseen-timeline-img"
+          />
+        </div>
+        <h5>App Integration</h5>
+        <p>
+          After ASB has been reported or detected, people waiting on that
+          vehicle are going to be notified, so they can chose if they don’t wish
+          to take this vehicle.
+        </p>
+        <img
+          src="/Images/unseen-integration.jpg"
+          alt="Unseen app integration with Dublin Bus app, showing when antisocial behaviour is detected and reported"
+        />
+      </section>
+      <section id="unseen-conclusion">
+        <h5>Conclusion</h5>
+        <p>
+          In conclusion, the service prototype received positive feedback from
+          both public transport users and public transport employees.
+        </p>
+        <p>The service has predicted benefits of:</p>
+        <ul>
+          <li>Making people feel safer on public transport</li>
+          <li>Reduce Emergency service response time</li>
+          <li>Encourage reporting ASB</li>
+          <li>
+            Increase amount of usage of public transport due to addressed safety
+            concerns
+          </li>
+          <li>
+            Less money spent by transport stakeholders on private security
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <h4>View Other Projects</h4>
+      <div class="flex">
+        <a href="intrusty.html">Intrusty</a>
+        <a href="trigger-remover.html">Trigger Remover</a>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
