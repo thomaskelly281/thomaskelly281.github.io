@@ -1814,7 +1814,7 @@ margin-right: 2rem;
 }
 
 #air-deliverables .box-right ul li:hover,
-#air-overview .box-right a li:hover {
+#air-overview .box-right a:hover {
   transform: scale(1.1);
   transform: translateX(10px);
   filter: brightness(130%);
