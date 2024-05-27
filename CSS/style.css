@@ -693,6 +693,10 @@ body.loaded .fade-in-right {
   color: var(--secondary-accent-color);
 }
 
+#work .recite {
+  background-image: url(/Images/recite_tile_background_img.png);
+}
+
 #work .awty {
   background-image: url(/Images/awty_background.png);
 }
