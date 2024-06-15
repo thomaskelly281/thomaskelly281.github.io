@@ -35,6 +35,21 @@ section {
     transition: ease-in-out 0.2s;
     width: 100%;
     height: 100%;
+    padding: 5px;
+}
+
+.vid-container {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+
+}
+
+.vid-container video {
+    pointer-events: none;
+    width: inherit;
+    height: 100%;
+    object-fit: cover;
 }
 
 .work-card:hover {
