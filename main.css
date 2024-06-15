@@ -1,0 +1,354 @@
+
+header {
+    margin-top: clamp(70px, 5dvh, 1000px);
+}
+
+section {
+    border-top: var(--grey-100) 1px solid;
+    margin-top: 10dvh;
+}
+
+.work-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.work-container a {
+    text-decoration: none;
+    /* margin-right: 3%; */
+}
+
+.work-card {
+    background: var(--main-bg-color);
+    border: var(--grey-100) 1px solid;
+    border-radius: 12px;
+    -webkit-box-shadow: 0px 10px 20px -8px rgba(204,204,204,0.25);
+    -moz-box-shadow: 0px 10px 20px -8px rgba(204,204,204,0.25);
+    box-shadow: 0px 10px 20px -8px rgba(204,204,204,0.25);
+    margin-bottom: 1.5rem;
+    transition: ease-in-out 0.2s;
+    width: 100%;
+    height: 100%;
+}
+
+.work-card:hover {
+    background: #fdfdfd;
+    -webkit-box-shadow: 0px 10px 15px 8px rgb(230, 230, 230);
+    -moz-box-shadow: 0px 10px 15px 8px rgb(230, 230, 230);
+    box-shadow: 0px 10px 15px 8px rgb(230, 230, 230);
+}
+
+.flex-space-between-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.flex-space-between-row h5 {
+    margin: 0;
+}
+
+#recite-card{
+    width: 100%;
+    min-width: 20%;
+
+    /* Change max-width when wanting to change with, so that the other ones beside it can grow to fill space */
+    max-width: 48.5%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+}
+
+#air-bear-card{
+    width: 100%;
+    min-width: 20%;
+
+    /* Change max-width when wanting to change with, so that the other ones beside it can grow to fill space */
+    max-width: 48.5%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+}
+
+@keyframes infiniteScroll {
+    from {transform: translateX(0)}
+    to {transform: translateX(-50%)}
+  }
+
+@keyframes infiniteScrollRev {
+from {transform: translateX(-50%)}
+to {transform: translateX(0%)}
+  }
+
+  .hori-scroll {
+    margin-top: 12rem;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hori-scroll h1 {
+    margin: 0;
+    color: var(--grey-100);
+  }
+
+  .horizontal-scrolling-items {
+    display: flex;
+    /* font-size: 40px;
+    width: 2600px; */
+    animation-name: infiniteScroll;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  .horizontal-scrolling-itemsRev {
+    display: flex;
+    /* font-size: 40px;
+    width: 2600px; */
+    animation-name: infiniteScrollRev;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .horizontal-scrolling-itemsStill {
+    display: flex;
+  }
+  .horizontal-scrolling-items__item,
+  .horizontal-scrolling-items__itemRev{
+    white-space: nowrap;
+  }
+
+.about_text {
+    max-width: 30%;
+    height: 100%;
+    margin-right: 10rem;
+}
+
+.about-text-section {
+    margin-top: 3rem;
+    height: clamp(30dvh, 700px, 50dvh);
+}
+
+.about_text p {
+    margin-top: 0;
+}
+
+.about_img {
+    /* max-width: 30%; */
+    border-radius: 12px;
+    height: 100%;
+}
+
+.flex-row-start {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+
+.flex-column-between {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.about_text button {
+    border: none;
+    background-color: var(--main-bg-color);
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.about_text button img {
+    width: 20px;
+    margin-left: 10px;
+    opacity: 0.7;
+}
+
+.about_text button:hover h4 {
+    color: var(--grey-300);
+}
+
+.about_text button:hover img {
+    width: 20px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    opacity: 1;
+}
+
+.education-experience-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.education-experience-row h5:first-child {
+    margin-bottom: 3rem;
+}
+
+.education-text,
+.experience-text {
+    height: auto;
+    width: 30%;
+    margin-right: 10rem;
+}
+
+.education-text .flex-space-between-row {
+    width: 100%;
+    min-width: none;
+}
+
+.education,
+.experience {
+margin-bottom: 3rem;
+}
+
+
+
+/* Responsiveness */
+
+@media only screen and (max-width: 1600px) {
+
+    .about_text {
+        max-width: 40%;
+        margin-right: 3rem;
+
+    }
+
+    .education-text,
+    .experience-text {
+        width: 40%;
+        margin-right: 3rem;
+
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+
+    .about_text {
+        max-width: 60%;
+    }
+
+    .about_img {
+        /* max-width: 30%; */
+        border-radius: 12px;
+        width: 40%;
+        height: auto;
+    }
+
+    #about .flex-column-between {
+        display: block;
+        height: auto;
+
+    }
+
+    .about-text-section {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .education-text .flex-space-between-row,
+    .experience-text .flex-space-between-row{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .about_text {
+        max-width: 50%;
+    }
+
+    .education-text,
+    .experience-text {
+        width: 50%;
+        margin-right: 2rem;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+    .work-container {
+        flex-direction: column;
+    }
+
+    .work-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .work-container a {
+        margin-bottom: 3rem;
+    }
+
+    #recite-card,
+    #air-bear-card {
+        max-width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+    .hori-scroll {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    #about .flex-row-start {
+        flex-direction: column;
+    }
+
+    .about_text {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .about_img {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+}
