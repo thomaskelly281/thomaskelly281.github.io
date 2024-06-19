@@ -87,18 +87,26 @@ section {
     align-content: flex-start;
 }
 
+#air-bear-card .work-card {
+    height: auto;
+}
+
 #air-bear-card{
     width: 100%;
     min-width: 20%;
 
     /* Change max-width when wanting to change with, so that the other ones beside it can grow to fill space */
     max-width: 48.5%;
-    height: 700px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex-wrap: nowrap;
     align-content: flex-start;
+}
+
+#air-bear-card img{
+    width: 100%;
 }
 
 @keyframes infiniteScroll {

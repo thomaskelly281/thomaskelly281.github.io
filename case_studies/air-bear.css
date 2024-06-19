@@ -15,6 +15,11 @@ header .flex-row-start div:first-child {
 
 }
 
+header span {
+    color: var(--main-accent-color);
+    font-weight: 600;
+}
+
 .flex-row-start p {
     width: 100%;
 }
@@ -27,6 +32,11 @@ header .flex-column-between {
 #research-section div{
     width: 30%;
     margin-right: 10rem;
+    position: relative;
+}
+
+#problem-section div {
+    padding-bottom: 10%;
 }
 
 #word-cloud {
@@ -91,10 +101,100 @@ header .flex-column-between {
 }
 
 #evaluation-section video {
-    width: 65%;
+    width: 70%;
 }
 
 #evaluation-section p {
     margin-right: 10rem;
     width: 30%;
+}
+
+#air-bear-notification {
+    width: 100%;
+    animation: pop-up-1 8s ease-in forwards;
+    animation-iteration-count: infinite;
+    position: absolute;
+    bottom: 0;
+}
+
+#air-bear-notification-2 {
+    width: 100%;
+    animation: pop-up-2 8s ease-in forwards;
+    animation-iteration-count: infinite;
+    position: absolute;
+    bottom: 0;
+}
+
+@keyframes pop-up-1 {
+    0% {
+    transform: translateY(50px);
+    opacity: 0;
+    display: block;
+    }
+    9% {
+        transform: translateY(-5px);
+        opacity: 1; 
+    }
+    10% {
+        transform: translateY(0px);
+        opacity: 1; 
+    }
+    40% {
+        transform: translateY(0px);
+        opacity: 1; 
+    }
+    41% {
+        transform: translateY(-5px);
+        opacity: 1; 
+    }
+  
+    50% {
+        transform: translateY(50px);
+        opacity: 0;
+        display: none;
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: 0;
+        display: none;
+
+    }
+}
+
+@keyframes pop-up-2 {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+        display: none;
+
+    }
+    50% {
+    transform: translateY(50px);
+    opacity: 0;
+    display: block;
+
+    }
+    59% {
+        transform: translateY(-5px);
+        opacity: 1; 
+    }
+    60% {
+        transform: translateY(0px);
+        opacity: 1; 
+    }
+    90% {
+        transform: translateY(0px);
+        opacity: 1; 
+    }
+    91% {
+        transform: translateY(-5px);
+        opacity: 1; 
+    }
+  
+    100% {
+        transform: translateY(50px);
+        opacity: 0;
+        display: none;
+
+    }
 }
