@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <script src="main.js"></script>
+
+    <title>Thomas Kelly - Portfolio</title>
+    <meta
+      name="description"
+      content="UX and IxD portfolio focussing on AI and ML applications."
+    />
+    <meta
+      name="keywords"
+      content="UX, User Experience, IxD, Interaction Design, AI, Artificial Intelligence, Thomas Kelly"
+    />
+    <meta name="author" content="Thomas Kelly" />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/Images/thomas-kelly-favicon (1).svg"
+    />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-FRJLBLY3W6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-FRJLBLY3W6");
+    </script>
+  </head>
+
+  <body id="home-page">
+    <a href="#header"
+      ><button class="skip-to-content button button-border">
+        Skip To Content
+      </button></a
+    >
+
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <p style="margin-left: 0">
+            <a href="index.html" class="nav-1"> Thomas Kelly</a>
+          </p>
+        </div>
+        <div class="right">
+          <ul>
+            <li><a href="#work" class="nav-2">Work</a></li>
+            <li><a href="#about" class="nav-3">About</a></li>
+            <li id="end"><a href="#contact-info" class="nav-4">Contact</a></li>
+            <li class="resume-button">
+              <a
+                href="Images/thomas_kelly_CV.pdf"
+                target="_blank"
+                rel="noopener"
+                >Resume</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact-info">Contact</a>
+        <!-- <a
+          href="https://docs.google.com/document/d/e/2PACX-1vQFM4zqx9jFOn2LhDfwo1G7nbeunD67lEJe5IuQJyCrWfxvar2RBGGbJxAVbSUWnO-TNMTHY2haeRxg/pub"
+          target="_blank"
+          rel="noopener"
+          >Resume</a
+        > -->
+        <a href="Images/thomas_kelly_CV.pdf" target="_blank" rel="noopener"
+          >Resume</a
+        >
+      </div>
+    </div>
+
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <span onclick="openNav()" class="menu-icon"
+      ><img src="Images/nav-icon.png" alt="Navigation icon" class="nav-icon"
+    /></span>
+
+    <!-- End of mobile nav -->
+
+    <aside>
+      <a
+        href="mailto:thomaskelly281@gmail.com"
+        class="email-link"
+        target="_blank"
+        rel="noopener"
+        >thomaskelly281@gmail.com</a
+      >
+      <ul>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/thomas-kelly-337ab01b7/"
+            class="linkedin-aside"
+            target="_blank"
+            rel="noopener"
+            ><img src="Images/linkedin-icon.svg" alt="LinkedIn icon"
+          /></a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/thomaskelly.design/"
+            class="instagram-aside"
+            target="_blank"
+            rel="noopener"
+            ><img src="Images/instagram-icon.svg" alt="Instagram icon"
+          /></a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/thomaskelly281"
+            class="github-aside"
+            target="_blank"
+            rel="noopener"
+            ><img src="Images/github-icon.svg" alt="GitHub icon"
+          /></a>
+        </li>
+        <!-- <li>
+          <a
+            href="https://twitter.com/ThomasKellyIxD"
+            class="twitter-aside"
+            target="_blank"
+            rel="noopener"
+            ><img src="/Images/twitter-icon.svg" alt="Twitter icon"
+          /></a>
+        </li> -->
+      </ul>
+    </aside>
+
+    <header id="header">
+      <div class="container">
+        <div class="header-flex">
+          <div>
+            <h1>Thomas Kelly</h1>
+            <h2>UX, Interaction Design, AI & Facilitation</h2>
+          </div>
+          <div class="orb">
+            <img
+              src="/Videos/ai_animation (2).svg"
+              alt="AI orb interface spinning around"
+            />
+          </div>
+        </div>
+
+        <div class="arrow">
+          <p class="label scroll-text">Scroll</p>
+          <img src="/Images/arrow.png" alt="Down arrow icon" />
+        </div>
+      </div>
+    </header>
+
+    <!-- This is a page loader -->
+    <div class="loader-wrapper">
+      <div class="loader">
+        <img src="/Images/thomas-kelly-loader-2.svg" alt="" />
+        <p>Loading... thomaskelly.design</p>
+      </div>
+    </div>
+
+    <main>
+      <section id="mission-statement">
+        <div class="container">
+          <!-- <h3>
+            I am a UX and Interaction designer who improves AI and Machine
+            Learning
+          </h3> -->
+          <h3>I am a UX / Interaction designer and UX for AI Specialist</h3>
+        </div>
+      </section>
+
+      <section id="work">
+        <h2>Work</h2>
+
+        <!--AWTY tile-->
+        <!-- <div class="awty work-area">
+          <div class="work-tile">
+            <img
+              src="/Images/intrusty-tile-image.png"
+              alt="person typing on laptop displaying Intrusty interface"
+            />
+            <div class="work-tile-text">
+              <div>
+                <h4>A.W.T.Y</h4>
+                <h5>Children's Story-telling Companion</h5>
+              </div>
+              <p class="ux-methods">
+                <span style="color: var(--secondary-accent-color)"
+                  >UX Methods:</span
+                >
+                Co-Creation, Voice Prototyping, Wizard of Oz Prototyping
+              </p>
+            </div>
+            <a href=""><button>View Project</button></a>
+          </div>
+        </div> -->
+        <!--End of AWTY Tile-->
+
+        <!--Air Bear tile-->
+        <div class="recite work-area">
+          <div class="work-tile">
+            <img
+              src="/Images/recite-hero-image.jpg"
+              alt="Female subject standing on a stage giving a presentation in front of a crowd, after she previously suffered from stage fright. Now she is confident and focussed."
+            />
+            <div class="work-tile-text">
+              <div>
+                <h4>Recite</h4>
+                <h5>
+                  Public speaking self-confidence improvement mobile
+                  application.
+                  <span class="length-label">- 6 min read</span>
+                </h5>
+              </div>
+              <p class="ux-methods">
+                <span style="color: var(--secondary-accent-color)"
+                  >UX Methods:</span
+                >
+                Interviews, Prototyping, Co-design, Evaluation Testing
+              </p>
+            </div>
+            <a href="https://recite.space/case_study" target="_blank" rel="noopener"><button>View Project</button></a>
+          </div>
+        </div>
+        <!--End of Air Bear Tile-->
+
+        <!--Air Bear tile-->
+        <div class="air-bear work-area">
+          <div class="work-tile">
+            <img
+              src="/Images/air_bear_hero_img.jpg"
+              alt="Mockup of Air Bear sitting in a car seat beside the Air Bear app"
+            />
+            <div class="work-tile-text">
+              <div>
+                <h4>Air Bear</h4>
+                <h5>
+                  Smart air quality monitor protecting children
+                  <span class="length-label">- 4 min read</span>
+                </h5>
+              </div>
+              <p class="ux-methods">
+                <span style="color: var(--secondary-accent-color)"
+                  >UX Methods:</span
+                >
+                Interviews, Prototyping, SWOT Analysis, Cultural Probes,
+                Co-Design
+              </p>
+            </div>
+            <a href="air_bear.html"><button>View Project</button></a>
+          </div>
+        </div>
+        <!--End of Air Bear Tile-->
+
+        <!--Unseen tile-->
+        <div class="unseen work-area">
+          <div class="work-tile">
+            <img
+              src="/Images/unseen-mockup-min.jpg"
+              alt="Mockup of Unseen being used on a train"
+            />
+            <div class="work-tile-text">
+              <div>
+                <h4>Unseen</h4>
+                <h5>
+                  Dealing with antisocial behaviour on public transport
+                  <span class="length-label">- 3 min read</span>
+                </h5>
+              </div>
+              <p class="ux-methods">
+                <span style="color: var(--secondary-accent-color)"
+                  >UX Methods:</span
+                >
+                Interviews, Surveys, Ethnographic Research, Presentations,
+                Prototyping
+              </p>
+            </div>
+            <a href="unseen.html"><button>View Project</button></a>
+            <!-- <p class="length-label">- 6 min read</p> -->
+          </div>
+        </div>
+        <!--End of Unseen Tile-->
+
+        <!--Trigger Remover tile-->
+        <!-- <div class="trigger-remover work-area">
+          <div class="work-tile">
+            <img
+              src="/Images/trigger-remover-image-min.jpg"
+              alt="person typing on laptop displaying Intrusty interface"
+            />
+            <div class="work-tile-text">
+              <div>
+                <h4>Trigger Remover</h4>
+                <h5>
+                  A safer way of browsing the web
+                  <span class="length-label">- 6 min read</span>
+                </h5>
+              </div>
+              <p class="ux-methods">
+                <span style="color: var(--secondary-accent-color)"
+                  >UX Methods:</span
+                >
+                Speculative Design, Prototyping, Emotional State Analysis, User
+                Research, User Testing, User Interviews
+              </p>
+            </div>
+            <a href="trigger-remover.html"><button>View Project</button></a>
+            <!-- <p class="length-label">- 6 min read</p> -->
+          <!-- </div> -->
+        <!-- </div> --> 
+        <!--End of Trigger Remover Tile-->
+
+        <!--Intrusty tile-->
+        <!-- <div class="intrusty work-area">
+          <div class="work-tile">
+            <img
+              src="/Images/intrusty_tile_img-min.jpg"
+              alt="Mockup of Intrusty app"
+            />
+            <div class="work-tile-text">
+              <div>
+                <h4>Intrusty</h4>
+                <h5>
+                  The service getting feedback for students
+                  <span class="length-label">- 4 min read</span>
+                </h5>
+              </div>
+              <p class="ux-methods">
+                <span style="color: var(--secondary-accent-color)"
+                  >UX Methods:</span
+                >
+                Service Design, Prototyping, User Testing
+              </p>
+            </div>
+            <a href="intrusty.html"><button>View Project</button></a>
+            <!-- <p class="length-label">- 4 min read</p> -->
+          </div>
+        </div> -->
+        <!--End of Trigger Remover Tile-->
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <h2>About Me</h2>
+          <div class="flex">
+            <div class="about-me-text">
+              <!-- <hr /> -->
+              <p class="main-text">
+                Hi, I'm Thomas Kelly
+                <span
+                  style="
+                    font-size: smaller;
+                    color: var(--secondary-accent-color);
+                  "
+                  >(He/Him)</span
+                >.
+                <br />
+                <br />
+                I am a <strong>UX</strong> and
+                <strong>Interaction Designer</strong> with a background in
+                Artificial Intelligence.
+              </p>
+
+              <ul>
+                <li>
+                  <span
+                    style="
+                      color: var(--secondary-accent-color);
+                      font-weight: 600;
+                    "
+                    >Currently:</span
+                  >
+                  I just completed my final year of a
+                  <abbr title="Bachelor' of Arts">BA</abbr> in Interaction
+                  Design at
+                  <abbr title="National College of Art and Design, Dublin"
+                    >NCAD</abbr
+                  >. Where I designed a mobile application to improve public speaking ability in young, developing professionals.
+                  <br />
+                  <br />
+                  In 2023, I obtained a
+                  <abbr title="Higher Diploma">HDip</abbr> in AI applications at
+                  <abbr title="College of Computing and Technology">CCT</abbr>,
+                  Dublin, where I gained experience in data visualisation,
+                  programming and data science practices.
+                  <br />
+                  <br />
+                  I enjoy public speaking and workshop facilitation.
+                </li>
+                <li>
+                  <span
+                    style="
+                      color: var(--secondary-accent-color);
+                      font-weight: 600;
+                    "
+                    >Location:</span
+                  >
+                  Dublin, Ireland
+                  <span
+                    style="
+                      font-size: smaller;
+                      color: var(--secondary-accent-color);
+                      font-weight: 400;
+                    "
+                    >(Open to relocation)</span
+                  >.
+                </li>
+                <!-- <li>
+                  <span
+                    style="
+                      color: var(--secondary-accent-color);
+                      font-weight: 600;
+                    "
+                    >My best quality:</span
+                  >
+                  I am happy to                 </li>
+                <li>
+                  <span
+                    style="
+                      color: var(--secondary-accent-color);
+                      font-weight: 600;
+                    "
+                    >My worst quality:</span
+                  >
+                  I am a workaholic 😮‍💨.
+                </li> -->
+              </ul>
+            </div>
+            <div>
+              <picture>
+                <source
+                  media="(max-width: 700px)"
+                  srcset="/Images/about-me-image-compressed.jpg"
+                />
+                <img
+                  src="/Images/about-me-image-compressed.jpg"
+                  alt="Thomas talking to camera"
+                  class="about-image"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section id="skills" class="container-2">
+        <div id="technical-skills">
+          <h5>Technical Skills</h5>
+          <div class="flex">
+            <div id="figma" class="t-skill">
+              <img
+                src="/Images/figma-logo.png"
+                alt="Figma Logo"
+                style="height: 100px; width: auto"
+              />
+              <p>Figma & Figjam</p>
+            </div>
+            <div class="t-skill">
+              <img
+                src="/Images/miro-logo.png"
+                alt="Miro Logo"
+                style="height: 100px; width: auto"
+              />
+              <p>Miro</p>
+            </div>
+            <div class="t-skill">
+              <img
+                src="/Images/hotjar-logo.webp"
+                alt="Hotjar Logo"
+                style="height: 100px; width: auto"
+              />
+              <p>Hotjar</p>
+            </div>
+            <div class="t-skill">
+              <img
+                src="/Images/google-analytics-logo.png"
+                alt="Google Analytic Logo"
+                style="height: 100px; width: auto"
+              />
+              <p>Google Analytics</p>
+            </div>
+            <div class="t-skill">
+              <img
+                src="/Images/html-logo.png"
+                alt="HTML Symbol"
+                style="height: 100px; width: auto"
+              />
+              <p>HTML, CSS & JS</p>
+            </div>
+            <div class="t-skill">
+              <img
+                src="/Images/python-logo-min.png"
+                alt="Python Logo"
+                style="height: 100px; width: auto"
+              />
+              <p>Python</p>
+            </div>
+            <div class="t-skill">
+              <img
+                src="/Images/processing-logo.svg"
+                alt="Processing Logo"
+                style="height: 100px; width: auto"
+              />
+              <p>Processing & p5.js</p>
+            </div>
+            <div class="t-skill">
+              <img
+                src="/Images/adobe-logo.png"
+                alt="Adobe CC Logo"
+                style="height: 100px; width: auto"
+              />
+              <p>Adobe CC</p>
+            </div>
+            <div class="t-skill">
+              <img
+                src="/Images/sketch-logo.png"
+                alt="Sketch Logo"
+                style="height: 100px; width: auto"
+              />
+              <p>Sketch</p>
+            </div>
+          </div>
+        </div>
+        <div id="soft-skills">
+          <h5>Soft Skills</h5>
+          <div class="flex-2">
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/informationArchitecure-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
+                <p>Information Architecture</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/ceativeTech-icon.svg"
+                  alt=""
+                  style="height: auto; width: 35px"
+                />
+                <p>Creative Technologies</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/ux-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
+                <p>UX & IxD</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/collaboration-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
+                <p>Collaboration</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/userResearch-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
+                <p>User Research</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/projectManagement-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
+                <p>Project Managment</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/empathy-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
+                <p>Empathy</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/facilitation-icon.svg"
+                  alt=""
+                  style="height: auto; width: 30px"
+                />
+                <p>Facilitation</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/usability-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
+                <p>Usability</p>
+              </div>
+            </div>
+            <div class="s-skill">
+              <div>
+                <img
+                  src="/Images/prototyping-icon.svg"
+                  alt=""
+                  style="height: auto; width: 40px"
+                />
+                <p>Prototyping</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- <section id="testimonials">
+        <div class="container-2">
+          <h3>Testimonials</h3>
+          <div class="testimonial show-on-scroll" id="left">
+            <div class="testimonial-flex-1">
+              <img
+                src="Images/testimonial-example-img.png"
+                alt="Circular image of man smiling"
+                style="height: 80px"
+              />
+              <div class="testimonial-text">
+                <p>Thomas is a great designer!!!</p>
+                <p class="label">-John Doe</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial show-on-scroll" id="right">
+            <div class="testimonial-flex-2">
+              <div class="testimonial-text">
+                <p>
+                  I loved working with Thomas Kelly. I never met someone so
+                  smart
+                </p>
+                <p class="label">-Jane Doe</p>
+              </div>
+              <img
+                src="Images/testimonial-example-img.png"
+                alt="Circular image of man smiling"
+                style="height: 80px"
+              />
+            </div>
+          </div>
+        </div>
+      </section> -->
+    </main>
+
+    <footer>
+      <div class="container-2">
+        <div class="contact-info" id="contact-info">
+          <h2 style="text-align: center">Contact Info</h2>
+          <div class="flex">
+            <a
+              href="mailto:thomaskelly281@gmail.com"
+              class="email-icon"
+              target="_blank"
+              rel="noopener"
+              ><div>
+                <img src="/Images/email-icon.svg" alt="" style="height: 50px" />
+                <p>Email: <span>thomaskelly281@gmail.com</span></p>
+              </div></a
+            >
+            <a
+              href="https://www.linkedin.com/in/thomas-kelly-337ab01b7/"
+              class="linkedin-icon"
+              target="_blank"
+              rel="noopener"
+              ><div>
+                <img
+                  src="/Images/linkedin-icon.svg"
+                  alt=""
+                  style="height: 50px"
+                />
+                <p>LinkedIn: <span>Thomas Kelly</span></p>
+              </div></a
+            >
+            <a
+              href="https://www.instagram.com/thomaskelly.design/"
+              class="instagram-icon"
+              target="_blank"
+              rel="noopener"
+              ><div>
+                <img
+                  src="/Images/instagram-icon.svg"
+                  alt=""
+                  style="height: 50px"
+                />
+                <p>Instagram: <span>@thomaskelly.design</span></p>
+              </div></a
+            >
+            <a
+              href="https://github.com/thomaskelly281"
+              class="github-icon"
+              target="_blank"
+              rel="noopener"
+              ><div>
+                <img
+                  src="/Images/github-icon.svg"
+                  alt=""
+                  style="height: 50px"
+                />
+                <p>GitHub: <span>thomaskelly281</span></p>
+              </div></a
+            >
+            <!-- <a
+              href="https://twitter.com/ThomasKellyIxD"
+              class="twitter-icon"
+              target="_blank"
+              rel="noopener"
+              ><div>
+                <img
+                  src="/Images/twitter-icon.svg"
+                  alt=""
+                  style="height: 50px"
+                />
+                <p>Twitter: <span>@ThomasKellyIxD</span></p>
+              </div></a
+            > -->
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

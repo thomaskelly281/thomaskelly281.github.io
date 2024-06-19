@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="main.js"></script>
+
+    <title>Thomas Kelly - Portfolio</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/Images/thomas-kelly-favicon (1).svg"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".slider").bxSlider();
+      });
+
+      var sliderWidths;
+
+      if ($(window).width() < 420) {
+        sliderWidths = 380;
+      } else if ($(window).width() < 768) {
+        sliderWidths = 700;
+      } else if ($(window).width() < 1200) {
+        sliderWidths = 800;
+      } else {
+        sliderWidths = 900;
+      }
+
+      $(function () {
+        $(".bxslider").bxSlider({
+          mode: "horizontal",
+          captions: true,
+          sliderWidth: sliderWidths,
+          captions: true,
+          speed: 300,
+        });
+      });
+    </script>
+
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+
+  <body id="air" class="project">
+    <a href="#header"
+      ><button class="skip-to-content button button-border">
+        Skip To Content
+      </button></a
+    >
+
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <p style="margin-left: 0">
+            <a href="index.html" class="nav-1"> Thomas Kelly</a>
+          </p>
+        </div>
+        <div class="right">
+          <ul>
+            <li><a href="index.html#work" class="nav-2">Work</a></li>
+            <li><a href="index.html#about" class="nav-3">About</a></li>
+            <li id="end">
+              <a href="index.html#contact-info" class="nav-4">Contact</a>
+            </li>
+            <li class="resume-button">
+              <a
+                href="Images/thomas_kelly_CV.pdf"
+                target="_blank"
+                rel="noopener"
+                >Resume</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact-info">Contact</a>
+        <a
+          href="Images/thomas_kelly_CV.pdf"
+          target="_blank"
+          rel="noopener"
+          >Resume</a
+        >
+      </div>
+    </div>
+
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <span onclick="openNav()" class="menu-icon"
+      ><img src="Images/nav-icon.png" alt="Navigation icon" class="nav-icon"
+    /></span>
+
+    <!-- End of mobile nav -->
+
+    <!-- Start of project Nav -->
+
+    <div class="project-nav">
+      <a href="#">Overview</a>
+      <a href="#air-problem">Problem</a>
+      <a href="#air-proposal">Proposal</a>
+      <a href="#air-research">Research</a>
+      <a href="#air-research-insights">Insights</a>
+      <a href="#air-concepting">Concepting</a>
+      <a href="#air-prototyping">Prototyping</a>
+      <a href="#air-testing">Testing</a>
+      <a href="#air-deliverables">Deliverables</a>
+    </div>
+
+    <!-- End of project Nav -->
+
+    <header>
+        <div></div>
+    </header>
+
+    <main class="air-container">
+        <section id="air-overview">
+            <div class="box-left">
+                <div class="title">
+                    <h5>Overview</h5>
+                </div>
+                <div>
+                    <p>Air Bear is a smart air quality monitor for children that notifies parents of harmful air quality, uses AI to nudge positive behavioural changes and prompts climate action. It was designed under the brief "Apply AI" for the 2023/24 RSA Design Awards.</p>
+                </div>
+            </div>
+            <div class="box-right">
+                <p>                
+                    <span class="heading-span">Duration:</span> Oct 2023 - Dec 2023
+                </p>
+                <a href="https://youtu.be/Wjd03oFbAew?si=WSrQh2up7QPTLufJ" target="_blank"
+                rel="noopener">
+                    <li>
+                        <img src="Images/open-new-tab-icon.svg" alt="">
+                        <p><strong>Project Video</strong></p>
+                    </li>
+                </a>
+            </div>
+        </section>
+
+        <section id="air-problem">
+            <div class="box-left">
+                <div class="title">
+                    <h5>Problem</h5>
+                </div>
+                <div>
+                    <p>Children are highly vulnerable to poor air quality related heath issues. Parents often overlook air quality's impact on children's health, risking future problems such as asthma, hay fever and cancer.</p> 
+                </div>
+            </div>
+        </section>
+
+        <section id="air-proposal">
+                <div class="box-left">
+                    <div class="title">
+                        <h5>Proposal</h5>
+                    </div>
+                    <div class="text-div">
+                        <p>Air Bear uses a network of bears collecting air particle data to create a comprehension of air quality around children in a localised area.</p>
+                        <br>
+                        <p>The Air Bear App notifies parents of predicted harmful air scenarios, recommending tailored behavioural changes to protect their child.</p>
+                        <br>
+                        <p>To improve local air quality, the app encourages users to join groups striving to improve it.</p>
+                    </div>
+                </div>
+                <div class="box-right">
+                    <img src="/Images/air_bear_proposal_img.jpg" alt="Mockup of Air Bear in a child's room">
+                </div>
+        </section>      
+    </main>
+
+    <section id="air-research">
+        <div class="box-left">
+            <img src="/Images/air_bear_research_img.jpg" alt="Co-design session with group of parents">
+        </div>
+        <div class="box-right">
+            <div class="title">
+                <h5>Research</h5>
+            </div>
+            <div class="text-div">
+                <p>From <span class="purple-span">interviews with parents</span> and guardians who have participated in climate activism to improve air quality issues in their area, we gained insight into the need for accessible predictive, current, and past air quality data to inform parent’s decisions around children’s exposure to air pollutants. </p>
+                <br>
+                <p>Through <span class="purple-span">co-design and feedback sessions</span>, the necessity to nudge parents and others to participate in a collective effort to improve air quality in any manner was apparent.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="air-research-quotes">
+        <div class="align-div">
+        <div class="quote-box">
+            <div class="quote-text">
+                <p><strong>“I was always around fumes, even when I was pregnant I was working in the garage, and everyone smoked at home anyways. We just accepted he [child] would have s*** lungs.”</strong></p>
+            </div>
+            <div class="quote-name-label">
+                <p>-Parent</p>
+            </div>
+        </div>
+        <div class="quote-box">
+            <div class="quote-text">
+                <p><strong>“...for some, they need it all done for them, cause they won’t have connections and wont be able to motivate anyone and build a community.”</strong></p>
+            </div>
+            <div class="quote-name-label">
+                <p>-Parent involved in air quality activism</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="air-research-insights">
+        <div class="insight">
+            <div class="insight-title">
+                <h5>Insight 1</h5>
+            </div>
+            <div class="insight-text">
+                <p><span class="purple-span">Children are the most vulnerable to air pollutants</span>, yet they have no poor air quality protection device specifically designed for their needs. </p>
+            </div>
+        </div>
+        <div class="insight">
+            <div class="insight-title">
+                <h5>Insight 2</h5>
+            </div>
+            <div class="insight-text">
+                <p>Parents are often concerned about their child being around poor air quality, but <span class="purple-span">don’t know how to protect them</span>.</p>
+            </div>
+        </div>
+        <div class="insight">
+            <div class="insight-title">
+                <h5>Insight 3</h5>
+            </div>
+            <div class="insight-text">
+                <p><span class="purple-span">Most people often don’t know where to start with taking climate action</span>, and can get overwhelmed trying to find information and groups to join.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="air-container">
+        <section id="air-concepting">
+            <div class="box-left">
+                <div class="title">
+                    <h5>Concepting</h5>
+                </div>
+                <div class="text-div">
+                    <p>Concepts were generated through <span class="purple-span">ideation sessions with parents</span>. The use of prompts in the form of <span class="purple-span">"How Might We" statements</span> created from the research insights guided the ideation sessions. Exercises included <span class="purple-span">sticky-note brainstorming</span> and <span class="purple-span">Crazy Eights</span>. Selection of the most viable concepts was established through dot voting. A <span class="purple-span">SWOT analysis</span> was also conducted for each concept, ensuring it fit the defined problem.</p>
+                </div>
+            </div>
+            <div class="box-right">
+                <img src="/Images/air-bear-ideation-img.jpg" alt="Crazy Eights, sticky notes and concept drawings from ideation exercises.">
+            </div>
+        </section>
+        <img src="/Images/air_bear_prototyping_img.jpg" alt="3 examples of Air Bear prototypes" id="air-large-img" style="margin-bottom: 15vh;">
+
+        <section id="air-prototyping">
+            <div class="box-left">
+                <div class="title">
+                    <h5>Prototyping</h5>
+                </div>
+                <div class="text-div">
+                    <p>3 physical teddy bear prototypes were created for testing to evaluate the functionality of the electronics (air quality sensors), and to establish how children would react and interact with the teddy bears as Air Bear’s intent was to fit into children’s daily routine seamlessly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="air-testing">
+            <div class="box-left">
+                <div class="title">
+                    <h5>Testing</h5>
+                </div>
+                <div class="text-div">
+                    <p>Observations from <span class="purple-span">cultural probes</span> established that children had no issue with the teddy bears being part of their routines, validating the idea.</p>
+                    <br>
+                    <p>Parent’s expressed the opinion that it would not grab their child’s attention and would possibly not be played with. This was a non-issue as there would be less interference with the internal electronics and therefore less outlying air quality data.</p>
+                </div>
+            </div>
+            <div class="box-right">
+                <img src="/Images/air-bear-evaluation-img.jpg" alt="Person testing the Air Bear app">
+            </div>
+        </section>
+
+    </main>
+
+    <section id="air-testing-quotes">
+        <div class="align-div">
+            <div class="quote-box">
+                <div class="quote-text">
+                    <p><strong>“I don’t think [Child’s name] would play with it, cause he liked flashing lights and things that made noises. But I think if it was there he wouldn’t mistreat it.”</strong></p>
+                </div>
+                <div class="quote-name-label">
+                    <p>-Parent</p>
+                </div>
+            </div>
+            <div class="quote-box">
+                <div class="quote-text">
+                    <p><strong>“It wouldn’t it would be [Child 1]’s style, but [Child 2] would like it. Would probably chew its arm off.”</strong></p>
+                </div>
+                <div class="quote-name-label">
+                    <p>-Parent</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="air-container">
+        <img src="/Images/air_bear_testing_img.jpg" alt="Feedback on high fidelity screen mockups of the Air Bear app" id="air-large-img">
+
+
+        <section id="air-deliverables">
+            <div class="box-left">
+                <div class="title">
+                    <h5>Deliverables</h5>
+                </div>
+                <div>
+                    <p>*Deliverables will be published once RSA design award submissions are closed*</p>
+                </div>
+            </div>
+            <div class="box-right">
+                <ul>
+                    <a href="/Images/air-bear-user-flow.pdf" target="_blank"
+                    rel="noopener">
+                        <li>
+                            <img src="Images/open-new-tab-icon.svg" alt="">
+                            <p><strong>User Flow</strong></p>
+                        </li>
+                    </a>
+                    <a href="/Images/air-bear-technical-spec.pdf" target="_blank"
+                    rel="noopener">
+                        <li>
+                            <img src="Images/open-new-tab-icon.svg" alt="">
+                            <p><strong>Technical Spec</strong></p>
+                        </li>
+                    </a>
+                    <a href="#" target="_blank"
+                    rel="noopener">
+                        <li>
+                            <img src="Images/open-new-tab-icon.svg" alt="">
+                            <p><strong>Presentation Boards</strong></p>
+                        </li>
+                    </a>
+                </ul>
+            </div>
+    </section>   
+
+    <img src="/Images/air_bear_end_img.jpg" alt="Desk covered in submission work for Air Bear project" id="air-large-img">
+
+    </main>
+
+
+    <footer>
+        <h4>View Other Projects</h4>
+        <div class="flex">
+          <a href="intrusty.html">Intrusty</a>
+          <a href="trigger-remover.html">Trigger Remover</a>
+        </div>
+      </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
