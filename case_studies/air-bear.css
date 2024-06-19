@@ -1,0 +1,100 @@
+
+
+#air-bear-hero-img {
+    width: 60%;
+}
+
+main img {
+    border-radius: 12px;
+}
+
+header .flex-row-start div:first-child {
+    max-width: 30%;
+    margin-right: 10rem;
+    height: 100%;
+
+}
+
+.flex-row-start p {
+    width: 100%;
+}
+
+header .flex-column-between {
+    height: 100%;
+}
+
+#problem-section div,
+#research-section div{
+    width: 30%;
+    margin-right: 10rem;
+}
+
+#word-cloud {
+    text-align: center;
+    align-items: center;
+    position: relative;
+}
+
+#word-cloud h1 span {
+    color: var(--grey-200);
+    font-size: smaller;
+}
+
+#word-cloud h1 .darker {
+    color: var(--grey-300);
+
+}
+
+#word-cloud .cloud-green {
+    color: var(--main-accent-color);
+}
+
+#word-cloud img {
+    width: 16rem;
+    position: absolute;
+    top: 10%;
+    right: 0;
+}
+
+#word-cloud span img {
+    display: none;
+}
+
+#word-cloud .interviews img {
+    filter: saturate(10%); 
+}
+
+#word-cloud span img {
+    position: absolute;
+    top: -70px; /* Adjust vertical distance */
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    z-index: 10;
+    width: 60%; /* Adjust width */
+    height: auto; /* Maintain aspect ratio */
+    transition: opacity 0.3s; 
+}
+
+#word-cloud span:hover img {
+    display: block;
+    opacity: 1;
+}
+
+#prototyping-section p {
+    width: 30%;
+    margin-right: 10rem;
+}
+
+#prototyping-section img {
+    width: 40%;
+}
+
+#evaluation-section video {
+    width: 65%;
+}
+
+#evaluation-section p {
+    margin-right: 10rem;
+    width: 30%;
+}
