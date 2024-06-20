@@ -198,3 +198,107 @@ header .flex-column-between {
 
     }
 }
+
+
+/* Responsiveness */
+
+@media only screen and (max-width: 1900px) {
+    #word-cloud img {
+        width: 10rem;
+        position: absolute;
+        top: 10%;
+        right: 0;
+    }
+}
+
+
+@media only screen and (max-width: 1400px) {
+    #word-cloud img {
+        display: none;
+    }
+
+    header .flex-row-start div:first-child {
+        max-width: 40%;
+        margin-right: 5rem;
+        height: 100%;
+    
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .flex-row-start {
+        flex-direction: column;
+    }
+
+    header {
+        width: 100%;
+    }
+
+    
+#air-bear-hero-img {
+    margin-top: 3rem;
+    width: 100%;
+}
+
+header .flex-row-start div:first-child {
+    max-width: 60%;
+}
+
+#problem-section div,
+#research-section div{
+    width: 60%;
+}
+
+#prototyping-section p {
+    width: 60%;
+}
+
+#problem-section div {
+    padding-bottom: 10rem;
+}
+
+#evaluation-section p {
+    width: 60%;
+}
+
+#prototyping-section img {
+    width: 60%;
+}
+}
+
+
+@media only screen and (max-width: 600px) {
+header .flex-row-start div:first-child {
+    max-width: 100%;
+}
+
+#problem-section div,
+#research-section div{
+    width: 100%;
+}
+
+#prototyping-section p {
+    width: 100%;
+}
+
+#problem-section div {
+    padding-bottom: 10rem;
+}
+
+#evaluation-section p {
+    width: 100%;
+}
+
+#evaluation-section video {
+    width: 100%;
+}
+
+#prototyping-section img {
+    width: 100%;
+}
+
+#word-cloud span:focus img {
+    display: block;
+    opacity: 1;
+}
+}
