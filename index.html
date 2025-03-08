@@ -30,139 +30,11 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="fadeIn.js"></script>
+    <script src="/components/includeNav.js"></script>
 
   </head>
   <body>
-    <aside>
-      <nav>
-        <!-- Home & About Links -->
-        <ul class="arrow-right">
-          <li>
-            <a href="#">
-              <div>
-                <p>Home</p>
-                <img
-                  src="images/nav-arrow-right.svg"
-                  alt="#"
-                  class="nav-arrow-right"
-                />
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#about" rel="noopener">
-              <div>
-                <p>About</p>
-                <img
-                  src="images/nav-arrow-right.svg"
-                  alt="#"
-                  class="nav-arrow-right"
-                />
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- Work -->
-        <ul class="border-top arrow-right arrow-diagonal">
-          <h5>Work</h5>
-          <li>
-            <a href="https://recite.space/case_study" target="_blank" rel="noopener">
-              <div>
-                <p>Recite</p>
-                <img src="images/nav-diagonal-arrow.svg" alt="#" class="nav-arrow-diagonal" />
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="case_studies/air-bear.html">
-              <div>
-                <p>Air Bear</p>
-                <img
-                  src="images/nav-arrow-right.svg"
-                  alt="#"
-                  class="nav-arrow-right"
-                />
-              </div>
-            </a>
-          </li>
-          <!-- <li>
-            <a href="#">
-              <div>
-                <p>Unseen</p>
-                <img
-                  src="images/nav-arrow-right.svg"
-                  alt="#"
-                  class="nav-arrow-right"
-                />
-              </div>
-            </a>
-          </li> -->
-        </ul>
-        <ul class="border-top arrow-diagonal arrow-right">
-          <h5>Contact</h5>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/thomas-kelly-337ab01b7/"
-              rel="noopener"
-              target="_blank"
-            >
-              <div>
-                <p>LinkedIn</p>
-                <img
-                  src="images/nav-diagonal-arrow.svg"
-                  alt="#"
-                  class="nav-arrow-diagonal"
-                />
-              </div>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/thomaskelly281?tab=repositories"
-              rel="noopener"
-              target="_blank"
-            >
-              <div>
-                <p>GitHub</p>
-                <img
-                  src="images/nav-diagonal-arrow.svg"
-                  alt="#"
-                  class="nav-arrow-diagonal"
-                />
-              </div>
-            </a>
-          </li>
-          <li>
-            <a
-              href="mailto:thomaskelly281@gmail.com"
-              rel="noopener"
-              target="_blank"
-            >
-              <div>
-                <p>Email</p>
-                <img
-                  src="images/nav-diagonal-arrow.svg"
-                  alt="#"
-                  class="nav-arrow-diagonal"
-                />
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="documents/cv.pdf" rel="noopener" target="_blank">
-              <div>
-                <p>CV</p>
-                <img
-                  src="images/nav-diagonal-arrow.svg"
-                  alt="#"
-                  class="nav-arrow-diagonal"
-                />
-              </div>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+    <div id="nav-component"></div>
 
     <main>
       <header id="header">
@@ -175,6 +47,23 @@
       <section id="work" class="hideme">
         <h5>Work</h5>
         <div class="work-container">
+          <!-- Assistant Card -->
+          <a href="case_studies/assistant.html" id="assistant-card" rel="noopener">
+            <div class="work-card">
+              <div class="vid-container">
+                <img src="images/empty-state-assistant.jpg" alt="Sitecore Stream Assistant interface" 
+                style="border-radius: 8px;"/>
+              </div>
+            </div>
+            <div>
+              <div class="flex-space-between-row">
+                <h4>Assistant - Sitecore Stream</h4>
+                <h5>2024-2025</h5>
+              </div>
+              <h6>AI-Powered Brand Asset Chat For Marketers</h6>
+            </div>
+          </a>
+
           <!-- Recite Card -->
           <a href="https://recite.space/case_study" id="recite-card" target="_blank" rel="noopener">
             <div class="work-card">
@@ -212,43 +101,43 @@
 
     <!-- Horizontal scoller -->
     <div class="hori-scroll hideme">
-      <div class="horizontal-scrolling-items">
-        <div class="horizontal-scrolling-items__item">
-          <h1>
-            Interaction Design, Creative Approach, Open Human-Centered Design,
-            Critical Design, Speculative Design,&nbsp
-          </h1>
+        <div class="horizontal-scrolling-items">
+            <div class="horizontal-scrolling-items__item">
+                <p class="scroll-text">
+                    Interaction Design, Creative Approach, Open Human-Centered Design,
+                    Critical Design, Speculative Design,&nbsp;
+                </p>
+            </div>
+            <div class="horizontal-scrolling-items__item">
+                <p class="scroll-text">
+                    Interaction Design, Creative Approach, Open Human-Centered Design,
+                    Critical Design, Speculative Design,&nbsp;
+                </p>
+            </div>
         </div>
-        <div class="horizontal-scrolling-items__item">
-          <h1>
-            Interaction Design, Creative Approach, Open Human-Centered Design,
-            Critical Design, Speculative Design,&nbsp
-          </h1>
+        <div class="hori-scrollStill">
+            <div class="horizontal-scrolling-itemsStill">
+                <div class="horizontal-scrolling-items__item">
+                    <p class="scroll-text">
+                        Technology, <span>About Me</span>, Data Design, Human-Computer Interaction, Prototyping, Lo-Fi, Hi-Fi, Technology,&nbsp;
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="hori-scrollStill">
-        <div class="horizontal-scrolling-itemsStill">
-          <div class="horizontal-scrolling-items__item">
-            <h1>
-              echnology, <span>About Me</span>, Data Design, Human-Computer Interaction, Prototyping, Lo-Fi, Hi-Fi, Technology,&nbsp
-            </h1>
-          </div>
+        <div class="horizontal-scrolling-itemsRev">
+            <div class="horizontal-scrolling-items__itemRev">
+                <p class="scroll-text">
+                    Service Design, Figma, Workshop Facilitation, Adobe CC, Artificial
+                    Intelligence, Product Design,&nbsp;
+                </p>
+            </div>
+            <div class="horizontal-scrolling-items__itemRev">
+                <p class="scroll-text">
+                    Service Design, Figma, Workshop Facilitation, Adobe CC, Artificial
+                    Intelligence, Product Design,&nbsp;
+                </p>
+            </div>
         </div>
-      <div class="horizontal-scrolling-itemsRev">
-        <div class="horizontal-scrolling-items__itemRev">
-          <h1>
-            Service Design, Figma, Workshop Facilitation, Adobe CC, Artificial
-            Intelligence, Product Design,&nbsp
-          </h1>
-        </div>
-        <div class="horizontal-scrolling-items__itemRev">
-          <h1>
-            Service Design, Figma, Workshop Facilitation, Adobe CC, Artificial
-            Intelligence, Product Design,&nbsp
-          </h1>
-        </div>
-      </div>
-    </div>
     </div>
 
     <main>
@@ -257,12 +146,16 @@
             <div class="flex-row-start about-text-section">
                 <div class="about_text flex-column-between">
                     <p>
-                      As a product designer on the Stream team at Sitecore, I focus on creating innovative, AI-driven solutions for our DXP that enhance customer experiences and align with Sitecore's strategic vision. Notably, I contributed to the design of Brand Assistant, a flagship AI-led feature of Stream unveiled at Sitecore Symposium 2024. I also collaborate with internal design teams to ensure consistency in the implementation of AI features across Sitecore's product suite, maintaining alignment with the company's design standards and brand identity.                        <br>
+                      As a Product Designer on the Stream team at Sitecore, responsible for Assistant, Brand Kits, and AI design pattern consistency across products, I specialise in crafting AI-driven solutions that enhance customer experiences within our DXP.
+                      <br>
+                      <br>
+                      I am the primary custodian of Blok, Sitecore's design system, ensuring coherence across our product suite and maintaining components and recipes for our changing design requirements. Additionally, I drive innovation as the primary designer behind Sitecore agentic services, where we experiment with AI agentic workflows to shape the future of AI-powered experiences within our products.
+                      <br>
+                      <br>
+                      Notably, I contributed to the design of Assistant, a flagship AI-led feature unveiled at Sitecore Symposium 2024. I collaborate across teams to establish unified AI design patterns, aligning Sitecore's product suite with strategic goals and brand identity.
                         <br>
-                        I have a Bachelor's degree in Interaction design from the National College of Art & Design, Dublin, where my final project Recite was highly commended at our final year exhibition. I have a postgraduate higher diploma in AI applications, which afforded me the ability to design for AI-led products and communicate and understand AI functionality with management and development teams effectively. 
                         <br>
-                        <br>
-                        My interest in workshop facilitation and public speaking, highlighted by my bachelor’s project, has refined my presentation skills and ability to engage with customers and users.
+                        I hold a Bachelor's degree in Interaction Design from NCAD, Dublin, where my final-year project, Recite, was highly commended. My postgraduate Higher Diploma in AI Applications equips me with the expertise to design AI-driven products while effectively bridging the gap between design, AI functionality, and development.
                         <br>
                         <br>
                     </p>
@@ -319,12 +212,14 @@
                 </div>
           </div>
         </section>
+
+        <footer>
+          <p>Email: thomaskelly281@gmail.com</p>
+          <p>Thomas Kelly &#169 2025</p>
+      </footer>
     </main>
 
-    <footer>
-        <p>Email: thomaskelly281@gmail.com</p>
-        <p>Thomas Kelly &#169 2024</p>
-    </footer>
+    
     
   </body>
 </html>

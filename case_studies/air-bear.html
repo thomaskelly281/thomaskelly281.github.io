@@ -26,108 +26,12 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../fadeIn.js"></script>
+    <script src="../components/includeNav.js"></script>
 
 </head>
 
 <body>
-    <aside>
-        <nav>
-            <!-- Home & About Links -->
-            <ul class="arrow-right">
-                <li>
-                    <a href="../index.html">
-                        <div>
-                            <p>Home</p>
-                            <img src="../images/nav-arrow-right.svg" alt="#" class="nav-arrow-right" />
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="../index.html#about" rel="noopener">
-                        <div>
-                            <p>About</p>
-                            <img src="../images/nav-arrow-right.svg" alt="#" class="nav-arrow-right" />
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            <!-- Work -->
-            <ul class="border-top arrow-right arrow-diagonal">
-                <h5>Work</h5>
-                <li>
-                    <a href="https://recite.space/case_study" target="_blank" rel="noopener">
-                        <div>
-                            <p>Recite</p>
-                            <img src="../images/nav-diagonal-arrow.svg" alt="#" class="nav-arrow-diagonal" />
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>Air Bear</p>
-                            <img src="../images/nav-arrow-right.svg" alt="#" class="nav-arrow-right" />
-                        </div>
-                    </a>
-                </li>
-                <!-- <li>
-            <a href="#">
-              <div>
-                <p>Unseen</p>
-                <img
-                  src="images/nav-arrow-right.svg"
-                  alt="#"
-                  class="nav-arrow-right"
-                />
-              </div>
-            </a>
-          </li> -->
-            </ul>
-            <ul class="border-top arrow-diagonal arrow-right">
-                <h5>Contact</h5>
-                <li>
-                    <a href="https://www.linkedin.com/in/thomas-kelly-337ab01b7/" rel="noopener" target="_blank">
-                        <div>
-                            <p>LinkedIn</p>
-                            <img src="../images/nav-diagonal-arrow.svg" alt="#" class="nav-arrow-diagonal" />
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a
-                      href="https://github.com/thomaskelly281?tab=repositories"
-                      rel="noopener"
-                      target="_blank"
-                    >
-                      <div>
-                        <p>GitHub</p>
-                        <img
-                          src="images/nav-diagonal-arrow.svg"
-                          alt="#"
-                          class="nav-arrow-diagonal"
-                        />
-                      </div>
-                    </a>
-                  </li>
-                <li>
-                    <a href="mailto:thomaskelly281@gmail.com" rel="noopener" target="_blank">
-                        <div>
-                            <p>Email</p>
-                            <img src="../images/nav-diagonal-arrow.svg" alt="#" class="nav-arrow-diagonal" />
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="../documents/cv.pdf" rel="noopener" target="_blank">
-                        <div>
-                            <p>CV</p>
-                            <img src="../images/nav-diagonal-arrow.svg" alt="#" class="nav-arrow-diagonal" />
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+    <div id="nav-component"></div>
 
     <main>
 
@@ -179,7 +83,7 @@
                 <h5>Research</h5>
                 <p>From interviews with parents and guardians who have participated in climate activism to improve air
                     quality issues in their area, I gained insight into the need for accessible predictive, current, and
-                    past air quality data to inform parent’s decisions around children’s exposure to air pollutants.
+                    past air quality data to inform parent's decisions around children's exposure to air pollutants.
                     <br><br>
                     Through co-design and feedback sessions, the necessity to nudge parents and others to participate in
                     a collective effort to improve air quality in any manner was apparent.
@@ -188,8 +92,8 @@
             <div>
                 <h5>Concepting</h5>
                 <p>
-                    During the concept phase, ideas were generated through ideation sessions with parents using ‘How
-                    Might We’ statements. Sticky-note brainstorming and Crazy Eights sessions were conducted in support
+                    During the concept phase, ideas were generated through ideation sessions with parents using 'How
+                    Might We' statements. Sticky-note brainstorming and Crazy Eights sessions were conducted in support
                     of the idea generation.
                 </p>
             </div>
@@ -219,7 +123,7 @@
             <div class="flex-row-start">
                 <p>3 physical teddy bear prototypes were created for testing to evaluate the functionality of the
                     electronics (air quality sensors), and to establish how children would react and interact with the
-                    teddy bears as Air Bear’s intent was to fit into children’s daily routine seamlessly.</p>
+                    teddy bears as Air Bear's intent was to fit into children's daily routine seamlessly.</p>
                 <img src="../images/air-bear-prototypes.webp" alt="Three Air Bear teddy prototypes made using Arduino">
             </div>
         </section>
@@ -231,7 +135,7 @@
                 <p>Observations from cultural probes established that children had no issue with the teddy bears being
                     part of their routines, validating the idea.
                     <br><br>
-                    Parent’s expressed the opinion that it would not grab their child’s attention and would possibly not
+                    Parent's expressed the opinion that it would not grab their child's attention and would possibly not
                     be played with. This was a non-issue as there would be less interference with the internal
                     electronics and therefore less outlying air quality data.
                 </p>
