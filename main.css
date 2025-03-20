@@ -37,7 +37,7 @@ section {
     margin-bottom: 1.5rem;
     transition: ease-in-out 0.2s;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     padding: 2rem;
     box-sizing: border-box;
 }
@@ -57,9 +57,8 @@ section {
 
 .work-card:hover {
     background: #fdfdfd;
-    -webkit-box-shadow: 0px 10px 15px 8px rgb(230, 230, 230);
-    -moz-box-shadow: 0px 10px 15px 8px rgb(230, 230, 230);
-    box-shadow: 0px 10px 15px 8px rgb(230, 230, 230);
+    box-shadow: 0 4px 10px rgba(65, 65, 65, 0.1);
+
 }
 
 .flex-space-between-row {
@@ -339,6 +338,10 @@ to {transform: translateX(0%)}
     #assistant-card {
         max-width: 100%;
     }
+
+    #blok-card {
+        max-width: 100%;
+    }
 }
 
 @media only screen and (max-width: 700px) {
@@ -369,13 +372,13 @@ to {transform: translateX(0%)}
     width: 100%;
     min-width: 20%;
     max-width: 48.5%;
-    height: 700px;
+    /* height: 700px; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex-wrap: nowrap;
     align-content: flex-start;
-    padding: 2rem;
+    /* padding: 2rem; */
     box-sizing: border-box;
 
 }
@@ -383,13 +386,38 @@ to {transform: translateX(0%)}
 /* Update the vid-container styles for the Assistant card */
 #assistant-card .vid-container {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 #assistant-card .vid-container img {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: contain; /* Change from cover to contain */
     border-radius: 8px;
+}
+
+#blok-card {
+    width: 100%;
+    min-width: 20%;
+    max-width: 48.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+}
+
+#blok-card .vid-container {
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#blok-card .vid-container img {
+    width: 50%;
+    /* height: auto; */
+    object-fit: contain;
 }
 
