@@ -33,6 +33,42 @@ export default function SplashSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Calculate progress based on how much of the section has scrolled past the top
+      // 0 = section is fully in view at the top
+      // 1 = section has completely scrolled past
+      const sectionTop = rect.top;
+      
+      // Only start animation when section starts leaving the top of viewport
+      let progress = 0;
+      if (sectionTop < 0) {
+        // Section is scrolling out of view - calculate progress
+        progress = Math.min(1, Math.abs(sectionTop) / windowHeight);
+      }
+
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Compute fade and horizontal motion as user scrolls to next section
+  const textOpacity = isVisible ? Math.max(0, Math.min(1, 1 - scrollProgress * 1.2)) : 0;
+  const textTranslateX = isVisible ? -scrollProgress * 300 : 0; // move left
+  const cardsOpacity = isVisible ? Math.max(0, Math.min(1, 1 - scrollProgress * 1.2)) : 0;
+  const cardsTranslateX = isVisible ? scrollProgress * 300 : 0; // move right
+
   return (
     <div 
       ref={sectionRef}
@@ -45,18 +81,36 @@ export default function SplashSection() {
             <h1 
               className={`text-4xl font-medium text-black leading-[1.5] transition-all duration-1000 ease-out ${
                 isVisible 
-                  ? 'opacity-100 translate-y-0' 
+                  ? 'translate-y-0' 
                   : 'opacity-0 translate-y-8'
               }`}
               style={{
-                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                opacity: isVisible ? textOpacity : 0,
+                transform: isVisible 
+                  ? `translateY(0px) translateX(${textTranslateX}px)` 
+                  : 'translateY(32px) translateX(0px)',
+                transition: isVisible 
+                  ? 'opacity 0.3s ease-out, transform 0.3s ease-out'
+                  : 'opacity 1s ease-out, transform 1s ease-out'
               }}
             >
             Thomas Kelly is a product designer <span className="font-semibold">@</span> Sitecore</h1>
           </div>
           
           {/* Animated Cards Section - 25% on desktop, full width on mobile */}
-          <div className="w-full 2xl:w-1/4 flex justify-end 2xl:justify-end">
+          <div 
+            className="w-full 2xl:w-1/4 flex justify-end 2xl:justify-end"
+            style={{
+              opacity: isVisible ? cardsOpacity : 0,
+              transform: isVisible 
+                ? `translateX(${cardsTranslateX}px)` 
+                : 'translateX(0px)',
+              transition: isVisible 
+                ? 'opacity 0.3s ease-out, transform 0.3s ease-out'
+                : 'opacity 1s ease-out, transform 1s ease-out'
+            }}
+          >
             <AnimatedCards />
           </div>
         </div>
