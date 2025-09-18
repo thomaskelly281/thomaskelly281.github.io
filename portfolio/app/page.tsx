@@ -1,6 +1,8 @@
 import Topbar from '../components/Topbar';
 import SplashSection from '../components/SplashSection';
 import LocationSection from '../components/LocationSection';
+import AXPSection from '../components/AXPSection';
+import BlokSection from '@/components/BlokSection';
 
 export default function Home() {
   return (
@@ -21,8 +23,14 @@ export default function Home() {
           <LocationSection />
         </div>
 
-        {/* Example Section */}
-        <div className="flex items-center" style={{ height: 'calc(85vh - 100px)' }}>
+        {/* AXP Section */}
+        <div className="flex items-center mt-32 mb-32">
+          <AXPSection />
+        </div>
+
+        {/* Blok Section */}
+        <div className="flex items-center mt-64">
+          <BlokSection />
         </div>
         
       </main>

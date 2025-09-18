@@ -260,7 +260,7 @@ export default function LocationSection() {
           }}
         >
           <div className="mx-auto w-11/12 sm:w-5/6 lg:w-4/5 xl:w-3/4">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 opacity-60">
+            <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 opacity-60">
               {columns.map((col, colIdx) => (
                 <div key={colIdx} className="flex flex-col gap-3 sm:gap-4">
                   {col.map((item, idx) => (
