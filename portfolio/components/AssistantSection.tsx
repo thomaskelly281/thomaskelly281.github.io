@@ -14,6 +14,8 @@ export default function AssistantSection() {
         const ratio = entry.intersectionRatio;
         if (entry.isIntersecting || ratio > 0.1) {
           setIsVisible(true);
+        } else {
+          setIsVisible(false);
         }
         setCtaVisible(entry.isIntersecting && ratio >= 0.80);
       },
