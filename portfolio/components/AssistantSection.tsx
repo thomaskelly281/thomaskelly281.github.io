@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
-export default function BlokSection() {
+export default function AssistantSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +51,7 @@ export default function BlokSection() {
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
               }}
             >
-          Not to mention, he led the AI-friendly, <span className='underline'><a href="#">Blok design system</a></span> initiative ↓</h2>
+          Thomas helped define chat experiences across Sitecore, starting with <span className='underline'><a href="#">Brand Assistant</a></span> ↓</h2>
           </div>
 
           {/* Image Section - Full width with proper aspect ratio */}
@@ -61,8 +61,8 @@ export default function BlokSection() {
               style={{ aspectRatio: '389 / 218' }}
             >
               <Image 
-                src="/images/blok-thumbnail.jpg" 
-                alt="Blok Design System" 
+                src="/images/assistant-thumbnail.jpg" 
+                alt="Brand Assistant" 
                 fill
                 className="object-cover"
               />

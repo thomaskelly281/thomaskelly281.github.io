@@ -3,6 +3,7 @@ import SplashSection from '../components/SplashSection';
 import LocationSection from '../components/LocationSection';
 import AXPSection from '../components/AXPSection';
 import BlokSection from '@/components/BlokSection';
+import AssistantSection from '@/components/AssistantSection';
 
 export default function Home() {
   return (
@@ -28,10 +29,15 @@ export default function Home() {
           <AXPSection />
         </div>
 
-        {/* Blok Section */}
-        <div className="flex items-center mt-64">
-          <BlokSection />
-        </div>
+          {/* Blok Section */}
+          <div className="flex items-center mt-64">
+            <BlokSection />
+          </div>
+
+          {/* Assistant Section */}
+          <div className="flex items-center mt-64">
+            <AssistantSection />
+          </div>
         
       </main>
     </div>
