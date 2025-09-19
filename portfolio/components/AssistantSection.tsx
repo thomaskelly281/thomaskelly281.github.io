@@ -56,7 +56,7 @@ export default function AssistantSection() {
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
               }}
             >
-          Thomas helped define chat experiences across Sitecore, starting with <span className='underline'><a href="#">Brand Assistant</a></span> ↓</h2>
+          Not to mention, he defined chat experiences across Sitecore, starting with <span className='underline'><a href="#">Brand Assistant</a></span> ↓</h2>
           </div>
 
           {/* Image Section - Full width with proper aspect ratio */}

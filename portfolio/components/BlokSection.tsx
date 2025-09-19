@@ -56,7 +56,7 @@ export default function BlokSection() {
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
               }}
             >
-          Not to mention, he led the AI-friendly, <span className='underline'><a href="#">Blok design system</a></span> initiative ↓</h2>
+          Before that, he led the AI-friendly, <span className='underline'><a href="#">Blok design system</a></span> initiative ↓</h2>
           </div>
 
           {/* Image Section - Full width with proper aspect ratio */}
