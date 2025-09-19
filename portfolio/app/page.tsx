@@ -25,17 +25,17 @@ export default function Home() {
         </div>
 
         {/* AXP Section */}
-        <div className="flex items-center mt-32 mb-32">
+        <div className="flex items-center mt-64 mb-32">
           <AXPSection />
         </div>
 
           {/* Blok Section */}
-          <div className="flex items-center mt-64">
+          <div className="flex items-center mt-64 mb-32">
             <BlokSection />
           </div>
 
           {/* Assistant Section */}
-          <div className="flex items-center mt-64">
+          <div className="flex items-center mt-64 mb-32">
             <AssistantSection />
           </div>
         
