@@ -5,6 +5,8 @@ import AXPSection from '../components/AXPSection';
 import BlokSection from '@/components/BlokSection';
 import AssistantSection from '@/components/AssistantSection';
 import TestimonialSection from '@/components/TestimonialSection';
+import AboutSection from '@/components/AboutSection';
+import FooterSection from '@/components/FooterSection';
 
 export default function Home() {
   return (
@@ -21,28 +23,38 @@ export default function Home() {
         </div>
         
         {/* Location Section */}
-        <div className="flex items-center" style={{ height: 'calc(85vh - 100px)' }}>
+        <div id="location" className="flex items-center" style={{ height: 'calc(85vh - 100px)' }}>
           <LocationSection />
         </div>
 
         {/* AXP Section */}
-        <div className="flex items-center mt-64 mb-32">
+        <div id="axp" className="flex items-center mt-64 mb-32">
           <AXPSection />
         </div>
 
           {/* Blok Section */}
-          <div className="flex items-center mt-64 mb-32">
+          <div id="blok" className="flex items-center mt-64 mb-32">
             <BlokSection />
           </div>
 
           {/* Assistant Section */}
-          <div className="flex items-center mt-64 mb-32">
+          <div id="assistant" className="flex items-center mt-64 mb-32">
             <AssistantSection />
           </div>
 
           {/* Testimonial Section */}
-          <div className="flex items-center mt-64 mb-32">
+          <div id="testimonials" className="flex items-center mt-64 mb-32 md:mb-24 sm:mb-20">
             <TestimonialSection />
+          </div>
+
+          {/* About Section */}
+          {/* <div className="flex items-center mt-64 mb-32">
+            <AboutSection />
+          </div> */}
+
+          {/* Footer Section */}
+          <div id="footer" className="flex items-center mt-64 mb-32">
+            <FooterSection />
           </div>
         
       </main>

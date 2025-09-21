@@ -6,13 +6,33 @@ import Image from 'next/image';
 export default function TestimonialSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [cardVisibility, setCardVisibility] = useState({
+    topLeft: false,
+    topRight: false,
+    bottomLeft: false,
+    bottomRight: false
+  });
 
-  // Observe visibility for entrance animation
+  // Observe visibility for heading animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          // Trigger cascade effect with staggered delays
+          setTimeout(() => setCardVisibility(prev => ({ ...prev, topLeft: true })), 200);
+          setTimeout(() => setCardVisibility(prev => ({ ...prev, topRight: true })), 400);
+          setTimeout(() => setCardVisibility(prev => ({ ...prev, bottomLeft: true })), 600);
+          setTimeout(() => setCardVisibility(prev => ({ ...prev, bottomRight: true })), 800);
+        } else {
+          // Reverse animation when scrolling away
+          setIsVisible(false);
+          setCardVisibility({
+            topLeft: false,
+            topRight: false,
+            bottomLeft: false,
+            bottomRight: false
+          });
         }
       },
       {
@@ -30,43 +50,6 @@ export default function TestimonialSection() {
 
 
 
-  // Tilt logic handlers per card
-  const createTiltHandlers = (card: HTMLDivElement) => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateMax = 10; // deg
-      const rotateY = ((x - centerX) / centerX) * rotateMax; // left/right
-      const rotateX = -((y - centerY) / centerY) * rotateMax; // up/down
-      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    };
-
-    const handleMouseLeave = () => {
-      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
-    };
-
-    return { handleMouseMove, handleMouseLeave };
-  };
-
-  // Attach listeners after mount
-  useEffect(() => {
-    const nodes = sectionRef.current?.querySelectorAll<HTMLDivElement>('[data-tilt-card]');
-    if (!nodes || nodes.length === 0) return;
-    const cleanups: Array<() => void> = [];
-    nodes.forEach((node) => {
-      const { handleMouseLeave, handleMouseMove } = createTiltHandlers(node);
-      node.addEventListener('mousemove', handleMouseMove);
-      node.addEventListener('mouseleave', handleMouseLeave);
-      cleanups.push(() => {
-        node.removeEventListener('mousemove', handleMouseMove);
-        node.removeEventListener('mouseleave', handleMouseLeave);
-      });
-    });
-    return () => cleanups.forEach((fn) => fn());
-  }, [isVisible]);
 
   return (
     <div ref={sectionRef} className="w-full flex items-center justify-center py-16 overflow-visible" style={{ minHeight: '60vh' }}>
@@ -84,25 +67,23 @@ export default function TestimonialSection() {
                     'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
                 }}
               >
-                Multiple colleagues describe Thomas in a positive light... 
+                Multiple colleagues describe Thomas in a positive light...💡
               </h2>
             </div>
           </div>
           
           {/* Floating Cards */}
+          <div className="xl:contents flex flex-col md:grid md:grid-cols-2 gap-6 mt-6 xl:mt-0">
           {/* Top-left card */}
-          <div
-            data-tilt-card
-            className={`absolute w-80 rounded-xl bg-gray-100 p-6 transition-transform duration-200 will-change-transform ${
-              isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ 
-              transformStyle: 'preserve-3d',
-              top: 230,
-              left: 170,
-              transitionDelay: '200ms'
-            }}
-          >
+           <div
+            className={`w-full xl:w-80 rounded-xl bg-gray-100 p-6 xl:absolute transition-all duration-500 ease-out ${
+               cardVisibility.topLeft ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+             }`}
+             style={{ 
+               top: 230,
+               left: 170
+             }}
+           >
             <div className="flex items-center gap-3 mb-3">
               <div className="w-6 h-6 rounded-full bg-gray-300" />
               <div className="text-sm text-gray-600 truncate tracking-[0.025em]">
@@ -113,18 +94,15 @@ export default function TestimonialSection() {
           </div>
 
           {/* Top-right card */}
-          <div
-            data-tilt-card
-            className={`absolute w-100 rounded-xl bg-gray-100 p-6 transition-transform duration-200 will-change-transform ${
-              isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ 
-              transformStyle: 'preserve-3d',
-              top: 140,
-              right: 96,
-              transitionDelay: '400ms'
-            }}
-          >
+           <div
+            className={`w-full xl:w-[25rem] rounded-xl bg-gray-100 p-6 xl:absolute transition-all duration-500 ease-out ${
+               cardVisibility.topRight ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+             }`}
+             style={{ 
+               top: 140,
+               right: 96
+             }}
+           >
             <div className="flex items-center gap-3 mb-3">
               <div className="w-6 h-6 rounded-full bg-gray-300" />
               <div className="text-sm text-gray-600 truncate tracking-[0.025em]">Konstantina Diamantopoulou - Design Manager, XM Cloud</div>
@@ -144,18 +122,15 @@ export default function TestimonialSection() {
           </div>
 
           {/* Bottom-left card */}
-          <div
-            data-tilt-card
-            className={`absolute w-120 rounded-xl bg-gray-100 p-6 transition-transform duration-200 will-change-transform ${
-              isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ 
-              transformStyle: 'preserve-3d',
-              bottom: 220,
-              left: 80,
-              transitionDelay: '600ms'
-            }}
-          >
+           <div
+            className={`w-full xl:w-[30rem] rounded-xl bg-gray-100 p-6 xl:absolute transition-all duration-500 ease-out ${
+               cardVisibility.bottomLeft ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+             }`}
+             style={{ 
+               bottom: 220,
+               left: 80
+             }}
+           >
             <div className="flex items-center gap-3 mb-3">
               <div className="w-6 h-6 rounded-full bg-gray-300" />
               <div className="text-sm text-gray-600 truncate tracking-[0.025em]">Mo Cherif - VP, AI & Innovation</div>
@@ -166,19 +141,16 @@ export default function TestimonialSection() {
           </div>
 
           {/* Bottom-right card */}
-          <div
-            data-tilt-card
-            className={`absolute rounded-xl bg-gray-100 p-6 transition-transform duration-200 will-change-transform ${
-              isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ 
-              transformStyle: 'preserve-3d',
-              right: -50,
-              bottom: 145,
-              width: 'min(48rem, 65vw)',
-              transitionDelay: '800ms'
-            }}
-          >
+           <div
+            className={`w-full xl:absolute rounded-xl bg-gray-100 p-6 transition-all duration-500 ease-out ${
+               cardVisibility.bottomRight ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+             }`}
+             style={{ 
+               right: -50,
+               bottom: 145,
+               width: 'min(48rem, 65vw)'
+             }}
+           >
             <div className="flex items-center gap-3 mb-3">
               <div className="w-6 h-6 rounded-full bg-gray-300" />
               <div className="text-sm text-gray-600 truncate tracking-[0.025em]">Rob Coyle - Director, Product Design</div>
@@ -186,6 +158,7 @@ export default function TestimonialSection() {
             <p className="text-gray-800 text-lg font-medium">
               True story. The first time I heard of Thomas was via his project posters and the NCAD final year exhibition. He had built a camera based AI app that helped people improve their public speaking &quot;Actually&quot; built it. It looked clean and simple to use. It stood out. I thought &quot;we should talk to him - this kid&#39;s got depth&quot;. A year later we still haven&#39;t found the bottom.
             </p>
+          </div>
           </div>
         </div>
       </div>

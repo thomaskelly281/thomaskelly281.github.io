@@ -218,28 +218,28 @@ export default function LocationSection() {
   type GridItem = { src: string; height: number };
   const columns: GridItem[][] = [
     [
-      { src: '/images/profile-img.jpg', height: 220 },
-      { src: '/images/profile-img.jpg', height: 300 },
-      { src: '/images/profile-img.jpg', height: 180 },
-      { src: '/images/profile-img.jpg', height: 260 }
+      { src: '/images/dublin-1.jpeg', height: 400 },
+      { src: '/images/dublin-2.jpg', height: 480 },
+      { src: '/images/dublin-3.jpg', height: 360 },
+      { src: '/images/dublin-4.webp', height: 440 }
     ],
     [
-      { src: '/images/profile-img.jpg', height: 260 },
-      { src: '/images/profile-img.jpg', height: 180 },
-      { src: '/images/profile-img.jpg', height: 320 },
-      { src: '/images/profile-img.jpg', height: 220 }
+      { src: '/images/dublin-5.webp', height: 360 },
+      { src: '/images/dublin-6.jpg', height: 500 },
+      { src: '/images/dublin-7.jpg', height: 380 },
+      { src: '/images/dublin-8.jpeg', height: 440 }
     ],
     [
-      { src: '/images/profile-img.jpg', height: 200 },
-      { src: '/images/profile-img.jpg', height: 260 },
-      { src: '/images/profile-img.jpg', height: 220 },
-      { src: '/images/profile-img.jpg', height: 340 }
+      { src: '/images/dublin-9.jpeg', height: 400 },
+      { src: '/images/dublin-10.png', height: 420 },
+      { src: '/images/dublin-11.png', height: 460 },
+      { src: '/images/dublin-12.jpg', height: 380 }
     ],
     [
-      { src: '/images/profile-img.jpg', height: 240 },
-      { src: '/images/profile-img.jpg', height: 320 },
-      { src: '/images/profile-img.jpg', height: 200 },
-      { src: '/images/profile-img.jpg', height: 260 }
+      { src: '/images/dublin-13.avif', height: 420 },
+      { src: '/images/dublin-14.jpg', height: 480 },
+      { src: '/images/dublin-15.jpg', height: 400 },
+      { src: '/images/dublin-16.jpeg', height: 440 }
     ]
   ];
 
@@ -299,7 +299,7 @@ export default function LocationSection() {
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
               }}
             >
-              Based in Dublin... until he decides not to be
+              Based in Dublin
             </h2>
           </div>
           

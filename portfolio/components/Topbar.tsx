@@ -83,18 +83,18 @@ export default function Topbar() {
             </h2>
             <ul className="space-y-1">
               <li>
-                <a href="#" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
-                  Project 1
+                <a href="#axp" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
+                  AXP
                 </a>
               </li>
               <li>
-              <a href="#" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
-              Project 2
+                <a href="#blok" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
+                  Blok
                 </a>
               </li>
               <li>
-              <a href="#" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
-              Project 3
+                <a href="#assistant" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
+                  Assistant
                 </a>
               </li>
             </ul>
@@ -110,23 +110,13 @@ export default function Topbar() {
             </h2>
             <ul className="space-y-1">
               <li>
-              <a href="#" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
-              About
+                <a href="#testimonials" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
+                  Testimonials
                 </a>
               </li>
               <li>
-              <a href="#" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
-              Testimonials
-                </a>
-              </li>
-              <li>
-              <a href="#" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
-              CV/Resume
-                </a>
-              </li>
-              <li>
-              <a href="#" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
-              Contact
+                <a href="#footer" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
+                  Contact
                 </a>
               </li>
             </ul>
