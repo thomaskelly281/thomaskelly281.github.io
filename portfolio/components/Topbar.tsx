@@ -83,8 +83,8 @@ export default function Topbar() {
             </h2>
             <ul className="space-y-1">
               <li>
-                <a href="#axp" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
-                  AXP
+                <a href="#labs" className="block text-lg text-black font-medium hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-200 px-2 sm:px-3 lg:px-4 py-2">
+                  Labs
                 </a>
               </li>
               <li>

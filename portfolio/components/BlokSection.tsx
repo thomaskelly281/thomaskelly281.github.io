@@ -56,35 +56,40 @@ export default function BlokSection() {
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
               }}
             >
-          Before that, he led the AI-friendly, <span className='underline'><a href="#">Blok design system</a></span> initiative ↓</h2>
+          Before that, he led the AI-friendly, <span className='underline'><a href="/case-studies/blok">Blok design system</a></span> initiative ↓</h2>
           </div>
 
           {/* Image Section - Full width with proper aspect ratio */}
           <div className="w-full">
-            <div 
-              className={`w-full relative max-w-full rounded-2xl overflow-hidden transition-all duration-1000 ease-out ${
-                isVisible 
-                  ? 'opacity-100 scale-100 translate-y-0' 
-                  : 'opacity-0 scale-90 translate-y-16'
-              }`}
-              style={{ 
-                aspectRatio: '389 / 218',
-                transitionDelay: isVisible ? '200ms' : '0ms'
-              }}
+            <a 
+              href="/case-studies/blok"
+              className="block cursor-pointer hover:opacity-90 transition-opacity duration-300"
             >
-              <Image 
-                src="/images/blok-thumbnail.jpg" 
-                alt="Blok Design System" 
-                fill
-                className="object-cover"
-              />
-            </div>
+              <div 
+                className={`w-full relative max-w-full rounded-2xl overflow-hidden transition-all duration-1000 ease-out ${
+                  isVisible 
+                    ? 'opacity-100 scale-100 translate-y-0' 
+                    : 'opacity-0 scale-90 translate-y-16'
+                }`}
+                style={{ 
+                  aspectRatio: '389 / 218',
+                  transitionDelay: isVisible ? '200ms' : '0ms'
+                }}
+              >
+                <Image 
+                  src="/images/blok-thumbnail.jpg" 
+                  alt="Blok Design System" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </a>
           </div>
         </div>
       </div>
       {/* Floating CTA */}
       <a
-        href="#"
+        href="/case-studies/blok"
         aria-label="Read Blok case study"
         className={`fixed left-1/2 -translate-x-1/2 bottom-10 md:bottom-12 z-50 rounded-full bg-[#171717] text-white px-5 sm:px-6 font-medium text-lg py-3 shadow-lg transition-all duration-300 ease-out flex items-center gap-2 tracking-[.03em] ${
           ctaVisible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'

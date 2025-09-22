@@ -1,11 +1,12 @@
 import Topbar from '../components/Topbar';
 import SplashSection from '../components/SplashSection';
 import LocationSection from '../components/LocationSection';
-import AXPSection from '../components/AXPSection';
+// import AXPSection from '../components/AXPSection';
+import LabsSection from '../components/LabsSection';
 import BlokSection from '@/components/BlokSection';
 import AssistantSection from '@/components/AssistantSection';
 import TestimonialSection from '@/components/TestimonialSection';
-import AboutSection from '@/components/AboutSection';
+// import AboutSection from '@/components/AboutSection';
 import FooterSection from '@/components/FooterSection';
 
 export default function Home() {
@@ -27,10 +28,15 @@ export default function Home() {
           <LocationSection />
         </div>
 
-        {/* AXP Section */}
-        <div id="axp" className="flex items-center mt-64 mb-32">
-          <AXPSection />
+        {/* Labs Section */}
+        <div id="labs" className="flex items-center mt-64 mb-32">
+          <LabsSection />
         </div>
+
+        {/* AXP Section - Commented out */}
+        {/* <div id="axp" className="flex items-center mt-64 mb-32">
+          <AXPSection />
+        </div> */}
 
           {/* Blok Section */}
           <div id="blok" className="flex items-center mt-64 mb-32">

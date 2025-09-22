@@ -43,7 +43,7 @@ export default function FooterSection() {
                     'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
                 }}
               >
-              Thanks for stopping by. If you want to learn more about Thomas, check out <span className='underline'><a href="#">his CV/Resume</a></span>, or <span className='underline'><a href="#">reach out</a></span></h2>
+              Thanks for stopping by. If you want to learn more about Thomas, check out <span className='underline'><a href="#">his CV/Resume</a></span>, or <span className='underline'><a href="mailto:thomaskelly281@gmail.com">reach out</a></span></h2>
             </div>
           </div>
         </div>

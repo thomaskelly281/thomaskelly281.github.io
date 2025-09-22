@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
-export default function AXPSection() {
+export default function LabsSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [ctaVisible, setCtaVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -56,13 +56,13 @@ export default function AXPSection() {
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
               }}
             >
-            Currently, he is making AI & agentic experiences simple for marketers through <span className='underline'><a href="#">Sitecore AXP</a></span> ↓            </h2>
+            Currently, he is making AI & agentic experiences simple for marketers through <span className='underline'><a href="/case-studies/labs">Sitecore AI Innovation Labs</a></span> ↓            </h2>
           </div>
           
           {/* Image Section - Full width with proper aspect ratio */}
           <div className="w-full">
             <a 
-              href="/case-studies/axp"
+              href="/case-studies/labs"
               className="block cursor-pointer hover:opacity-90 transition-opacity duration-300"
             >
               <div 
@@ -77,10 +77,11 @@ export default function AXPSection() {
                 }}
               >
                 <Image 
-                  src="/images/axp-thumbnail.jpg" 
-                  alt="AXP" 
+                  src="/images/labs-thumbnail.jpg" 
+                  alt="Labs" 
                   fill
                   className="object-cover"
+                  style={{ filter: 'brightness(0.97)' }}
                 />
               </div>
             </a>
@@ -89,13 +90,21 @@ export default function AXPSection() {
       </div>
       {/* Floating CTA */}
       <a
-        href="/case-studies/axp"
-        aria-label="Read AXP case study"
+        href="/case-studies/labs"
+        aria-label="Read Labs case study"
         className={`fixed left-1/2 -translate-x-1/2 bottom-10 md:bottom-12 z-50 rounded-full bg-[#171717] text-white px-5 sm:px-6 font-medium text-lg py-3 shadow-lg transition-all duration-300 ease-out flex items-center gap-2 tracking-[.03em] ${
             ctaVisible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
       >
-        <span className="text-sm sm:text-base">Read AXP case study</span>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 24 24" 
+          className="w-4 h-4"
+          fill="currentColor"
+        >
+          <path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+        </svg>
+        <span className="text-sm sm:text-base">Read Labs case study (locked)</span>
         <span aria-hidden>→</span>
       </a>
     </div>
