@@ -8,8 +8,8 @@ export default function ConstructionBanner() {
           className="underline hover:text-gray-800 transition-colors"
         >
           thomaskelly281@gmail.com
-        </a>
+        </a> for information.
       </p>
-    </div>
+    </div> 
   );
 }
