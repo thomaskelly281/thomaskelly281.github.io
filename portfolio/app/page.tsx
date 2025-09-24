@@ -8,10 +8,14 @@ import AssistantSection from '@/components/AssistantSection';
 import TestimonialSection from '@/components/TestimonialSection';
 // import AboutSection from '@/components/AboutSection';
 import FooterSection from '@/components/FooterSection';
+import ConstructionBanner from '@/components/ConstructionBanner';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Construction Banner - Full Width */}
+      <ConstructionBanner />
+      
       <main className="mx-auto min-h-screen w-4/5 sm:w-11/12 md:w-5/6 lg:w-4/5 xl:w-3/4 px-4 sm:px-6 lg:px-8 flex flex-col overflow-x-hidden">
         {/* Responsive container - red background to test responsiveness */}
         <div className="w-full flex justify-center pt-4">
