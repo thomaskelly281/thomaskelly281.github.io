@@ -1,0 +1,111 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+
+export default function BlokSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [ctaVisible, setCtaVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const ratio = entry.intersectionRatio;
+        if (entry.isIntersecting || ratio > 0.1) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+        setCtaVisible(entry.isIntersecting && ratio >= 0.80);
+      },
+      {
+        threshold: [0, 0.1, 0.80, 1],
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
+  return (
+    <div 
+      ref={sectionRef}
+      className="w-full flex items-center justify-center py-16 overflow-hidden"
+    >
+      <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-8 2xl:gap-12">
+          {/* Text Section - Full width */}
+          <div className="w-full flex justify-center 2xl:justify-start relative z-10">
+            <h2 
+              className={`text-4xl font-medium text-black leading-[1.5] transition-all duration-1200 ease-out ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-12'
+              }`}
+              style={{
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+              }}
+            >
+          Before that, he led the AI-friendly, <span className='underline'><a href="/case-studies/blok">Blok design system</a></span> initiative ↓</h2>
+          </div>
+
+          {/* Image Section - Full width with proper aspect ratio */}
+          <div className="w-full">
+            <a 
+              href="/case-studies/blok"
+              className="block cursor-pointer hover:opacity-90 transition-opacity duration-300"
+            >
+              <div 
+                className={`w-full relative max-w-full rounded-2xl overflow-hidden transition-all duration-1000 ease-out ${
+                  isVisible 
+                    ? 'opacity-100 scale-100 translate-y-0' 
+                    : 'opacity-0 scale-90 translate-y-16'
+                }`}
+                style={{ 
+                  aspectRatio: '389 / 218',
+                  transitionDelay: isVisible ? '200ms' : '0ms'
+                }}
+              >
+                <Image 
+                  src="/images/blok-thumbnail.jpg" 
+                  alt="Blok Design System" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      {/* Floating CTA */}
+      <a
+        href="/case-studies/blok"
+        aria-label="Read Blok case study"
+        className={`fixed left-1/2 -translate-x-1/2 bottom-10 md:bottom-12 z-50 rounded-full bg-[#171717] text-white px-5 sm:px-6 font-medium text-lg py-3 shadow-lg transition-all duration-300 ease-out flex items-center gap-2 tracking-[.03em] ${
+          ctaVisible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 24 24" 
+          className="w-4 h-4"
+          fill="currentColor"
+        >
+          <path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+        </svg>
+        <span className="text-sm sm:text-base">Read Blok case study (locked)</span>
+        <span aria-hidden>→</span>
+      </a>
+    </div>
+  );
+}
