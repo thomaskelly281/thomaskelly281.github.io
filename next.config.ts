@@ -6,8 +6,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/thomaskelly281.github.io' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/thomaskelly281.github.io' : '',
+  // Remove basePath and assetPrefix for custom domain deployment
+  // basePath: process.env.NODE_ENV === 'production' ? '/thomaskelly281.github.io' : '',
+  // assetPrefix: process.env.NODE_ENV === 'production' ? '/thomaskelly281.github.io' : '',
 };
 
 export default nextConfig;
