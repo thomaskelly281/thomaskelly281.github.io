@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "export": "next build",
-    "deploy": "npm run export && touch out/.nojekyll"
+    "deploy": "npm run export && copy CNAME out\\ && echo. > out\\.nojekyll"
   },
   "dependencies": {
     "react": "19.1.0",
