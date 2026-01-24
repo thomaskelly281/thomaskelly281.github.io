@@ -296,3 +296,74 @@ button {
   will-change: transform;
   background: #ffffff;
 }
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+/* Firefox - Applied to html for full page scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-tertiary, #E5FF20) var(--background, #ffffff);
+}
+
+/* Firefox - Applied to all elements */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-tertiary, #E5FF20) var(--background, #ffffff);
+}
+
+/* Webkit browsers (Chrome, Safari, Edge, Opera) - Vertical and horizontal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background, #ffffff);
+  border: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-tertiary, #E5FF20);
+  border-radius: 4px;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-tertiary, #E5FF20);
+  opacity: 0.9;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent-tertiary, #E5FF20);
+  opacity: 1;
+}
+
+/* Webkit - Corner (where vertical and horizontal scrollbars meet) */
+::-webkit-scrollbar-corner {
+  background: var(--background, #ffffff);
+}
+
+/* Dark mode scrollbar track for Chrome/Webkit */
+.dark ::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.dark ::-webkit-scrollbar-corner {
+  background: #0a0a0a;
+}
+
+/* Dark mode scrollbar for Firefox */
+.dark {
+  scrollbar-color: var(--accent-tertiary, #E5FF20) #0a0a0a;
+}
+
+.dark * {
+  scrollbar-color: var(--accent-tertiary, #E5FF20) #0a0a0a;
+}
+
+/* Ensure body also has the scrollbar styles */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-tertiary, #E5FF20) var(--background, #ffffff);
+}
