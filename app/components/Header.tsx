@@ -190,7 +190,7 @@ export function Header() {
   return (
     <header className="relative w-full px-4 sm:px-6 lg:px-8 h-[100dvh] flex items-center justify-center overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="flex flex-col gap-6 lg:gap-8 relative">
+        <div data-header-content className="flex flex-col gap-6 lg:gap-8 relative">
           {/* Hover Images - Behind SVG and text, follows cursor with physics on desktop only */}
           <div
             ref={imageRef}

@@ -5,11 +5,10 @@ import { useRef, useState } from 'react';
 import { PanelLeft } from '@/components/animate-ui/icons/panel-left';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { ThemeTogglerButton } from '@/components/animate-ui/components/buttons/theme-toggler';
-import { buttonVariants } from '@/components/animate-ui/components/buttons/icon';
 import { RollingTextHover } from './RollingTextHover';
 import { NavbarItem } from './NavbarItem';
-import { cn } from '@/lib/utils';
 import { useGSAP } from '../contexts/GSAPContext';
+import { useSidePanel } from '../contexts/SidePanelContext';
 
 interface NavItem {
   label: string;
@@ -17,20 +16,25 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Work', href: '#' },
+  { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
   { label: 'Thomas Kelly', href: '#thomas-kelly' },
   { label: 'Contact', href: '#contact' },
   { label: 'CV', href: '#cv' },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+  showSidePanelIcon?: boolean;
+}
+
+export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
   const navbarRef = useRef<HTMLElement>(null);
   const navItemsRef = useRef<HTMLDivElement>(null);
   const themeToggleRef = useRef<HTMLDivElement>(null);
   const sidebarIconRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const { gsap } = useGSAP();
+  const { open: openSidePanel } = useSidePanel();
 
   // Detect scroll position to trigger navbar transformation
   React.useEffect(() => {
@@ -47,11 +51,14 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isScrolled]);
 
+  // Determine if sidebar icon should be visible (mutually exclusive with nav items)
+  const shouldShowSidebarIcon = isScrolled || showSidePanelIcon;
+
   // Animate navbar transformation on scroll
   React.useEffect(() => {
     if (!navbarRef.current || !navItemsRef.current || !themeToggleRef.current || !sidebarIconRef.current) return;
 
-    if (isScrolled) {
+    if (shouldShowSidebarIcon) {
       // Calculate position to slide to left (where sidebar icon should be - left-4 = 16px)
       // Navbar is centered, so we need to move it: -50% of viewport + 16px (left-4 position)
       const navbarLeft = navbarRef.current.getBoundingClientRect().left;
@@ -64,29 +71,42 @@ export function Navbar() {
         ease: 'power2.out',
       });
       
-      // Hide nav items
-      gsap.to(navItemsRef.current, {
-        opacity: 0,
-        x: -100,
-        scale: 0.8,
-        duration: 0.4,
-        ease: 'power2.out',
-      });
+      // Calculate distance to left edge of container for both elements
+      const container = navbarRef.current.querySelector('div');
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        const navItemsRect = navItemsRef.current.getBoundingClientRect();
+        
+        // Calculate distance from element's current position to left edge of container
+        const navItemsDistanceToLeft = navItemsRect.left - containerRect.left;
+        
+        // Hide nav items - move all the way to the left (mutually exclusive with sidebar icon)
+        gsap.to(navItemsRef.current, {
+          opacity: 0,
+          x: -navItemsDistanceToLeft,
+          scale: 0.8,
+          duration: 0.7,
+          ease: 'power2.out',
+          pointerEvents: 'none',
+        });
+        
+        // Hide theme toggle - fade up animation (same as nav items style)
+        gsap.to(themeToggleRef.current, {
+          opacity: 0,
+          y: -30,
+          scale: 0.8,
+          transformOrigin: 'center center',
+          duration: 0.7,
+          ease: 'power2.out',
+          pointerEvents: 'none',
+        });
+      }
       
-      // Hide theme toggle
-      gsap.to(themeToggleRef.current, {
-        opacity: 0,
-        x: 100,
-        scale: 0.8,
-        duration: 0.4,
-        ease: 'power2.out',
-      });
-      
-      // Show sidebar icon
+      // Show sidebar icon (mutually exclusive with nav items)
+      // Since it's fixed positioned, only animate opacity and scale
       gsap.to(sidebarIconRef.current, {
         opacity: 1,
         scale: 1,
-        x: 0,
         duration: 0.4,
         delay: 0.2,
         ease: 'power2.out',
@@ -100,35 +120,38 @@ export function Navbar() {
         ease: 'power2.out',
       });
       
-      // Show nav items
+      // Show nav items (mutually exclusive with sidebar icon)
       gsap.to(navItemsRef.current, {
         opacity: 1,
         x: 0,
         scale: 1,
-        duration: 0.4,
+        duration: 0.7,
         ease: 'power2.out',
+        pointerEvents: 'auto',
       });
       
-      // Show theme toggle
+      // Show theme toggle - fade up animation (same as nav items style)
       gsap.to(themeToggleRef.current, {
         opacity: 1,
-        x: 0,
+        y: 0,
         scale: 1,
-        duration: 0.4,
+        transformOrigin: 'center center',
+        duration: 0.7,
         ease: 'power2.out',
+        pointerEvents: 'auto',
       });
       
-      // Hide sidebar icon
+      // Hide sidebar icon (mutually exclusive with nav items)
+      // Since it's fixed positioned, only animate opacity and scale
       gsap.to(sidebarIconRef.current, {
         opacity: 0,
         scale: 0.8,
-        x: -20,
         duration: 0.3,
         ease: 'power2.out',
         pointerEvents: 'none',
       });
     }
-  }, [isScrolled, gsap]);
+  }, [shouldShowSidebarIcon, gsap]);
 
   return (
     <nav
@@ -137,17 +160,25 @@ export function Navbar() {
     >
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Sidebar Icon - Hidden by default, shown when scrolled */}
-          <div ref={sidebarIconRef} className="opacity-0 pointer-events-none">
+          {/* Sidebar Icon with TK - Hidden by default, shown when scrolled or showSidePanelIcon is true */}
+          <div ref={sidebarIconRef} className="opacity-0 pointer-events-none fixed left-3 top-6 z-50">
             <button
-              className={cn(
-                buttonVariants({ variant: 'ghost', size: 'default' })
-              )}
+              onClick={openSidePanel}
+              className="flex items-center gap-1.5 bg-[var(--accent-tertiary)] px-2.5 py-2 cursor-pointer hover:opacity-90 transition-opacity"
+              style={{ borderRadius: '8px' }}
               aria-label="Open menu"
             >
-              <AnimateIcon animateOnHover>
-                <PanelLeft />
-              </AnimateIcon>
+              <div className="p-1 h-auto text-[#222222]">
+                <AnimateIcon animateOnHover>
+                  <PanelLeft size={24} strokeWidth={1.5} />
+                </AnimateIcon>
+              </div>
+              <span
+                className="font-[family-name:var(--font-ppvalve)] font-extrabold italic text-[#222222] leading-none"
+                style={{ fontWeight: 800, fontSize: '1.4rem' }}
+              >
+                TK
+              </span>
             </button>
           </div>
 
@@ -185,7 +216,7 @@ export function Navbar() {
           </div>
 
           {/* Theme Toggle - Right */}
-          <div ref={themeToggleRef} className="ml-auto">
+          <div ref={themeToggleRef} className="ml-auto" style={{ transformOrigin: 'center center' }}>
             <ThemeTogglerButton />
           </div>
         </div>
