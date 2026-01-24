@@ -1,26 +1,293 @@
 @import "tailwindcss";
 
+/* ============================================
+   COLOR PALETTE
+   ============================================ */
 :root {
+  /* Primary Colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --text-secondary: #222222;
+  --accent-tertiary: #E5FF20;
+  
+  /* Legacy support (mapped to new colors) */
+  --foreground: var(--text-secondary);
 }
+
+/* ============================================
+   FONT DECLARATIONS
+   ============================================ */
+
+/* PPValve Font Family */
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainExtralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainExtralightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainMediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainExtrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainExtraboldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* PPValve Stencil Variant */
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilExtralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilExtralightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilMediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilExtrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilExtraboldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Georgia Font Family */
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/font-family-2/georgia.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/font-family-2/georgiai.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/font-family-2/georgiab.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/font-family-2/georgiaz.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* SF Pro Display Font Family */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYTHINITALIC.OTF') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYULTRALIGHTITALIC.OTF') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYLIGHTITALIC.OTF') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYBLACKITALIC.OTF') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYHEAVYITALIC.OTF') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYSEMIBOLDITALIC.OTF') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Professional Responsive Breakpoints */
+@custom-media --sm (width >= 640px);
+@custom-media --md (width >= 768px);
+@custom-media --lg (width >= 1024px);
+@custom-media --xl (width >= 1280px);
+@custom-media --2xl (width >= 1536px);
 
 @theme inline {
+  /* Colors - Available in Tailwind as bg-background, text-text-secondary, etc. */
   --color-background: var(--background);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  /* Fonts - Defined via @font-face above */
+  --font-ppvalve: 'PPValve', sans-serif;
+  --font-ppvalve-stencil: 'PPValve Stencil', sans-serif;
+  --font-georgia: 'Georgia', serif;
+  --font-sfpro: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Legacy font support */
+  --font-sans: var(--font-sfpro);
+  --font-mono: var(--font-sfpro);
+  
+  /* Breakpoint values for JavaScript access */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark mode styles - activated via .dark class from next-themes */
+.dark {
+  --background: #0a0a0a;
+  --text-secondary: #ededed;
+  --foreground: var(--text-secondary);
+  /* Keep accent color the same in dark mode */
+  --accent-tertiary: #E5FF20;
+}
+
+html {
+  background: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--text-secondary);
+  font-family: var(--font-sfpro);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Pointer cursor for all buttons */
+button {
+  cursor: pointer;
+}
+
+/* ScrollSmoother wrapper styles */
+#smooth-wrapper {
+  /* Wrapper serves as viewport container */
+  /* ScrollSmoother will handle the positioning */
+  background: #ffffff;
+}
+
+#smooth-content {
+  /* Content gets transformed by ScrollSmoother */
+  will-change: transform;
+  background: #ffffff;
 }
