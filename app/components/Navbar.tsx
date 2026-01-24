@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { useScrollTrigger } from '../hooks/useScrollTrigger';
 import { useRef, useState } from 'react';
 import { PanelLeft } from '@/components/animate-ui/icons/panel-left';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
@@ -136,7 +135,7 @@ export function Navbar() {
       ref={navbarRef}
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Sidebar Icon - Hidden by default, shown when scrolled */}
           <div ref={sidebarIconRef} className="opacity-0 pointer-events-none">
@@ -153,7 +152,7 @@ export function Navbar() {
           </div>
 
           {/* Navigation Items - Center */}
-          <div ref={navItemsRef} className="flex-1 flex items-center justify-center gap-8">
+          <div ref={navItemsRef} className="flex-1 flex items-center justify-center gap-12">
             {navItems.map((item, index) => {
               const isThomasKelly = index === 2; // Third item (Thomas Kelly)
               
@@ -186,7 +185,7 @@ export function Navbar() {
           </div>
 
           {/* Theme Toggle - Right */}
-          <div ref={themeToggleRef}>
+          <div ref={themeToggleRef} className="ml-auto">
             <ThemeTogglerButton />
           </div>
         </div>
