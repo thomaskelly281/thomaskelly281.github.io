@@ -9,6 +9,7 @@ import { RollingTextHover } from './RollingTextHover';
 import { NavbarItem } from './NavbarItem';
 import { useGSAP } from '../contexts/GSAPContext';
 import { useSidePanel } from '../contexts/SidePanelContext';
+import { useScrollTo } from '../hooks/useScrollTo';
 
 interface NavItem {
   label: string;
@@ -35,6 +36,7 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const { gsap } = useGSAP();
   const { open: openSidePanel } = useSidePanel();
+  const { scrollTo, scrollToTop } = useScrollTo();
 
   // Detect scroll position to trigger navbar transformation
   React.useEffect(() => {
@@ -53,6 +55,16 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
 
   // Determine if sidebar icon should be visible (mutually exclusive with nav items)
   const shouldShowSidebarIcon = isScrolled || showSidePanelIcon;
+
+  // Handle navigation clicks with smooth scrolling
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href === '#thomas-kelly' || href === '#') {
+      scrollToTop({ duration: 1 });
+    } else {
+      scrollTo(href, { duration: 1 });
+    }
+  };
 
   // Animate navbar transformation on scroll
   React.useEffect(() => {
@@ -189,13 +201,22 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
               
               if (isThomasKelly) {
                 return (
-                  <NavbarItem
+                  <button
                     key={item.href}
-                    label={item.label}
-                    href={item.href}
-                    isThomasKelly={true}
-                    className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary"
-                  />
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToTop({ duration: 1 });
+                    }}
+                    className="cursor-pointer bg-transparent border-none p-0"
+                    style={{ font: 'inherit', color: 'inherit' }}
+                  >
+                    <NavbarItem
+                      label={item.label}
+                      href={item.href}
+                      isThomasKelly={true}
+                      className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary"
+                    />
+                  </button>
                 );
               }
               
@@ -203,7 +224,8 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-lg font-[family-name:var(--font-sfpro)] font-light text-text-secondary"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="text-lg font-[family-name:var(--font-sfpro)] font-light text-text-secondary cursor-pointer"
                   style={{ fontWeight: 300 }}
                 >
                   <RollingTextHover

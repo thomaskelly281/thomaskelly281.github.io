@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
 import { CornerDownLeftIcon } from '@/components/animate-ui/icons/corner-down-left';
 
-type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image';
+type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel';
 
 export function CustomCursor() {
   const cursorX = useMotionValue(0);
@@ -14,6 +14,7 @@ export function CustomCursor() {
   const y = useSpring(cursorY, springConfig);
   
   const [cursorState, setCursorState] = useState<CursorState>('default');
+  const [isInSidepanel, setIsInSidepanel] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<{ startAnimation: () => void; stopAnimation: () => void } | null>(null);
@@ -67,6 +68,7 @@ export function CustomCursor() {
     
     if (!element) {
       setCursorState('default');
+      setIsInSidepanel(false);
       stopLoopingAnimation();
       return;
     }
@@ -80,6 +82,7 @@ export function CustomCursor() {
     const workImage = element.closest('[data-work-image]');
     if (workImage) {
       setCursorState('work-image');
+      setIsInSidepanel(false);
       startLoopingAnimation();
       return;
     }
@@ -88,6 +91,7 @@ export function CustomCursor() {
     const headerSvg = element.closest('[data-header-svg="true"]');
     if (headerSvg) {
       setCursorState('header');
+      setIsInSidepanel(false);
       stopLoopingAnimation();
       return;
     }
@@ -125,6 +129,24 @@ export function CustomCursor() {
     };
 
     const interactiveParent = findInteractiveParent(element);
+    
+    // Check if hovering over sidepanel
+    const sidepanel = element.closest('[data-sidepanel]');
+    const isInsideSidepanel = !!sidepanel;
+    setIsInSidepanel(isInsideSidepanel);
+    
+    // Check if interactive element is inside sidepanel
+    const isInteractiveInSidepanel = interactiveParent ? !!interactiveParent.closest('[data-sidepanel]') : false;
+    if (isInteractiveInSidepanel) {
+      setIsInSidepanel(true);
+    }
+    
+    // If in sidepanel but not over an interactive element, show sidepanel state
+    if (isInsideSidepanel && !interactiveParent) {
+      setCursorState('sidepanel');
+      stopLoopingAnimation();
+      return;
+    }
     
     // Use stable reference to prevent flickering during animations
     // If we're still over the same interactive parent, don't update state
@@ -191,6 +213,7 @@ export function CustomCursor() {
 
     // No interactive parent and we weren't over one before
     setCursorState('default');
+    setIsInSidepanel(false);
     stopLoopingAnimation();
   }, [startLoopingAnimation, stopLoopingAnimation]);
 
@@ -251,6 +274,7 @@ export function CustomCursor() {
   const iconSize = cursorState === 'work-image' ? 40 : 20;
   const showIcon = cursorState === 'button' || cursorState === 'work-image';
   const isRing = cursorState === 'ring';
+  const isSidepanelState = cursorState === 'sidepanel';
 
   return (
     <AnimatePresence>
@@ -276,8 +300,8 @@ export function CustomCursor() {
             style={{
               width: size,
               height: size,
-              backgroundColor: isRing ? 'transparent' : 'var(--accent-tertiary)',
-              border: isRing ? `2px solid var(--accent-tertiary)` : 'none',
+              backgroundColor: isRing ? 'transparent' : (isSidepanelState || isInSidepanel) ? '#222222' : 'var(--accent-tertiary)',
+              border: isRing ? `2px solid ${(isSidepanelState || isInSidepanel) ? '#222222' : 'var(--accent-tertiary)'}` : 'none',
             }}
             animate={{
               width: size,
@@ -291,7 +315,7 @@ export function CustomCursor() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0 }}
                 transition={{ duration: 0.2 }}
-                style={{ color: '#222222' }}
+                style={{ color: (isSidepanelState || isInSidepanel) ? 'var(--accent-tertiary)' : '#222222' }}
               >
                 <CornerDownLeftIcon
                   ref={iconRef}
