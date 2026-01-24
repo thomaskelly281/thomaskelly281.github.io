@@ -3,11 +3,13 @@
 import { useEffect, useRef } from 'react';
 import { Header } from './components/Header';
 import { WorkSection } from './components/WorkSection';
+import { AboutSection } from './components/AboutSection';
 import { useGSAP } from './contexts/GSAPContext';
 
 export default function Home() {
   const headerRef = useRef<HTMLDivElement>(null);
   const workRef = useRef<HTMLElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
   const { gsap, ScrollTrigger } = useGSAP();
 
   // GSAP scroll animation for transition between header and work section
@@ -94,6 +96,9 @@ export default function Home() {
 
       {/* Work Section */}
       <WorkSection ref={workRef} />
+
+      {/* About Section */}
+      <AboutSection ref={aboutRef} />
     </main>
   );
 }
