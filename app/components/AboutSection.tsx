@@ -4,142 +4,142 @@ import { forwardRef, useRef, useEffect, ReactNode } from 'react';
 import { useTheme } from 'next-themes';
 import { useGSAP } from '../contexts/GSAPContext';
 
+// Stock images from Unsplash - same as WorkSection
+const ABOUT_IMAGES = [
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&h=750&fit=crop', // Image 1
+  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop', // Image 2
+  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=450&fit=crop', // Image 3
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&h=750&fit=crop', // Image 4 (reusing for variety)
+  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop', // Image 5 (reusing for variety)
+];
+
 // Customize the horizontal scroll items here
 // Add or remove items from this array to change what appears in the horizontal scroll
 const horizontalScrollItems: Array<{
   id: string;
   content: ReactNode;
   width?: string; // Optional: override default width (e.g., 'w-[50vw]')
+  yOffset?: string; // Optional: vertical offset for positioning
 }> = [
   {
-    id: 'item-1',
+    id: 'title',
+    yOffset: 'mt-[15vh]',
     content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#FF6B6B]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">1</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Red</div>
+      <div className="flex items-center h-full pl-16 md:pl-24 lg:pl-32">
+        <h2 className="text-6xl md:text-8xl font-bold text-text-secondary dark:text-text-secondary whitespace-nowrap drop-shadow-lg">
+          Who is Thomas?
+        </h2>
+      </div>
+    ),
+    width: 'w-auto',
+  },
+  {
+    id: 'image-1',
+    yOffset: 'mt-[10vh]',
+    content: (
+      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
+        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          I have worked at Sitecore since 2024, primarily working on AI Innovation Labs and our design system
+        </p>
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+          <img 
+            src={ABOUT_IMAGES[0]}
+            alt="Work at Sitecore" 
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
+        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          Building innovative solutions with AI
+        </p>
       </div>
     ),
   },
   {
-    id: 'item-2',
+    id: 'image-2',
+    yOffset: 'mt-[30vh]',
     content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#4ECDC4]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">2</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Cyan</div>
+      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
+        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          The guy with a million hobbies
+        </p>
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+          <img 
+            src={ABOUT_IMAGES[1]}
+            alt="Hobbies" 
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
+        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          I have graduated with a Bachelor&apos;s in Interaction design and a Postgraduate H.Dip in AI Applications.
+        </p>
       </div>
     ),
   },
   {
-    id: 'item-3',
+    id: 'image-3',
+    yOffset: 'mt-[5vh]',
     content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#45B7D1]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">3</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Blue</div>
+      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
+        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          I build a lot of webapps in my spare time
+        </p>
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+          <img 
+            src={ABOUT_IMAGES[2]}
+            alt="Webapps" 
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
+        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          Always learning, always building
+        </p>
       </div>
     ),
   },
   {
-    id: 'item-4',
+    id: 'image-4',
+    yOffset: 'mt-[25vh]',
     content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#FFA07A]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">4</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Coral</div>
+      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
+        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          Passionate about design and technology
+        </p>
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+          <img 
+            src={ABOUT_IMAGES[3]}
+            alt="Design and Technology" 
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
+        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          Konstantina Diaman Thomas in the future
+        </p>
       </div>
     ),
   },
   {
-    id: 'item-5',
+    id: 'image-5',
+    yOffset: 'mt-[15vh]',
     content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#98D8C8]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">5</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Mint</div>
+      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
+        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
+          Rob Coyle - Head of Product, Finch
+        </p>
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+          <img 
+            src={ABOUT_IMAGES[4]}
+            alt="Testimonial" 
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
-      </div>
-    ),
-  },
-  {
-    id: 'item-6',
-    content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#F7DC6F]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">6</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Yellow</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'item-7',
-    content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#BB8FCE]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">7</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Purple</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'item-8',
-    content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#85C1E2]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">8</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Sky</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'item-9',
-    content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#F8B500]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">9</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Orange</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'item-10',
-    content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#52B788]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">10</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Green</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'item-11',
-    content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#E63946]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">11</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Crimson</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'item-12',
-    content: (
-      <div className="w-[60vw] md:w-[40vw] h-[60vh] rounded-2xl flex items-center justify-center shadow-2xl bg-[#06FFA5]">
-        <div className="text-center">
-          <div className="text-6xl md:text-8xl font-bold text-white mb-4 opacity-90">12</div>
-          <div className="text-2xl md:text-3xl font-semibold text-white opacity-80">Emerald</div>
-        </div>
+        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md italic">
+          &ldquo;True story. The first time I heard of Thomas was via his project posters and the NCAD final year exhibition. He had built a camera based AI app that helped people improve their public speaking &apos;Actually&apos; built it. It looked clean and simple to use. It stood out. I thought &apos;we should talk to him - this kid&apos;s got depth&apos;. A year later we still haven&apos;t found the bottom.&rdquo;
+        </p>
       </div>
     ),
   },
@@ -365,15 +365,16 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
     // Calculate the total scroll distance needed
     const scrollWidth = horizontalScroll.scrollWidth - window.innerWidth;
 
-    // Create the horizontal scroll animation
+    // Create the horizontal scroll animation with slower, smoother scrolling
+    // Using scrub: 2 for smoother response and 2x scroll distance for slower speed
     const scrollTween = gsap.to(horizontalScroll, {
       x: -scrollWidth,
-      ease: 'none',
+      ease: 'power1.out',
       scrollTrigger: {
         trigger: container,
         start: 'top top',
-        end: () => `+=${scrollWidth}`,
-        scrub: 1,
+        end: () => `+=${scrollWidth * 2}`, // Double the scroll distance for slower speed
+        scrub: 2, // Higher value = smoother/slower response (was 1)
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
@@ -400,12 +401,15 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
         <div ref={vantaRef} className="absolute inset-0 z-0 pointer-events-none" />
         <div
           ref={horizontalScrollRef}
-          className="relative z-10 flex items-center gap-8 h-full px-8"
+          className="relative z-10 flex items-start gap-8 h-full px-8"
           style={{ width: 'fit-content' }}
         >
           {/* Horizontal Scroll Items - Customize by editing horizontalScrollItems array above */}
           {horizontalScrollItems.map((item) => (
-            <div key={item.id} className={`flex-shrink-0 ${item.width || ''}`.trim()}>
+            <div 
+              key={item.id} 
+              className={`flex-shrink-0 ${item.width || 'w-[60vw] md:w-[40vw]'} ${item.yOffset || ''}`.trim()}
+            >
               {item.content}
             </div>
           ))}
