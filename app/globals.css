@@ -274,9 +274,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide default cursor - custom cursor will be used */
+* {
+  cursor: none !important;
+}
+
 /* Pointer cursor for all buttons */
 button {
-  cursor: pointer;
+  cursor: none !important;
 }
 
 /* ScrollSmoother wrapper styles */

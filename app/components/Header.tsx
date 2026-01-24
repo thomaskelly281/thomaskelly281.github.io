@@ -224,6 +224,7 @@ export function Header() {
           {/* SVG - Product Designer */}
           <div
             ref={svgContainerRef}
+            data-header-svg="true"
             className="w-full relative z-10"
             onMouseEnter={() => isDesktop && setIsHovering(true)}
             onMouseLeave={() => isDesktop && setIsHovering(false)}

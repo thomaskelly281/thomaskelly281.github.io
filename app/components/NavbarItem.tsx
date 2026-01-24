@@ -13,7 +13,7 @@ interface NavbarItemProps {
 }
 
 export function NavbarItem({ label, href, isThomasKelly, className }: NavbarItemProps) {
-  const containerRef = useRef<HTMLAnchorElement>(null);
+  const containerRef = useRef<HTMLSpanElement | HTMLAnchorElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const { gsap } = useGSAP();
@@ -92,9 +92,8 @@ export function NavbarItem({ label, href, isThomasKelly, className }: NavbarItem
 
   if (isThomasKelly) {
   return (
-    <a
+    <span
       ref={containerRef}
-      href={href}
       className={cn('relative inline-block group', className)}
     >
       <span className="relative z-10">{label}</span>
@@ -122,7 +121,7 @@ export function NavbarItem({ label, href, isThomasKelly, className }: NavbarItem
           fill="none"
         />
       </svg>
-    </a>
+    </span>
   );
   }
 

@@ -3,6 +3,7 @@ import "./globals.css";
 import { GSAPProvider } from "./contexts/GSAPContext";
 import { ScrollSmootherWrapper } from "./components/ScrollSmootherWrapper";
 import { ThemeProvider } from "./providers/ThemeProvider";
+import { CustomCursor } from "./components/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Thomas Kelly - Product Designer",
@@ -24,6 +25,7 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <GSAPProvider>
+            <CustomCursor />
             <ScrollSmootherWrapper>
               {children}
             </ScrollSmootherWrapper>
