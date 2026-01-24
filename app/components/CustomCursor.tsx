@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
 import { CornerDownLeftIcon } from '@/components/animate-ui/icons/corner-down-left';
 
-type CursorState = 'default' | 'header' | 'button' | 'ring';
+type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image';
 
 export function CustomCursor() {
   const cursorX = useMotionValue(0);
@@ -73,6 +73,14 @@ export function CustomCursor() {
 
     // Skip if we're detecting the cursor element itself
     if (cursorRef.current && cursorRef.current.contains(element)) {
+      return;
+    }
+
+    // Check if hovering over work images
+    const workImage = element.closest('[data-work-image]');
+    if (workImage) {
+      setCursorState('work-image');
+      startLoopingAnimation();
       return;
     }
 
@@ -223,7 +231,7 @@ export function CustomCursor() {
 
   // Start animation when icon becomes visible, stop when it disappears
   useEffect(() => {
-    if (cursorState === 'button') {
+    if (cursorState === 'button' || cursorState === 'work-image') {
       // Small delay to ensure icon is mounted
       const timeout = setTimeout(() => {
         if (iconRef.current) {
@@ -239,8 +247,9 @@ export function CustomCursor() {
     }
   }, [cursorState, startLoopingAnimation, stopLoopingAnimation]);
 
-  const size = cursorState === 'default' ? 64 : 36;
-  const showIcon = cursorState === 'button';
+  const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : 36;
+  const iconSize = cursorState === 'work-image' ? 40 : 20;
+  const showIcon = cursorState === 'button' || cursorState === 'work-image';
   const isRing = cursorState === 'ring';
 
   return (
@@ -286,7 +295,7 @@ export function CustomCursor() {
               >
                 <CornerDownLeftIcon
                   ref={iconRef}
-                  size={20}
+                  size={iconSize}
                 />
               </motion.div>
             )}
