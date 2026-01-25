@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useRef, useEffect, ReactNode } from 'react';
+import { forwardRef, useRef, useEffect, useMemo, ReactNode } from 'react';
 import { useTheme } from 'next-themes';
 import { useGSAP } from '../contexts/GSAPContext';
 
@@ -13,20 +13,77 @@ const ABOUT_IMAGES = [
   'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop', // Image 5 (reusing for variety)
 ];
 
+// Helper function to generate text image as data URL
+const createTextImage = (text: string, isDark: boolean = false): string => {
+  if (typeof window === 'undefined') return '';
+  
+  const canvas = document.createElement('canvas');
+  const width = 800;
+  const height = 200;
+  canvas.width = width;
+  canvas.height = height;
+  
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return '';
+  
+  // Set background (transparent)
+  ctx.clearRect(0, 0, width, height);
+  
+  // Set text style
+  ctx.fillStyle = isDark ? '#ffffff' : '#000000';
+  ctx.font = '500 48px "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  
+  // Word wrap text
+  const words = text.split(' ');
+  const lineHeight = 60;
+  const maxWidth = width - 40;
+  let line = '';
+  let y = height / 2;
+  let lines: string[] = [];
+  
+  for (let i = 0; i < words.length; i++) {
+    const testLine = line + words[i] + ' ';
+    const metrics = ctx.measureText(testLine);
+    const testWidth = metrics.width;
+    
+    if (testWidth > maxWidth && i > 0) {
+      lines.push(line);
+      line = words[i] + ' ';
+    } else {
+      line = testLine;
+    }
+  }
+  lines.push(line);
+  
+  // Center vertically
+  const totalHeight = lines.length * lineHeight;
+  y = (height - totalHeight) / 2 + lineHeight / 2;
+  
+  // Draw text
+  lines.forEach((line) => {
+    ctx.fillText(line.trim(), 20, y);
+    y += lineHeight;
+  });
+  
+  return canvas.toDataURL('image/png');
+};
+
 // Customize the horizontal scroll items here
 // Add or remove items from this array to change what appears in the horizontal scroll
-const horizontalScrollItems: Array<{
+const getHorizontalScrollItems = (isDark: boolean): Array<{
   id: string;
   content: ReactNode;
   width?: string; // Optional: override default width (e.g., 'w-[50vw]')
   yOffset?: string; // Optional: vertical offset for positioning
-}> = [
+}> => [
   {
     id: 'title',
     yOffset: 'mt-[15vh]',
     content: (
-      <div className="flex items-center h-full pl-16 md:pl-24 lg:pl-32">
-        <h2 className="text-6xl md:text-8xl font-bold text-text-secondary dark:text-text-secondary whitespace-nowrap drop-shadow-lg">
+      <div className="flex items-center h-full pl-32 md:pl-48 lg:pl-64">
+        <h2 className="text-6xl md:text-8xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary dark:text-text-secondary whitespace-nowrap">
           Who is Thomas?
         </h2>
       </div>
@@ -38,10 +95,7 @@ const horizontalScrollItems: Array<{
     yOffset: 'mt-[10vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          I have worked at Sitecore since 2024, primarily working on AI Innovation Labs and our design system
-        </p>
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img 
             src={ABOUT_IMAGES[0]}
             alt="Work at Sitecore" 
@@ -49,9 +103,11 @@ const horizontalScrollItems: Array<{
             loading="lazy"
           />
         </div>
-        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          Building innovative solutions with AI
-        </p>
+        <img 
+          src={createTextImage('Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', isDark)}
+          alt="Text image"
+          className="w-full max-w-md"
+        />
       </div>
     ),
   },
@@ -60,10 +116,12 @@ const horizontalScrollItems: Array<{
     yOffset: 'mt-[30vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          The guy with a million hobbies
-        </p>
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+        <img 
+          src={createTextImage('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.', isDark)}
+          alt="Text image"
+          className="w-full max-w-md"
+        />
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img 
             src={ABOUT_IMAGES[1]}
             alt="Hobbies" 
@@ -71,9 +129,6 @@ const horizontalScrollItems: Array<{
             loading="lazy"
           />
         </div>
-        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          I have graduated with a Bachelor&apos;s in Interaction design and a Postgraduate H.Dip in AI Applications.
-        </p>
       </div>
     ),
   },
@@ -82,10 +137,7 @@ const horizontalScrollItems: Array<{
     yOffset: 'mt-[5vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          I build a lot of webapps in my spare time
-        </p>
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img 
             src={ABOUT_IMAGES[2]}
             alt="Webapps" 
@@ -93,9 +145,11 @@ const horizontalScrollItems: Array<{
             loading="lazy"
           />
         </div>
-        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          Always learning, always building
-        </p>
+        <img 
+          src={createTextImage('Deserunt mollit anim id est laborum et dolorum fuga.', isDark)}
+          alt="Text image"
+          className="w-full max-w-md"
+        />
       </div>
     ),
   },
@@ -104,10 +158,12 @@ const horizontalScrollItems: Array<{
     yOffset: 'mt-[25vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          Passionate about design and technology
-        </p>
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+        <img 
+          src={createTextImage('Et harum quidem rerum facilis est et expedita distinctio nam libero tempore.', isDark)}
+          alt="Text image"
+          className="w-full max-w-md"
+        />
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img 
             src={ABOUT_IMAGES[3]}
             alt="Design and Technology" 
@@ -115,9 +171,6 @@ const horizontalScrollItems: Array<{
             loading="lazy"
           />
         </div>
-        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          Konstantina Diaman Thomas in the future
-        </p>
       </div>
     ),
   },
@@ -126,10 +179,7 @@ const horizontalScrollItems: Array<{
     yOffset: 'mt-[15vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <p className="text-lg md:text-xl text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md">
-          Rob Coyle - Head of Product, Finch
-        </p>
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800">
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img 
             src={ABOUT_IMAGES[4]}
             alt="Testimonial" 
@@ -137,13 +187,16 @@ const horizontalScrollItems: Array<{
             loading="lazy"
           />
         </div>
-        <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary text-left max-w-md font-medium drop-shadow-md italic">
-          &ldquo;True story. The first time I heard of Thomas was via his project posters and the NCAD final year exhibition. He had built a camera based AI app that helped people improve their public speaking &apos;Actually&apos; built it. It looked clean and simple to use. It stood out. I thought &apos;we should talk to him - this kid&apos;s got depth&apos;. A year later we still haven&apos;t found the bottom.&rdquo;
-        </p>
+        <img 
+          src={createTextImage('Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet.', isDark)}
+          alt="Text image"
+          className="w-full max-w-md"
+        />
       </div>
     ),
   },
 ];
+
 
 export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   const internalRef = useRef<HTMLElement>(null);
@@ -154,6 +207,10 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   const horizontalScrollRef = useRef<HTMLDivElement>(null);
   const { gsap, ScrollTrigger } = useGSAP();
   const { resolvedTheme } = useTheme();
+  
+  // Memoize horizontal scroll items based on theme
+  const isDark = resolvedTheme === 'dark' || (typeof document !== 'undefined' && document.documentElement.classList.contains('dark'));
+  const horizontalScrollItems = useMemo(() => getHorizontalScrollItems(isDark), [isDark]);
 
   useEffect(() => {
     if (!vantaRef.current) return;
@@ -189,9 +246,10 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
               // Use the CSS variable which automatically changes based on theme
               const backgroundColor = rootStyles.getPropertyValue('--background').trim() || '#ffffff';
               
-              // Determine dot color based on theme: #222222 in light mode, accent color in dark mode
+              // Determine dot color based on theme: lighter in light mode, darker in dark mode
               const isDarkMode = resolvedTheme === 'dark' || document.documentElement.classList.contains('dark');
-              const dotColor = isDarkMode ? accentColor : '#222222';
+              // Lighter gray for light mode, darker version of accent for dark mode
+              const dotColor = isDarkMode ? '#666666' : '#999999';
 
               vantaEffectRef.current = (window as typeof window & { VANTA: { DOTS: (options: Record<string, unknown>) => { destroy: () => void } } }).VANTA.DOTS({
                 el: vantaRef.current,
@@ -334,22 +392,58 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
     };
   }, [ScrollTrigger, resolvedTheme]);
 
-  // Update Vanta background color when theme changes
+  // Update Vanta background color and dot colors when theme changes
   useEffect(() => {
     if (!vantaEffectRef.current) return;
 
     const rootStyles = getComputedStyle(document.documentElement);
     const backgroundColor = rootStyles.getPropertyValue('--background').trim() || '#ffffff';
+    
+    // Determine dot color based on theme: lighter in light mode, darker in dark mode
+    const isDarkMode = resolvedTheme === 'dark' || document.documentElement.classList.contains('dark');
+    const dotColor = isDarkMode ? '#666666' : '#999999';
 
     try {
       const vantaInstance = vantaEffectRef.current as any;
       if (vantaInstance && vantaInstance.setOptions) {
-        vantaInstance.setOptions({ backgroundColor });
+        vantaInstance.setOptions({ backgroundColor, color: dotColor, color2: dotColor });
       } else if (vantaInstance && vantaInstance.renderer && vantaInstance.scene) {
         // Update background directly if possible
         if (vantaInstance.renderer.domElement) {
           vantaInstance.renderer.setClearColor(backgroundColor, 1);
         }
+      }
+      
+      // Update dot textures with new color
+      if (vantaInstance && vantaInstance.scene && typeof window !== 'undefined' && (window as typeof window & { THREE?: any }).THREE) {
+        const THREE = (window as typeof window & { THREE: any }).THREE;
+        const createCircularTexture = (color: string = '#ffffff') => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 64;
+          canvas.height = 64;
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 30);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(0.8, color);
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(32, 32, 30, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          return new THREE.CanvasTexture(canvas);
+        };
+        
+        const circularTexture = createCircularTexture(dotColor);
+        circularTexture.needsUpdate = true;
+        
+        vantaInstance.scene.traverse((object: any) => {
+          if (object.isSprite && object.material) {
+            object.material.map = circularTexture;
+            object.material.needsUpdate = true;
+          }
+        });
       }
     } catch (error) {
       console.error('Failed to update Vanta background:', error);
@@ -401,7 +495,7 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
         <div ref={vantaRef} className="absolute inset-0 z-0 pointer-events-none" />
         <div
           ref={horizontalScrollRef}
-          className="relative z-10 flex items-start gap-8 h-full px-8"
+          className="relative z-10 flex items-start gap-24 h-full px-8"
           style={{ width: 'fit-content' }}
         >
           {/* Horizontal Scroll Items - Customize by editing horizontalScrollItems array above */}

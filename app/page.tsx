@@ -99,6 +99,7 @@ export default function Home() {
 
       {/* About Section */}
       <AboutSection ref={aboutRef} />
+
     </main>
   );
 }
