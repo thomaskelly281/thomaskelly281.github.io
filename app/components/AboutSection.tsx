@@ -10,7 +10,6 @@ const ABOUT_IMAGES = [
   '/images/about-2.webp', // Image 2
   '/images/about-3.webp', // Image 3
   '/images/about-4.jpg', // Image 4
-  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop', // Image 5 (reusing for variety)
 ];
 
 // Helper function to generate text image as data URL
@@ -233,24 +232,25 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
     yOffset: 'mt-[15vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
-          <img 
-            src={ABOUT_IMAGES[4]}
-            alt="Testimonial" 
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
+        <div 
+          className="burst-12 flex items-center justify-center"
+          style={{
+            width: '280px',
+            height: '280px',
+            position: 'relative',
+            textAlign: 'center',
+          }}
+        >
+          <p 
+            className="relative z-10 px-6 text-[#222222] font-medium text-lg md:text-xl lg:text-2xl leading-tight"
+            style={{ 
+              fontFamily: 'var(--font-ppvalve)',
+              transform: 'rotate(-5deg)'
+            }}
+          >
+            Across everything he does, Thomas is motivated by the idea of challenging himself.
+          </p>
         </div>
-        {(() => {
-          const textImageSrc = createTextImage('Across everything he does, Thomas is motivated by the idea of challenging himself.', isDark);
-          return textImageSrc ? (
-            <img 
-              src={textImageSrc}
-              alt="Text image"
-              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
-            />
-          ) : null;
-        })()}
       </div>
     ),
   },
