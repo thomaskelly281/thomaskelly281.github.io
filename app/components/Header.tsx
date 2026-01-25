@@ -7,7 +7,7 @@ import { useResponsive } from '../hooks/useResponsive';
 
 // Stock images from Unsplash - positioned left to right
 const HOVER_IMAGES = [
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=400&fit=crop', // 0-25% - Left
+  '/images/header-1.webp', // 0-25% - Left
   '/images/blokheader.webp', // 25-50%
   'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=300&h=400&fit=crop', // 50-75%
   'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=400&fit=crop', // 75-100% - Right

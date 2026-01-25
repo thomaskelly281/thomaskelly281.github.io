@@ -6,10 +6,10 @@ import { useGSAP } from '../contexts/GSAPContext';
 
 // Stock images from Unsplash - same as WorkSection
 const ABOUT_IMAGES = [
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&h=750&fit=crop', // Image 1
-  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop', // Image 2
-  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=450&fit=crop', // Image 3
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&h=750&fit=crop', // Image 4 (reusing for variety)
+  '/images/about-1.webp', // Image 1
+  '/images/about-2.webp', // Image 2
+  '/images/about-3.webp', // Image 3
+  '/images/about-4.jpg', // Image 4
   'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop', // Image 5 (reusing for variety)
 ];
 
