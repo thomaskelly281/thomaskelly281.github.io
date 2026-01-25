@@ -7,8 +7,8 @@ import { useGSAP } from '../contexts/GSAPContext';
 // Stock images from Unsplash - same as header
 const WORK_IMAGES = [
   '/thumbs/blokthumb.webp', // Project 1 - Blok
-  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop', // Project 2
-  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=450&fit=crop', // Project 3
+  '/thumbs/agenticthumb.webp', // Project 2 - Agentic Studio
+  '/thumbs/bathumb.webp', // Project 3 - Brand Assistant
 ];
 
 export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
@@ -17,7 +17,7 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
   const sectionRef = (ref as React.RefObject<HTMLElement>) || internalRef;
   const project1Ref = useRef<HTMLDivElement>(null);
   const project2Ref = useRef<HTMLDivElement>(null);
-  const project3Ref = useRef<HTMLDivElement>(null);
+  // const project3Ref = useRef<HTMLDivElement>(null);
 
   // Scroll animation for work section - individual animations for each image and title
   useEffect(() => {
@@ -25,7 +25,7 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
 
     const project1 = project1Ref.current;
     const project2 = project2Ref.current;
-    const project3 = project3Ref.current;
+    // const project3 = project3Ref.current;
 
     const triggers: ScrollTrigger[] = [];
 
@@ -130,54 +130,54 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
     }
 
     // Project 3 - Image animation
-    if (project3) {
-      const image3 = project3.querySelector('[data-project-3-image]');
-      const text3 = project3.querySelector('[data-project-3-text]');
-      
-      if (image3) {
-        gsap.set(image3, { opacity: 0, y: 30 });
-        const imageAnimation = gsap.fromTo(
-          image3,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            ease: 'power3.out',
-          }
-        );
-        
-        const imageTrigger = ScrollTrigger.create({
-          trigger: image3,
-          start: 'top 85%',
-          end: 'top 20%',
-          animation: imageAnimation,
-          scrub: 1,
-        });
-        triggers.push(imageTrigger);
-      }
-      
-      if (text3) {
-        gsap.set(text3, { opacity: 0, y: 30 });
-        const textAnimation = gsap.fromTo(
-          text3,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            ease: 'power2.out',
-          }
-        );
-        
-        const textTrigger = ScrollTrigger.create({
-          trigger: text3,
-          start: 'top 85%',
-          end: 'top 20%',
-          animation: textAnimation,
-          scrub: 1,
-        });
-        triggers.push(textTrigger);
-      }
-    }
+    // if (project3) {
+    //   const image3 = project3.querySelector('[data-project-3-image]');
+    //   const text3 = project3.querySelector('[data-project-3-text]');
+    //   
+    //   if (image3) {
+    //     gsap.set(image3, { opacity: 0, y: 30 });
+    //     const imageAnimation = gsap.fromTo(
+    //       image3,
+    //       { opacity: 0, y: 30 },
+    //       {
+    //         opacity: 1,
+    //         y: 0,
+    //         ease: 'power3.out',
+    //       }
+    //     );
+    //     
+    //     const imageTrigger = ScrollTrigger.create({
+    //       trigger: image3,
+    //       start: 'top 85%',
+    //       end: 'top 20%',
+    //       animation: imageAnimation,
+    //       scrub: 1,
+    //     });
+    //     triggers.push(imageTrigger);
+    //   }
+    //   
+    //   if (text3) {
+    //     gsap.set(text3, { opacity: 0, y: 30 });
+    //     const textAnimation = gsap.fromTo(
+    //       text3,
+    //       { opacity: 0, y: 30 },
+    //       {
+    //         opacity: 1,
+    //         y: 0,
+    //         ease: 'power2.out',
+    //       }
+    //     );
+    //     
+    //     const textTrigger = ScrollTrigger.create({
+    //       trigger: text3,
+    //       start: 'top 85%',
+    //       end: 'top 20%',
+    //       animation: textAnimation,
+    //       scrub: 1,
+    //     });
+    //     triggers.push(textTrigger);
+    //   }
+    // }
 
     // Refresh ScrollTrigger to ensure proper initial states
     ScrollTrigger.refresh();
@@ -355,10 +355,11 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
           {/* Project 2 - Medium, Left Side */}
           <div ref={project2Ref} className="relative w-full flex justify-center md:justify-start">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 w-full max-w-full md:max-w-[85vw]">
-              <div
+              <Link
+                href="/agentic-studio"
                 data-project-2-image
                 data-work-image
-                className="relative w-[90vw] md:w-full lg:max-w-[45vw] aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden flex-shrink-0 cursor-pointer"
+                className="relative w-[90vw] md:w-full lg:max-w-[45vw] aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden flex-shrink-0 cursor-pointer block"
               >
                 <img
                   src={WORK_IMAGES[1]}
@@ -366,7 +367,7 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-              </div>
+              </Link>
               <div className="relative w-[90vw] md:w-auto">
                 {/* Mobile/Tablet: Inline SVG */}
                 <div className="flex items-start gap-3 md:hidden">
@@ -413,7 +414,7 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
           </div>
 
           {/* Project 3 - Small, Right Side */}
-          <div ref={project3Ref} className="relative w-full flex justify-center md:justify-center">
+          {/* <div ref={project3Ref} className="relative w-full flex justify-center md:justify-center">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 w-full max-w-full md:max-w-[40vw] md:ml-[20%]">
               <div
                 data-project-3-image
@@ -422,7 +423,7 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
               >
                 <img
                   src={WORK_IMAGES[2]}
-                  alt="Agentic Studio"
+                  alt="Brand Assistant"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -430,15 +431,15 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
               <div className="relative w-[80vw] md:w-auto flex items-start gap-3 md:gap-4 order-2 md:order-1">
                 <div data-project-3-text className="text-left flex-1 min-w-0">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary mb-2 break-words">
-                    Agentic Studio
+                    Brand Assistant
                   </h3>
                   <p className="text-base sm:text-lg md:text-xl font-[family-name:var(--font-sfpro)] text-text-secondary opacity-70 break-words">
-                    AI agents
+                    Brand aware chat
                   </p>
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
