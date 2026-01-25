@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useRef, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { PanelLeft } from '@/components/animate-ui/icons/panel-left';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { ThemeTogglerButton } from '@/components/animate-ui/components/buttons/theme-toggler';
@@ -37,6 +38,9 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
   const { gsap } = useGSAP();
   const { open: openSidePanel } = useSidePanel();
   const { scrollTo, scrollToTop } = useScrollTo();
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === '/';
 
   // Detect scroll position to trigger navbar transformation
   React.useEffect(() => {
@@ -59,6 +63,22 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
   // Handle navigation clicks with smooth scrolling
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    
+    // If not on home page, navigate to home first, then scroll to section
+    if (!isHomePage && href.startsWith('#')) {
+      router.push('/');
+      // Wait for navigation to complete, then scroll to section
+      setTimeout(() => {
+        if (href === '#thomas-kelly' || href === '#') {
+          scrollToTop({ duration: 1 });
+        } else {
+          scrollTo(href, { duration: 1 });
+        }
+      }, 100);
+      return;
+    }
+    
+    // On home page, just scroll to section
     if (href === '#thomas-kelly' || href === '#') {
       scrollToTop({ duration: 1 });
     } else {
@@ -205,7 +225,14 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
                     key={item.href}
                     onClick={(e) => {
                       e.preventDefault();
-                      scrollToTop({ duration: 1 });
+                      if (!isHomePage) {
+                        router.push('/');
+                        setTimeout(() => {
+                          scrollToTop({ duration: 1 });
+                        }, 100);
+                      } else {
+                        scrollToTop({ duration: 1 });
+                      }
                     }}
                     className="cursor-pointer bg-transparent border-none p-0"
                     style={{ font: 'inherit', color: 'inherit' }}

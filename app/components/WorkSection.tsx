@@ -1,11 +1,12 @@
 'use client';
 
 import { forwardRef, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { useGSAP } from '../contexts/GSAPContext';
 
 // Stock images from Unsplash - same as header
 const WORK_IMAGES = [
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&h=750&fit=crop', // Project 1
+  '/thumbs/blokthumb.webp', // Project 1 - Blok
   'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop', // Project 2
   'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=450&fit=crop', // Project 3
 ];
@@ -294,10 +295,11 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
           {/* Project 1 - Large, Right Side */}
           <div ref={project1Ref} className="relative w-full flex justify-center md:justify-end">
             <div className="flex flex-col items-start md:items-end w-full max-w-full md:max-w-[90vw] lg:max-w-none">
-              <div
+              <Link
+                href="/blok"
                 data-project-1-image
                 data-work-image
-                className="relative w-[90vw] md:w-full lg:max-w-[45vw] aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden mb-4 md:mb-6 cursor-pointer"
+                className="relative w-[90vw] md:w-full lg:max-w-[45vw] aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden mb-4 md:mb-6 cursor-pointer block"
               >
                 <img
                   src={WORK_IMAGES[0]}
@@ -305,7 +307,7 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-              </div>
+              </Link>
               <div className="relative w-[90vw] md:w-full lg:max-w-[45vw]">
                 {/* Mobile/Tablet: Inline SVG */}
                 <div className="flex items-start gap-3 md:hidden">

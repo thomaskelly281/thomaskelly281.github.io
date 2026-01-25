@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useResponsive } from '../hooks/useResponsive';
 import { useSidePanel } from '../contexts/SidePanelContext';
 import { useScrollTo } from '../hooks/useScrollTo';
@@ -37,6 +38,9 @@ export function MobileSidePanel() {
   const { isMobile, isTablet } = useResponsive();
   const { isOpen, close, open } = useSidePanel();
   const { scrollToTop, scrollTo } = useScrollTo();
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === '/';
 
   // Only show on mobile and tablet
   if (!isMobile && !isTablet) {
@@ -45,6 +49,23 @@ export function MobileSidePanel() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
     e.preventDefault();
+    
+    // If not on home page, navigate to home first, then scroll to section
+    if (!isHomePage && item.href.startsWith('#')) {
+      router.push('/');
+      close();
+      // Wait for navigation to complete, then scroll to section
+      setTimeout(() => {
+        if (item.isHome) {
+          scrollToTop({ duration: 1 });
+        } else {
+          scrollTo(item.href, { duration: 1 });
+        }
+      }, 100);
+      return;
+    }
+    
+    // On home page, just scroll to section
     if (item.isHome) {
       scrollToTop({ duration: 1 });
     } else {
