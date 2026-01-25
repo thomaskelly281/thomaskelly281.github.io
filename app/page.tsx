@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { WorkSection } from './components/WorkSection';
 import { AboutSection } from './components/AboutSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
+import { Footer } from './components/Footer';
 import { useGSAP } from './contexts/GSAPContext';
 
 export default function Home() {
@@ -103,6 +104,9 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <TestimonialsSection ref={testimonialsRef} />
+
+      {/* Footer */}
+      <Footer />
 
     </main>
   );

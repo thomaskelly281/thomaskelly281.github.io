@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
 import { CornerDownLeftIcon } from '@/components/animate-ui/icons/corner-down-left';
 
-type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel';
+type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart';
 
 export function CustomCursor() {
   const cursorX = useMotionValue(0);
@@ -75,6 +75,15 @@ export function CustomCursor() {
 
     // Skip if we're detecting the cursor element itself
     if (cursorRef.current && cursorRef.current.contains(element)) {
+      return;
+    }
+
+    // Check if hovering over footer name section (signature and text)
+    const footerNameSection = element.closest('.cursor-heart');
+    if (footerNameSection) {
+      setCursorState('heart');
+      setIsInSidepanel(false);
+      stopLoopingAnimation();
       return;
     }
 
@@ -270,9 +279,10 @@ export function CustomCursor() {
     }
   }, [cursorState, startLoopingAnimation, stopLoopingAnimation]);
 
-  const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : 36;
+  const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : cursorState === 'heart' ? 48 : 36;
   const iconSize = cursorState === 'work-image' ? 40 : 20;
   const showIcon = cursorState === 'button' || cursorState === 'work-image';
+  const showHeart = cursorState === 'heart';
   const isRing = cursorState === 'ring';
   const isSidepanelState = cursorState === 'sidepanel';
 
@@ -321,6 +331,21 @@ export function CustomCursor() {
                   ref={iconRef}
                   size={iconSize}
                 />
+              </motion.div>
+            )}
+            {showHeart && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.2 }}
+                style={{ 
+                  color: (isSidepanelState || isInSidepanel) ? 'var(--accent-tertiary)' : '#222222',
+                  fontSize: '24px',
+                  lineHeight: '1'
+                }}
+              >
+                ❤️
               </motion.div>
             )}
           </motion.div>
