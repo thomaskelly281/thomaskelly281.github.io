@@ -18,29 +18,23 @@ const createTextImage = (text: string, isDark: boolean = false): string => {
   if (typeof window === 'undefined') return '';
   
   const canvas = document.createElement('canvas');
-  const width = 800;
-  const height = 200;
-  canvas.width = width;
-  canvas.height = height;
+  // Use wider canvas to support larger screens (CSS will control display width)
+  const width = 1200;
+  const lineHeight = 60;
+  const padding = 40; // 20px on each side
+  const maxWidth = width - padding;
   
   const ctx = canvas.getContext('2d');
   if (!ctx) return '';
   
-  // Set background (transparent)
-  ctx.clearRect(0, 0, width, height);
-  
-  // Set text style
-  ctx.fillStyle = isDark ? '#ffffff' : '#000000';
+  // Set text style (need to set font before measuring)
   ctx.font = '500 48px "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif';
   ctx.textAlign = 'left';
-  ctx.textBaseline = 'middle';
+  ctx.textBaseline = 'top';
   
-  // Word wrap text
+  // Word wrap text and calculate lines
   const words = text.split(' ');
-  const lineHeight = 60;
-  const maxWidth = width - 40;
   let line = '';
-  let y = height / 2;
   let lines: string[] = [];
   
   for (let i = 0; i < words.length; i++) {
@@ -57,13 +51,53 @@ const createTextImage = (text: string, isDark: boolean = false): string => {
   }
   lines.push(line);
   
-  // Center vertically
-  const totalHeight = lines.length * lineHeight;
-  y = (height - totalHeight) / 2 + lineHeight / 2;
+  // Calculate dynamic height based on number of lines
+  const minHeight = 200;
+  const calculatedHeight = Math.max(minHeight, lines.length * lineHeight + padding);
+  const height = calculatedHeight;
   
-  // Draw text
+  // Resize canvas to fit all text
+  canvas.width = width;
+  canvas.height = height;
+  
+  // Clear and set background (transparent)
+  ctx.clearRect(0, 0, width, height);
+  
+  // Get accent color from CSS variable (only for light mode)
+  let accentColor = '#E5FF20'; // Default fallback
+  if (typeof document !== 'undefined') {
+    const rootStyles = getComputedStyle(document.documentElement);
+    const accent = rootStyles.getPropertyValue('--accent-tertiary').trim();
+    if (accent) accentColor = accent;
+  }
+  
+  // Set text style again after canvas resize
+  ctx.font = '500 48px "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  
+  // Draw text starting from top with padding
+  let y = padding / 2;
   lines.forEach((line) => {
-    ctx.fillText(line.trim(), 20, y);
+    const lineText = line.trim();
+    const textMetrics = ctx.measureText(lineText);
+    const textWidth = textMetrics.width;
+    const textX = padding / 2;
+    
+    // Draw accent color background highlight (only in light mode)
+    if (!isDark) {
+      // Calculate highlight position: 40% down from top of line
+      const highlightStartY = y + (lineHeight * 0.4);
+      const highlightHeight = lineHeight * 0.6; // Lower 60% of line
+      
+      ctx.fillStyle = accentColor;
+      ctx.fillRect(textX, highlightStartY, textWidth, highlightHeight);
+    }
+    
+    // Draw text on top
+    ctx.fillStyle = isDark ? '#ffffff' : '#000000';
+    ctx.fillText(lineText, textX, y);
+    
     y += lineHeight;
   });
   
@@ -103,11 +137,16 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
             loading="lazy"
           />
         </div>
-        <img 
-          src={createTextImage('Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', isDark)}
-          alt="Text image"
-          className="w-full max-w-md"
-        />
+        {(() => {
+          const textImageSrc = createTextImage('Thomas joined Sitecore in 2024 as their AI designer, a role that quickly evolved into leading the rebuild of the company\'s design system.', isDark);
+          return textImageSrc ? (
+            <img 
+              src={textImageSrc}
+              alt="Text image"
+              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
+            />
+          ) : null;
+        })()}
       </div>
     ),
   },
@@ -116,11 +155,16 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
     yOffset: 'mt-[30vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <img 
-          src={createTextImage('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.', isDark)}
-          alt="Text image"
-          className="w-full max-w-md"
-        />
+        {(() => {
+          const textImageSrc = createTextImage('He studied Interaction Design (BA Hons) alongside a postgraduate qualification in AI Applications. Why? Because he wanted a challenge.', isDark);
+          return textImageSrc ? (
+            <img 
+              src={textImageSrc}
+              alt="Text image"
+              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
+            />
+          ) : null;
+        })()}
         <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img 
             src={ABOUT_IMAGES[1]}
@@ -145,11 +189,16 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
             loading="lazy"
           />
         </div>
-        <img 
-          src={createTextImage('Deserunt mollit anim id est laborum et dolorum fuga.', isDark)}
-          alt="Text image"
-          className="w-full max-w-md"
-        />
+        {(() => {
+          const textImageSrc = createTextImage('Outside of work, Thomas builds SaaS products. Mostly because he can\'t stop himself from turning ideas into things.', isDark);
+          return textImageSrc ? (
+            <img 
+              src={textImageSrc}
+              alt="Text image"
+              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
+            />
+          ) : null;
+        })()}
       </div>
     ),
   },
@@ -158,11 +207,16 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
     yOffset: 'mt-[25vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <img 
-          src={createTextImage('Et harum quidem rerum facilis est et expedita distinctio nam libero tempore.', isDark)}
-          alt="Text image"
-          className="w-full max-w-md"
-        />
+        {(() => {
+          const textImageSrc = createTextImage('When he\'s not designing or coding, he\'s usually working on his cars. It\'s an obsession.', isDark);
+          return textImageSrc ? (
+            <img 
+              src={textImageSrc}
+              alt="Text image"
+              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
+            />
+          ) : null;
+        })()}
         <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img 
             src={ABOUT_IMAGES[3]}
@@ -187,11 +241,16 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
             loading="lazy"
           />
         </div>
-        <img 
-          src={createTextImage('Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet.', isDark)}
-          alt="Text image"
-          className="w-full max-w-md"
-        />
+        {(() => {
+          const textImageSrc = createTextImage('Across everything he does, Thomas is motivated by the idea of challenging himself.', isDark);
+          return textImageSrc ? (
+            <img 
+              src={textImageSrc}
+              alt="Text image"
+              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
+            />
+          ) : null;
+        })()}
       </div>
     ),
   },
@@ -249,7 +308,7 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
               // Determine dot color based on theme: lighter in light mode, darker in dark mode
               const isDarkMode = resolvedTheme === 'dark' || document.documentElement.classList.contains('dark');
               // Lighter gray for light mode, darker version of accent for dark mode
-              const dotColor = isDarkMode ? '#666666' : '#999999';
+              const dotColor = isDarkMode ? '#666666' : '#CCCCCC';
 
               vantaEffectRef.current = (window as typeof window & { VANTA: { DOTS: (options: Record<string, unknown>) => { destroy: () => void } } }).VANTA.DOTS({
                 el: vantaRef.current,
@@ -401,7 +460,7 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
     
     // Determine dot color based on theme: lighter in light mode, darker in dark mode
     const isDarkMode = resolvedTheme === 'dark' || document.documentElement.classList.contains('dark');
-    const dotColor = isDarkMode ? '#666666' : '#999999';
+    const dotColor = isDarkMode ? '#666666' : '#CCCCCC';
 
     try {
       const vantaInstance = vantaEffectRef.current as any;
@@ -459,16 +518,15 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
     // Calculate the total scroll distance needed
     const scrollWidth = horizontalScroll.scrollWidth - window.innerWidth;
 
-    // Create the horizontal scroll animation with slower, smoother scrolling
-    // Using scrub: 2 for smoother response and 2x scroll distance for slower speed
+    // Create the horizontal scroll animation
     const scrollTween = gsap.to(horizontalScroll, {
       x: -scrollWidth,
       ease: 'power1.out',
       scrollTrigger: {
         trigger: container,
         start: 'top top',
-        end: () => `+=${scrollWidth * 2}`, // Double the scroll distance for slower speed
-        scrub: 2, // Higher value = smoother/slower response (was 1)
+        end: () => `+=${scrollWidth}`, // Normal scroll distance
+        scrub: 1, // Standard response
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
