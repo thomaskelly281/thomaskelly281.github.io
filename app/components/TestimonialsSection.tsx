@@ -9,21 +9,21 @@ const TESTIMONIALS = [
   {
     id: 1,
     quote: "True story. The first time I heard of Thomas was via his project posters and the NCAD final year exhibition. He had built a camera based AI app that helped people improve their public speaking; ‘Actually’ built it. It looked clean and simple to use. It stood out. I thought ‘we should talk to him - this kid's got depth’. A year later we still haven't found the bottom.",
-    author: "Rob Coyle",
+    author: "Rob Coyle,",
     role: "Head of Product",
     company: "Finch"
   },
   {
     id: 2,
     quote: "Your [Thomas] flexibility, agility, and creativity never cease to amaze me, especially your ability to deeply focus on the user journey. Looking forward to all the new and upcoming great stuff ;)",
-    author: "Mo Cherif",
+    author: "Mo Cherif,",
     role: "VP, AI & Innovation",
     company: "Sitecore"
   },
   {
     id: 3,
     quote: "Thomas in future",
-    author: "Konstantina Diamantopoulou",
+    author: "Konstantina Diamantopoulou,",
     role: "Design Manager",
     company: "Sitecore"
   }

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export function Footer() {
   return (
-    <footer className="w-full py-12 md:py-16">
+    <footer id="footer" className="w-full py-12 md:py-16">
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center gap-24">
         {/* Name Section with SVG on top */}
         <div className="relative flex items-center justify-center cursor-heart group">

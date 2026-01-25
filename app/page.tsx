@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { Header } from './components/Header';
 import { WorkSection } from './components/WorkSection';
+import { PersonalProjectsSection } from './components/PersonalProjectsSection';
 import { AboutSection } from './components/AboutSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { Footer } from './components/Footer';
@@ -11,6 +12,7 @@ import { useGSAP } from './contexts/GSAPContext';
 export default function Home() {
   const headerRef = useRef<HTMLDivElement>(null);
   const workRef = useRef<HTMLElement>(null);
+  const personalProjectsRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const testimonialsRef = useRef<HTMLElement>(null);
   const { gsap, ScrollTrigger } = useGSAP();
@@ -98,6 +100,9 @@ export default function Home() {
 
       {/* Work Section */}
       <WorkSection ref={workRef} />
+
+      {/* Personal Projects Section */}
+      <PersonalProjectsSection ref={personalProjectsRef} />
 
       {/* About Section */}
       <AboutSection ref={aboutRef} />

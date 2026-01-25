@@ -29,8 +29,8 @@ const navItems: NavItem[] = [
   { label: 'Home', href: '#', isHome: true },
   { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
-  { label: 'CV', href: '#cv' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#footer' },
 ];
 
 export function MobileSidePanel() {

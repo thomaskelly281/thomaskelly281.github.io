@@ -20,8 +20,8 @@ const navItems: NavItem[] = [
   { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
   { label: 'Thomas Kelly', href: '#thomas-kelly' },
-  { label: 'Contact', href: '#contact' },
-  { label: 'CV', href: '#cv' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#footer' },
 ];
 
 interface NavbarProps {
