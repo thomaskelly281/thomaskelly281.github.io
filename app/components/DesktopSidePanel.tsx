@@ -40,9 +40,15 @@ export function DesktopSidePanel() {
   const pathname = usePathname();
   const router = useRouter();
   const isHomePage = pathname === '/';
+  const [mounted, setMounted] = React.useState(false);
 
-  // Only show on desktop
-  if (!isDesktop) {
+  // Ensure component is mounted before rendering to prevent hydration mismatch
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Only show on desktop, but wait until mounted to prevent hydration mismatch
+  if (!mounted || !isDesktop) {
     return null;
   }
 

@@ -41,9 +41,15 @@ export function MobileSidePanel() {
   const pathname = usePathname();
   const router = useRouter();
   const isHomePage = pathname === '/';
+  const [mounted, setMounted] = React.useState(false);
 
-  // Only show on mobile and tablet
-  if (!isMobile && !isTablet) {
+  // Ensure component is mounted before rendering to prevent hydration mismatch
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Only show on mobile and tablet, but wait until mounted to prevent hydration mismatch
+  if (!mounted || (!isMobile && !isTablet)) {
     return null;
   }
 

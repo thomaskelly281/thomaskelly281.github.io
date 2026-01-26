@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useRef, useEffect, useMemo, ReactNode } from 'react';
+import { forwardRef, useRef, useEffect, useMemo, useState, ReactNode } from 'react';
 import { useTheme } from 'next-themes';
 import { useGSAP } from '../contexts/GSAPContext';
 
@@ -34,7 +34,7 @@ const createTextImage = (text: string, isDark: boolean = false): string => {
   // Word wrap text and calculate lines
   const words = text.split(' ');
   let line = '';
-  let lines: string[] = [];
+  const lines: string[] = [];
   
   for (let i = 0; i < words.length; i++) {
     const testLine = line + words[i] + ' ';
@@ -105,7 +105,7 @@ const createTextImage = (text: string, isDark: boolean = false): string => {
 
 // Customize the horizontal scroll items here
 // Add or remove items from this array to change what appears in the horizontal scroll
-const getHorizontalScrollItems = (isDark: boolean): Array<{
+const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Array<{
   id: string;
   content: ReactNode;
   width?: string; // Optional: override default width (e.g., 'w-[50vw]')
@@ -136,7 +136,7 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
             loading="lazy"
           />
         </div>
-        {(() => {
+        {mounted && (() => {
           const textImageSrc = createTextImage('Thomas joined Sitecore in 2024 as their AI designer, a role that quickly evolved into leading the rebuild of the company\'s design system.', isDark);
           return textImageSrc ? (
             <img 
@@ -154,7 +154,7 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
     yOffset: 'mt-[30vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        {(() => {
+        {mounted && (() => {
           const textImageSrc = createTextImage('He studied Interaction Design (BA Hons) alongside a postgraduate qualification in AI Applications. Why? Because he wanted a challenge.', isDark);
           return textImageSrc ? (
             <img 
@@ -188,7 +188,7 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
             loading="lazy"
           />
         </div>
-        {(() => {
+        {mounted && (() => {
           const textImageSrc = createTextImage('Outside of work, Thomas builds SaaS products. Mostly because he can\'t stop himself from turning ideas into things.', isDark);
           return textImageSrc ? (
             <img 
@@ -206,7 +206,7 @@ const getHorizontalScrollItems = (isDark: boolean): Array<{
     yOffset: 'mt-[25vh]',
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        {(() => {
+        {mounted && (() => {
           const textImageSrc = createTextImage('When he\'s not designing or coding, he\'s usually working on his cars. It\'s an obsession.', isDark);
           return textImageSrc ? (
             <img 
@@ -266,10 +266,16 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   const horizontalScrollRef = useRef<HTMLDivElement>(null);
   const { gsap, ScrollTrigger } = useGSAP();
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   
-  // Memoize horizontal scroll items based on theme
+  // Ensure component is mounted before generating text images to prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  // Memoize horizontal scroll items based on theme and mounted state
   const isDark = resolvedTheme === 'dark' || (typeof document !== 'undefined' && document.documentElement.classList.contains('dark'));
-  const horizontalScrollItems = useMemo(() => getHorizontalScrollItems(isDark), [isDark]);
+  const horizontalScrollItems = useMemo(() => getHorizontalScrollItems(isDark, mounted), [isDark, mounted]);
 
   useEffect(() => {
     if (!vantaRef.current) return;

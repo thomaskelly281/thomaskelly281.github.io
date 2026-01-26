@@ -7,9 +7,17 @@ import { Navbar } from './Navbar';
 export function NavbarWrapper() {
   const { isDesktop } = useResponsive();
   const [showSidePanelIcon, setShowSidePanelIcon] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure component is mounted before rendering to prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Scroll detection for showSidePanelIcon at 10% scroll
   useEffect(() => {
+    if (!mounted) return;
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const documentHeight = document.documentElement.scrollHeight;
@@ -29,9 +37,10 @@ export function NavbarWrapper() {
     handleScroll(); // Check initial state
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mounted]);
 
-  if (!isDesktop) {
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted || !isDesktop) {
     return null;
   }
 
