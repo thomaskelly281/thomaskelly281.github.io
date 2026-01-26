@@ -227,9 +227,13 @@ export function CustomCursor() {
   }, [startLoopingAnimation, stopLoopingAnimation]);
 
   useEffect(() => {
-    // Only show cursor on desktop (non-touch devices)
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
+    // Only show cursor on desktop-sized screens
+    // Many Windows devices report touch capability after updates but are primarily mouse-driven
+    // So we check screen size instead of just touch capability
+    const isMobileOrTablet = window.innerWidth < 1024;
+    
+    // Only disable on small screens (mobile/tablet), not desktop screens with touch capability
+    if (isMobileOrTablet) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
