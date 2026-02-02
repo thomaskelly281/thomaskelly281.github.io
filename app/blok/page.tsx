@@ -385,7 +385,7 @@ export default function BlokPage() {
                   className="h-[600px] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden"
                 >
               <img
-                src="/thumbs/blokthumb.webp"
+                src="/images/blokcasestudyheader.webp"
                 alt="Blok Design System"
                 className="w-full h-full object-cover"
               />
