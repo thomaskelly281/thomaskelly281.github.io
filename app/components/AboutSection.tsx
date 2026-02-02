@@ -235,8 +235,8 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
         <div 
           className="relative flex items-center justify-center"
           style={{
-            width: '350px',
-            height: '350px',
+            width: '450px',
+            height: '450px',
           }}
         >
           {/* SVG burst background - 3 overlapping squares rotated to create 12-point burst */}
@@ -258,11 +258,11 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
             <rect className="burst-fill" x="15" y="15" width="70" height="70" transform="rotate(60 50 50)" />
           </svg>
           <p 
-            className="relative z-10 px-8 text-center text-[#222222] font-medium text-lg md:text-xl lg:text-2xl leading-tight"
+            className="relative z-10 px-10 text-center text-[#222222] font-medium text-lg md:text-xl lg:text-2xl leading-tight"
             style={{ 
               fontFamily: 'var(--font-ppvalve)',
               transform: 'rotate(-5deg)',
-              maxWidth: '280px'
+              maxWidth: '380px'
             }}
           >
             Across everything he does, Thomas is motivated by the idea of challenging himself.
