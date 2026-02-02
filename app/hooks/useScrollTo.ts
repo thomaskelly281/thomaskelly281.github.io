@@ -61,28 +61,43 @@ export function useScrollTo() {
     const smooth = duration > 0; // Whether to use smooth scrolling
 
     // If ScrollSmoother is active, use it for smoother scrolling
-    if (smoother) {
-      if (typeof target === 'number') {
-        // Scroll to pixel position
-        // ScrollSmoother.scrollTo(number, smooth, position)
-        smoother.scrollTo(target + offset, smooth, 'top top');
-      } else {
-        // Scroll to element (ScrollSmoother accepts element, selector, or number)
-        // For offset, we need to calculate the position or use a custom approach
-        if (offset !== 0) {
-          // If offset is needed, calculate the element position
-          const element = typeof target === 'string' 
-            ? document.querySelector(target) 
-            : target;
-          
-          if (element) {
-            const elementTop = (element as HTMLElement).offsetTop;
-            smoother.scrollTo(elementTop + offset, smooth, 'top top');
-          }
+    if (smoother && typeof smoother.scrollTo === 'function') {
+      try {
+        if (typeof target === 'number') {
+          // Scroll to pixel position
+          // ScrollSmoother.scrollTo(number, smooth, position)
+          smoother.scrollTo(target + offset, smooth, 'top top');
         } else {
-          // No offset, use element directly
-          smoother.scrollTo(target, smooth, 'top top');
+          // Scroll to element (ScrollSmoother accepts element, selector, or number)
+          // For offset, we need to calculate the position or use a custom approach
+          if (offset !== 0) {
+            // If offset is needed, calculate the element position
+            const element = typeof target === 'string' 
+              ? document.querySelector(target) 
+              : target;
+            
+            if (element) {
+              const elementTop = (element as HTMLElement).offsetTop;
+              smoother.scrollTo(elementTop + offset, smooth, 'top top');
+            }
+          } else {
+            // No offset, use element directly
+            smoother.scrollTo(target, smooth, 'top top');
+          }
         }
+      } catch (error) {
+        // If ScrollSmoother fails, fall back to ScrollToPlugin
+        console.warn('ScrollSmoother scrollTo failed, falling back to ScrollToPlugin:', error);
+        gsap.to(window, {
+          duration,
+          ease,
+          scrollTo: {
+            y: typeof target === 'number' 
+              ? target + offset 
+              : target,
+            offsetY: offset,
+          },
+        });
       }
     } else {
       // Fallback to ScrollToPlugin if ScrollSmoother is not available

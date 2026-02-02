@@ -343,7 +343,7 @@ export default function BlokPage() {
             </h1>
                 
                 <p 
-                  className="text-2xl md:text-3xl lg:text-4xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary opacity-70 max-w-2xl"
+                  className="text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary max-w-2xl"
                 >
                   Rebuilding Sitecore's Design System for Scale, Governance, and AI
                 </p>
@@ -354,8 +354,7 @@ export default function BlokPage() {
                       Role
                     </h3>
                     <p className="text-lg font-[family-name:var(--font-sfpro)] text-text-secondary">
-                      Product Designer (Design Lead for Blok)<br />
-                      Acting Product Manager (interim PM)
+                    Product Designer — Design Systems Lead for Blok
                     </p>
                   </div>
                   <div>
@@ -381,9 +380,9 @@ export default function BlokPage() {
               </div>
 
               {/* Right column - Image positioned to overlap */}
-              <div className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[45%] z-0">
+              <div className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[45%] lg:mr-8 z-0">
                 <div 
-                  className="aspect-video bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden"
+                  className="h-[600px] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden"
                 >
               <img
                 src="/thumbs/blokthumb.webp"
@@ -410,14 +409,14 @@ export default function BlokPage() {
                 Blok is Sitecore's design system: a shared design language that powers consistent experiences across Sitecore's products and marketplace applications.
               </p>
               <p>
-                Although my formal title was Product Designer, I acted as <strong>design lead and custodian</strong> of Blok. I led the initiative to rebuild the design system from the ground up, spanning architecture, governance, documentation, adoption, and AI enablement.
+                Although my formal title was Product Designer, I acted as <strong>design lead and acting product manager</strong> of Blok. I helped lead the initiative to rebuild the design system from the ground up, spanning architecture, design, adoption, documentation, and AI enablement.
               </p>
               <p>
-                What began as a UI library evolved into a <strong>foundational platform</strong> used by designers, engineers, product managers, and executives to rapidly prototype, align, and ship ideas, particularly within AI-driven workflows.
+                What started as a UI library became a <strong>foundational platform</strong> used by designers, internal and external engineers, product managers, and executives to rapidly prototype, align, and ship ideas, especially within AI-driven workflows.
               </p>
             </div>
 
-            <div className="mt-20 rounded-2xl overflow-hidden">
+            <div className="mt-20 rounded-lg overflow-hidden">
               <div className="aspect-video bg-gray-300 dark:bg-gray-700">
                 <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xl">
                   [Placeholder: Design system component showcase]
@@ -431,7 +430,7 @@ export default function BlokPage() {
       {/* The Problem - Scrolling section like testimonials */}
       <section
         ref={problemsSectionRef}
-        className="relative w-full h-screen flex items-center justify-center bg-background mb-32"
+        className="relative w-full h-screen flex items-center justify-center bg-background"
       >
         <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6 mb-12">
@@ -473,11 +472,11 @@ export default function BlokPage() {
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
                   <div className="flex-1 space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
                     <p>
-                      Blok was built on Chakra UI v2. While effective for early velocity, it created a structural problem:
+                      Blok was originally built on Chakra UI v2 back in 2020. While effective for early velocity, it created a structural problem:
                     </p>
                     <ul className="list-disc pl-8 space-y-3">
-                      <li>Any design deviation required editing core components</li>
-                      <li>Editing core components blocked future updates</li>
+                      <li>Any deviation in styling of the components out-of-the-box required editing core components</li>
+                      <li>Editing core components blocked future updates or meant re-implementing the component when updating</li>
                       <li>Teams either froze on old versions or forked styles</li>
                     </ul>
                     <p>
@@ -485,15 +484,15 @@ export default function BlokPage() {
                     </p>
                   </div>
 
-                  <div className="w-full lg:w-80 flex-shrink-0">
-                    <div className="rounded-2xl overflow-hidden">
+                  {/* <div className="w-full lg:w-80 flex-shrink-0">
+                    <div className="rounded-lg overflow-hidden">
                       <div className="aspect-video bg-gray-300 dark:bg-gray-700">
                         <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xs">
                           [Placeholder]
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -566,15 +565,15 @@ export default function BlokPage() {
                     </p>
                   </div>
 
-                  <div className="w-full lg:w-80 flex-shrink-0">
-                    <div className="rounded-2xl overflow-hidden">
+                  {/* <div className="w-full lg:w-80 flex-shrink-0">
+                    <div className="rounded-lg overflow-hidden">
                       <div className="aspect-video bg-gray-300 dark:bg-gray-700">
                         <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xs">
                           [Placeholder]
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -593,7 +592,7 @@ export default function BlokPage() {
 
             <div className="space-y-6 text-lg md:text-xl font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed mt-8">
               <p>
-                As the sole designer on the initiative, partnered with two senior solutions architects, I led the evaluation of alternatives.
+                As the sole designer on the initiative, partnered with two senior solutions architects, I helped closedly with the evaluation of alternatives platforms.
               </p>
               <p>
                 We chose to rebuild Blok on <strong>Shadcn</strong>, not as a UI kit, but as an <strong>architecture</strong>.
@@ -603,6 +602,9 @@ export default function BlokPage() {
 
           {/* Cards Container */}
           <div ref={decisionCardsRef} className="relative space-y-4">
+          <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+            Why Shadcn?                 
+          </h3>
             {/* Card 1 - Governance by design */}
             <div className="bg-accent-tertiary rounded-2xl overflow-hidden">
               <div className="p-8">
@@ -618,8 +620,8 @@ export default function BlokPage() {
                     Shadcn's registry-based model allowed us to:
                   </p>
                   <ul className="list-disc pl-6 space-y-3">
-                    <li>Publish stable core components</li>
-                    <li>Enable extension without modification</li>
+                    <li>Publish stable core components individually, instead of in a single package</li>
+                    <li>Enable extension without modification. Each component could be built on top of without editing the core component</li>
                     <li>Update safely without breaking downstream work</li>
                   </ul>
                   <p className="italic">
@@ -641,14 +643,14 @@ export default function BlokPage() {
                   style={{ willChange: 'height' }}
                 >
                   <p>
-                    A fully framework-agnostic system was explored—but rejected due to team size, maintenance overhead, and delivery timelines.
+                    A fully framework-agnostic system was explored—but we eventually rejected it due to team size, maintenance overhead, and delivery timelines.
                   </p>
                   <p>
                     Shadcn struck the right balance:
                   </p>
                   <ul className="list-disc pl-6 space-y-3">
                     <li>Compatible with major React frameworks</li>
-                    <li>Unopinionated foundations (Radix + Tailwind)</li>
+                    <li>Minimally opinionated foundations (Radix + Tailwind)</li>
                     <li>Allowed us to layer Sitecore's design language on top</li>
                   </ul>
                 </div>
@@ -689,7 +691,7 @@ export default function BlokPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="space-y-20">
             <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
-              Execution
+              Then... we started building
             </h2>
 
             {/* Timeline Container */}
@@ -701,7 +703,7 @@ export default function BlokPage() {
                 style={{ willChange: 'transform' }}
               />
 
-              <div className="space-y-24 pl-12">
+              <div className="space-y-40 pl-12">
                 {/* Component Strategy */}
                 <div ref={execution1Ref} className="relative space-y-8" style={{ willChange: 'transform, opacity' }}>
                   {/* Timeline Marker */}
@@ -709,17 +711,13 @@ export default function BlokPage() {
                     <span className="text-[#222222] font-[family-name:var(--font-ppvalve)] font-medium text-xs">1</span>
                   </div>
                 <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
-                  Component strategy
+                  Migrating components
                 </h3>
                 
                 <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed">
                   <p>
-                    I audited both:
+                    Moving from Chakra v2 to Shadcn, I audited both, existing Blok components and Shadcn's baseline library:
                   </p>
-                  <ul className="list-disc pl-8 space-y-3">
-                    <li>Existing Blok components</li>
-                    <li>Shadcn's baseline library</li>
-                  </ul>
                   <p>
                     From this, I:
                   </p>
@@ -730,22 +728,22 @@ export default function BlokPage() {
                     <li>Authored build guidance for consistency</li>
                   </ul>
                   <p>
-                    Development became a <strong>community effort</strong>, with engineers joining from teams already adopting Shadcn.
+                    Development initially became a <strong>community effort</strong>, with engineers joining from teams already adopting Shadcn and myself having to chase down developers to help review PRs.
                   </p>
                 </div>
 
                 <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center">
+                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-lg p-6 flex items-center justify-center">
                     <div className="text-center text-text-secondary opacity-50 text-lg">
                       [Component A]
                     </div>
                   </div>
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center">
+                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-lg p-6 flex items-center justify-center">
                     <div className="text-center text-text-secondary opacity-50 text-lg">
                       [Component B]
                     </div>
                   </div>
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center">
+                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-lg p-6 flex items-center justify-center">
                     <div className="text-center text-text-secondary opacity-50 text-lg">
                       [Component C]
                     </div>
@@ -761,23 +759,22 @@ export default function BlokPage() {
                   </div>
 
                   <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
-                    Documentation & AI enablement
+Building a better developer experience
                   </h3>
                 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
                   <div className="flex-1 space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
                     <p>
-                      After the first component wave, I:
+                      After the first wave of components were built by myself and the contributing developers, I:
                     </p>
                     <ul className="list-disc pl-8 space-y-3">
-                      <li>Interviewed designers and developers on how they actually used Blok</li>
-                      <li>Designed the documentation experience around real workflows</li>
-                      <li>Embedded AI-readable rules directly into component code</li>
-                      <li>Enabled AI tools to generate compliant, on-brand UI by default</li>
+                      <li>Interviewed designers and developers about how they actually used Blok, to inform how we design the site and documentation</li>
+                      <li>Broke down patterns in how Sitecore designs are made and our components are used into rules that were documented in each component file</li>
+                      <li>Interviewed developers implemented the new components to find any problems early</li>
                     </ul>
                   </div>
 
-                  <div className="w-full lg:w-[45%] flex-shrink-0 rounded-2xl overflow-hidden">
+                  <div className="w-full lg:w-[45%] flex-shrink-0 rounded-lg overflow-hidden">
                     <div className="aspect-[21/9] bg-gray-300 dark:bg-gray-700">
                       <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xl">
                         [Placeholder: Documentation interface]
@@ -800,27 +797,56 @@ export default function BlokPage() {
                 
                 <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed">
                   <p>
-                    Blok initially struggled with adoption.
+                    Blok initially struggled with adoption as it was not majorly publicised or advocated for.
                   </p>
                   <p>
                     To fix this, I:
                   </p>
                   <ul className="list-disc pl-8 space-y-3">
-                    <li>Proactively intercepted new projects and onboarded teams</li>
-                    <li>Presented Blok at an R&D town hall (150+ attendees)</li>
-                    <li>Framed Blok as an <strong>AI acceleration tool</strong>, not a design asset</li>
+                    <li>Proactively intercepted new projects and onboarded teams to start using Blok, even at our early stage</li>
+                    <li>Presented Blok at an R&D town hall (150+ attendees), focussing on getting started and prototyping using AI</li>
+                    <li>Framed Blok as an <strong>acceleration tool</strong>, not a design asset</li>
                   </ul>
                   <p>
-                    This shifted perception—and adoption followed.
+                    This shifted perception and adoption followed. R&D leadership pushed more projects to use Blok and we started to see more initiatives being built from Blok.
                   </p>
                 </div>
                 </div>
+
+
+{/* Getting a team */}
+<div ref={execution3Ref} className="relative space-y-8" style={{ willChange: 'transform, opacity' }}>
+                  {/* Timeline Marker */}
+                  <div className="absolute -left-[2.6rem] top-2 w-6 h-6 rounded-full bg-accent-tertiary border-4 border-background flex items-center justify-center">
+                    <span className="text-[#222222] font-[family-name:var(--font-ppvalve)] font-medium text-xs">4</span>
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+                    Getting a team
+                  </h3>
+                
+                <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed">
+                  <p>
+As the initiative grew traction, we were allocated budget to hire a team to get Blok into production for Sitecore Marketplace and continue the initiative to grow its scope.                   </p>
+                  <p>
+                    Once the team was hired, I:
+                  </p>
+                  <ul className="list-disc pl-8 space-y-3">
+                    <li>Helped onboard the team by giving presentations on the history, philosohpy and roadmap of the future of Blok</li>
+                    <li>Created their first Jira tickets to build guide them on which components and pages of the docs site to build</li>
+                    <li>Reviewed all of their PRs and provided feedback in grooming calls and sprint planning</li>
+                  </ul>
+                  <p>
+After a few months the review feedback became fewer and the team were fully set-up for building out greater projects within Blok                  </p>
+                </div>
+                </div>
+
 
                 {/* Shipping */}
                 <div ref={execution4Ref} className="relative space-y-8" style={{ willChange: 'transform, opacity' }}>
                   {/* Timeline Marker */}
                   <div className="absolute -left-[2.6rem] top-2 w-6 h-6 rounded-full bg-accent-tertiary border-4 border-background flex items-center justify-center">
-                    <span className="text-[#222222] font-[family-name:var(--font-ppvalve)] font-medium text-xs">4</span>
+                    <span className="text-[#222222] font-[family-name:var(--font-ppvalve)] font-medium text-xs">5</span>
                   </div>
 
                   <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
@@ -829,15 +855,15 @@ export default function BlokPage() {
                 
                 <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed">
                   <p>
-                    Ahead of Symposium 2025, the docs site was not ready due to delayed hiring.
+                    Ahead of Symposium 2025 (where Blok was to be announced as released), the docs site was not ready due to delayed hiring of the team. 
                   </p>
                   <p>
-                    I made the call to:
+                    I made the decision to release the registry as a Beta, without a docs site, rather than delaying the whole release. My reasoning was:
                   </p>
                   <ul className="list-disc pl-8 space-y-3">
-                    <li>Release the registry as a <strong>Beta</strong></li>
-                    <li>Provide temporary, in-context documentation</li>
-                    <li>Collect real-world feedback before final release</li>
+                    <li>Allowing teams to start using Blok both internally and externally enabled us to collect feedback early and iterate on the docs site and registry</li>
+                    <li>We provided, temporary, in-file documentation so developers could get started implementing without any visuals ready</li>
+                    <li>During Sitecore Marketplace workshops, we had internal developers helping external devs use Blok, where they were observing any pain points first hand, so we could make changes following this</li>
                   </ul>
                   <p>
                     Post-Symposium, we incorporated feedback and shipped the official release weeks later.
@@ -878,7 +904,7 @@ export default function BlokPage() {
                 100%
               </div>
               <div className="text-sm md:text-base font-[family-name:var(--font-sfpro)] text-text-secondary opacity-60 uppercase tracking-wide">
-                Adoption in new marketplace extensions
+                Adoption in new marketplace applications
               </div>
             </div>
             
@@ -889,7 +915,7 @@ export default function BlokPage() {
                 3+
               </div>
               <div className="text-sm md:text-base font-[family-name:var(--font-sfpro)] text-text-secondary opacity-60 uppercase tracking-wide">
-                Teams fully migrated
+                Internal teams fully migrated
               </div>
             </div>
           </div>
@@ -951,7 +977,7 @@ export default function BlokPage() {
           </div>
 
           {/* Full Width Visual Card */}
-          <div className="border border-text-secondary/10 rounded-xl overflow-hidden">
+          <div className="border border-text-secondary/10 rounded-lg overflow-hidden">
             <div className="aspect-video bg-text-secondary/5">
               <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-30 text-lg">
                 [Placeholder: Impact visualization or dashboard]
@@ -978,7 +1004,7 @@ export default function BlokPage() {
                 
                 <div className="space-y-5 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
                   <p>
-                    We initially over-customised components to preserve legacy visual behaviour. This came at a cost:
+                    We initially over-customised components to preserve legacy visual behaviour from the Chakra v2 version of Blok. This came at a cost:
                   </p>
                   <ul className="space-y-2.5">
                     <li className="flex items-start gap-3">
@@ -1004,7 +1030,7 @@ export default function BlokPage() {
                 
                 <div className="space-y-5 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
                   <p>
-                    This was my first end-to-end platform initiative with:
+                    This was my first zero-to-one platform initiative with as a solo-designer and acting product manager. I got to get get hands-on with all aspects of the initiative:
                   </p>
                   <ul className="space-y-2.5">
                     <li className="flex items-start gap-3">

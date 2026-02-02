@@ -35,7 +35,7 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
   const themeToggleRef = useRef<HTMLDivElement>(null);
   const sidebarIconRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { gsap } = useGSAP();
+  const { gsap, smoother } = useGSAP();
   const { open: openSidePanel } = useSidePanel();
   const { scrollTo, scrollToTop } = useScrollTo();
   const pathname = usePathname();
@@ -60,6 +60,29 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
   // Determine if sidebar icon should be visible (mutually exclusive with nav items)
   const shouldShowSidebarIcon = isScrolled || showSidePanelIcon;
 
+  // Helper function to wait for page to be ready before scrolling
+  const waitForPageReady = React.useCallback((callback: () => void, maxAttempts = 20) => {
+    let attempts = 0;
+    const checkReady = () => {
+      attempts++;
+      // Check if ScrollSmoother is ready (has scrollTo method) or if we're using fallback
+      const smootherReady = smoother ? typeof smoother.scrollTo === 'function' : true;
+      // Check if DOM is ready
+      const domReady = document.readyState === 'complete' || document.readyState === 'interactive';
+      
+      if (smootherReady && domReady) {
+        // Additional small delay to ensure everything is settled
+        setTimeout(callback, 50);
+      } else if (attempts < maxAttempts) {
+        setTimeout(checkReady, 50);
+      } else {
+        // Fallback: try anyway after max attempts
+        setTimeout(callback, 50);
+      }
+    };
+    checkReady();
+  }, [smoother]);
+
   // Handle navigation clicks with smooth scrolling
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -67,14 +90,14 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
     // If not on home page, navigate to home first, then scroll to section
     if (!isHomePage && href.startsWith('#')) {
       router.push('/');
-      // Wait for navigation to complete, then scroll to section
-      setTimeout(() => {
+      // Wait for navigation and ScrollSmoother to be ready
+      waitForPageReady(() => {
         if (href === '#thomas-kelly' || href === '#') {
           scrollToTop({ duration: 1 });
         } else {
           scrollTo(href, { duration: 1 });
         }
-      }, 100);
+      });
       return;
     }
     
@@ -227,9 +250,9 @@ export function Navbar({ showSidePanelIcon = false }: NavbarProps) {
                       e.preventDefault();
                       if (!isHomePage) {
                         router.push('/');
-                        setTimeout(() => {
+                        waitForPageReady(() => {
                           scrollToTop({ duration: 1 });
-                        }, 100);
+                        });
                       } else {
                         scrollToTop({ duration: 1 });
                       }
