@@ -3,8 +3,9 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
 import { CornerDownLeftIcon } from '@/components/animate-ui/icons/corner-down-left';
+import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
 
-type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart';
+type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart' | 'external-link';
 
 export function CustomCursor() {
   const cursorX = useMotionValue(0);
@@ -16,6 +17,7 @@ export function CustomCursor() {
   const [cursorState, setCursorState] = useState<CursorState>('default');
   const [isInSidepanel, setIsInSidepanel] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isOverAccentBg, setIsOverAccentBg] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<{ startAnimation: () => void; stopAnimation: () => void } | null>(null);
   const animationIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -69,6 +71,7 @@ export function CustomCursor() {
     if (!element) {
       setCursorState('default');
       setIsInSidepanel(false);
+      setIsOverAccentBg(false);
       stopLoopingAnimation();
       return;
     }
@@ -77,6 +80,32 @@ export function CustomCursor() {
     if (cursorRef.current && cursorRef.current.contains(element)) {
       return;
     }
+
+    // Check if hovering over accent-colored background
+    const checkForAccentBg = (el: HTMLElement | null): boolean => {
+      let current: HTMLElement | null = el;
+      while (current) {
+        // Check if element has bg-accent-tertiary class
+        if (current.classList.contains('bg-accent-tertiary')) {
+          return true;
+        }
+        // Check computed background color
+        const style = window.getComputedStyle(current);
+        const bgColor = style.backgroundColor;
+        // Check if background color matches accent color (#E5FF20 or rgb(229, 255, 32))
+        if (bgColor === 'rgb(229, 255, 32)' || bgColor === '#E5FF20' || bgColor === 'rgb(229, 255, 32)') {
+          return true;
+        }
+        current = current.parentElement;
+        if (!current || current.tagName === 'BODY' || current.tagName === 'HTML') {
+          break;
+        }
+      }
+      return false;
+    };
+
+    const overAccentBg = checkForAccentBg(element);
+    setIsOverAccentBg(overAccentBg);
 
     // Check if hovering over footer name section (signature and text)
     const footerNameSection = element.closest('.cursor-heart');
@@ -166,6 +195,12 @@ export function CustomCursor() {
         interactiveParent.closest('[data-slot="theme-toggler-button"]') ||
         interactiveParent.closest('button[data-slot="theme-toggler-button"]');
       
+      // Check if it's an external link
+      const isExternalLink = 
+        interactiveParent.tagName === 'A' &&
+        (interactiveParent.getAttribute('target') === '_blank' ||
+         interactiveParent.getAttribute('href')?.startsWith('http'));
+      
       // Clear any pending state change to default
       if (stateChangeTimeoutRef.current) {
         clearTimeout(stateChangeTimeoutRef.current);
@@ -177,6 +212,9 @@ export function CustomCursor() {
         lastDetectedElementRef.current = interactiveParent;
         if (isThemeSwitcher) {
           setCursorState('ring');
+          stopLoopingAnimation();
+        } else if (isExternalLink) {
+          setCursorState('external-link');
           stopLoopingAnimation();
         } else {
           setCursorState('button');
@@ -223,6 +261,7 @@ export function CustomCursor() {
     // No interactive parent and we weren't over one before
     setCursorState('default');
     setIsInSidepanel(false);
+    // Note: isOverAccentBg is already set above, don't reset it here
     stopLoopingAnimation();
   }, [startLoopingAnimation, stopLoopingAnimation]);
 
@@ -249,6 +288,7 @@ export function CustomCursor() {
     const handleMouseLeave = () => {
       setIsVisible(false);
       setCursorState('default');
+      setIsOverAccentBg(false);
       stopLoopingAnimation();
     };
 
@@ -286,6 +326,7 @@ export function CustomCursor() {
   const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : cursorState === 'heart' ? 48 : 36;
   const iconSize = cursorState === 'work-image' ? 40 : 20;
   const showIcon = cursorState === 'button' || cursorState === 'work-image';
+  const showExternalLinkIcon = cursorState === 'external-link';
   const showHeart = cursorState === 'heart';
   const isRing = cursorState === 'ring';
   const isSidepanelState = cursorState === 'sidepanel';
@@ -314,8 +355,8 @@ export function CustomCursor() {
             style={{
               width: size,
               height: size,
-              backgroundColor: isRing ? 'transparent' : (isSidepanelState || isInSidepanel) ? '#222222' : 'var(--accent-tertiary)',
-              border: isRing ? `2px solid ${(isSidepanelState || isInSidepanel) ? '#222222' : 'var(--accent-tertiary)'}` : 'none',
+              backgroundColor: isRing ? 'transparent' : (isSidepanelState || isInSidepanel || isOverAccentBg) ? '#222222' : 'var(--accent-tertiary)',
+              border: isRing ? `2px solid ${(isSidepanelState || isInSidepanel || isOverAccentBg) ? '#222222' : 'var(--accent-tertiary)'}` : 'none',
             }}
             animate={{
               width: size,
@@ -329,7 +370,7 @@ export function CustomCursor() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0 }}
                 transition={{ duration: 0.2 }}
-                style={{ color: (isSidepanelState || isInSidepanel) ? 'var(--accent-tertiary)' : '#222222' }}
+                style={{ color: (isSidepanelState || isInSidepanel || isOverAccentBg) ? 'var(--accent-tertiary)' : '#222222' }}
               >
                 <CornerDownLeftIcon
                   ref={iconRef}
@@ -344,12 +385,25 @@ export function CustomCursor() {
                 exit={{ opacity: 0, scale: 0 }}
                 transition={{ duration: 0.2 }}
                 style={{ 
-                  color: (isSidepanelState || isInSidepanel) ? 'var(--accent-tertiary)' : '#222222',
+                  color: (isSidepanelState || isInSidepanel || isOverAccentBg) ? 'var(--accent-tertiary)' : '#222222',
                   fontSize: '24px',
                   lineHeight: '1'
                 }}
               >
                 ❤️
+              </motion.div>
+            )}
+            {showExternalLinkIcon && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.2 }}
+                style={{ color: (isSidepanelState || isInSidepanel || isOverAccentBg) ? 'var(--accent-tertiary)' : '#222222' }}
+              >
+                <SquareArrowOutUpRight
+                  size={iconSize}
+                />
               </motion.div>
             )}
           </motion.div>

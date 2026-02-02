@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useGSAP } from '../contexts/GSAPContext';
+import { Footer } from '../components/Footer';
 
 export default function BlokPage() {
   const decisionSectionRef = useRef<HTMLDivElement>(null);
@@ -366,12 +367,23 @@ export default function BlokPage() {
                     </p>
                   </div>
                 </div>
+
+                <div className="pt-8">
+                  <a 
+                    href="https://blok.sitecore.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-accent-tertiary text-[#222222] px-6 py-3 rounded-lg font-[family-name:var(--font-ppvalve)] font-medium text-base hover:opacity-90 transition-opacity"
+                  >
+                    Visit Blok site
+                  </a>
+                </div>
               </div>
 
               {/* Right column - Image positioned to overlap */}
-              <div className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[55%] z-0">
+              <div className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[45%] z-0">
                 <div 
-                  className="aspect-video bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl"
+                  className="aspect-video bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden"
                 >
               <img
                 src="/thumbs/blokthumb.webp"
@@ -405,7 +417,7 @@ export default function BlokPage() {
               </p>
             </div>
 
-            <div className="mt-20 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="mt-20 rounded-2xl overflow-hidden">
               <div className="aspect-video bg-gray-300 dark:bg-gray-700">
                 <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xl">
                   [Placeholder: Design system component showcase]
@@ -474,7 +486,7 @@ export default function BlokPage() {
                   </div>
 
                   <div className="w-full lg:w-80 flex-shrink-0">
-                    <div className="rounded-2xl overflow-hidden shadow-xl">
+                    <div className="rounded-2xl overflow-hidden">
                       <div className="aspect-video bg-gray-300 dark:bg-gray-700">
                         <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xs">
                           [Placeholder]
@@ -555,7 +567,7 @@ export default function BlokPage() {
                   </div>
 
                   <div className="w-full lg:w-80 flex-shrink-0">
-                    <div className="rounded-2xl overflow-hidden shadow-xl">
+                    <div className="rounded-2xl overflow-hidden">
                       <div className="aspect-video bg-gray-300 dark:bg-gray-700">
                         <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xs">
                           [Placeholder]
@@ -571,14 +583,15 @@ export default function BlokPage() {
       </section>
 
       {/* The Strategic Decision - Cards with scroll animation */}
-      <div ref={decisionSectionRef} className="relative min-h-screen flex items-center py-32">
+      <div ref={decisionSectionRef} className="relative min-h-screen py-32">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="space-y-8 mb-16">
+          {/* Sticky Heading */}
+          <div className="sticky top-8 z-20 bg-background pb-8 mb-16">
             <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
               The Strategic Decision: Rebuilding on Shadcn
             </h2>
 
-            <div className="space-y-6 text-lg md:text-xl font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed">
+            <div className="space-y-6 text-lg md:text-xl font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed mt-8">
               <p>
                 As the sole designer on the initiative, partnered with two senior solutions architects, I led the evaluation of alternatives.
               </p>
@@ -722,17 +735,17 @@ export default function BlokPage() {
                 </div>
 
                 <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center shadow-lg">
+                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center">
                     <div className="text-center text-text-secondary opacity-50 text-lg">
                       [Component A]
                     </div>
                   </div>
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center shadow-lg">
+                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center">
                     <div className="text-center text-text-secondary opacity-50 text-lg">
                       [Component B]
                     </div>
                   </div>
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center shadow-lg">
+                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 flex items-center justify-center">
                     <div className="text-center text-text-secondary opacity-50 text-lg">
                       [Component C]
                     </div>
@@ -751,22 +764,24 @@ export default function BlokPage() {
                     Documentation & AI enablement
                   </h3>
                 
-                <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed">
-                  <p>
-                    After the first component wave, I:
-                  </p>
-                  <ul className="list-disc pl-8 space-y-3">
-                    <li>Interviewed designers and developers on how they actually used Blok</li>
-                    <li>Designed the documentation experience around real workflows</li>
-                    <li>Embedded AI-readable rules directly into component code</li>
-                    <li>Enabled AI tools to generate compliant, on-brand UI by default</li>
-                  </ul>
-                </div>
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                  <div className="flex-1 space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
+                    <p>
+                      After the first component wave, I:
+                    </p>
+                    <ul className="list-disc pl-8 space-y-3">
+                      <li>Interviewed designers and developers on how they actually used Blok</li>
+                      <li>Designed the documentation experience around real workflows</li>
+                      <li>Embedded AI-readable rules directly into component code</li>
+                      <li>Enabled AI tools to generate compliant, on-brand UI by default</li>
+                    </ul>
+                  </div>
 
-                <div className="mt-12 rounded-2xl overflow-hidden shadow-xl">
-                  <div className="aspect-[21/9] bg-gray-300 dark:bg-gray-700">
-                    <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xl">
-                      [Placeholder: Documentation interface]
+                  <div className="w-full lg:w-[45%] flex-shrink-0 rounded-2xl overflow-hidden">
+                    <div className="aspect-[21/9] bg-gray-300 dark:bg-gray-700">
+                      <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xl">
+                        [Placeholder: Documentation interface]
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -835,105 +850,110 @@ export default function BlokPage() {
         </div>
       </div>
 
-      {/* Outcomes & Impact - Full width with fill animation */}
-      <div className="relative min-h-screen flex items-center py-32 overflow-hidden">
-        {/* Animated background */}
-        <div 
-          ref={outcomesBgRef}
-          className="absolute inset-0 bg-accent-tertiary/5 dark:bg-accent-tertiary/10"
-        />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-20">
+      {/* Outcomes & Impact - Dashboard Style */}
+      <div className="relative min-h-screen flex items-center py-32">        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-16">
           <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
             Outcomes & Impact
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Organizational Impact */}
-            <div className="space-y-8">
-              <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+          <div className="space-y-8">
+            {/* Metrics Dashboard */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="border border-text-secondary/10 rounded-xl p-8">
+              <div 
+                className="text-5xl md:text-6xl font-[family-name:var(--font-ppvalve)] font-medium text-accent-tertiary mb-3"
+              >
+                ~10k
+              </div>
+              <div className="text-sm md:text-base font-[family-name:var(--font-sfpro)] text-text-secondary opacity-60 uppercase tracking-wide">
+                Estimated monthly installs via registry
+              </div>
+            </div>
+            
+            <div className="border border-text-secondary/10 rounded-xl p-8">
+              <div 
+                className="text-5xl md:text-6xl font-[family-name:var(--font-ppvalve)] font-medium text-accent-tertiary mb-3"
+              >
+                100%
+              </div>
+              <div className="text-sm md:text-base font-[family-name:var(--font-sfpro)] text-text-secondary opacity-60 uppercase tracking-wide">
+                Adoption in new marketplace extensions
+              </div>
+            </div>
+            
+            <div className="border border-text-secondary/10 rounded-xl p-8">
+              <div 
+                className="text-5xl md:text-6xl font-[family-name:var(--font-ppvalve)] font-medium text-accent-tertiary mb-3"
+              >
+                3+
+              </div>
+              <div className="text-sm md:text-base font-[family-name:var(--font-sfpro)] text-text-secondary opacity-60 uppercase tracking-wide">
+                Teams fully migrated
+              </div>
+            </div>
+          </div>
+
+          {/* Impact Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Organizational Impact Card */}
+            <div className="border border-text-secondary/10 rounded-xl p-8 space-y-6">
+              <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                 Organisational impact
               </h3>
               
-              <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
-                <ul className="list-disc pl-8 space-y-4">
-                  <li>Blok is now the <strong>default UI foundation</strong> for Sitecore Marketplace apps</li>
-                  <li>3 teams fully migrated; all others have Blok on their 2026 roadmap</li>
-                  <li>Blok is used across design, engineering, product, and executive prototyping</li>
-                </ul>
+              <div className="space-y-4 text-base font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
+                <div className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                  <p>Blok is now the <strong>default UI foundation</strong> for Sitecore Marketplace apps</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                  <p>3 teams fully migrated; all others have Blok on their 2026 roadmap</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                  <p>Blok is used across design, engineering, product, and executive prototyping</p>
+                </div>
               </div>
             </div>
 
-            {/* AI-SDLC Validation */}
-            <div className="space-y-8">
-              <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+            {/* AI-SDLC Validation Card */}
+            <div className="border border-text-secondary/10 rounded-xl p-8 space-y-6">
+              <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                 AI-SDLC validation
               </h3>
               
-              <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
+              <div className="space-y-4 text-base font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
                 <p>
-                  During an internal AI-SDLC workshop, I enabled every participant to prototype using Blok.
+                  During an internal AI-SDLC workshop, I enabled every participant to prototype using Blok. The resulting demos:
                 </p>
-                <p>
-                  The resulting demos:
-                </p>
-                <ul className="list-disc pl-8 space-y-3">
-                  <li>Looked cohesive</li>
-                  <li>Were on-brand</li>
-                  <li>Required minimal design input</li>
-                </ul>
-                <p>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                    <p>Looked cohesive</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                    <p>Were on-brand</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                    <p>Required minimal design input</p>
+                  </div>
+                </div>
+                <p className="pt-2">
                   These were presented to the CPO and CTO, who explicitly praised the <strong>quality and refinement</strong> enabled by Blok.
                 </p>
               </div>
             </div>
           </div>
-
-          {/* Metrics */}
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
-            <div className="bg-white dark:bg-gray-900 p-12">
-              <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary mb-12">
-                Metrics (directional)
-              </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div className="text-center">
-                  <div 
-                    className="text-5xl md:text-6xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary mb-4"
-                  >
-                    ~10k
-                  </div>
-                  <div className="text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary opacity-70">
-                    Estimated monthly installs via registry
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div 
-                    className="text-5xl md:text-6xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary mb-4"
-                  >
-                    100%
-                  </div>
-                  <div className="text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary opacity-70">
-                    Adoption in new marketplace extensions
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div 
-                    className="text-5xl md:text-6xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary mb-4"
-                  >
-                    3+
-                  </div>
-                  <div className="text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary opacity-70">
-                    Teams fully migrated
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
-            <div className="aspect-video bg-gray-300 dark:bg-gray-700">
-              <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xl">
+          {/* Full Width Visual Card */}
+          <div className="border border-text-secondary/10 rounded-xl overflow-hidden">
+            <div className="aspect-video bg-text-secondary/5">
+              <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-30 text-lg">
                 [Placeholder: Impact visualization or dashboard]
               </div>
             </div>
@@ -944,67 +964,94 @@ export default function BlokPage() {
       {/* Reflection */}
       <div className="min-h-screen flex items-center py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="space-y-20">
+          <div className="space-y-16">
             <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
               Reflection & Learning
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
               {/* What I would change */}
-              <div className="space-y-8">
-                <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+              <div className="border border-text-secondary/10 rounded-xl p-8 space-y-6">
+                <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                   What I would change
                 </h3>
                 
-                <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
+                <div className="space-y-5 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
                   <p>
                     We initially over-customised components to preserve legacy visual behaviour. This came at a cost:
                   </p>
-                  <ul className="list-disc pl-8 space-y-3">
-                    <li>We overwrote parts of Radix's native structure</li>
-                    <li>AI tools performed worse as a result</li>
+                  <ul className="space-y-2.5">
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                      <span>We overwrote parts of Radix's native structure</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                      <span>AI tools performed worse as a result</span>
+                    </li>
                   </ul>
-                  <p>
+                  <p className="pt-2">
                     In hindsight, we should have accepted more behavioural change in favour of <strong>AI and architectural alignment</strong>.
                   </p>
                 </div>
               </div>
 
               {/* What this taught me */}
-              <div className="space-y-8">
-                <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+              <div className="border border-text-secondary/10 rounded-xl p-8 space-y-6">
+                <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                   What this taught me
                 </h3>
                 
-                <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
+                <div className="space-y-5 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
                   <p>
                     This was my first end-to-end platform initiative with:
                   </p>
-                  <ul className="list-disc pl-8 space-y-3">
-                    <li>Roadmap ownership</li>
-                    <li>Executive visibility</li>
-                    <li>Cross-org dependency management</li>
+                  <ul className="space-y-2.5">
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                      <span>Roadmap ownership</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                      <span>Executive visibility</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                      <span>Cross-org dependency management</span>
+                    </li>
                   </ul>
-                  <p>
+                  <p className="pt-2">
                     I learned how to:
                   </p>
-                  <ul className="list-disc pl-8 space-y-3">
-                    <li>Balance design purity with system leverage</li>
-                    <li>Drive adoption through narrative, not mandate</li>
-                    <li>Operate comfortably between designer, PM, and technical partner roles</li>
+                  <ul className="space-y-2.5">
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                      <span>Balance design purity with system leverage</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                      <span>Drive adoption through narrative, not mandate</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-tertiary mt-2 flex-shrink-0"></div>
+                      <span>Operate comfortably between designer, PM, and technical partner roles</span>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            <div className="p-12 md:p-16 bg-accent-tertiary rounded-2xl shadow-2xl">
-              <p className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-[#222222] leading-relaxed">
+            <div className="p-10 md:p-14 bg-accent-tertiary rounded-2xl">
+              <p className="text-lg md:text-xl font-[family-name:var(--font-ppvalve)] font-medium text-[#222222] leading-relaxed">
                 Blok fundamentally changed how Sitecore builds, prototypes, and aligns, and reshaped how I think about design systems as <strong>organisational infrastructure</strong>, not UI libraries.
               </p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }

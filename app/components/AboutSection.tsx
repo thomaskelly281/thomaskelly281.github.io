@@ -233,19 +233,36 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
     content: (
       <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
         <div 
-          className="burst-12 flex items-center justify-center"
+          className="relative flex items-center justify-center"
           style={{
-            width: '280px',
-            height: '280px',
-            position: 'relative',
-            textAlign: 'center',
+            width: '350px',
+            height: '350px',
           }}
         >
+          {/* SVG burst background - 3 overlapping squares rotated to create 12-point burst */}
+          <svg 
+            className="absolute inset-0 w-full h-full" 
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <style>{`
+                .burst-fill {
+                  fill: var(--accent-tertiary, #E5FF20);
+                }
+              `}</style>
+            </defs>
+            {/* Three rotated squares to create burst effect */}
+            <rect className="burst-fill" x="15" y="15" width="70" height="70" transform="rotate(0 50 50)" />
+            <rect className="burst-fill" x="15" y="15" width="70" height="70" transform="rotate(30 50 50)" />
+            <rect className="burst-fill" x="15" y="15" width="70" height="70" transform="rotate(60 50 50)" />
+          </svg>
           <p 
-            className="relative z-10 px-6 text-[#222222] font-medium text-lg md:text-xl lg:text-2xl leading-tight"
+            className="relative z-10 px-8 text-center text-[#222222] font-medium text-lg md:text-xl lg:text-2xl leading-tight"
             style={{ 
               fontFamily: 'var(--font-ppvalve)',
-              transform: 'rotate(-5deg)'
+              transform: 'rotate(-5deg)',
+              maxWidth: '280px'
             }}
           >
             Across everything he does, Thomas is motivated by the idea of challenging himself.
