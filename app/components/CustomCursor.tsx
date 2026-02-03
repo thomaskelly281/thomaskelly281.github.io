@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react
 import { CornerDownLeftIcon } from '@/components/animate-ui/icons/corner-down-left';
 import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
 
-type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart' | 'external-link';
+type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart' | 'external-link' | 'confetti';
 
 export function CustomCursor() {
   const cursorX = useMotionValue(0);
@@ -111,6 +111,15 @@ export function CustomCursor() {
     const footerNameSection = element.closest('.cursor-heart');
     if (footerNameSection) {
       setCursorState('heart');
+      setIsInSidepanel(false);
+      stopLoopingAnimation();
+      return;
+    }
+
+    // Check if hovering over confetti cursor element
+    const confettiElement = element.closest('.cursor-confetti');
+    if (confettiElement) {
+      setCursorState('confetti');
       setIsInSidepanel(false);
       stopLoopingAnimation();
       return;
@@ -323,11 +332,12 @@ export function CustomCursor() {
     }
   }, [cursorState, startLoopingAnimation, stopLoopingAnimation]);
 
-  const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : cursorState === 'heart' ? 48 : 36;
+  const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : cursorState === 'heart' ? 48 : cursorState === 'confetti' ? 48 : 36;
   const iconSize = cursorState === 'work-image' ? 40 : 20;
   const showIcon = cursorState === 'button' || cursorState === 'work-image';
   const showExternalLinkIcon = cursorState === 'external-link';
   const showHeart = cursorState === 'heart';
+  const showConfetti = cursorState === 'confetti';
   const isRing = cursorState === 'ring';
   const isSidepanelState = cursorState === 'sidepanel';
 
@@ -404,6 +414,21 @@ export function CustomCursor() {
                 <SquareArrowOutUpRight
                   size={iconSize}
                 />
+              </motion.div>
+            )}
+            {showConfetti && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.2 }}
+                style={{ 
+                  color: (isSidepanelState || isInSidepanel || isOverAccentBg) ? 'var(--accent-tertiary)' : '#222222',
+                  fontSize: '24px',
+                  lineHeight: '1'
+                }}
+              >
+                🎉
               </motion.div>
             )}
           </motion.div>

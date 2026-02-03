@@ -417,11 +417,11 @@ export default function BlokPage() {
             </div>
 
             <div className="mt-20 rounded-lg overflow-hidden">
-              <div className="aspect-video bg-gray-300 dark:bg-gray-700">
-                <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xl">
-                  [Placeholder: Design system component showcase]
-                </div>
-              </div>
+              <img
+                src="/images/blokcasestudymock.webp"
+                alt="Blok design system component showcase"
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>
@@ -474,7 +474,7 @@ export default function BlokPage() {
                     <p>
                       Blok was originally built on Chakra UI v2 back in 2020. While effective for early velocity, it created a structural problem:
                     </p>
-                    <ul className="list-disc pl-8 space-y-3">
+                    <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
                       <li>Any deviation in styling of the components out-of-the-box required editing core components</li>
                       <li>Editing core components blocked future updates or meant re-implementing the component when updating</li>
                       <li>Teams either froze on old versions or forked styles</li>
@@ -483,16 +483,6 @@ export default function BlokPage() {
                       <strong>Result:</strong> visual drift, fragile upgrades, and no enforceable design governance.
                     </p>
                   </div>
-
-                  {/* <div className="w-full lg:w-80 flex-shrink-0">
-                    <div className="rounded-lg overflow-hidden">
-                      <div className="aspect-video bg-gray-300 dark:bg-gray-700">
-                        <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xs">
-                          [Placeholder]
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -521,7 +511,7 @@ export default function BlokPage() {
                   <p>
                     Chakra was:
                   </p>
-                  <ul className="list-disc pl-8 space-y-3">
+                  <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
                     <li>Opinionated</li>
                     <li>Framework-specific</li>
                     <li>Not suitable for external developers we didn't control</li>
@@ -555,7 +545,7 @@ export default function BlokPage() {
                     <p>
                       As AI coding tools (Cursor, Copilot, v0) became central to how teams prototyped, Blok became a bottleneck:
                     </p>
-                    <ul className="list-disc pl-8 space-y-3">
+                    <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
                       <li>Heavily customised code</li>
                       <li>Minimal inline documentation</li>
                       <li>Poor AI comprehension</li>
@@ -564,16 +554,6 @@ export default function BlokPage() {
                       <strong>AI tools struggled to generate on-brand, usable UI</strong>, undermining speed and consistency.
                     </p>
                   </div>
-
-                  {/* <div className="w-full lg:w-80 flex-shrink-0">
-                    <div className="rounded-lg overflow-hidden">
-                      <div className="aspect-video bg-gray-300 dark:bg-gray-700">
-                        <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xs">
-                          [Placeholder]
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -616,17 +596,35 @@ export default function BlokPage() {
                   className="space-y-4 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-[#222222] leading-relaxed"
                   style={{ willChange: 'height' }}
                 >
-                  <p>
-                    Shadcn's registry-based model allowed us to:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-3">
-                    <li>Publish stable core components individually, instead of in a single package</li>
-                    <li>Enable extension without modification. Each component could be built on top of without editing the core component</li>
-                    <li>Update safely without breaking downstream work</li>
-                  </ul>
-                  <p className="italic">
-                    This single decision restored long-term governance.
-                  </p>
+                  <div className="flex flex-col lg:flex-row gap-6 items-start">
+                    <div className="flex-1 space-y-4">
+                      <p>
+                        Shadcn's registry-based model allowed us to:
+                      </p>
+                      <ul className="list-disc pl-6 space-y-3">
+                        <li>Publish stable core components individually, instead of in a single package</li>
+                        <li>Enable extension without modification. Each component could be built on top of without editing the core component</li>
+                        <li>Update safely without breaking downstream work</li>
+                      </ul>
+                      <p className="italic">
+                        This single decision restored long-term governance.
+                      </p>
+                    </div>
+                    <div className="w-full lg:w-[40%] flex-shrink-0 rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
+                      <a
+                        href="/images/blokcasestudyarchitecture.webp"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-lg overflow-hidden cursor-pointer shadow-lg block"
+                      >
+                        <img
+                          src="/images/blokcasestudyarchitecture.webp"
+                          alt="Blok architecture"
+                          className="w-full h-auto object-cover rounded-lg"
+                        />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -721,7 +719,7 @@ export default function BlokPage() {
                   <p>
                     From this, I:
                   </p>
-                  <ul className="list-disc pl-8 space-y-3">
+                  <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
                     <li>Defined what to keep, adapt, or retire</li>
                     <li>Prioritised components against active product roadmaps</li>
                     <li>Created a tracked component roadmap in Jira</li>
@@ -732,21 +730,48 @@ export default function BlokPage() {
                   </p>
                 </div>
 
-                <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-lg p-6 flex items-center justify-center">
-                    <div className="text-center text-text-secondary opacity-50 text-lg">
-                      [Component A]
-                    </div>
+                <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
+                    <a
+                      href="/images/blokcasestudycollab1.png"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-lg overflow-hidden cursor-pointer shadow-lg block"
+                    >
+                      <img
+                        src="/images/blokcasestudycollab1.png"
+                        alt="Blok collaboration 1"
+                        className="w-full h-auto object-cover rounded-lg"
+                      />
+                    </a>
                   </div>
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-lg p-6 flex items-center justify-center">
-                    <div className="text-center text-text-secondary opacity-50 text-lg">
-                      [Component B]
-                    </div>
+                  <div className="rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
+                    <a
+                      href="/images/blokcasestudycollab2.png"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-lg overflow-hidden cursor-pointer shadow-lg block"
+                    >
+                      <img
+                        src="/images/blokcasestudycollab2.png"
+                        alt="Blok collaboration 2"
+                        className="w-full h-auto object-cover rounded-lg"
+                      />
+                    </a>
                   </div>
-                  <div className="aspect-square bg-gray-100 dark:bg-gray-900 rounded-lg p-6 flex items-center justify-center">
-                    <div className="text-center text-text-secondary opacity-50 text-lg">
-                      [Component C]
-                    </div>
+                  <div className="rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
+                    <a
+                      href="/images/blokcasestudycollab3.png"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-lg overflow-hidden cursor-pointer shadow-lg block"
+                    >
+                      <img
+                        src="/images/blokcasestudycollab3.png"
+                        alt="Blok collaboration 3"
+                        className="w-full h-auto object-cover rounded-lg"
+                      />
+                    </a>
                   </div>
                 </div>
                 </div>
@@ -767,19 +792,11 @@ Building a better developer experience
                     <p>
                       After the first wave of components were built by myself and the contributing developers, I:
                     </p>
-                    <ul className="list-disc pl-8 space-y-3">
+                    <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
                       <li>Interviewed designers and developers about how they actually used Blok, to inform how we design the site and documentation</li>
                       <li>Broke down patterns in how Sitecore designs are made and our components are used into rules that were documented in each component file</li>
                       <li>Interviewed developers implemented the new components to find any problems early</li>
                     </ul>
-                  </div>
-
-                  <div className="w-full lg:w-[45%] flex-shrink-0 rounded-lg overflow-hidden">
-                    <div className="aspect-[21/9] bg-gray-300 dark:bg-gray-700">
-                      <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-50 text-xl">
-                        [Placeholder: Documentation interface]
-                      </div>
-                    </div>
                   </div>
                 </div>
                 </div>
@@ -802,7 +819,7 @@ Building a better developer experience
                   <p>
                     To fix this, I:
                   </p>
-                  <ul className="list-disc pl-8 space-y-3">
+                  <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
                     <li>Proactively intercepted new projects and onboarded teams to start using Blok, even at our early stage</li>
                     <li>Presented Blok at an R&D town hall (150+ attendees), focussing on getting started and prototyping using AI</li>
                     <li>Framed Blok as an <strong>acceleration tool</strong>, not a design asset</li>
@@ -825,19 +842,31 @@ Building a better developer experience
                     Getting a team
                   </h3>
                 
-                <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary max-w-5xl leading-relaxed">
-                  <p>
+                <div className="space-y-8">
+                  <div className="space-y-6 text-base md:text-lg font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed max-w-5xl">
+                    <p>
 As the initiative grew traction, we were allocated budget to hire a team to get Blok into production for Sitecore Marketplace and continue the initiative to grow its scope.                   </p>
-                  <p>
-                    Once the team was hired, I:
-                  </p>
-                  <ul className="list-disc pl-8 space-y-3">
-                    <li>Helped onboard the team by giving presentations on the history, philosohpy and roadmap of the future of Blok</li>
-                    <li>Created their first Jira tickets to build guide them on which components and pages of the docs site to build</li>
-                    <li>Reviewed all of their PRs and provided feedback in grooming calls and sprint planning</li>
-                  </ul>
-                  <p>
+                    <p>
+                      Once the team was hired, I:
+                    </p>
+                    <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
+                      <li>Helped onboard the team by giving presentations on the history, philosohpy and roadmap of the future of Blok</li>
+                      <li>Created their first Jira tickets to build guide them on which components and pages of the docs site to build</li>
+                      <li>Reviewed all of their PRs and provided feedback in grooming calls and sprint planning</li>
+                    </ul>
+                    <p>
 After a few months the review feedback became fewer and the team were fully set-up for building out greater projects within Blok                  </p>
+                  </div>
+
+                  <div className="w-full max-w-4xl rounded-lg p-4 cursor-confetti" style={{ backgroundColor: '#6E3FFF' }}>
+                    <div className="rounded-lg overflow-hidden shadow-lg">
+                      <img
+                        src="/images/blokcasestudyteam.png"
+                        alt="Blok team"
+                        className="w-full h-auto object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
                 </div>
                 </div>
 
@@ -860,7 +889,7 @@ After a few months the review feedback became fewer and the team were fully set-
                   <p>
                     I made the decision to release the registry as a Beta, without a docs site, rather than delaying the whole release. My reasoning was:
                   </p>
-                  <ul className="list-disc pl-8 space-y-3">
+                  <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
                     <li>Allowing teams to start using Blok both internally and externally enabled us to collect feedback early and iterate on the docs site and registry</li>
                     <li>We provided, temporary, in-file documentation so developers could get started implementing without any visuals ready</li>
                     <li>During Sitecore Marketplace workshops, we had internal developers helping external devs use Blok, where they were observing any pain points first hand, so we could make changes following this</li>
@@ -975,15 +1004,6 @@ After a few months the review feedback became fewer and the team were fully set-
             </div>
           </div>
           </div>
-
-          {/* Full Width Visual Card */}
-          <div className="border border-text-secondary/10 rounded-lg overflow-hidden">
-            <div className="aspect-video bg-text-secondary/5">
-              <div className="w-full h-full flex items-center justify-center text-text-secondary opacity-30 text-lg">
-                [Placeholder: Impact visualization or dashboard]
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -997,7 +1017,7 @@ After a few months the review feedback became fewer and the team were fully set-
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
               {/* What I would change */}
-              <div className="border border-text-secondary/10 rounded-xl p-8 space-y-6">
+              <div className="rounded-xl p-8 space-y-6">
                 <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                   What I would change
                 </h3>
@@ -1023,7 +1043,7 @@ After a few months the review feedback became fewer and the team were fully set-
               </div>
 
               {/* What this taught me */}
-              <div className="border border-text-secondary/10 rounded-xl p-8 space-y-6">
+              <div className="rounded-xl p-8 space-y-6">
                 <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                   What this taught me
                 </h3>
