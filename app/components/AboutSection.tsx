@@ -115,10 +115,18 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
     id: 'title',
     yOffset: 'mt-[15vh]',
     content: (
-      <div className="flex items-center h-full pl-32 md:pl-48 lg:pl-64">
+      <div className="flex flex-col items-start justify-between h-full pl-32 md:pl-48 lg:pl-64">
         <h2 className="text-6xl md:text-8xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary dark:text-text-secondary whitespace-nowrap">
           Who is Thomas?
         </h2>
+        <a
+          href="/pdfs/thomas_cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-[50vh] mb-8 px-6 py-3 bg-accent-tertiary text-[#222222] font-medium rounded-lg hover:opacity-90 transition-opacity"
+        >
+          View CV/Resume
+        </a>
       </div>
     ),
     width: 'w-auto',
