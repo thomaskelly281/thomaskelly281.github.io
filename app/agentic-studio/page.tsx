@@ -195,7 +195,7 @@ export default function AgenticStudioPage() {
                     Why This Was Not a "Normal" Design Project
                   </h3>
                   <p>
-                    This was not a single feature, but a new product surface being embedded into an existing enterprise ecosystem. The project faced extreme ambiguity due to the pace of AI innovation, with a constant inflow of new requirements from customers and industry changes. We worked under tight timelines—approximately three months to early customer access—and I collaborated directly with a VP who was also the primary engineer. Design decisions had long-term architectural implications, often affecting how all future AI features would be built.
+                    This was not a single feature, but a new product surface being embedded into an existing enterprise ecosystem. The project faced extreme ambiguity due to the pace of AI innovation, with a constant inflow of new requirements from customers and industry changes. We worked under tight timelines (approximately three months to early customer access), and I collaborated directly with a VP who was also the primary engineer. Design decisions had long-term architectural implications, often affecting how all future AI features would be built.
                   </p>
                 </div>
 
@@ -586,7 +586,7 @@ export default function AgenticStudioPage() {
                 <li>Follow-up sessions to surface ambiguity early</li>
               </ul>
               <p>
-                Pushback—especially from product leadership—was common and healthy. Decisions around chat and agent interaction patterns had platform-wide implications, requiring clear rationale and iteration.
+                Pushback, especially from product leadership, was common and healthy. Decisions around chat and agent interaction patterns had platform-wide implications, requiring clear rationale and iteration.
               </p>
             </div>
           </div>
@@ -685,7 +685,7 @@ export default function AgenticStudioPage() {
               </p>
               <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
                 <li>Designing AI systems means designing for uncertainty</li>
-                <li>Technical constraints should follow user flows—not the reverse</li>
+                <li>Technical constraints should follow user flows, not the reverse</li>
                 <li>Simplicity is harder than complexity, especially in AI</li>
               </ul>
               <p>
@@ -695,7 +695,7 @@ export default function AgenticStudioPage() {
 
             <div className="p-10 md:p-14 bg-accent-tertiary rounded-2xl">
               <p className="text-lg md:text-xl font-[family-name:var(--font-ppvalve)] font-medium text-[#222222] leading-relaxed">
-                This project demonstrates my ability to design scalable systems under extreme ambiguity, translate experimental AI concepts into enterprise UX, and influence cross-functional teams through design thinking. It actively challenges the misconception that AI UX is just chat—and shows how thoughtful systems design can unlock AI's real value in complex products.
+                This project demonstrates my ability to design scalable systems under extreme ambiguity, translate experimental AI concepts into enterprise UX, and influence cross-functional teams through design thinking. It actively challenges the misconception that AI UX is just chat, and shows how thoughtful systems design can unlock AI's real value in complex products.
               </p>
             </div>
           </div>
