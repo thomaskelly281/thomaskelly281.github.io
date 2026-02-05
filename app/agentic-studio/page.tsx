@@ -1,8 +1,52 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import { useGSAP } from '../contexts/GSAPContext';
 import { Footer } from '../components/Footer';
 
 export default function AgenticStudioPage() {
+  const principlesRef = useRef<HTMLDivElement>(null);
+  const principle1Ref = useRef<HTMLDivElement>(null);
+  const principle2Ref = useRef<HTMLDivElement>(null);
+  const principle3Ref = useRef<HTMLDivElement>(null);
+  const principle4Ref = useRef<HTMLDivElement>(null);
+  const { gsap, ScrollTrigger } = useGSAP();
+
+  // Design Principles staggered animation
+  useEffect(() => {
+    if (!gsap || !ScrollTrigger || !principlesRef.current) return;
+
+    const principles = [
+      principle1Ref.current,
+      principle2Ref.current,
+      principle3Ref.current,
+      principle4Ref.current,
+    ].filter(Boolean);
+
+    if (principles.length === 0) return;
+
+    gsap.fromTo(
+      principles,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: principlesRef.current,
+          start: 'top 70%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [gsap, ScrollTrigger]);
+
   return (
     <main className="bg-background min-h-screen">
       {/* Hero Section - Full width layout */}
@@ -46,13 +90,11 @@ export default function AgenticStudioPage() {
 
               {/* Right column - Image positioned to overlap */}
               <div className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[45%] lg:mr-8 z-0">
-                <div 
-                  className="h-[600px] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden"
-                >
+                <div className="rounded-lg overflow-hidden">
                   <img
-                    src="/thumbs/agenticthumb.webp"
+                    src="/images/agenticheader.webp"
                     alt="Agentic Studio Interface"
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto object-contain"
                   />
                 </div>
               </div>
@@ -86,20 +128,18 @@ export default function AgenticStudioPage() {
               </ul>
             </div>
 
-            {/* Visual: System Architecture */}
-            <div className="mt-16 rounded-lg overflow-hidden">
+            {/* Video Walkthrough */}
+            <div className="mt-12 rounded-lg overflow-hidden">
               <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-16 flex flex-col items-center justify-center min-h-[500px] text-center">
-                  <div className="space-y-6 max-w-3xl">
-                    <div className="text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                      📐 SYSTEM ARCHITECTURE DIAGRAM
-                    </div>
-                    <div className="text-base font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-3">
-                      <p><strong>Visual should show:</strong></p>
-                      <p>High-level system architecture illustrating how Agentic Studio bridges Innovation Labs and SitecoreAI. Include: (1) Innovation Labs on left with experimental/rapid iterations, (2) Agentic Studio in center as the bridge layer showing agents, flows, and chat components, (3) SitecoreAI product suite on right showing embedded touchpoints across dashboards, central management, and chat entry points.</p>
-                      <p className="italic">Goal: Demonstrate the scope and strategic positioning of the platform within the enterprise ecosystem. This helps hiring managers understand the scale of systems thinking required.</p>
-                    </div>
-                  </div>
+                <div className="rounded-lg overflow-hidden">
+                  <video
+                    src="/videos/agenticwalkthrough.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-auto"
+                  />
                 </div>
               </div>
             </div>
@@ -139,17 +179,12 @@ export default function AgenticStudioPage() {
                   {/* Visual: Touchpoint Complexity */}
                   <div className="mt-8 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                      <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-12 flex flex-col items-center justify-center min-h-[400px] text-center">
-                        <div className="space-y-6 max-w-3xl">
-                          <div className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                            🔄 MULTIPLE TOUCHPOINT DIAGRAM
-                          </div>
-                          <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                            <p><strong>Visual should show:</strong></p>
-                            <p>Interface mockups or wireframes showing the three primary touchpoints: (1) Dashboard card triggering an agent, (2) Central Agentic area with agent/flow management interface, (3) Chat panel with agent interaction. Arrows showing how the same agent can be accessed and used across all three contexts.</p>
-                            <p className="italic">Goal: Illustrate the complexity of creating a unified system that works seamlessly across different entry points and contexts.</p>
-                          </div>
-                        </div>
+                      <div className="rounded-lg overflow-hidden">
+                        <img
+                          src="/images/agentictouchpoints.webp"
+                          alt="Multiple touchpoint diagram showing dashboard, central Agentic area, and chat panel"
+                          className="w-full h-auto object-contain"
+                        />
                       </div>
                     </div>
                   </div>
@@ -160,20 +195,11 @@ export default function AgenticStudioPage() {
                     Why This Was Not a "Normal" Design Project
                   </h3>
                   <p>
-                    This was not a single feature, but a new product surface being embedded into an existing enterprise ecosystem. Key differences from a typical product design project included:
-                  </p>
-                  <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
-                    <li>Extreme ambiguity due to the pace of AI innovation</li>
-                    <li>Constant inflow of new requirements from customers and industry changes</li>
-                    <li>Tight timelines (≈3 months to early customer access)</li>
-                    <li>Direct collaboration with a VP who was also the primary engineer</li>
-                  </ul>
-                  <p>
-                    Design decisions had long-term architectural implications, often affecting how all future AI features would be built.
+                    This was not a single feature, but a new product surface being embedded into an existing enterprise ecosystem. The project faced extreme ambiguity due to the pace of AI innovation, with a constant inflow of new requirements from customers and industry changes. We worked under tight timelines—approximately three months to early customer access—and I collaborated directly with a VP who was also the primary engineer. Design decisions had long-term architectural implications, often affecting how all future AI features would be built.
                   </p>
                 </div>
 
-                <div className="space-y-6 pt-8">
+                <div className="space-y-6 pt-12 mt-12 border-t border-text-secondary/10">
                   <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                     My Role in Practice
                   </h3>
@@ -232,20 +258,18 @@ export default function AgenticStudioPage() {
                     <li>Support future, unknown configurations without rebuilding UIs</li>
                   </ul>
 
-                  {/* Visual: Modular UI System */}
+                  {/* Video: Flow Walkthrough */}
                   <div className="mt-8 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                      <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-12 flex flex-col items-center justify-center min-h-[500px] text-center">
-                        <div className="space-y-6 max-w-3xl">
-                          <div className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                            🧩 MODULAR UI COMPONENT SYSTEM
-                          </div>
-                          <div className="text-sm font-[family-name:var(--font-sfpro)} text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                            <p><strong>Visual should show:</strong></p>
-                            <p>Split-screen comparison showing: LEFT - An agent rendered in chat format (linear, conversational bubbles) vs RIGHT - The same agent rendered as a full custom UI (form fields, progress indicators, action buttons). In the center, show the shared atomic UI modules/components that feed both renderings (input modules, status indicators, action buttons).</p>
-                            <p className="italic">Goal: Demonstrate the elegant solution of using atomic components that can be composed into either chat or custom UI, showing systems thinking and architectural sophistication.</p>
-                          </div>
-                        </div>
+                      <div className="rounded-lg overflow-hidden">
+                        <video
+                          src="/videos/flowwalkthrough.mp4"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          className="w-full h-auto"
+                        />
                       </div>
                     </div>
                   </div>
@@ -281,17 +305,12 @@ export default function AgenticStudioPage() {
                   {/* Visual: Spaces Concept */}
                   <div className="mt-8 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                      <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-12 flex flex-col items-center justify-center min-h-[500px] text-center">
-                        <div className="space-y-6 max-w-3xl">
-                          <div className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                            🌐 SPACES: NON-LINEAR WORKFLOW INTERFACE
-                          </div>
-                          <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                            <p><strong>Visual should show:</strong></p>
-                            <p>Interface mockup of a Space showing: (1) Linear chat panel on the left or bottom, (2) Main work area with non-linear agent UI (allowing skip, return, collaborate), (3) Collaboration indicators (avatars, comments, review states), (4) History/version panel showing past iterations. Annotations highlighting how chat remains familiar while the Space enables complexity.</p>
-                            <p className="italic">Goal: Showcase the key UX innovation that solved the temporal problem - demonstrating strategic problem-solving and understanding of enterprise workflow needs.</p>
-                          </div>
-                        </div>
+                      <div className="rounded-lg overflow-hidden">
+                        <img
+                          src="/images/agenticworkflow.webp"
+                          alt="Spaces: Non-linear workflow interface showing chat panel, main work area, and collaboration features"
+                          className="w-full h-auto object-contain"
+                        />
                       </div>
                     </div>
                   </div>
@@ -314,17 +333,12 @@ export default function AgenticStudioPage() {
                   {/* Visual: Artifacts System */}
                   <div className="mt-8 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                      <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-12 flex flex-col items-center justify-center min-h-[500px] text-center">
-                        <div className="space-y-6 max-w-3xl">
-                          <div className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                            📦 ARTIFACTS: STRUCTURED CONTENT REPRESENTATION
-                          </div>
-                          <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                            <p><strong>Visual should show:</strong></p>
-                            <p>Grid or list view of multiple Artifacts showing different content types: (1) Site artifact with preview, (2) Media collection artifact with thumbnails, (3) Content items with structured metadata. Each artifact showing status indicators (pending review, approved), action buttons, and the ability to be grouped. Show a detail view of one artifact with its tailored editing experience. Include workflow: artifact → review → approve → promote to SitecoreAI.</p>
-                            <p className="italic">Goal: Demonstrate how the system elegantly handles enterprise content complexity beyond simple text, showing understanding of enterprise CMS workflows and governance requirements.</p>
-                          </div>
-                        </div>
+                      <div className="rounded-lg overflow-hidden">
+                        <img
+                          src="/images/agenticartifacts.webp"
+                          alt="Artifacts: Structured content representation showing different content types with status indicators and workflow"
+                          className="w-full h-auto object-contain"
+                        />
                       </div>
                     </div>
                   </div>
@@ -364,17 +378,17 @@ export default function AgenticStudioPage() {
               Design Principles
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="border border-text-secondary/10 rounded-xl p-8 space-y-4">
-                <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+            <div ref={principlesRef} className="flex flex-col md:flex-row gap-6">
+              <div ref={principle1Ref} className="bg-accent-tertiary rounded-xl p-8 space-y-4 flex-1" style={{ opacity: 0 }}>
+                <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-[#222222]">
                   Design for UI first, translate to chat later
                 </h3>
-                <p className="text-base font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
+                <p className="text-base font-[family-name:var(--font-sfpro)] text-[#222222] leading-relaxed">
                   Optimal workflows should not be constrained by chat metaphors.
                 </p>
               </div>
 
-              <div className="border border-text-secondary/10 rounded-xl p-8 space-y-4">
+              <div ref={principle2Ref} className="border border-text-secondary/10 rounded-xl p-8 space-y-4 flex-1" style={{ opacity: 0 }}>
                 <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                   Atomic over bespoke
                 </h3>
@@ -383,40 +397,22 @@ export default function AgenticStudioPage() {
                 </p>
               </div>
 
-              <div className="border border-text-secondary/10 rounded-xl p-8 space-y-4">
-                <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+              <div ref={principle3Ref} className="bg-accent-tertiary rounded-xl p-8 space-y-4 flex-1" style={{ opacity: 0 }}>
+                <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-[#222222]">
                   Linear chat, non-linear spaces
                 </h3>
-                <p className="text-base font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
+                <p className="text-base font-[family-name:var(--font-sfpro)] text-[#222222] leading-relaxed">
                   Preserve mental models while enabling complexity.
                 </p>
               </div>
 
-              <div className="border border-text-secondary/10 rounded-xl p-8 space-y-4">
+              <div ref={principle4Ref} className="border border-text-secondary/10 rounded-xl p-8 space-y-4 flex-1" style={{ opacity: 0 }}>
                 <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
                   Progressive disclosure
                 </h3>
                 <p className="text-base font-[family-name:var(--font-sfpro)] text-text-secondary leading-relaxed">
                   Reduce cognitive load when dealing with high output volume.
                 </p>
-              </div>
-            </div>
-
-            {/* Visual: Design Principles in Action */}
-            <div className="mt-12 rounded-lg overflow-hidden">
-              <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-12 flex flex-col items-center justify-center min-h-[500px] text-center">
-                  <div className="space-y-6 max-w-3xl">
-                    <div className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                      💡 DESIGN PRINCIPLES APPLIED
-                    </div>
-                    <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                      <p><strong>Visual should show:</strong></p>
-                      <p>Four-quadrant layout with real interface examples demonstrating each principle: (1) TOP LEFT - "UI first" showing a full custom UI that was then adapted to chat, (2) TOP RIGHT - "Atomic over bespoke" showing component reuse across different agents, (3) BOTTOM LEFT - "Linear chat, non-linear spaces" showing the dual interface, (4) BOTTOM RIGHT - "Progressive disclosure" showing how hundreds of artifacts are organized with expand/collapse or pagination.</p>
-                      <p className="italic">Goal: Transform abstract principles into concrete design decisions, showing strategic thinking translated to real interfaces.</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -440,24 +436,6 @@ export default function AgenticStudioPage() {
                   <p>
                     Initially, agents and flows were treated as the same concept. This broke down once we introduced collaboration and handovers. A flow could orchestrate agents; an agent could not contain other agents. While technical, this distinction had real UX consequences, especially in builder experiences.
                   </p>
-
-                  {/* Visual: Mental Model Evolution */}
-                  <div className="mt-8 rounded-lg overflow-hidden">
-                    <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                      <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-12 flex flex-col items-center justify-center min-h-[400px] text-center">
-                        <div className="space-y-6 max-w-3xl">
-                          <div className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                            🔄 MENTAL MODEL EVOLUTION: AGENTS VS FLOWS
-                          </div>
-                          <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                            <p><strong>Visual should show:</strong></p>
-                            <p>Before/after diagram. BEFORE: Simple diagram showing agents and flows treated the same (merged concept). AFTER: Clear hierarchy showing flows at top level (containing/orchestrating multiple agents), agents at component level (cannot contain other agents). Include builder UI screenshots showing how this distinction manifests in the interface.</p>
-                            <p className="italic">Goal: Show design thinking evolution and how UX insights drove technical architecture changes, demonstrating strategic design leadership.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="space-y-6 pt-8">
@@ -475,24 +453,6 @@ export default function AgenticStudioPage() {
                   <p>
                     This allowed us to support complex configurations without exponential complexity.
                   </p>
-
-                  {/* Visual: Atomic Component System */}
-                  <div className="mt-8 rounded-lg overflow-hidden">
-                    <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                      <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-12 flex flex-col items-center justify-center min-h-[500px] text-center">
-                        <div className="space-y-6 max-w-3xl">
-                          <div className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                            ⚛️ ATOMIC DESIGN SYSTEM
-                          </div>
-                          <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                            <p><strong>Visual should show:</strong></p>
-                            <p>Component library or system diagram showing: (1) Bottom layer: Atomic components (status indicators, input fields, buttons with shared states), (2) Middle layer: How these combine into patterns (form groups, card layouts), (3) Top layer: Full agent/flow UIs composed from these patterns. Include Figma screenshot or design system documentation showing the shared status/state system that prevents UI variants from multiplying.</p>
-                            <p className="italic">Goal: Showcase design systems thinking and scalable architecture that prevents technical debt - key competency for senior design roles.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -550,19 +510,12 @@ export default function AgenticStudioPage() {
                   {/* Visual: Chat Integration */}
                   <div className="mt-12 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                      <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-12 flex flex-col items-center justify-center min-h-[600px] text-center">
-                        <div className="space-y-6 max-w-3xl">
-                          <div className="text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                            💬 CHAT INTEGRATION IN ENTERPRISE CONTEXT
-                          </div>
-                          <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                            <p><strong>Visual should show (2-3 screens or video):</strong></p>
-                            <p>1. UNIVERSAL CHAT: Full product interface showing the top navigation with chat entry point, then the slide-in chat panel overlaying the main interface. Show conversation with an agent generating work.</p>
-                            <p>2. CONTEXTUAL PROMPT BAR: Agentic work area with the contextual prompt bar at the bottom (scoped to current work context), showing how it differs from universal chat.</p>
-                            <p>3. REDIRECT TO SPACE: Chat conversation showing agent output with "Review in Space" action, arrow pointing to the Space where the work becomes reviewable/collaborative.</p>
-                            <p className="italic">Goal: Demonstrate the sophisticated integration strategy that balances familiarity (chat) with enterprise requirements (traceability, governance). Shows deep understanding of AI UX beyond just "add a chatbot."</p>
-                          </div>
-                        </div>
+                      <div className="rounded-lg overflow-hidden">
+                        <img
+                          src="/images/agenticchat.webp"
+                          alt="Chat integration in enterprise context showing universal chat, contextual prompt bar, and redirect to Space"
+                          className="w-full h-auto object-contain"
+                        />
                       </div>
                     </div>
                   </div>
@@ -585,10 +538,45 @@ export default function AgenticStudioPage() {
               <p>
                 A major part of my role was translating between two modes of working:
               </p>
-              <ul className="list-disc pl-8 space-y-3 list-accent-bullets">
-                <li><strong>Innovation Labs:</strong> rapid, demo-driven, minimal constraints</li>
-                <li><strong>Core Product:</strong> governed, consistent, enterprise-ready</li>
-              </ul>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-10 md:p-14 bg-accent-tertiary rounded-2xl">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 mt-1">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#222222" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-[#222222] mb-2">
+                        Innovation Labs
+                      </h3>
+                      <p className="text-base md:text-lg font-[family-name:var(--font-sfpro)] text-[#222222] leading-relaxed">
+                        Rapid, demo-driven, minimal constraints
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-10 md:p-14 bg-accent-tertiary rounded-2xl">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 mt-1">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#222222" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-[family-name:var(--font-ppvalve)] font-medium text-[#222222] mb-2">
+                        Core Product
+                      </h3>
+                      <p className="text-base md:text-lg font-[family-name:var(--font-sfpro)] text-[#222222] leading-relaxed">
+                        Governed, consistent, enterprise-ready
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
               <p>
                 To align teams, I relied heavily on:
               </p>
@@ -600,67 +588,20 @@ export default function AgenticStudioPage() {
               <p>
                 Pushback—especially from product leadership—was common and healthy. Decisions around chat and agent interaction patterns had platform-wide implications, requiring clear rationale and iteration.
               </p>
-
-              {/* Visual: Design Process & Collaboration */}
-              <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                  <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-8 flex flex-col items-center justify-center min-h-[350px] text-center">
-                    <div className="space-y-4 max-w-md">
-                      <div className="text-xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                        🎨 FIGMA DESIGN FILES
-                      </div>
-                      <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                        <p><strong>Visual should show:</strong></p>
-                        <p>Screenshot of Figma workspace showing: Multiple artboards with agent/flow designs at different fidelities (sketches, wireframes, high-fidelity), annotations, component library panel, version history, comments from stakeholders.</p>
-                        <p className="italic">Shows iterative design process and collaboration.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                  <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-8 flex flex-col items-center justify-center min-h-[350px] text-center">
-                    <div className="space-y-4 max-w-md">
-                      <div className="text-xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                        🎬 INTERACTIVE PROTOTYPE
-                      </div>
-                      <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                        <p><strong>Visual should show:</strong></p>
-                        <p>Video or GIF of clickable prototype showing key interaction: Triggering an agent, working through steps, seeing output generated, reviewing in Space. Include annotations or voiceover explaining design decisions.</p>
-                        <p className="italic">Demonstrates ability to create compelling design narratives for alignment.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-lg p-4 md:col-span-2" style={{ backgroundColor: '#6E3FFF' }}>
-                  <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-8 flex flex-col items-center justify-center min-h-[350px] text-center">
-                    <div className="space-y-4 max-w-3xl">
-                      <div className="text-xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                        📋 ANNOTATED HANDOVER DOCUMENTATION
-                      </div>
-                      <div className="text-sm font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-2">
-                        <p><strong>Visual should show:</strong></p>
-                        <p>Developer handover document or Figma Dev Mode view showing: UI specifications with measurements, interaction states documented, edge cases called out, component mapping to code, implementation notes. Could also show screenshot of Loom video thumbnail with annotations overlaid on design explaining rationale.</p>
-                        <p className="italic">Shows design-to-dev handover excellence and attention to implementation quality - key skill for senior IC roles.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Outcomes & Impact */}
-      <div className="relative min-h-screen flex items-center py-32">        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-16">
-          <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
-            Outcomes & Impact
-          </h2>
+      <div className="min-h-screen flex items-center py-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="space-y-16">
+            <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
+              Outcomes & Impact
+            </h2>
 
-          <div className="space-y-8">
+            <div className="space-y-8">
             {/* Impact Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Product Impact Card */}
@@ -725,27 +666,6 @@ export default function AgenticStudioPage() {
                 </div>
               </div>
             </div>
-
-            {/* Visual: Product in Action */}
-            <div className="mt-16 rounded-lg overflow-hidden">
-              <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
-                <div className="bg-gray-200 dark:bg-gray-800 rounded-lg p-16 flex flex-col items-center justify-center min-h-[600px] text-center">
-                  <div className="space-y-6 max-w-4xl">
-                    <div className="text-3xl font-[family-name:var(--font-ppvalve)] font-medium text-gray-600 dark:text-gray-400">
-                      ✨ FINAL PRODUCT: AGENTIC STUDIO IN PRODUCTION
-                    </div>
-                    <div className="text-base font-[family-name:var(--font-sfpro)] text-gray-500 dark:text-gray-500 leading-relaxed space-y-3">
-                      <p><strong>Visual should show (video montage or multi-screen layout):</strong></p>
-                      <p>1. AGENT BUILDER: Interface showing a user building/configuring a custom agent with the modular UI system</p>
-                      <p>2. AGENT IN USE: Marketer using an agent through the full UI, showing the non-linear workflow in a Space with multiple artifacts being generated</p>
-                      <p>3. COLLABORATION: Multiple users reviewing and approving artifacts, showing the governance flow</p>
-                      <p>4. CHAT INTEGRATION: Quick interaction via universal chat that redirects to a Space for deeper work</p>
-                      <p>5. ANALYTICS/USAGE: Dashboard or metrics showing the 100+ agents built by early partners, adoption metrics, user satisfaction scores</p>
-                      <p className="italic">Goal: Show the complete end-to-end experience and validate the impact with real product screenshots and data. This is the "proof" moment that shows the design actually shipped and succeeded.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -753,7 +673,7 @@ export default function AgenticStudioPage() {
 
       {/* Reflection */}
       <div className="min-h-screen flex items-center py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="space-y-16">
             <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary">
               Reflection
