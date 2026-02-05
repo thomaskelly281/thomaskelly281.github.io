@@ -1,73 +1,118 @@
-import Topbar from '../components/Topbar';
-import SplashSection from '../components/SplashSection';
-import LocationSection from '../components/LocationSection';
-// import AXPSection from '../components/AXPSection';
-import LabsSection from '../components/LabsSection';
-import BlokSection from '@/components/BlokSection';
-import AssistantSection from '@/components/AssistantSection';
-import TestimonialSection from '@/components/TestimonialSection';
-// import AboutSection from '@/components/AboutSection';
-import FooterSection from '@/components/FooterSection';
-import ConstructionBanner from '@/components/ConstructionBanner';
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { Header } from './components/Header';
+import { WorkSection } from './components/WorkSection';
+import { PersonalProjectsSection } from './components/PersonalProjectsSection';
+import { AboutSection } from './components/AboutSection';
+import { TestimonialsSection } from './components/TestimonialsSection';
+import { Footer } from './components/Footer';
+import { useGSAP } from './contexts/GSAPContext';
 
 export default function Home() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const workRef = useRef<HTMLElement>(null);
+  const personalProjectsRef = useRef<HTMLElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
+  const testimonialsRef = useRef<HTMLElement>(null);
+  const { gsap, ScrollTrigger } = useGSAP();
+
+  // GSAP scroll animation for transition between header and work section
+  useEffect(() => {
+    if (!headerRef.current || !workRef.current) return;
+
+    const header = headerRef.current;
+    const work = workRef.current;
+
+    // Create a timeline for the transition animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: work,
+        start: 'top bottom',
+        end: 'top center',
+        scrub: 1, // Smooth scrubbing animation
+      },
+    });
+
+    // Animate header elements out as we scroll
+    const headerContent = header.querySelector('[data-header-content]');
+    
+    if (headerContent) {
+      tl.to(
+        headerContent,
+        {
+          opacity: 0,
+          y: -50,
+          scale: 0.95,
+          duration: 1,
+          ease: 'power2.inOut',
+        },
+        0
+      );
+    }
+
+    // Animate work section elements in
+    const workTitle = work.querySelector('[data-work-title]');
+    const workContent = work.querySelector('[data-work-content]');
+
+    if (workTitle) {
+      tl.from(
+        workTitle,
+        {
+          opacity: 0,
+          y: 100,
+          scale: 0.9,
+          duration: 1,
+          ease: 'power2.out',
+        },
+        0.2
+      );
+    }
+
+    if (workContent) {
+      tl.from(
+        workContent,
+        {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: 'power2.out',
+        },
+        0.4
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars.trigger === work) {
+          trigger.kill();
+        }
+      });
+    };
+  }, [gsap, ScrollTrigger]);
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Construction Banner - Full Width */}
-      <ConstructionBanner />
-      
-      <main className="mx-auto min-h-screen w-4/5 sm:w-11/12 md:w-5/6 lg:w-4/5 xl:w-3/4 px-4 sm:px-6 lg:px-8 flex flex-col overflow-x-hidden">
-        {/* Responsive container - red background to test responsiveness */}
-        <div className="w-full flex justify-center pt-4">
-          <Topbar />
-        </div>
-        
-        {/* Animated Splash Section */}
-        <div className="flex items-center" style={{ height: 'calc(85vh - 100px)' }}>
-          <SplashSection />
-        </div>
-        
-        {/* Location Section */}
-        <div id="location" className="flex items-center" style={{ height: 'calc(85vh - 100px)' }}>
-          <LocationSection />
-        </div>
+    <main className="bg-background min-h-screen">
+      {/* Header Section */}
+      <div ref={headerRef}>
+        <Header />
+      </div>
 
-        {/* Labs Section */}
-        <div id="labs" className="flex items-center mt-64 mb-32">
-          <LabsSection />
-        </div>
+      {/* Work Section */}
+      <WorkSection ref={workRef} />
 
-        {/* AXP Section - Commented out */}
-        {/* <div id="axp" className="flex items-center mt-64 mb-32">
-          <AXPSection />
-        </div> */}
+      {/* Personal Projects Section */}
+      <PersonalProjectsSection ref={personalProjectsRef} />
 
-          {/* Blok Section */}
-          <div id="blok" className="flex items-center mt-64 mb-32">
-            <BlokSection />
-          </div>
+      {/* About Section */}
+      <AboutSection ref={aboutRef} />
 
-          {/* Assistant Section */}
-          <div id="assistant" className="flex items-center mt-64 mb-32">
-            <AssistantSection />
-          </div>
+      {/* Testimonials Section */}
+      <TestimonialsSection ref={testimonialsRef} />
 
-          {/* Testimonial Section */}
-          <div id="testimonials" className="flex items-center mt-64 mb-32 md:mb-24 sm:mb-20">
-            <TestimonialSection />
-          </div>
+      {/* Footer */}
+      <Footer />
 
-          {/* About Section */}
-          {/* <div className="flex items-center mt-64 mb-32">
-            <AboutSection />
-          </div> */}
-
-          {/* Footer Section */}
-          <div id="footer" className="flex items-center mt-64 mb-32">
-            <FooterSection />
-          </div>
-        
-      </main>
-    </div>
+    </main>
   );
 }

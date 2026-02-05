@@ -1,9 +1,157 @@
 @import "tailwindcss";
 
-/* SF Pro Display Font Faces */
+/* ============================================
+   COLOR PALETTE
+   ============================================ */
+:root {
+  /* Primary Colors */
+  --background: #ffffff;
+  --text-secondary: #222222;
+  --accent-tertiary: #E5FF20;
+  
+  /* Legacy support (mapped to new colors) */
+  --foreground: var(--text-secondary);
+}
+
+/* ============================================
+   FONT DECLARATIONS
+   ============================================ */
+
+/* PPValve Font Family */
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainExtralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainExtralightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainMediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainExtrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve';
+  src: url('/fonts/font-family-1/PPValve-PlainExtraboldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* PPValve Stencil Variant */
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilExtralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilExtralightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilMediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilExtrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPValve Stencil';
+  src: url('/fonts/font-family-1/PPValve-StencilExtraboldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Georgia Font Family */
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/font-family-2/georgia.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/font-family-2/georgiai.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/font-family-2/georgiab.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/font-family-2/georgiaz.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* SF Pro Display Font Family */
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  src: url('/fonts/font-family-3/SFPRODISPLAYREGULAR.OTF') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -11,7 +159,7 @@
 
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  src: url('/fonts/font-family-3/SFPRODISPLAYMEDIUM.OTF') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -19,7 +167,7 @@
 
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+  src: url('/fonts/font-family-3/SFPRODISPLAYBOLD.OTF') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -27,7 +175,23 @@
 
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYLIGHTITALIC.OTF') format('opentype');
+  src: url('/fonts/font-family-3/SFPRODISPLAYTHINITALIC.OTF') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYULTRALIGHTITALIC.OTF') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYLIGHTITALIC.OTF') format('opentype');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -35,67 +199,245 @@
 
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYSEMIBOLDITALIC.OTF') format('opentype');
-  font-weight: 600;
+  src: url('/fonts/font-family-3/SFPRODISPLAYBLACKITALIC.OTF') format('opentype');
+  font-weight: 900;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYBLACKITALIC.OTF') format('opentype');
-  font-weight: 900;
+  src: url('/fonts/font-family-3/SFPRODISPLAYHEAVYITALIC.OTF') format('opentype');
+  font-weight: 800;
   font-style: italic;
   font-display: swap;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/font-family-3/SFPRODISPLAYSEMIBOLDITALIC.OTF') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
 }
+
+/* Professional Responsive Breakpoints */
+@custom-media --sm (width >= 640px);
+@custom-media --md (width >= 768px);
+@custom-media --lg (width >= 1024px);
+@custom-media --xl (width >= 1280px);
+@custom-media --2xl (width >= 1536px);
 
 @theme inline {
+  /* Colors - Available in Tailwind as bg-background, text-text-secondary, etc. */
   --color-background: var(--background);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
   --color-foreground: var(--foreground);
-  --font-sans: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: var(--font-geist-mono);
+  
+  /* Fonts - Defined via @font-face above */
+  --font-ppvalve: 'PPValve', sans-serif;
+  --font-ppvalve-stencil: 'PPValve Stencil', sans-serif;
+  --font-georgia: 'Georgia', serif;
+  --font-sfpro: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Legacy font support */
+  --font-sans: var(--font-sfpro);
+  --font-mono: var(--font-sfpro);
+  
+  /* Breakpoint values for JavaScript access */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark mode styles - activated via .dark class from next-themes */
+.dark {
+  --background: #0a0a0a;
+  --text-secondary: #ededed;
+  --foreground: var(--text-secondary);
+  /* Keep accent color the same in dark mode */
+  --accent-tertiary: #E5FF20;
 }
 
 html {
-  scroll-behavior: smooth;
+  background: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #ffffff;
+  color: var(--text-secondary);
+  font-family: var(--font-sfpro);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animated Cards Responsive Sizing */
-@media (max-width: 1700px) {
-  .animated-card {
-    width: clamp(250px, 15vw, 400px) !important;
-    min-height: clamp(400px, 25vh, 600px) !important;
-  }
+/* ============================================
+   TEXT SELECTION HIGHLIGHT
+   ============================================ */
+/* Webkit browsers (Chrome, Safari, Edge, Opera) */
+::selection {
+  background-color: var(--accent-tertiary, #E5FF20);
+  color: var(--text-secondary, #222222);
 }
 
-/* Cards Container Alignment */
-/* @media (min-width: 1750px) {
-  .cards-container {
-    justify-content: flex-start !important;
-  }
-} */
+/* Firefox */
+::-moz-selection {
+  background-color: var(--accent-tertiary, #E5FF20);
+  color: var(--text-secondary, #222222);
+}
 
-/* Center cards when Splash section is in column layout */
-/* @media (min-width: 1535px) {
-  .cards-container {
-    justify-content: center !important;
-  }
-} */
+/* Dark mode text selection */
+.dark ::selection {
+  background-color: var(--accent-tertiary, #E5FF20);
+  color: var(--text-secondary, #ededed);
+}
+
+.dark ::-moz-selection {
+  background-color: var(--accent-tertiary, #E5FF20);
+  color: var(--text-secondary, #ededed);
+}
+
+/* Hide default cursor - custom cursor will be used */
+* {
+  cursor: none !important;
+}
+
+/* Pointer cursor for all buttons */
+button {
+  cursor: none !important;
+}
+
+/* ScrollSmoother wrapper styles */
+#smooth-wrapper {
+  /* Wrapper serves as viewport container */
+  /* ScrollSmoother will handle the positioning */
+  background: #ffffff;
+}
+
+#smooth-content {
+  /* Content gets transformed by ScrollSmoother */
+  will-change: transform;
+  background: #ffffff;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+/* Firefox - Applied to html for full page scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-tertiary, #E5FF20) var(--background, #ffffff);
+}
+
+/* Firefox - Applied to all elements */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-tertiary, #E5FF20) var(--background, #ffffff);
+}
+
+/* Webkit browsers (Chrome, Safari, Edge, Opera) - Vertical and horizontal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background, #ffffff);
+  border: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-tertiary, #E5FF20);
+  border-radius: 4px;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-tertiary, #E5FF20);
+  opacity: 0.9;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent-tertiary, #E5FF20);
+  opacity: 1;
+}
+
+/* Webkit - Corner (where vertical and horizontal scrollbars meet) */
+::-webkit-scrollbar-corner {
+  background: var(--background, #ffffff);
+}
+
+/* Dark mode scrollbar track for Chrome/Webkit */
+.dark ::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.dark ::-webkit-scrollbar-corner {
+  background: #0a0a0a;
+}
+
+/* Dark mode scrollbar for Firefox */
+.dark {
+  scrollbar-color: var(--accent-tertiary, #E5FF20) #0a0a0a;
+}
+
+.dark * {
+  scrollbar-color: var(--accent-tertiary, #E5FF20) #0a0a0a;
+}
+
+/* Ensure body also has the scrollbar styles */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-tertiary, #E5FF20) var(--background, #ffffff);
+}
+
+/* Heart cursor for footer name section */
+.cursor-heart {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23222222' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") 12 12, auto !important;
+}
+
+/* Confetti cursor */
+.cursor-confetti {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext x='12' y='16' font-size='20' text-anchor='middle'%3E🎉%3C/text%3E%3C/svg%3E") 12 12, auto !important;
+}
+
+/* Accent-colored list bullets for lists not on accent backgrounds */
+ul.list-accent-bullets {
+  list-style-color: var(--accent-tertiary, #E5FF20) !important;
+}
+
+ul.list-accent-bullets li {
+  color: var(--text-secondary);
+}
+
+ul.list-accent-bullets li::marker {
+  color: var(--accent-tertiary, #E5FF20) !important;
+}
+
+/* 12-pointed star (burst) shape */
+.burst-12 {
+  background: var(--accent-tertiary, #E5FF20);
+  position: relative;
+}
+
+.burst-12:before,
+.burst-12:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--accent-tertiary, #E5FF20);
+}
+
+.burst-12:before {
+  transform: rotate(30deg);
+}
+
+.burst-12:after {
+  transform: rotate(60deg);
+}
