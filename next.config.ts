@@ -15,9 +15,6 @@ const nextConfig: NextConfig = {
   // Optimizations
   poweredByHeader: false,
   reactStrictMode: true,
-  
-  // Output optimization
-  swcMinify: true,
 };
 
 export default nextConfig;
