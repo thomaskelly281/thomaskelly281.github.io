@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useGSAP } from '../contexts/GSAPContext';
 import { Footer } from '../components/Footer';
 
@@ -22,6 +23,78 @@ export default function BlokPage() {
   const execution3Ref = useRef<HTMLDivElement>(null);
   const execution4Ref = useRef<HTMLDivElement>(null);
   const { gsap, ScrollTrigger } = useGSAP();
+
+  // Wait for page to fully load (including images) before refreshing ScrollTrigger
+  useEffect(() => {
+    if (!ScrollTrigger || typeof window === 'undefined') return;
+
+    // Wait for React hydration to complete before manipulating scroll
+    const scrollToTop = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+      });
+    });
+
+    const refreshScrollTrigger = () => {
+      // Wait for layout to settle with double RAF
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      });
+    };
+
+    // Wait for all images to load
+    const waitForImages = () => {
+      const images = document.querySelectorAll('img');
+      if (images.length === 0) {
+        refreshScrollTrigger();
+        return;
+      }
+
+      let loadedCount = 0;
+      const totalImages = images.length;
+
+      const checkComplete = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          refreshScrollTrigger();
+        }
+      };
+
+      images.forEach((img) => {
+        if ((img as HTMLImageElement).complete) {
+          checkComplete();
+        } else {
+          img.addEventListener('load', checkComplete, { once: true });
+          img.addEventListener('error', checkComplete, { once: true });
+        }
+      });
+    };
+
+    // If page is already loaded, check images immediately
+    if (document.readyState === 'complete') {
+      waitForImages();
+    } else {
+      // Wait for window load event (includes images)
+      window.addEventListener('load', waitForImages, { once: true });
+      
+      // Also refresh after a delay as fallback
+      const timeoutId = setTimeout(() => {
+        refreshScrollTrigger();
+      }, 1000);
+
+      return () => {
+        cancelAnimationFrame(scrollToTop);
+        window.removeEventListener('load', waitForImages);
+        clearTimeout(timeoutId);
+      };
+    }
+
+    return () => {
+      cancelAnimationFrame(scrollToTop);
+    };
+  }, [ScrollTrigger]);
 
   // Outcomes section fill animation
   useEffect(() => {
@@ -327,6 +400,20 @@ export default function BlokPage() {
     };
   }, [gsap, ScrollTrigger]);
 
+  // Final refresh after all animations are set up to ensure correct viewport calculations
+  useEffect(() => {
+    if (!ScrollTrigger) return;
+
+    // Refresh after all animations have been initialized
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      clearTimeout(refreshTimer);
+    };
+  }, [ScrollTrigger]);
+
   return (
     <main className="bg-background min-h-screen">
       {/* Hero Section - Full width layout */}
@@ -384,10 +471,14 @@ export default function BlokPage() {
                 <div 
                   className="h-[600px] bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden"
                 >
-              <img
+              <Image
                 src="/images/blokcasestudyheader.webp"
                 alt="Blok Design System"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
+                priority
               />
             </div>
               </div>
@@ -416,11 +507,14 @@ export default function BlokPage() {
               </p>
             </div>
 
-            <div className="mt-20 rounded-lg overflow-hidden">
-              <img
+            <div className="mt-20 rounded-lg overflow-hidden relative aspect-video">
+              <Image
                 src="/images/blokcasestudymock.webp"
                 alt="Blok design system component showcase"
-                className="w-full h-auto object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                quality={90}
               />
             </div>
           </div>
@@ -617,10 +711,14 @@ export default function BlokPage() {
                         rel="noopener noreferrer"
                         className="rounded-lg overflow-hidden cursor-pointer shadow-lg block"
                       >
-                        <img
+                        <Image
                           src="/images/blokcasestudyarchitecture.webp"
                           alt="Blok architecture"
+                          width={800}
+                          height={600}
                           className="w-full h-auto object-cover rounded-lg"
+                          sizes="(max-width: 768px) 100vw, 800px"
+                          quality={85}
                         />
                       </a>
                     </div>
@@ -738,10 +836,14 @@ export default function BlokPage() {
                       rel="noopener noreferrer"
                       className="rounded-lg overflow-hidden cursor-pointer shadow-lg block"
                     >
-                      <img
+                      <Image
                         src="/images/blokcasestudycollab1.png"
                         alt="Blok collaboration 1"
+                        width={600}
+                        height={400}
                         className="w-full h-auto object-cover rounded-lg"
+                        sizes="(max-width: 768px) 100vw, 600px"
+                        quality={85}
                       />
                     </a>
                   </div>
@@ -752,10 +854,14 @@ export default function BlokPage() {
                       rel="noopener noreferrer"
                       className="rounded-lg overflow-hidden cursor-pointer shadow-lg block"
                     >
-                      <img
+                      <Image
                         src="/images/blokcasestudycollab2.png"
                         alt="Blok collaboration 2"
+                        width={600}
+                        height={400}
                         className="w-full h-auto object-cover rounded-lg"
+                        sizes="(max-width: 768px) 100vw, 600px"
+                        quality={85}
                       />
                     </a>
                   </div>
@@ -766,10 +872,14 @@ export default function BlokPage() {
                       rel="noopener noreferrer"
                       className="rounded-lg overflow-hidden cursor-pointer shadow-lg block"
                     >
-                      <img
+                      <Image
                         src="/images/blokcasestudycollab3.png"
                         alt="Blok collaboration 3"
+                        width={600}
+                        height={400}
                         className="w-full h-auto object-cover rounded-lg"
+                        sizes="(max-width: 768px) 100vw, 600px"
+                        quality={85}
                       />
                     </a>
                   </div>
@@ -860,10 +970,14 @@ After a few months the review feedback became fewer and the team were fully set-
 
                   <div className="w-full max-w-4xl rounded-lg p-4 cursor-confetti" style={{ backgroundColor: '#6E3FFF' }}>
                     <div className="rounded-lg overflow-hidden shadow-lg">
-                      <img
+                      <Image
                         src="/images/blokcasestudyteam.png"
                         alt="Blok team"
+                        width={800}
+                        height={600}
                         className="w-full h-auto object-cover rounded-lg"
+                        sizes="(max-width: 768px) 100vw, 800px"
+                        quality={85}
                       />
                     </div>
                   </div>

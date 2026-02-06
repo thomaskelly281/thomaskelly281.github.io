@@ -1,0 +1,10 @@
+# Allow all bots to crawl
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://thomaskelly281.github.io/sitemap.xml
+
+# Disallow crawling of any irrelevant paths (add as needed)
+# Disallow: /api/
+

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useGSAP } from '../contexts/GSAPContext';
 import { Footer } from '../components/Footer';
 
@@ -91,10 +92,15 @@ export default function AgenticStudioPage() {
               {/* Right column - Image positioned to overlap */}
               <div className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[45%] lg:mr-8 z-0">
                 <div className="rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src="/images/agenticheader.webp"
                     alt="Agentic Studio Interface"
+                    width={1200}
+                    height={800}
                     className="w-full h-auto object-contain"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    quality={90}
+                    priority
                   />
                 </div>
               </div>
@@ -180,10 +186,14 @@ export default function AgenticStudioPage() {
                   <div className="mt-8 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
                       <div className="rounded-lg overflow-hidden">
-                        <img
+                        <Image
                           src="/images/agentictouchpoints.webp"
                           alt="Multiple touchpoint diagram showing dashboard, central Agentic area, and chat panel"
+                          width={1200}
+                          height={800}
                           className="w-full h-auto object-contain"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                          quality={85}
                         />
                       </div>
                     </div>
@@ -306,10 +316,14 @@ export default function AgenticStudioPage() {
                   <div className="mt-8 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
                       <div className="rounded-lg overflow-hidden">
-                        <img
+                        <Image
                           src="/images/agenticworkflow.webp"
                           alt="Spaces: Non-linear workflow interface showing chat panel, main work area, and collaboration features"
+                          width={1200}
+                          height={800}
                           className="w-full h-auto object-contain"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                          quality={85}
                         />
                       </div>
                     </div>
@@ -334,10 +348,14 @@ export default function AgenticStudioPage() {
                   <div className="mt-8 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
                       <div className="rounded-lg overflow-hidden">
-                        <img
+                        <Image
                           src="/images/agenticartifacts.webp"
                           alt="Artifacts: Structured content representation showing different content types with status indicators and workflow"
+                          width={1200}
+                          height={800}
                           className="w-full h-auto object-contain"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                          quality={85}
                         />
                       </div>
                     </div>
@@ -511,10 +529,14 @@ export default function AgenticStudioPage() {
                   <div className="mt-12 rounded-lg overflow-hidden">
                     <div className="w-full rounded-lg p-4" style={{ backgroundColor: '#6E3FFF' }}>
                       <div className="rounded-lg overflow-hidden">
-                        <img
+                        <Image
                           src="/images/agenticchat.webp"
                           alt="Chat integration in enterprise context showing universal chat, contextual prompt bar, and redirect to Space"
+                          width={1200}
+                          height={800}
                           className="w-full h-auto object-contain"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                          quality={85}
                         />
                       </div>
                     </div>

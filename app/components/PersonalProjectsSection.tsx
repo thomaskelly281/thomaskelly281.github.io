@@ -2,6 +2,7 @@
 
 import { forwardRef, useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useGSAP } from '../contexts/GSAPContext';
 import { MoveRight } from '@/components/animate-ui/icons/move-right';
 import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
@@ -285,10 +286,14 @@ export const PersonalProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                           Willitbreakdown.com is a car reliability prediction I created and ran during 2025. Users could input a car model, or paste a URL to a car sale listing and Willitbreakdown.com would create a report on the likely future reliability of the vehicle based on breakdown data, owner sentiment and common failure points of the car's internals. <br /> I took Willitbreakdown.com down for maintenance in December 2025 after starting to undertake a full redesign and rewrite of its codebase.
                         </p>
                         <div className="mt-4">
-                          <img
+                          <Image
                             src="/images/wibd.webp"
                             alt="Willitbreakdown.com interface"
+                            width={800}
+                            height={600}
                             className="w-full h-auto rounded-lg"
+                            sizes="(max-width: 768px) 100vw, 800px"
+                            quality={85}
                           />
                         </div>
                       </div>

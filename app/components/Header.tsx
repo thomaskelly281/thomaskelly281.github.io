@@ -205,11 +205,13 @@ export function Header() {
             }}
           >
             {HOVER_IMAGES.map((imagePath, index) => (
-              <img
+              <Image
                 key={index}
                 src={imagePath}
                 alt={`Hover image ${index + 1}`}
-                className={`absolute inset-0 w-full h-full object-cover rounded-lg ${
+                fill
+                sizes="clamp(200px, 20vw, 300px)"
+                className={`object-cover rounded-lg ${
                   index === activeImageIndex ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{ 
@@ -217,6 +219,7 @@ export function Header() {
                   transition: 'none', // No transition for instant switching
                 }}
                 loading="lazy"
+                quality={85}
               />
             ))}
           </div>
