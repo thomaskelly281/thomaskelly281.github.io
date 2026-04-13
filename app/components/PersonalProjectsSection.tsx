@@ -2,6 +2,7 @@
 
 import { forwardRef, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { Car, type Icon as PhosphorIcon } from '@phosphor-icons/react';
 import { useGSAP } from '../contexts/GSAPContext';
 import { MoveRight } from '@/components/animate-ui/icons/move-right';
 import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
@@ -10,9 +11,11 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  svgPath: string;
   href: string;
   isExternal: boolean;
+  svgPath?: string;
+  /** When set, renders this Phosphor icon (e.g. filled weight) instead of {@link svgPath}. */
+  PhosphorIcon?: PhosphorIcon;
 }
 
 const PROJECTS: Project[] = [
@@ -22,6 +25,14 @@ const PROJECTS: Project[] = [
     description: 'Car reliability prediction platform',
     svgPath: '/SVGs/wibdlogo.svg',
     href: 'https://www.willitbreakdown.com/',
+    isExternal: true,
+  },
+  {
+    id: 'carchart',
+    title: 'CarChart',
+    description: 'Car price comparison Chrome extension',
+    PhosphorIcon: Car,
+    href: 'https://chromewebstore.google.com/detail/carchart-car-listing-comp/bjfnonbmjhdjaobjcmchpnekciaoinbo?hl=en-GB&utm_source=ext_sidebar',
     isExternal: true,
   },
   {
@@ -188,6 +199,7 @@ export const PersonalProjectsSection = forwardRef<HTMLElement>((props, ref) => {
           {/* Projects Table */}
           <div ref={projectsRef}>
             {PROJECTS.map((project, index) => {
+              const ProjectGlyph = project.PhosphorIcon;
               const ProjectContent = (
                 <div
                   data-project-item
@@ -212,13 +224,22 @@ export const PersonalProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                       style={{ backgroundColor: 'var(--text-secondary)' }}
                     />
 
-                    {/* SVG Image */}
+                    {/* Project icon */}
                     <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16">
-                      <img
-                        src={project.svgPath}
-                        alt={project.title}
-                        className="w-full h-full object-contain"
-                      />
+                      {ProjectGlyph ? (
+                        <ProjectGlyph
+                          weight="fill"
+                          color="#E5FF20"
+                          className="w-full h-full"
+                          aria-hidden
+                        />
+                      ) : (
+                        <img
+                          src={project.svgPath}
+                          alt=""
+                          className="w-full h-full object-contain"
+                        />
+                      )}
                     </div>
 
                     {/* Title and Description */}
