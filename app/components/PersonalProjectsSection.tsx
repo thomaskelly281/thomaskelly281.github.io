@@ -51,14 +51,6 @@ const PROJECTS: Project[] = [
     href: 'https://rhetoric-ds.vercel.app',
     isExternal: true,
   },
-  {
-    id: 'recite',
-    title: 'Recite (2023)',
-    description: 'Public speaking self-confidence improvement app',
-    svgPath: '/SVGs/recitelogo.svg',
-    href: 'https://recite.space/case_study',
-    isExternal: true,
-  },
 ];
 
 export const PersonalProjectsSection = forwardRef<HTMLElement>((props, ref) => {

@@ -8,7 +8,8 @@
   --background: #ffffff;
   --text-secondary: #222222;
   --accent-tertiary: #E5FF20;
-  
+  --accent-tertiary-muted: rgba(229, 255, 32, 0.22);
+  --icon-bg-muted: rgba(65, 105, 0, 0.37);
   /* Legacy support (mapped to new colors) */
   --foreground: var(--text-secondary);
 }
@@ -260,6 +261,17 @@
   --foreground: var(--text-secondary);
   /* Keep accent color the same in dark mode */
   --accent-tertiary: #E5FF20;
+  --accent-tertiary-muted: rgba(229, 255, 32, 0.18);
+  --icon-bg-muted: rgba(255, 255, 255, 0.14);
+}
+
+/* Semi-transparent grey backdrop for icon containers */
+.accent-icon-bg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--icon-bg-muted);
+  border-radius: 0.5rem;
 }
 
 html {
