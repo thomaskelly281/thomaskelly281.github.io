@@ -159,7 +159,7 @@ export const TestimonialsSection = forwardRef<HTMLElement>((props, ref) => {
         {/* Fixed Quotation Mark */}
         <div
           ref={quoteMarkRef}
-          className="mb-8"
+          className="mb-8 accent-icon-bg p-3 md:p-4"
         >
           <Image
             src="/SVGs/quotationMark.svg"

@@ -8,6 +8,7 @@
   --background: #ffffff;
   --text-secondary: #222222;
   --accent-tertiary: #E5FF20;
+  --accent-tertiary-muted: rgba(229, 255, 32, 0.22);
   
   /* Legacy support (mapped to new colors) */
   --foreground: var(--text-secondary);
@@ -260,6 +261,16 @@
   --foreground: var(--text-secondary);
   /* Keep accent color the same in dark mode */
   --accent-tertiary: #E5FF20;
+  --accent-tertiary-muted: rgba(229, 255, 32, 0.18);
+}
+
+/* Semi-transparent backdrop for accent-colored icons on light backgrounds */
+.accent-icon-bg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-tertiary-muted);
+  border-radius: 0.5rem;
 }
 
 html {

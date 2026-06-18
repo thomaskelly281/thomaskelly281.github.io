@@ -40,14 +40,6 @@ const PROJECTS: Project[] = [
     href: 'https://rhetoric-ds.vercel.app',
     isExternal: true,
   },
-  {
-    id: 'recite',
-    title: 'Recite (2023)',
-    description: 'Public speaking self-confidence improvement app',
-    svgPath: '/SVGs/recitelogo.svg',
-    href: 'https://recite.space/case_study',
-    isExternal: true,
-  },
 ];
 
 export const PersonalProjectsSection = forwardRef<HTMLElement>((props, ref) => {
@@ -225,7 +217,7 @@ export const PersonalProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                     />
 
                     {/* SVG Image */}
-                    <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16">
+                    <div className="accent-icon-bg flex-shrink-0 w-12 h-12 md:w-16 md:h-16 p-2">
                       <img
                         src={project.svgPath}
                         alt={project.title}
