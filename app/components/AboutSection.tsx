@@ -115,18 +115,10 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
     id: 'title',
     yOffset: 'mt-[15vh]',
     content: (
-      <div className="flex flex-col items-start justify-between h-full pl-32 md:pl-48 lg:pl-64">
+      <div className="flex flex-col items-start h-full pl-32 md:pl-48 lg:pl-64">
         <h2 className="text-6xl md:text-8xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary dark:text-text-secondary whitespace-nowrap">
           Who is Thomas?
         </h2>
-        <a
-          href="/pdfs/thomas_cv.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-[50vh] mb-8 px-6 py-3 bg-accent-tertiary text-[#222222] font-medium rounded-lg hover:opacity-90 transition-opacity"
-        >
-          View CV/Resume
-        </a>
       </div>
     ),
     width: 'w-auto',
@@ -236,48 +228,52 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
     ),
   },
   {
-    id: 'image-5',
+    id: 'cv-resume',
     yOffset: 'mt-[15vh]',
     content: (
-      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <div 
-          className="relative flex items-center justify-center"
-          style={{
-            width: '450px',
-            height: '450px',
-          }}
+      <div className="relative flex flex-col items-center justify-center gap-2 w-[50vw] md:w-[35vw] min-w-[280px] px-4">
+        <p
+          className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary text-center leading-tight"
+          style={{ transform: 'rotate(-4deg)' }}
         >
-          {/* SVG burst background - 3 overlapping squares rotated to create 12-point burst */}
-          <svg 
-            className="absolute inset-0 w-full h-full" 
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <style>{`
-                .burst-fill {
-                  fill: var(--accent-tertiary, #E5FF20);
-                }
-              `}</style>
-            </defs>
-            {/* Three rotated squares to create burst effect */}
-            <rect className="burst-fill" x="15" y="15" width="70" height="70" transform="rotate(0 50 50)" />
-            <rect className="burst-fill" x="15" y="15" width="70" height="70" transform="rotate(30 50 50)" />
-            <rect className="burst-fill" x="15" y="15" width="70" height="70" transform="rotate(60 50 50)" />
-          </svg>
-          <p 
-            className="relative z-10 px-10 text-center text-[#222222] font-medium text-lg md:text-xl lg:text-2xl leading-tight"
-            style={{ 
-              fontFamily: 'var(--font-ppvalve)',
-              transform: 'rotate(-5deg)',
-              maxWidth: '380px'
-            }}
-          >
-            Across everything he does, Thomas is motivated by the idea of challenging himself.
-          </p>
-        </div>
+          Check out his CV
+        </p>
+        <svg
+          className="text-text-secondary"
+          width="72"
+          height="56"
+          viewBox="0 0 72 56"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M36 4 C28 18, 32 32, 36 44"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            fill="none"
+          />
+          <path
+            d="M36 44 L28 36 M36 44 L44 36"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+        </svg>
+        <a
+          href="/pdfs/thomas_cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3 bg-accent-tertiary text-[#222222] font-medium rounded-lg hover:opacity-90 transition-opacity"
+        >
+          View CV/Resume
+        </a>
       </div>
     ),
+    width: 'w-auto',
   },
 ];
 

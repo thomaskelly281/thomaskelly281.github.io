@@ -16,6 +16,8 @@ interface Project {
   svgPath?: string;
   /** When set, renders this Phosphor icon (e.g. filled weight) instead of {@link svgPath}. */
   PhosphorIcon?: PhosphorIcon;
+  /** Optional class for the icon glyph (e.g. scale tweaks for Phosphor icons). */
+  iconClassName?: string;
 }
 
 const PROJECTS: Project[] = [
@@ -32,6 +34,7 @@ const PROJECTS: Project[] = [
     title: 'CarChart',
     description: 'Car price comparison Chrome extension',
     PhosphorIcon: Car,
+    iconClassName: 'w-full h-full scale-125',
     href: 'https://chromewebstore.google.com/detail/carchart-car-listing-comp/bjfnonbmjhdjaobjcmchpnekciaoinbo?hl=en-GB&utm_source=ext_sidebar',
     isExternal: true,
   },
@@ -217,19 +220,19 @@ export const PersonalProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                     />
 
                     {/* Project icon */}
-                    <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16">
+                    <div className="flex-shrink-0 accent-icon-bg w-12 h-12 md:w-16 md:h-16 p-2.5">
                       {ProjectGlyph ? (
                         <ProjectGlyph
                           weight="fill"
                           color="#E5FF20"
-                          className="w-full h-full"
+                          className={project.iconClassName ?? 'w-full h-full'}
                           aria-hidden
                         />
                       ) : (
                         <img
                           src={project.svgPath}
                           alt=""
-                          className="w-full h-full object-contain"
+                          className="max-w-full max-h-full object-contain"
                         />
                       )}
                     </div>
