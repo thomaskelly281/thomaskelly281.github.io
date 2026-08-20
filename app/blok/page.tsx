@@ -1,5 +1,6 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { Footer } from '../components/Footer';
 import { CaseStudyHero } from '../components/case-study/CaseStudyHero';
 import { CaseStudySection } from '../components/case-study/CaseStudySection';
@@ -15,26 +16,145 @@ import {
   CaseStudyTimeline,
 } from '../components/case-study/CaseStudyBlocks';
 
+const GOAL_COLORS = {
+  foundation: '#E5FF20',
+  efficiency: '#7CFFCB',
+  ai: '#82C7FF',
+  marketplace: '#FF9FCF',
+} as const;
+
+function GoalPhrase({
+  children,
+  color,
+}: {
+  children: ReactNode;
+  color: string;
+}) {
+  return (
+    <span
+      className="box-decoration-clone px-1 [-webkit-box-decoration-break:clone]"
+      style={{
+        backgroundImage: `linear-gradient(
+          transparent 40%,
+          color-mix(in srgb, ${color} 45%, transparent) 40%
+        )`,
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
+const RESULTS = [
+  {
+    color: GOAL_COLORS.foundation,
+    metric: '100% NPD adoption',
+    body: 'All Sitecore new product developments are committed to be built using Blok as its primary component library. This will ensure a consistent design language across all products and reduce future technical debt',
+  },
+  {
+    color: GOAL_COLORS.foundation,
+    metric: '+4 product migrations',
+    body: '4 existing products have completed migrations to Blok, and more are undertaking the process. This will reduce our future maintenance and upgrade costs.',
+  },
+  {
+    color: GOAL_COLORS.efficiency,
+    metric: '29% bug ticket reduction',
+    body: 'Jira tickets related to component issues decreased by 29% vs the previous 6 month period, meaning devlopers spent more time building and less time fixing.',
+  },
+  {
+    color: GOAL_COLORS.ai,
+    metric: 'Visible increase in AI initiatives',
+    body: 'Across Sitecore product, sakles, and marketing teams there was a visible increase in the push for AI-driven prototyping initiatives. The majority of which have been setup by architects to use Blok.',
+  },
+  {
+    color: GOAL_COLORS.ai,
+    metric: 'Automated distribution',
+    body: 'Blok is now automatically distributed across Sitecore repositories as part of our AI product context. All AI-developed products use Blok natively, which helps reduce design system deviations, technical debt, and poor user experiences, while speeding up adoption.',
+  },
+  {
+    color: GOAL_COLORS.marketplace,
+    metric: '+60% usage',
+    body: 'Over 60% of Sitecore Marketplace applications are using Blok. Providing Blok lowered the barrier to entry for developers to get their applications approved during the UX review stage of the approval process as Blok adheres to Sitecore UX standards.',
+  },
+] as const;
+
 export default function BlokPage() {
   return (
     <main className="min-h-screen bg-background">
       <CaseStudyHero
         title="Blok"
-        subtitle="Rebuilding Sitecore's Design System for Scale, Governance, and AI"
-        meta={[
-          {
-            label: 'Role',
-            value: 'Product Designer, Design Systems Lead for Blok',
-          },
-          {
-            label: 'Timeline',
-            value: 'April 2025 to December 2025',
-          },
-        ]}
+        subtitle="Building Sitecore's Design System for Scale, Governance, and AI"
+        timeline="April 2025 - December 2025"
         imageSrc="/images/blokcasestudyheader.webp"
         imageAlt="Blok Design System"
         cta={{ label: 'Visit Blok site', href: 'https://blok.sitecore.com' }}
       />
+
+      <section aria-label="The goal" className="bg-text-secondary/[0.02]">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-24">
+          <p className="text-xs font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.24em] text-text-secondary/45">
+            The goal
+          </p>
+          <p className="mt-8 max-w-4xl text-xl font-[family-name:var(--font-sfpro)] font-medium leading-[1.8] text-text-secondary md:mt-10 md:text-2xl md:leading-[1.85]">
+            Create a design system that{' '}
+            <GoalPhrase color={GOAL_COLORS.foundation}>
+              affords every Sitecore product a consistent front-end stack
+            </GoalPhrase>
+            ,{' '}
+            <GoalPhrase color={GOAL_COLORS.efficiency}>
+              reduces time spent building and maintaining components
+            </GoalPhrase>
+            , and{' '}
+            <GoalPhrase color={GOAL_COLORS.ai}>enables AI-driven development</GoalPhrase>. In the
+            shorter term, Blok also needed to{' '}
+            <GoalPhrase color={GOAL_COLORS.marketplace}>
+              enable Marketplace developers to build on-brand applications
+            </GoalPhrase>
+            .
+          </p>
+        </div>
+      </section>
+
+      <section aria-label="The Team & My Role" className="bg-background">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-24">
+          <p className="text-xs font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.24em] text-text-secondary/45">
+            The Team &amp; My Role
+          </p>
+          <p className="mt-8 max-w-4xl text-xl font-[family-name:var(--font-sfpro)] font-medium leading-[1.8] text-text-secondary md:mt-10 md:text-2xl md:leading-[1.85]">
+            {/* Add team and role content */}
+          </p>
+        </div>
+      </section>
+
+      <section aria-label="The results" className="bg-text-secondary/[0.02]">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-24">
+          <p className="text-xs font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.24em] text-text-secondary/45">
+            The results
+          </p>
+
+          <ul className="mt-10 space-y-0 md:mt-12">
+            {RESULTS.map((result) => (
+              <li
+                key={result.metric}
+                className="grid grid-cols-1 gap-3 border-t border-text-secondary/10 py-7 md:grid-cols-12 md:gap-8 md:py-8"
+              >
+                <div className={result.body ? 'md:col-span-5' : 'md:col-span-12'}>
+                  <p className="text-xl font-[family-name:var(--font-sfpro)] font-medium leading-snug text-text-secondary md:text-2xl">
+                    <GoalPhrase color={result.color}>{result.metric}</GoalPhrase>
+                  </p>
+                </div>
+                {result.body ? (
+                  <div className="md:col-span-7">
+                    <p className="text-base font-[family-name:var(--font-sfpro)] leading-relaxed md:text-lg">
+                      {result.body}
+                    </p>
+                  </div>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <CaseStudySection
         number="01"
@@ -355,16 +475,16 @@ export default function BlokPage() {
           <CaseStudyMetricGrid
             metrics={[
               {
-                value: '~10k',
-                label: 'Estimated monthly installs via registry',
-              },
-              {
                 value: '100%',
-                label: 'Adoption in new marketplace applications',
+                label: 'NPD committed to build on Blok',
               },
               {
-                value: '3+',
-                label: 'Internal teams fully migrated',
+                value: '+4',
+                label: 'Teams fully migrated to Blok',
+              },
+              {
+                value: '29%',
+                label: 'Fewer component-related bug tickets',
               },
             ]}
           />
@@ -376,9 +496,9 @@ export default function BlokPage() {
                 body: (
                   <CaseStudyDetailList
                     items={[
-                      'Blok is now the default UI foundation for Sitecore Marketplace apps',
-                      '3 teams fully migrated; all others have Blok on their 2026 roadmap',
-                      'Blok is used across design, engineering, product, and executive prototyping',
+                      'All new Sitecore product developments are committed to use Blok',
+                      'Blok is the front-end library of choice in the Unified product context for agentic development',
+                      '+60% usage of Blok across marketplace applications',
                     ]}
                   />
                 ),

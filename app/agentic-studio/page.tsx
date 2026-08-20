@@ -17,12 +17,10 @@ export default function AgenticStudioPage() {
       <CaseStudyHero
         title="Agentic Studio"
         subtitle="Designing pioneer marketer workflows through AI enablement"
-        meta={[
-          { label: 'Role', value: 'Product Designer' },
-          { label: 'Timeline', value: 'August 2025 to January 2026' },
-        ]}
+        timeline="August 2025 to January 2026"
         imageSrc="/images/agenticheader.webp"
         imageAlt="Agentic Studio Interface"
+        imageFrame="purple"
       />
 
       <CaseStudySection number="01" title="Executive Summary">

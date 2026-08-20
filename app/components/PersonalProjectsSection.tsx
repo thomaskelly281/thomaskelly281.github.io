@@ -2,7 +2,7 @@
 
 import { forwardRef, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { Car, type Icon as PhosphorIcon } from '@phosphor-icons/react';
+import { type Icon as PhosphorIcon } from '@phosphor-icons/react';
 import { useGSAP } from '../contexts/GSAPContext';
 import { MoveRight } from '@/components/animate-ui/icons/move-right';
 import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
@@ -22,26 +22,9 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    id: 'Willitbreakdown',
-    title: 'Willitbreakdown.com',
-    description: 'Car reliability prediction platform',
-    svgPath: '/SVGs/wibdlogo.svg',
-    href: 'https://www.willitbreakdown.com/',
-    isExternal: true,
-  },
-  {
-    id: 'carchart',
-    title: 'CarChart',
-    description: 'Car price comparison Chrome extension',
-    PhosphorIcon: Car,
-    iconClassName: 'w-full h-full scale-125',
-    href: 'https://chromewebstore.google.com/detail/carchart-car-listing-comp/bjfnonbmjhdjaobjcmchpnekciaoinbo?hl=en-GB&utm_source=ext_sidebar',
-    isExternal: true,
-  },
-  {
     id: 'Littlerecordplayer',
     title: 'Littlerecordplayer.com',
-    description: 'A lofi music app which sparks joy',
+    description: 'Why pay for music subscriptions when you can have ad free Lofi music?',
     svgPath: '/SVGs/lrplogo.svg',
     href: 'https://littlerecordplayer.com',
     isExternal: true,
@@ -49,7 +32,7 @@ const PROJECTS: Project[] = [
   {
     id: 'rheotric',
     title: 'Rhetoric-ds',
-    description: 'An AI-agent friendly design system, made in a weekend',
+    description: 'A customisable, AI-agent friendly, design system I use when starting personal projects',
     svgPath: '/SVGs/dslogo.svg',
     href: 'https://rhetoric-ds.vercel.app',
     isExternal: true,
