@@ -59,7 +59,7 @@ const RESULTS = [
   {
     color: GOAL_COLORS.efficiency,
     metric: '29% bug ticket reduction',
-    body: 'Jira tickets related to component issues decreased by 29% vs the previous 6 month period, meaning devlopers spent more time building and less time fixing.',
+    body: 'Jira tickets related to component issues decreased by 29% vs the previous 6 month period, meaning developers spent more time building and less time fixing.',
   },
   {
     color: GOAL_COLORS.ai,
