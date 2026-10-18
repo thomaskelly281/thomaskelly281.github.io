@@ -42,6 +42,30 @@ function getInsightGridLabel(index: number, format: 'numeric' | 'alpha') {
   return String(index + 1).padStart(2, '0');
 }
 
+export function CaseStudyCompactGrid({
+  items,
+}: {
+  items: Array<{ title: string; body: string }>;
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
+      {items.map((item) => (
+        <article
+          key={item.title}
+          className="rounded-2xl bg-text-secondary/[0.03] px-5 py-5 md:px-6 md:py-6"
+        >
+          <h3 className="text-lg font-[family-name:var(--font-ppvalve)] font-medium leading-snug text-text-secondary md:text-xl">
+            {item.title}
+          </h3>
+          <p className="mt-3 text-sm font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/80">
+            {item.body}
+          </p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 export function CaseStudyInsightGrid({
   items,
   labelFormat = 'numeric',

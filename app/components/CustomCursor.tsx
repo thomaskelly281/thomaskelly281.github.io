@@ -2,10 +2,11 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
+import { MoveHorizontal } from 'lucide-react';
 import { CornerDownLeftIcon } from '@/components/animate-ui/icons/corner-down-left';
 import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
 
-type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart' | 'external-link' | 'confetti';
+type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart' | 'external-link' | 'confetti' | 'swipe';
 
 export function CustomCursor() {
   const cursorX = useMotionValue(0);
@@ -120,6 +121,23 @@ export function CustomCursor() {
     const confettiElement = element.closest('.cursor-confetti');
     if (confettiElement) {
       setCursorState('confetti');
+      setIsInSidepanel(false);
+      stopLoopingAnimation();
+      return;
+    }
+
+    // Back arrow when hovering the case-study drawer overlay
+    const drawerDismiss = element.closest('[data-drawer-dismiss]');
+    if (drawerDismiss) {
+      setCursorState('button');
+      setIsInSidepanel(false);
+      startLoopingAnimation();
+      return;
+    }
+
+    const swipeable = element.closest('[data-swipeable]');
+    if (swipeable) {
+      setCursorState('swipe');
       setIsInSidepanel(false);
       stopLoopingAnimation();
       return;
@@ -283,15 +301,32 @@ export function CustomCursor() {
     // Only disable on small screens (mobile/tablet), not desktop screens with touch capability
     if (isMobileOrTablet) return;
 
+    let hitTestFrame = 0;
+    let lastPointerX = 0;
+    let lastPointerY = 0;
+
     const handleMouseMove = (e: MouseEvent) => {
+      lastPointerX = e.clientX;
+      lastPointerY = e.clientY;
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
       setIsVisible(true);
-      
-      // Use the actual mouse coordinates for detection
-      // The cursor visual is centered on these coordinates with translate(-50%, -50%)
-      // So the center of the circle is at the mouse position
-      checkElementUnderCursor(e.clientX, e.clientY);
+
+      // Skip expensive hit-testing while dragging the case-study carousel
+      if (e.buttons === 1) {
+        const target = document.elementFromPoint(e.clientX, e.clientY);
+        if (target?.closest('[data-swipeable]')) {
+          return;
+        }
+      }
+
+      if (hitTestFrame) {
+        cancelAnimationFrame(hitTestFrame);
+      }
+      hitTestFrame = requestAnimationFrame(() => {
+        hitTestFrame = 0;
+        checkElementUnderCursor(lastPointerX, lastPointerY);
+      });
     };
 
     const handleMouseLeave = () => {
@@ -307,6 +342,9 @@ export function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      if (hitTestFrame) {
+        cancelAnimationFrame(hitTestFrame);
+      }
       if (stateChangeTimeoutRef.current) {
         clearTimeout(stateChangeTimeoutRef.current);
       }
@@ -332,12 +370,13 @@ export function CustomCursor() {
     }
   }, [cursorState, startLoopingAnimation, stopLoopingAnimation]);
 
-  const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : cursorState === 'heart' ? 48 : cursorState === 'confetti' ? 48 : 36;
+  const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : cursorState === 'heart' ? 48 : cursorState === 'confetti' ? 48 : cursorState === 'swipe' ? 48 : 36;
   const iconSize = cursorState === 'work-image' ? 40 : 20;
   const showIcon = cursorState === 'button' || cursorState === 'work-image';
   const showExternalLinkIcon = cursorState === 'external-link';
   const showHeart = cursorState === 'heart';
   const showConfetti = cursorState === 'confetti';
+  const showSwipe = cursorState === 'swipe';
   const isRing = cursorState === 'ring';
   const isSidepanelState = cursorState === 'sidepanel';
 
@@ -429,6 +468,22 @@ export function CustomCursor() {
                 }}
               >
                 🎉
+              </motion.div>
+            )}
+            {showSwipe && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.2 }}
+                style={{ color: (isSidepanelState || isInSidepanel || isOverAccentBg) ? 'var(--accent-tertiary)' : '#222222' }}
+              >
+                <motion.div
+                  animate={{ x: [0, 3, -3, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <MoveHorizontal size={iconSize} />
+                </motion.div>
               </motion.div>
             )}
           </motion.div>

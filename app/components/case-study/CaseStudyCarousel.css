@@ -1,0 +1,18 @@
+.case-study-carousel__viewport {
+  touch-action: pan-x pinch-zoom;
+  overscroll-behavior-x: contain;
+}
+
+.case-study-carousel__container {
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.case-study-carousel__slide {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.case-study-carousel__slide img {
+  pointer-events: none;
+}
