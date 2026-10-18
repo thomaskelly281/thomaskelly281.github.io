@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { GSAPProvider } from "./contexts/GSAPContext";
-import { SidePanelProvider } from "./contexts/SidePanelContext";
 import { ScrollSmootherWrapper } from "./components/ScrollSmootherWrapper";
 import { ThemeProvider } from "./providers/ThemeProvider";
 import { CustomCursor } from "./components/CustomCursor";
-import { NavbarWrapper } from "./components/NavbarWrapper";
-import { DesktopSidePanel } from "./components/DesktopSidePanel";
-import { MobileSidePanel } from "./components/MobileSidePanel";
 import { generateMetadata } from "./lib/metadata";
 import { StructuredData } from "./components/StructuredData";
 
@@ -22,7 +18,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <StructuredData />
-        {/* Preload critical fonts */}
         <link
           rel="preload"
           href="/fonts/font-family-3/SFPRODISPLAYREGULAR.OTF"
@@ -53,16 +48,10 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <GSAPProvider>
-            <SidePanelProvider>
-              <CustomCursor />
-              {/* Navbar, SidePanels outside ScrollSmootherWrapper for proper fixed positioning */}
-              <NavbarWrapper />
-              <DesktopSidePanel />
-              <MobileSidePanel />
-              <ScrollSmootherWrapper>
-                {children}
-              </ScrollSmootherWrapper>
-            </SidePanelProvider>
+            <CustomCursor />
+            <ScrollSmootherWrapper>
+              {children}
+            </ScrollSmootherWrapper>
           </GSAPProvider>
         </ThemeProvider>
       </body>
