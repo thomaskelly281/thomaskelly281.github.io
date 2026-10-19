@@ -95,7 +95,7 @@ export function CaseStudyHero({
                   {timeline ? <HeroMetaItem label="Timeline" value={timeline} /> : null}
                 </div>
               ) : timeline ? (
-                <p className="text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/55 md:text-lg">
+                <p className="text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/65 md:text-lg">
                   {timeline}
                 </p>
               ) : null}

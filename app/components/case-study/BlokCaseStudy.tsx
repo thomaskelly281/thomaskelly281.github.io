@@ -5,6 +5,7 @@ import { Footer } from '../Footer';
 import { CaseStudyHero } from './CaseStudyHero';
 import { CaseStudyCarousel } from './CaseStudyCarousel';
 import { CaseStudyRevealStack } from './CaseStudyRevealStack';
+import { BlokStepsTimeline } from './BlokStepsTimeline';
 
 const GOAL_COLORS = {
   foundation: '#E5FF20',
@@ -14,15 +15,15 @@ const GOAL_COLORS = {
 } as const;
 
 const SECTION_SHELL =
-  'mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-24';
+  'mx-auto max-w-6xl px-6 py-24 md:px-8 md:py-32';
 const SECTION_LABEL =
-  'text-xs font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.24em] text-text-secondary/45';
+  'text-sm font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary md:text-base';
 const LEAD_COPY =
-  'mt-8 text-xl font-[family-name:var(--font-sfpro)] font-medium leading-[1.8] text-text-secondary md:mt-10 md:text-2xl md:leading-[1.85]';
+  'mt-6 text-xl font-[family-name:var(--font-sfpro)] font-medium leading-[1.8] text-text-secondary md:mt-8 md:text-2xl md:leading-[1.85]';
 const ROW_TITLE =
   'text-xl font-[family-name:var(--font-sfpro)] font-medium leading-snug text-text-secondary md:text-2xl';
 const ROW_BODY =
-  'text-base font-[family-name:var(--font-sfpro)] leading-relaxed md:text-lg';
+  'text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/75 md:text-lg';
 
 function GoalPhrase({
   children,
@@ -56,17 +57,16 @@ function EditorialRows({
   items: Array<{ title: ReactNode; body: ReactNode }>;
 }) {
   return (
-    <ul className="mt-10 space-y-0 md:mt-12">
+    <ul className="mt-10 divide-y divide-text-secondary/[0.07] md:mt-12">
       {items.map((item, index) => (
-        <li
-          key={index}
-          className="grid grid-cols-1 gap-3 border-t border-text-secondary/10 py-7 md:grid-cols-12 md:gap-8 md:py-8"
-        >
-          <div className="md:col-span-5">
-            <p className={ROW_TITLE}>{item.title}</p>
-          </div>
-          <div className="md:col-span-7">
-            <div className={`space-y-4 ${ROW_BODY}`}>{item.body}</div>
+        <li key={index}>
+          <div className="grid grid-cols-1 gap-3 py-10 md:grid-cols-12 md:gap-10 md:py-12">
+            <div className="md:col-span-5">
+              <p className={ROW_TITLE}>{item.title}</p>
+            </div>
+            <div className="md:col-span-7">
+              <div className={`space-y-4 ${ROW_BODY}`}>{item.body}</div>
+            </div>
           </div>
         </li>
       ))}
@@ -78,7 +78,7 @@ const RESULTS = [
   {
     color: GOAL_COLORS.foundation,
     metric: '100% NPD adoption',
-    body: 'All Sitecore new product developments are committed to be built using Blok as its primary component library. This will ensure a consistent design language across all products and reduce future technical debt',
+    body: 'All Sitecore new product developments are committed to be built using Blok as its primary component library. This will ensure a consistent design language across all products and reduce future technical debt.',
   },
   {
     color: GOAL_COLORS.foundation,
@@ -93,7 +93,7 @@ const RESULTS = [
   {
     color: GOAL_COLORS.ai,
     metric: 'Visible increase in AI initiatives',
-    body: 'Across Sitecore product, sakles, and marketing teams there was a visible increase in the push for AI-driven prototyping initiatives. The majority of which have been setup by architects to use Blok.',
+    body: 'Across Sitecore product, sales, and marketing teams there was a visible increase in the push for AI-driven prototyping initiatives. The majority of which have been set up by architects to use Blok.',
   },
   {
     color: GOAL_COLORS.ai,
@@ -109,7 +109,6 @@ const RESULTS = [
 
 const DESIGN_DECISIONS = [
   {
-    color: GOAL_COLORS.foundation,
     title: 'Governance by design',
     body: (
       <>
@@ -123,7 +122,6 @@ const DESIGN_DECISIONS = [
     ),
   },
   {
-    color: GOAL_COLORS.efficiency,
     title: 'Framework-friendly',
     body: (
       <>
@@ -140,7 +138,6 @@ const DESIGN_DECISIONS = [
     ),
   },
   {
-    color: GOAL_COLORS.ai,
     title: 'AI-native by default',
     body: (
       <p>
@@ -154,30 +151,79 @@ const DESIGN_DECISIONS = [
 
 const STEPS = [
   {
-    title: 'Migrating components',
-    body: 'I audited existing Blok components against Shadcn’s baseline, decided what to keep, adapt, or retire, and tracked the work in Jira. Development started as a community effort, with engineers from adopting teams and me reviewing PRs.',
+    id: 'audit',
+    navTitle: 'Audit',
+    title: 'Audit the inheritance',
+    lead: 'Start with what existed, not a blank canvas.',
+    body: 'I audited every existing Blok component against Shadcn’s baseline and decided what to keep, adapt, or retire. That matrix became the source of truth — tracked in Jira, owned by me, and built as a community effort. Engineers from adopting teams opened PRs; I reviewed them.',
+    meta: 'Keep · Adapt · Retire',
+    color: GOAL_COLORS.foundation,
+    image: {
+      src: '/images/blokcasestudycollab2.png',
+      alt: 'Component audit matrix comparing existing Blok components with Shadcn, colour-coded by keep, adapt, or retire',
+      variant: 'diagram' as const,
+    },
   },
   {
-    title: 'Building a better developer experience',
-    body: 'I interviewed designers and developers on how they actually used Blok, documented Sitecore patterns as rules in each component file, and caught issues early with teams implementing the new components.',
+    id: 'experience',
+    navTitle: 'Experience',
+    title: 'Encode the developer experience',
+    lead: 'A system nobody can parse is just a library.',
+    body: 'I interviewed designers and developers on how they actually used Blok, then wrote Sitecore patterns as rules in each component file so people and AI tools would hit the same source of truth. The first two waves of components were sequenced against live product work, and implementing teams became a live QA loop.',
+    meta: 'First wave · Second wave · Recipes',
+    color: GOAL_COLORS.efficiency,
+    image: {
+      src: '/images/blokcasestudycollab3.png',
+      alt: 'Miro board showing Blok component waves: core components, second wave, and later recipes',
+      variant: 'diagram' as const,
+    },
   },
   {
-    title: 'Adoption & internal GTM',
-    body: 'Blok was under-publicised, so I intercepted new projects, presented to 150+ at an R&D town hall, and framed it as an acceleration tool rather than a design asset. Leadership followed, and more initiatives started on Blok.',
+    id: 'adoption',
+    navTitle: 'Adoption',
+    title: 'Make it a movement',
+    lead: 'Blok was under-publicised. Adoption is a GTM problem.',
+    body: 'I intercepted new projects, presented to 150+ people at an R&D town hall, and framed Blok as an acceleration tool rather than a design asset. Leadership followed. More initiatives started on Blok because it was the fastest way to look finished — not because it was mandated.',
+    meta: '150+ at R&D town hall',
+    color: GOAL_COLORS.ai,
+    image: {
+      src: '/images/blokcasestudycollab1.png',
+      alt: 'Slack message from the Blok channel celebrating the spirit of collaboration',
+      variant: 'message' as const,
+    },
   },
   {
-    title: 'Getting a team',
-    body: 'Once we had budget, I onboarded the new team on Blok’s history, philosophy, and roadmap, wrote their first tickets, and reviewed PRs in grooming and sprint planning until the feedback loop ran itself.',
+    id: 'team',
+    navTitle: 'Team',
+    title: 'Hand the system a team',
+    lead: 'A community effort can start a platform. It cannot sustain one.',
+    body: 'Once we had budget, I onboarded the new team on Blok’s history, philosophy, and roadmap, wrote their first tickets, and sat in grooming and sprint planning — reviewing PRs until the feedback loop ran itself.',
+    meta: 'From community to dedicated FE',
+    color: GOAL_COLORS.marketplace,
+    image: {
+      src: '/images/blokcasestudyteam.png',
+      alt: 'Slack announcement that Blok would finally be staffed with dedicated front-end developers',
+      variant: 'message' as const,
+    },
   },
   {
-    title: 'Shipping under constraint',
-    body: 'Docs were not ready for Symposium 2025, so we shipped the registry as a Beta with in-file documentation rather than delay the release. Marketplace workshops surfaced pain points firsthand; the official release followed weeks later.',
+    id: 'ship',
+    navTitle: 'Release',
+    title: 'Ship under the lights',
+    lead: 'Symposium 2025 would not wait for the documentation site.',
+    body: 'Hiring slipped, so the docs were not ready. I shipped the registry as a Beta with in-file documentation rather than delay the release. Marketplace workshops surfaced the pain points firsthand; the official release followed weeks later.',
+    meta: 'Beta at Symposium · GA weeks later',
+    color: GOAL_COLORS.foundation,
+    image: {
+      src: '/images/blokcasestudymock.webp',
+      alt: 'Blok documentation and component showcase as shipped',
+      variant: 'diagram' as const,
+    },
   },
 ] as const;
 
 const REFLECTIONS = [
   {
-    color: GOAL_COLORS.marketplace,
     title: 'What I would change',
     body: (
       <>
@@ -194,7 +240,6 @@ const REFLECTIONS = [
     ),
   },
   {
-    color: GOAL_COLORS.ai,
     title: 'What this taught me',
     body: (
       <p>
@@ -236,18 +281,12 @@ export function BlokCaseStudy() {
         cta={{ label: 'Visit Blok site', href: 'https://blok.sitecore.com' }}
       />
 
-      <section aria-label="My Role" className="bg-text-secondary/[0.02]">
+      <section id="role" aria-label="My Role">
         <div className={SECTION_SHELL}>
           <SectionLabel>My Role</SectionLabel>
-          <div className={`${LEAD_COPY} space-y-6`}>
+          <div className={`${LEAD_COPY} space-y-5`}>
             <p>
-              I was the{' '}
-              <GoalPhrase color={GOAL_COLORS.foundation}>
-                only product designer on Blok
-              </GoalPhrase>
-              . I started the initiative with two senior solution architects, we
-              then expanded to get a full team of front-end developers and a PM
-              for GTM.
+              I was the only product designer on Blok. I started the initiative with two senior solution architects, then expanded to a full team of front-end developers and a PM for GTM.
             </p>
             <p>
               My responsibilities included setting the roadmap, creating Jira
@@ -258,7 +297,7 @@ export function BlokCaseStudy() {
         </div>
       </section>
 
-      <section aria-label="The goal" className="bg-background">
+      <section id="goal" aria-label="The goal">
         <div className={SECTION_SHELL}>
           <SectionLabel>The goal</SectionLabel>
           <p className={LEAD_COPY}>
@@ -281,7 +320,7 @@ export function BlokCaseStudy() {
         </div>
       </section>
 
-      <section aria-label="Why build Blok?" className="bg-text-secondary/[0.02]">
+      <section id="why" aria-label="Why build Blok?">
         <div className={SECTION_SHELL}>
           <p className={`text-center ${SECTION_LABEL}`}>Why build Blok?</p>
           <CaseStudyRevealStack
@@ -306,7 +345,7 @@ export function BlokCaseStudy() {
         </div>
       </section>
 
-      <section aria-label="The solution" className="bg-background">
+      <section id="solution" aria-label="The solution">
         <div className={SECTION_SHELL}>
           <SectionLabel>The solution</SectionLabel>
           <p className={LEAD_COPY}>
@@ -317,7 +356,7 @@ export function BlokCaseStudy() {
         </div>
       </section>
 
-      <section aria-label="The results" className="bg-text-secondary/[0.02]">
+      <section id="results" aria-label="The results">
         <div className={SECTION_SHELL}>
           <SectionLabel>The results</SectionLabel>
           <EditorialRows
@@ -331,68 +370,41 @@ export function BlokCaseStudy() {
         </div>
       </section>
 
-      <section aria-label="Design decisions" className="bg-background">
+      <section id="decisions" aria-label="Design decisions">
         <div className={SECTION_SHELL}>
           <SectionLabel>Design decisions</SectionLabel>
           <p className={LEAD_COPY}>
             As the sole designer, partnered with two senior solutions architects,
-            I helped evaluate alternative platforms. We chose to rebuild Blok on{' '}
-            <GoalPhrase color={GOAL_COLORS.foundation}>Shadcn</GoalPhrase>, not as
-            a UI kit, but as an{' '}
-            <GoalPhrase color={GOAL_COLORS.ai}>architecture</GoalPhrase>.
+            I helped evaluate alternative platforms. We chose to rebuild Blok on
+            Shadcn, not as a UI kit, but as an architecture.
           </p>
 
           <EditorialRows
             items={DESIGN_DECISIONS.map((decision) => ({
-              title: (
-                <GoalPhrase color={decision.color}>{decision.title}</GoalPhrase>
-              ),
+              title: decision.title,
               body: decision.body,
             }))}
           />
         </div>
       </section>
 
-      <section aria-label="The steps we took" className="bg-text-secondary/[0.02]">
-        <div className="mx-auto max-w-6xl px-6 py-12 md:px-8 md:py-16">
-          <SectionLabel>The steps we took</SectionLabel>
-          <ol className="relative mt-8 border-l border-text-secondary/10 md:mt-10">
-            {STEPS.map((step, index) => (
-              <li key={step.title} className="relative py-4 pl-8 md:py-5 md:pl-10">
-                <span
-                  aria-hidden
-                  className="absolute left-0 top-[1.35rem] h-2 w-2 -translate-x-1/2 rounded-full bg-text-secondary/25"
-                />
-                <p className="text-[11px] font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.18em] text-text-secondary/40">
-                  {String(index + 1).padStart(2, '0')}
-                </p>
-                <h3 className="mt-1 text-base font-[family-name:var(--font-sfpro)] font-medium text-text-secondary/80 md:text-lg">
-                  {step.title}
-                </h3>
-                <p className="mt-1.5 text-sm font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/55 md:text-[15px]">
-                  {step.body}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <BlokStepsTimeline
+        intro="The rebuild did not happen in a sprint. It unfolded in five phases — from a community audit of every component, to a staffed team shipping a public beta under a hard deadline."
+        steps={STEPS}
+      />
 
-      <section aria-label="Reflection and learning" className="bg-background">
+      <section id="reflection" aria-label="Reflection and learning">
         <div className={SECTION_SHELL}>
           <SectionLabel>Reflection & learning</SectionLabel>
           <p className={LEAD_COPY}>
             Blok fundamentally changed how Sitecore builds, prototypes, and
-            aligns, and reshaped how I think about design systems as{' '}
-            <GoalPhrase color={GOAL_COLORS.foundation}>
-              organisational infrastructure
-            </GoalPhrase>
-            , not UI libraries.
+            aligns, and reshaped how I think about design systems as
+            organisational infrastructure, not UI libraries.
           </p>
 
           <EditorialRows
             items={REFLECTIONS.map((item) => ({
-              title: <GoalPhrase color={item.color}>{item.title}</GoalPhrase>,
+              title: item.title,
               body: item.body,
             }))}
           />
