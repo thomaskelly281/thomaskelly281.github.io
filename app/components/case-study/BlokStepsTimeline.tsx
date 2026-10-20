@@ -10,19 +10,21 @@ const LEAD_COPY =
 const META_LABEL =
   'text-sm font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/55';
 
+export type BlokStepImage = {
+  src?: string;
+  alt: string;
+  variant: 'diagram' | 'message' | 'placeholder' | 'video';
+};
+
 export type BlokStep = {
   id: string;
   navTitle: string;
   title: string;
-  lead: string;
-  body: string;
-  meta: string;
+  lead: ReactNode;
+  body: ReactNode;
+  meta: ReactNode;
   color: string;
-  image: {
-    src: string;
-    alt: string;
-    variant: 'diagram' | 'message';
-  };
+  images: readonly BlokStepImage[];
 };
 
 function getScrollParent(element: HTMLElement | null): HTMLElement | null {
@@ -54,7 +56,7 @@ function PhaseHighlight({
       style={{
         backgroundImage: `linear-gradient(
           transparent 40%,
-          color-mix(in srgb, ${color} 45%, transparent) 40%
+          color-mix(in srgb, ${color} 22%, transparent) 40%
         )`,
       }}
     >
@@ -64,38 +66,75 @@ function PhaseHighlight({
 }
 
 function PhaseImage({
-  step,
-  index,
+  image,
+  color,
+  priority,
 }: {
-  step: BlokStep;
-  index: number;
+  image: BlokStepImage;
+  color: string;
+  priority: boolean;
 }) {
   const reduceMotion = useReducedMotion();
+  const motionProps = {
+    initial: reduceMotion ? false : { opacity: 0, y: 28 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] as const },
+  };
 
-  if (step.image.variant === 'message') {
+  if (image.variant === 'placeholder') {
     return (
-      <motion.figure
-        initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.35 }}
-        transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-8 md:mt-10"
-      >
+      <motion.figure {...motionProps}>
+        <div className="flex min-h-[18rem] items-center justify-center rounded-2xl bg-[#FF0000] px-6 py-10 md:min-h-[22rem] md:px-12">
+          <p className="max-w-lg text-center text-base font-[family-name:var(--font-sfpro)] font-medium leading-relaxed text-white md:text-lg">
+            {image.alt}
+          </p>
+        </div>
+      </motion.figure>
+    );
+  }
+
+  if (image.variant === 'video') {
+    return (
+      <motion.figure {...motionProps}>
+        <div className="overflow-hidden rounded-2xl bg-text-secondary/[0.04] shadow-[0_24px_80px_-32px_rgba(34,34,34,0.18)]">
+          <div
+            aria-hidden
+            className="h-1.5 w-full"
+            style={{ backgroundColor: color }}
+          />
+          <video
+            src={image.src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label={image.alt}
+            className="w-full"
+          />
+        </div>
+      </motion.figure>
+    );
+  }
+
+  if (image.variant === 'message') {
+    return (
+      <motion.figure {...motionProps}>
         <div
           className="flex min-h-[18rem] items-center justify-center rounded-2xl px-6 py-10 md:min-h-[22rem] md:px-12 md:py-14"
           style={{
             background: `linear-gradient(
               165deg,
-              color-mix(in srgb, ${step.color} 38%, transparent) 0%,
-              color-mix(in srgb, ${step.color} 16%, transparent) 100%
+              color-mix(in srgb, ${color} 38%, transparent) 0%,
+              color-mix(in srgb, ${color} 16%, transparent) 100%
             )`,
           }}
         >
           <img
-            src={step.image.src}
-            alt={step.image.alt}
+            src={image.src}
+            alt={image.alt}
             className="mx-auto w-auto max-w-full rounded-xl bg-background shadow-[0_24px_80px_-32px_rgba(34,34,34,0.28)] md:max-w-3xl"
-            decoding={index === 0 ? 'sync' : 'async'}
+            decoding={priority ? 'sync' : 'async'}
           />
         </div>
       </motion.figure>
@@ -103,24 +142,18 @@ function PhaseImage({
   }
 
   return (
-    <motion.figure
-      initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-      className="mt-8 md:mt-10"
-    >
+    <motion.figure {...motionProps}>
       <div className="overflow-hidden rounded-2xl bg-text-secondary/[0.04] shadow-[0_24px_80px_-32px_rgba(34,34,34,0.18)]">
         <div
           aria-hidden
           className="h-1.5 w-full"
-          style={{ backgroundColor: step.color }}
+          style={{ backgroundColor: color }}
         />
         <img
-          src={step.image.src}
-          alt={step.image.alt}
+          src={image.src}
+          alt={image.alt}
           className="w-full"
-          decoding={index === 0 ? 'sync' : 'async'}
+          decoding={priority ? 'sync' : 'async'}
         />
       </div>
     </motion.figure>
@@ -131,7 +164,7 @@ export function BlokStepsTimeline({
   intro,
   steps,
 }: {
-  intro: string;
+  intro: ReactNode;
   steps: readonly BlokStep[];
 }) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -297,16 +330,25 @@ export function BlokStepsTimeline({
                 {step.title}
               </h3>
 
-              <PhaseImage step={step} index={index} />
+              <div className="mt-8 flex flex-col gap-6 md:mt-10">
+                {step.images.map((image, imageIndex) => (
+                  <PhaseImage
+                    key={`${step.id}-${imageIndex}`}
+                    image={image}
+                    color={step.color}
+                    priority={index === 0 && imageIndex === 0}
+                  />
+                ))}
+              </div>
 
               <div className="mt-8 grid grid-cols-1 gap-6 md:mt-12 md:grid-cols-12 md:gap-10">
                 <p className="text-xl font-[family-name:var(--font-sfpro)] font-medium leading-[1.8] text-text-secondary md:col-span-5 md:text-2xl md:leading-[1.7]">
                   {step.lead}
                 </p>
                 <div className="md:col-span-7">
-                  <p className="text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/80 md:text-lg">
+                  <div className="space-y-4 text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/90 md:text-lg">
                     {step.body}
-                  </p>
+                  </div>
                   <p className={`mt-5 ${META_LABEL}`}>
                     {step.meta}
                   </p>

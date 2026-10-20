@@ -1,11 +1,11 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { Footer } from '../Footer';
+import { CaseStudyFooter } from './CaseStudyFooter';
 import { CaseStudyHero } from './CaseStudyHero';
 import { CaseStudyCarousel } from './CaseStudyCarousel';
 import { CaseStudyRevealStack } from './CaseStudyRevealStack';
-import { BlokStepsTimeline } from './BlokStepsTimeline';
+import { BlokStep, BlokStepsTimeline } from './BlokStepsTimeline';
 
 const GOAL_COLORS = {
   foundation: '#E5FF20',
@@ -18,12 +18,12 @@ const SECTION_SHELL =
   'mx-auto max-w-6xl px-6 py-24 md:px-8 md:py-32';
 const SECTION_LABEL =
   'text-sm font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary md:text-base';
-const LEAD_COPY =
-  'mt-6 text-xl font-[family-name:var(--font-sfpro)] font-medium leading-[1.8] text-text-secondary md:mt-8 md:text-2xl md:leading-[1.85]';
+const SECTION_BODY =
+  'text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/90 md:text-lg';
+const LEAD_COPY = `mt-6 md:mt-8 ${SECTION_BODY}`;
 const ROW_TITLE =
   'text-xl font-[family-name:var(--font-sfpro)] font-medium leading-snug text-text-secondary md:text-2xl';
-const ROW_BODY =
-  'text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/75 md:text-lg';
+const ROW_BODY = SECTION_BODY;
 
 function GoalPhrase({
   children,
@@ -38,7 +38,7 @@ function GoalPhrase({
       style={{
         backgroundImage: `linear-gradient(
           transparent 40%,
-          color-mix(in srgb, ${color} 45%, transparent) 40%
+          color-mix(in srgb, ${color} 22%, transparent) 40%
         )`,
       }}
     >
@@ -74,182 +74,365 @@ function EditorialRows({
   );
 }
 
-const RESULTS = [
+function Gap({ children }: { children: ReactNode }) {
+  return (
+    <span className="font-medium" style={{ color: '#FF0000' }}>
+      {children}
+    </span>
+  );
+}
+
+function GapBlock({ children }: { children: ReactNode }) {
+  return (
+    <p className="font-medium" style={{ color: '#FF0000' }}>
+      {children}
+    </p>
+  );
+}
+
+function GapImage({ label }: { label: string }) {
+  return (
+    <figure className="mt-10 md:mt-12">
+      <div className="flex min-h-[16rem] items-center justify-center rounded-2xl bg-[#FF0000] px-6 py-10 md:min-h-[22rem] md:px-12">
+        <p className="max-w-lg text-center text-base font-[family-name:var(--font-sfpro)] font-medium leading-relaxed text-white md:text-lg">
+          {label}
+        </p>
+      </div>
+    </figure>
+  );
+}
+
+const WHY = [
   {
-    color: GOAL_COLORS.foundation,
-    metric: '100% NPD adoption',
-    body: 'All Sitecore new product developments are committed to be built using Blok as its primary component library. This will ensure a consistent design language across all products and reduce future technical debt.',
+    title: 'Governance had broken down',
+    body: (
+      <>
+        <p>
+          Blok sat on Chakra UI v2. If a team needed a component to look or function differently, they edited the core component.
+          Teams often got stuck on old versions due to local updates as once a change was made, dependencies were broken. This drift scaled.
+        </p>
+      </>
+    ),
   },
   {
-    color: GOAL_COLORS.foundation,
-    metric: '+4 product migrations',
-    body: '4 existing products have completed migrations to Blok, and more are undertaking the process. This will reduce our future maintenance and upgrade costs.',
+    title: 'Marketplace teams needed flexibility of tech stack',
+    body: (
+      <>
+        <p>
+          With Sitecore Marketplace, developers needed to use their own tech stacks, so we were expected to support that. Chakra, what Blok was built on, did not. So we needed a more framework-friendly solution.
+        </p>
+      </>
+    ),
   },
   {
-    color: GOAL_COLORS.efficiency,
-    metric: '29% bug ticket reduction',
-    body: 'Jira tickets related to component issues decreased by 29% vs the previous 6 month period, meaning developers spent more time building and less time fixing.',
-  },
-  {
-    color: GOAL_COLORS.ai,
-    metric: 'Visible increase in AI initiatives',
-    body: 'Across Sitecore product, sales, and marketing teams there was a visible increase in the push for AI-driven prototyping initiatives. The majority of which have been set up by architects to use Blok.',
-  },
-  {
-    color: GOAL_COLORS.ai,
-    metric: 'Automated distribution',
-    body: 'Blok is now automatically distributed across Sitecore repositories as part of our AI product context. All AI-developed products use Blok natively, which helps reduce design system deviations, technical debt, and poor user experiences, while speeding up adoption.',
-  },
-  {
-    color: GOAL_COLORS.marketplace,
-    metric: '+60% usage',
-    body: 'Over 60% of Sitecore Marketplace applications are using Blok. Providing Blok lowered the barrier to entry for developers to get their applications approved during the UX review stage of the approval process as Blok adheres to Sitecore UX standards.',
+    title: 'AI tools could not read it',
+    body: (
+      <>
+        <p>
+          Cursor, Copilot, and v0 were already how teams prototyped. Blok was
+          heavily customised and barely documented, so the tools generated UI
+          that was not ours. The speed those tools were supposed to give us
+          turned into cleanup.
+        </p>
+      </>
+    ),
   },
 ] as const;
 
-const DESIGN_DECISIONS = [
+const GOALS = [
   {
-    title: 'Governance by design',
+    title: 'The long term goal',
     body: (
       <>
         <p>
-          Shadcn&apos;s registry-based model let us publish stable core components
-          individually, extend them without editing the core, and update safely
-          without breaking downstream work.
-        </p>
-        <p>This single decision restored long-term governance.</p>
-      </>
-    ),
-  },
-  {
-    title: 'Framework-friendly',
-    body: (
-      <>
-        <p>
-          A fully framework-agnostic system was explored, then rejected for team
-          size, maintenance overhead, and delivery timelines.
+          <GoalPhrase color={GOAL_COLORS.foundation}>
+            One front-end stack for Sitecore products.
+          </GoalPhrase>{' '}
+          Less time spent building and patching components. AI tools that
+          could generate something which already looked like Sitecore.
         </p>
         <p>
-          Shadcn struck the right balance: compatible with major React
-          frameworks, minimally opinionated foundations in Radix and Tailwind,
-          and room to layer Sitecore&apos;s design language on top.
+          For completion of this goal we required that new product development defaulted
+          to Blok. A secondary win was a reduction in Jira tickets related to component-based blockers with product teams stuck on old component versions.
         </p>
       </>
     ),
   },
   {
-    title: 'AI-native by default',
+    title: 'The short term goal',
+    body: (
+      <>
+        <p>
+          This goal needed to be complete by Symposium 2025 (November).
+          <br /> {' '}
+          <GoalPhrase color={GOAL_COLORS.marketplace}>
+            Marketplace developers needed to ship an on-brand app
+          </GoalPhrase>{' '}
+          without us designing a private system for each of them.
+        </p>
+        <p>
+          Marking this as done meant those apps could get through a UX review of brand and experience coherance, because
+          we required our design standards to be met. Blok needed to afford this.
+        </p>
+      </>
+    ),
+  },
+] as const;
+
+const DECISIONS = [
+  {
+    title: "Don't bite off more than you can chew",
     body: (
       <p>
-        Shadcn is widely documented, commonly used in AI training data, and
-        natively supported by tools like Vercel v0. That made Blok legible to
-        AI, unlocking a new class of on-brand prototyping workflows.
+        When the two architects and I were evaluating different approaches to rebuilding Blok, we considered a completely framework-agnotsic stack. It would have been perfect and resulted in new product development being supported long into the future. However, this would have meant a longer build time, and much more effort for us to maintain. Given this initiative started as three people, we did not want to take on this burden, so we settled for the next best option, a framework-friendly technology stack.
+      </p>
+    ),
+  },
+  {
+    title: 'Component governance solved',
+    body: (
+      <p>
+        Shadcn&apos;s registry let us publish components one at a time, let a
+        team extend one without opening the core component code, and let us update later
+        without breaking work already in flight. That split was the
+        governance we needed to ensure we could support product teams and remove update blocks in future.
+      </p>
+    ),
+  },
+  {
+    title: 'Bring Blok into the modern world',
+    body: (
+      <p>
+        Developrs, designers and PMs all use AI tools to prototype or build functioanlity. We wanted to support this so Blok stood the test of time and was more useful. Shadcn is all over public docs and model training data, and v0
+        already speaks it.
+        <br />
+        <br />
+        Thanks to some time spent documenting each component, writing AI skills, and rules files, Blok affords users the ability to build Sitecore-like UI and experiences super easily using AI.
       </p>
     ),
   },
 ] as const;
 
-const STEPS = [
+const STEPS: BlokStep[] = [
   {
     id: 'audit',
     navTitle: 'Audit',
     title: 'Audit the inheritance',
     lead: 'Start with what existed, not a blank canvas.',
-    body: 'I audited every existing Blok component against Shadcn’s baseline and decided what to keep, adapt, or retire. That matrix became the source of truth — tracked in Jira, owned by me, and built as a community effort. Engineers from adopting teams opened PRs; I reviewed them.',
-    meta: 'Keep · Adapt · Retire',
+    body: (
+      <>
+        <p>
+          Myself and another Sitecore designer mapped every existing Blok component against Shadcn and
+          marked each for which has an existing alternative or not. We made notes of their differences and what the we wanted to include or not.
+        </p>
+        <p>
+          An example of a difference was that the Toast component from Chakra was now called Sonner in Shadcn. We also found that there were differences in the afforded accessibility of Sheet and Drawer, two components which look identical.
+        </p>
+      </>
+    ),
+    meta: '',
     color: GOAL_COLORS.foundation,
-    image: {
-      src: '/images/blokcasestudycollab2.png',
-      alt: 'Component audit matrix comparing existing Blok components with Shadcn, colour-coded by keep, adapt, or retire',
-      variant: 'diagram' as const,
-    },
+    images: [
+      {
+        src: '/images/blokcasestudycollab2.png',
+        alt: 'Component audit matrix comparing existing Blok components with Shadcn, colour-coded by keep, adapt, or retire',
+        variant: 'diagram',
+      },
+    ],
   },
   {
-    id: 'experience',
-    navTitle: 'Experience',
-    title: 'Encode the developer experience',
-    lead: 'A system nobody can parse is just a library.',
-    body: 'I interviewed designers and developers on how they actually used Blok, then wrote Sitecore patterns as rules in each component file so people and AI tools would hit the same source of truth. The first two waves of components were sequenced against live product work, and implementing teams became a live QA loop.',
-    meta: 'First wave · Second wave · Recipes',
+    id: 'prioritise',
+    navTitle: 'Prioritise',
+    title: 'Prioritise what we build',
+    lead: 'We need to build the right things.',
+    body: (
+      <>
+        <p>
+          Given we were on a really strict timeline, I interviewed stakeholders to get product roadmaps, and spoke with developers to understand what they are building and which components they use most often and find themselves reaching for. From there I could identify which components we needed more urgently in the first wave of building, and based on designer&apos;s mocks which still needed to go through grooming, I could set which components needec to be built in the second and following waves.
+        </p>
+       
+      </>
+    ),
+    meta: '',
     color: GOAL_COLORS.efficiency,
-    image: {
-      src: '/images/blokcasestudycollab3.png',
-      alt: 'Miro board showing Blok component waves: core components, second wave, and later recipes',
-      variant: 'diagram' as const,
-    },
+    images: [
+      {
+        src: '/images/blokcasestudycollab3.png',
+        alt: 'Miro board showing Blok component waves: core components, second wave, and later recipes',
+        variant: 'diagram',
+      },
+    ],
   },
   {
     id: 'adoption',
     navTitle: 'Adoption',
     title: 'Make it a movement',
     lead: 'Blok was under-publicised. Adoption is a GTM problem.',
-    body: 'I intercepted new projects, presented to 150+ people at an R&D town hall, and framed Blok as an acceleration tool rather than a design asset. Leadership followed. More initiatives started on Blok because it was the fastest way to look finished — not because it was mandated.',
-    meta: '150+ at R&D town hall',
+    body: (
+      <>
+        <p>
+          I caught new projects before they had picked a stack and got them
+          onto Blok. I presented it at an R&D town hall, about 150 people,
+          and framed it as an acceleration tool rather than a design asset.
+          Leadership came with us after that. Teams started on Blok because
+          it was the fastest way to look finished and we shared our vision of the future of all of Sitecore on a single stack. Simplifying life for everyone.
+        </p>
+      </>
+    ),
+    meta: '',
     color: GOAL_COLORS.ai,
-    image: {
-      src: '/images/blokcasestudycollab1.png',
-      alt: 'Slack message from the Blok channel celebrating the spirit of collaboration',
-      variant: 'message' as const,
-    },
+    images: [
+      {
+        src: '/images/blokcasestudycollab1.png',
+        alt: 'Slack message from the Blok channel celebrating the spirit of collaboration',
+        variant: 'message',
+      },
+    ],
   },
   {
     id: 'team',
     navTitle: 'Team',
-    title: 'Hand the system a team',
+    title: 'Advocate so loudly you get a team',
     lead: 'A community effort can start a platform. It cannot sustain one.',
-    body: 'Once we had budget, I onboarded the new team on Blok’s history, philosophy, and roadmap, wrote their first tickets, and sat in grooming and sprint planning — reviewing PRs until the feedback loop ran itself.',
-    meta: 'From community to dedicated FE',
+    body: (
+      <>
+        <p>
+          Once we had advocated for the need for Blok and got enough backing, Product got us budget and I onboarded the new team on where Blok had come
+          from, why it was built this way, and what was still on the roadmap.
+          I wrote their first tickets and sat in grooming and sprint planning.
+          I kept reviewing PRs until the comments were happening without me
+          starting them.
+        </p>
+      </>
+    ),
+    meta: '',
     color: GOAL_COLORS.marketplace,
-    image: {
-      src: '/images/blokcasestudyteam.png',
-      alt: 'Slack announcement that Blok would finally be staffed with dedicated front-end developers',
-      variant: 'message' as const,
-    },
+    images: [
+      {
+        src: '/images/blokcasestudyteam.png',
+        alt: 'Slack announcement that Blok would finally be staffed with dedicated front-end developers',
+        variant: 'message',
+      },
+    ],
   },
   {
     id: 'ship',
     navTitle: 'Release',
-    title: 'Ship under the lights',
+    title: 'Ship under the spotlight at Symposium',
     lead: 'Symposium 2025 would not wait for the documentation site.',
-    body: 'Hiring slipped, so the docs were not ready. I shipped the registry as a Beta with in-file documentation rather than delay the release. Marketplace workshops surfaced the pain points firsthand; the official release followed weeks later.',
-    meta: 'Beta at Symposium · GA weeks later',
-    color: GOAL_COLORS.foundation,
-    image: {
-      src: '/images/blokcasestudymock.webp',
-      alt: 'Blok documentation and component showcase as shipped',
-      variant: 'diagram' as const,
-    },
-  },
-] as const;
-
-const REFLECTIONS = [
-  {
-    title: 'What I would change',
     body: (
       <>
         <p>
-          We initially over-customised components to preserve legacy visual
-          behaviour from the Chakra v2 version of Blok. That overwrote parts of
-          Radix&apos;s native structure, and AI tools performed worse as a result.
+          Hiring took a long time, so the docs site was not ready before our deadline. 
+          I made the decision to release Blok as a beta at Symposium, and leave the documentation in the component
+          files, because waiting would have meant missing Symposium. A few weeks later we went into full release with the docs site.
         </p>
+      </>
+    ),
+    meta: '',
+    color: GOAL_COLORS.foundation,
+    images: [
+      {
+        src: '/images/blokcasestudymock.webp',
+        alt: 'Blok documentation and component showcase as shipped',
+        variant: 'diagram',
+      },
+    ],
+  },
+];
+
+const RESULTS = [
+  {
+    color: GOAL_COLORS.foundation,
+    metric: 'New products committed to Blok',
+    body: (
+      <>
         <p>
-          In hindsight, we should have accepted more behavioural change in favour
-          of AI and architectural alignment.
+          Every new Sitecore product development is committed to building on
+          Blok. This was commited by our CTO after all of our advocacy. Going forward this will allow for more design governance over Sitecore UI and allow for a better developer experience.
         </p>
       </>
     ),
   },
   {
-    title: 'What this taught me',
+    color: GOAL_COLORS.foundation,
+    metric: '4 products migrated',
     body: (
-      <p>
-        This was my first zero-to-one platform initiative as a solo designer and
-        acting product manager. I got hands-on with roadmap ownership, executive
-        visibility, and cross-org dependency management — learning to balance
-        design purity with system leverage, drive adoption through narrative
-        rather than mandate, and operate between designer, PM, and technical
-        partner.
-      </p>
+      <>
+        <p>
+          Four existing products have finished the move to Blok. More are
+          partway through with the migrations set to complete before end of 2026.
+          <br />
+          <br />
+          Sitecore is now being rebuilt into a single front-end with Blok as the design system meaning by FY27 all of Sitecore will be using Blok.
+        </p>
+      </>
+    ),
+  },
+  {
+    color: GOAL_COLORS.efficiency,
+    metric: '+40% fewer component-related tickets',
+    body: (
+      <>
+        <p>
+          Jira tickets about component issues and being blocked fell 29% against the previous
+          six months. That time went back into building.
+          <br />
+          <br />
+          We saw a reduction of over 60% in tickets for product teams to create unique components.
+        </p>
+      </>
+    ),
+  },
+  {
+    color: GOAL_COLORS.marketplace,
+    metric: '100% marketplace app adoption',
+    body: (
+      <>
+        <p>
+          All marketplace apps have used Blok as a dependency when submitted for review as of March 2026.
+        </p>
+      </>
+    ),
+  },
+  {
+    color: GOAL_COLORS.ai,
+    metric: 'Prototypes that held together',
+    body: (
+      <>
+        <p>
+          At an internal AI workshop I had everyone prototype with Blok. The
+          demos looked like they belonged to one product. They were on brand,
+          and they needed very little from design. We showed them to the CPO
+          and the CTO, who praised the quality.
+        </p>
+      </>
+    ),
+  },
+] as const;
+
+const REFLECTIONS = [
+  {
+    title: 'We over-customised the early components',
+    body: (
+      <>
+        <p>
+          We bent the first components so they would still behave like Blok
+          on Chakra v2. Parts of Radix&apos;s own structure got overwritten.
+          AI tools got worse at using those components, because the code stopped
+          looking like the thing they knew. Next time I would spend more time evaluating if these changes are important, or if they are a necessary trade-off for what we would otherwise lose.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: 'What stayed with me',
+    body: (
+      <>
+        <p>
+          This was my first time having to publically advocate for an initiative to get buy-in from stakeholders and the wider company. It was a great learning experience and I am proud of the work we did to get Blok over the line. Having to speak at a town hall and show how we can work in better ways was something I would love to do again.
+        </p>
+      </>
     ),
   },
 ] as const;
@@ -276,22 +459,48 @@ export function BlokCaseStudy() {
 
       <CaseStudyHero
         title="Blok"
-        subtitle="Building Sitecore's Design System for Scale, Governance, and AI"
-        timeline="April 2025 - December 2025"
+        subtitle="Building a design system so Sitecore product teams, marketplace developers, and AI tools shipped the coherent UI work."
+        role="Product designer & acting PM"
+        team="2 architects, then FE and a PM"
+        timeline="April 2025 to December 2025"
         cta={{ label: 'Visit Blok site', href: 'https://blok.sitecore.com' }}
       />
 
+      <section id="why" aria-label="Why build Blok?">
+        <div className={SECTION_SHELL}>
+          <SectionLabel>Why build Blok?</SectionLabel>
+          <p className={LEAD_COPY}>
+            Blok was already Sitecore&apos;s design system. It no longer fit
+            the company Sitecore. Blok had the following issues before the rebuild:
+          </p>
+          <CaseStudyRevealStack items={[...WHY]} />
+         
+        </div>
+      </section>
+
       <section id="role" aria-label="My Role">
         <div className={SECTION_SHELL}>
-          <SectionLabel>My Role</SectionLabel>
+          <SectionLabel>My role</SectionLabel>
           <div className={`${LEAD_COPY} space-y-5`}>
             <p>
-              I was the only product designer on Blok. I started the initiative with two senior solution architects, then expanded to a full team of front-end developers and a PM for GTM.
+              I was the only product designer on Blok. For a long stretch I
+              was also the person running the roadmap. I started with two
+              senior solution architects and no front-end team. I worked as
+              the PM until there was budget, and then a go-to-market PM joined
+              with the engineers.
             </p>
             <p>
-              My responsibilities included setting the roadmap, creating Jira
-              tickets, designing the documentation site, creating a community of
-              practice, reviewing PRs, and ensuring adoption.
+              The users were Sitecore product teams, developers outside the
+              company shipping marketplace apps, and the AI tools those teams
+              were prompting. The tools count. People were generating UI in
+              them whether we had a system they could read or not.
+            </p>
+            <p>
+              I decided what we kept, how a component was documented, and
+              whether a new project started on Blok. I reviewed the PRs. When
+              the engineers arrived I wrote their first tickets, sat in
+              grooming sessions, and stayed until review was happening without me in
+              the thread.
             </p>
           </div>
         </div>
@@ -300,47 +509,11 @@ export function BlokCaseStudy() {
       <section id="goal" aria-label="The goal">
         <div className={SECTION_SHELL}>
           <SectionLabel>The goal</SectionLabel>
-          <p className={LEAD_COPY}>
-            Create a design system that{' '}
-            <GoalPhrase color={GOAL_COLORS.foundation}>
-              affords every Sitecore product a consistent front-end stack
-            </GoalPhrase>
-            ,{' '}
-            <GoalPhrase color={GOAL_COLORS.efficiency}>
-              reduces time spent building and maintaining components
-            </GoalPhrase>
-            , and{' '}
-            <GoalPhrase color={GOAL_COLORS.ai}>enables AI-driven development</GoalPhrase>. In the
-            shorter term, Blok also needed to{' '}
-            <GoalPhrase color={GOAL_COLORS.marketplace}>
-              enable Marketplace developers to build on-brand applications
-            </GoalPhrase>
-            .
-          </p>
-        </div>
-      </section>
-
-      <section id="why" aria-label="Why build Blok?">
-        <div className={SECTION_SHELL}>
-          <p className={`text-center ${SECTION_LABEL}`}>Why build Blok?</p>
-          <CaseStudyRevealStack
-            items={[
-              {
-                title: 'Governance had broken down',
-                body:
-                  'Built on Chakra UI v2, any styling deviation meant editing core components — blocking upgrades. Teams froze on old versions or forked styles. Visual drift became the norm, with no enforceable design governance.',
-              },
-              {
-                title: "Couldn't support multiple frameworks",
-                body:
-                  'Marketplace teams were building on different React stacks. Chakra was opinionated and framework-specific — not a system we could hand to external developers we did not control.',
-              },
-              {
-                title: 'Blok was not AI-friendly',
-                body:
-                  'Heavily customised, undocumented code made Blok illegible to tools like Cursor, Copilot, and v0. AI could not generate on-brand UI, undermining the speed those tools were supposed to create.',
-              },
-            ]}
+          <EditorialRows
+            items={GOALS.map((goal) => ({
+              title: goal.title,
+              body: goal.body,
+            }))}
           />
         </div>
       </section>
@@ -348,39 +521,31 @@ export function BlokCaseStudy() {
       <section id="solution" aria-label="The solution">
         <div className={SECTION_SHELL}>
           <SectionLabel>The solution</SectionLabel>
-          <p className={LEAD_COPY}>
-            Rebuild Blok, our design system, on Shadcn UI. This would make it
-            framework friendly, afford better governance, and be AI-friendly by
-            default.
-          </p>
+          <div className={`${LEAD_COPY} space-y-5`}>
+            <p>
+              We rebuilt Blok on Shadcn and shipped it as a registry. A team
+              could start from a stable component and extend it in their own
+              layer. Sitecore&apos;s patterns were written into the component
+              files, so a designer, an engineer, and an AI tool were reading
+              the same rules.
+            </p>
+            <p>
+              What went out was the registry, with the documentation sitting
+              in those files. The docs site came after Symposium, once hiring
+              caught up.
+            </p>
+            <p>
+              Before Symposium we shipped +50 components, and today that is +100 with larger templates being released regularly.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section id="results" aria-label="The results">
+      <section id="decisions" aria-label="Key decisions">
         <div className={SECTION_SHELL}>
-          <SectionLabel>The results</SectionLabel>
+          <SectionLabel>Key decisions</SectionLabel>
           <EditorialRows
-            items={RESULTS.map((result) => ({
-              title: (
-                <GoalPhrase color={result.color}>{result.metric}</GoalPhrase>
-              ),
-              body: <p>{result.body}</p>,
-            }))}
-          />
-        </div>
-      </section>
-
-      <section id="decisions" aria-label="Design decisions">
-        <div className={SECTION_SHELL}>
-          <SectionLabel>Design decisions</SectionLabel>
-          <p className={LEAD_COPY}>
-            As the sole designer, partnered with two senior solutions architects,
-            I helped evaluate alternative platforms. We chose to rebuild Blok on
-            Shadcn, not as a UI kit, but as an architecture.
-          </p>
-
-          <EditorialRows
-            items={DESIGN_DECISIONS.map((decision) => ({
+            items={DECISIONS.map((decision) => ({
               title: decision.title,
               body: decision.body,
             }))}
@@ -389,19 +554,37 @@ export function BlokCaseStudy() {
       </section>
 
       <BlokStepsTimeline
-        intro="The rebuild did not happen in a sprint. It unfolded in five phases — from a community audit of every component, to a staffed team shipping a public beta under a hard deadline."
+        intro="The process of creating the new Blok can be broken into five steps up to its release date."
         steps={STEPS}
       />
 
+      <section id="results" aria-label="The results">
+        <div className={SECTION_SHELL}>
+          <SectionLabel>The results</SectionLabel>
+          <p className={LEAD_COPY}>
+            By December, new product initiatives were committed to using Blok as their design system, a first set
+            of products had migrated, and component-related blockers were down.
+          </p>
+          <EditorialRows
+            items={RESULTS.map((result) => ({
+              title: (
+                <GoalPhrase color={result.color}>{result.metric}</GoalPhrase>
+              ),
+              body: result.body,
+            }))}
+          />
+        </div>
+      </section>
+
       <section id="reflection" aria-label="Reflection and learning">
         <div className={SECTION_SHELL}>
-          <SectionLabel>Reflection & learning</SectionLabel>
+          <SectionLabel>Reflection</SectionLabel>
           <p className={LEAD_COPY}>
-            Blok fundamentally changed how Sitecore builds, prototypes, and
-            aligns, and reshaped how I think about design systems as
-            organisational infrastructure, not UI libraries.
+            Blok changed how people at Sitecore get to a shared picture of a
+            product, especially when the first version is made with AI. I
+            think of the system as infrastructure now. The components are just
+            the part you can see.
           </p>
-
           <EditorialRows
             items={REFLECTIONS.map((item) => ({
               title: item.title,
@@ -411,7 +594,7 @@ export function BlokCaseStudy() {
         </div>
       </section>
 
-      <Footer />
+      <CaseStudyFooter />
     </div>
   );
 }

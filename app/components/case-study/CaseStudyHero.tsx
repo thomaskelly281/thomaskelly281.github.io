@@ -13,15 +13,17 @@ interface CaseStudyHeroProps {
     label: string;
     href: string;
   };
+  /** Subtitle spans the full content width (container still matches case study sections). */
+  layout?: 'default' | 'wide';
 }
 
 function HeroMetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="min-w-0">
+    <div className="shrink-0">
       <p className="text-xs font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.24em] text-text-secondary/45">
         {label}
       </p>
-      <p className="mt-2 text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary md:text-lg">
+      <p className="mt-2 text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary sm:whitespace-nowrap md:text-lg">
         {value}
       </p>
     </div>
@@ -51,8 +53,10 @@ export function CaseStudyHero({
   imageAlt,
   imageFrame = 'default',
   cta,
+  layout = 'default',
 }: CaseStudyHeroProps) {
   const hasImage = Boolean(imageSrc);
+  const subtitleFullWidth = layout === 'wide' && !hasImage;
 
   return (
     <header>
@@ -85,11 +89,15 @@ export function CaseStudyHero({
             </div>
 
             <div className="space-y-6">
-              <p className="max-w-2xl text-xl font-[family-name:var(--font-ppvalve)] font-medium leading-snug text-text-secondary md:text-2xl">
+              <p
+                className={`text-xl font-[family-name:var(--font-ppvalve)] font-medium leading-snug text-text-secondary md:text-2xl ${
+                  subtitleFullWidth ? 'w-full max-w-none' : 'max-w-2xl'
+                }`}
+              >
                 {subtitle}
               </p>
               {role || team ? (
-                <div className="grid max-w-3xl grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-8">
+                <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-start sm:gap-x-10 sm:gap-y-4 md:gap-x-12">
                   {role ? <HeroMetaItem label="Role" value={role} /> : null}
                   {team ? <HeroMetaItem label="Team" value={team} /> : null}
                   {timeline ? <HeroMetaItem label="Timeline" value={timeline} /> : null}
