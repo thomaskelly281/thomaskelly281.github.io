@@ -37,7 +37,8 @@
   max-width: 100%;
 }
 
-.case-study-carousel__trigger img {
+.case-study-carousel__trigger img,
+.case-study-carousel__trigger video {
   pointer-events: none;
   display: block;
   height: var(--case-study-carousel-height, 11rem);
@@ -47,7 +48,8 @@
 }
 
 @media (min-width: 768px) {
-  .case-study-carousel__trigger img {
+  .case-study-carousel__trigger img,
+  .case-study-carousel__trigger video {
     height: 14rem;
   }
 }

@@ -165,15 +165,13 @@ const ShoppingCartDrawerDemo = () => {
   }, [subtotal, hasFiredConfetti]);
 
   return (
-    <Drawer swipeDirection="right">
-      <DrawerTrigger
-        render={
-          <Button variant="outline" className="cursor-pointer">
-            <ShoppingCartIcon className="size-4" />
-            View Cart
-          </Button>
-        }
-      />
+    <Drawer direction="right">
+      <DrawerTrigger asChild>
+        <Button variant="outline" className="cursor-pointer">
+          <ShoppingCartIcon className="size-4" />
+          View Cart
+        </Button>
+      </DrawerTrigger>
       <DrawerContent className="[--drawer-inset:0px] [--drawer-bleed-background:transparent] m-0 bg-transparent! border-0! shadow-none! data-[swipe-axis=x]:[--drawer-content-width:100%] data-[swipe-axis=x]:sm:[--drawer-content-width:39.125rem] **:data-[slot=drawer-content]:m-4 **:data-[slot=drawer-content]:bg-popover **:data-[slot=drawer-content]:text-popover-foreground **:data-[slot=drawer-content]:border **:data-[slot=drawer-content]:shadow-2xl **:data-[slot=drawer-content]:rounded-2xl **:data-[slot=drawer-content]:w-full">
         <DrawerHeader className="flex-row items-center justify-between gap-0 border-b p-6">
           <div className="flex items-center gap-3">
@@ -182,13 +180,11 @@ const ShoppingCartDrawerDemo = () => {
               {totalCount} Items
             </DrawerTitle>
           </div>
-          <DrawerClose
-            render={
-              <Button variant="ghost" size="icon-sm" className="cursor-pointer">
-                <XIcon className="size-5" />
-              </Button>
-            }
-          />
+          <DrawerClose asChild>
+            <Button variant="ghost" size="icon-sm" className="cursor-pointer">
+              <XIcon className="size-5" />
+            </Button>
+          </DrawerClose>
         </DrawerHeader>
 
         <div

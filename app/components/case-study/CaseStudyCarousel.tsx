@@ -47,7 +47,7 @@ export function CaseStudyCarousel({ images }: CaseStudyCarouselProps) {
       loop: true,
       dragFree: true,
       skipSnaps: true,
-      containScroll: false,
+      containScroll: false as const,
       duration: 40,
       dragThreshold: 4,
       watchSlides: true,
@@ -110,7 +110,7 @@ export function CaseStudyCarousel({ images }: CaseStudyCarouselProps) {
       <section
         aria-label="Case study gallery"
         data-swipeable=""
-        className="case-study-carousel w-full pt-2 md:pt-3"
+        className="case-study-carousel w-full pl-1.5 pt-2 md:pt-3"
       >
         <div className="w-full min-w-0">
           <div

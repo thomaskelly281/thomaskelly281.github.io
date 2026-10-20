@@ -455,6 +455,10 @@ export function BlokCaseStudy() {
             alt: 'Blok button component documentation',
           },
           {
+            src: '/images/blok-button-scroll.gif',
+            alt: 'Blok button documentation scroll interaction',
+          },
+          {
             src: '/images/blok-theming.png',
             alt: 'Blok theming and design tokens',
           },
@@ -469,6 +473,18 @@ export function BlokCaseStudy() {
           {
             src: '/images/blok-changelog.png',
             alt: 'Blok changelog and release history',
+          },
+          {
+            src: '/images/blok-card-usage-code.png',
+            alt: 'Blok card usage and code examples',
+          },
+          {
+            src: '/images/blok-card-styled-card.png',
+            alt: 'Blok styled card component',
+          },
+          {
+            src: '/images/blok-chart-scroll.gif',
+            alt: 'Blok chart documentation scroll interaction',
           },
         ]}
       />
