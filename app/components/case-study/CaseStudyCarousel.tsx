@@ -19,9 +19,10 @@ interface CaseStudyCarouselProps {
   images: CaseStudyCarouselImage[];
 }
 
+/** Matches `.case-study-carousel__slide` horizontal gap (0.5rem / 0.75rem). */
 function getCarouselInsetPx() {
-  if (typeof window === 'undefined') return 24;
-  return window.matchMedia('(min-width: 768px)').matches ? 32 : 24;
+  if (typeof window === 'undefined') return 8;
+  return window.matchMedia('(min-width: 768px)').matches ? 12 : 8;
 }
 
 const DRAG_CLICK_THRESHOLD_PX = 8;
@@ -109,7 +110,7 @@ export function CaseStudyCarousel({ images }: CaseStudyCarouselProps) {
       <section
         aria-label="Case study gallery"
         data-swipeable=""
-        className="case-study-carousel w-full pt-6 md:pt-8"
+        className="case-study-carousel w-full pt-2 md:pt-3"
       >
         <div className="w-full min-w-0">
           <div

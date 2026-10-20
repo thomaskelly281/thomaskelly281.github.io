@@ -442,9 +442,9 @@ export function AgenticStudioCaseStudy() {
 
       <CaseStudyHero
         title="Agentic Studio"
-        subtitle="Designing the AI surface so Sitecore marketers could run agents, flows, and chat without the product turning into a chatbot."
+        subtitle="Designing the AI surface so Sitecore marketers could run agents, flows, and chat from anywhere in SitecoreAI."
         role="Product designer"
-        team="VP of AI, design lead, design manager"
+        team="VP of AI & design lead"
         timeline="August 2025 to January 2026"
         layout="wide"
       />

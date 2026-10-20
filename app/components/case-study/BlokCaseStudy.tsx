@@ -443,16 +443,32 @@ export function BlokCaseStudy() {
       <CaseStudyCarousel
         images={[
           {
-            src: '/images/blokcasestudymock.webp',
-            alt: 'Blok design system component showcase',
+            src: '/images/blok-home.png',
+            alt: 'Blok design system home page',
           },
           {
-            src: '/images/blokcasestudyheader.webp',
-            alt: 'Blok design system',
+            src: '/images/blok-bloks.png',
+            alt: 'Blok component library overview',
           },
           {
-            src: '/images/blokcasestudyarchitecture.webp',
-            alt: 'Blok architecture',
+            src: '/images/blok-button.png',
+            alt: 'Blok button component documentation',
+          },
+          {
+            src: '/images/blok-theming.png',
+            alt: 'Blok theming and design tokens',
+          },
+          {
+            src: '/images/blok-graphics.png',
+            alt: 'Blok graphics and illustration guidance',
+          },
+          {
+            src: '/images/blok-resources.png',
+            alt: 'Blok resources for product teams',
+          },
+          {
+            src: '/images/blok-changelog.png',
+            alt: 'Blok changelog and release history',
           },
         ]}
       />
