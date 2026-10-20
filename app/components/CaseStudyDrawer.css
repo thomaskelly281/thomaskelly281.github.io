@@ -1,0 +1,40 @@
+@keyframes caseStudyDrawerIn {
+  0% {
+    transform: translate3d(calc(100% + 1.5rem), 0, 0);
+  }
+  62% {
+    transform: translate3d(-1.4%, 0, 0);
+  }
+  82% {
+    transform: translate3d(0.45%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes caseStudyDrawerOut {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  18% {
+    transform: translate3d(-1.2%, 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(100% + 1.5rem), 0, 0);
+  }
+}
+
+[data-vaul-drawer][data-case-study-drawer][data-vaul-drawer-direction='right'] {
+  animation-duration: 1.1s !important;
+}
+
+[data-vaul-drawer][data-case-study-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='right'][data-state='open'] {
+  animation-name: caseStudyDrawerIn !important;
+  animation-timing-function: cubic-bezier(0.22, 1.12, 0.36, 1) !important;
+}
+
+[data-vaul-drawer][data-case-study-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='right'][data-state='closed'] {
+  animation-name: caseStudyDrawerOut !important;
+  animation-timing-function: cubic-bezier(0.7, 0, 0.28, 1) !important;
+}

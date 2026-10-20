@@ -1,83 +1,136 @@
 import Link from 'next/link';
 
-interface MetaItem {
-  label: string;
-  value: string;
-}
-
 interface CaseStudyHeroProps {
   title: string;
   subtitle: string;
-  meta: MetaItem[];
-  imageSrc: string;
-  imageAlt: string;
+  timeline?: string;
+  role?: string;
+  team?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  imageFrame?: 'default' | 'purple';
   cta?: {
     label: string;
     href: string;
   };
+  /** Subtitle spans the full content width (container still matches case study sections). */
+  layout?: 'default' | 'wide';
+}
+
+function HeroMetaItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="shrink-0">
+      <p className="text-xs font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.24em] text-text-secondary/45">
+        {label}
+      </p>
+      <p className="mt-2 text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary sm:whitespace-nowrap md:text-lg">
+        {value}
+      </p>
+    </div>
+  );
+}
+
+function HeroCta({ label, href }: { label: string; href: string }) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-accent-tertiary px-6 py-3 text-base font-[family-name:var(--font-ppvalve)] font-medium text-[#222222] transition-opacity hover:opacity-90"
+    >
+      {label}
+    </Link>
+  );
 }
 
 export function CaseStudyHero({
   title,
   subtitle,
-  meta,
+  timeline,
+  role,
+  team,
   imageSrc,
   imageAlt,
+  imageFrame = 'default',
   cta,
+  layout = 'default',
 }: CaseStudyHeroProps) {
+  const hasImage = Boolean(imageSrc);
+  const subtitleFullWidth = layout === 'wide' && !hasImage;
+
   return (
     <header>
-      <div className="mx-auto max-w-6xl px-6 py-24 md:px-8 md:py-32 lg:py-36">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+      <div
+        className={
+          hasImage
+            ? 'mx-auto w-full max-w-[100rem] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-36'
+            : 'mx-auto w-full max-w-6xl px-6 pt-8 pb-16 md:px-8 md:pt-10 md:pb-20 lg:pt-12 lg:pb-24'
+        }
+      >
+        <div
+          className={
+            hasImage
+              ? 'grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24'
+              : 'w-full space-y-8'
+          }
+        >
           <div className="space-y-8">
-            <p className="text-xs font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.24em] text-text-secondary/45">
-              Case Study
-            </p>
+            <div
+              className={
+                cta
+                  ? 'flex flex-col items-start gap-6 sm:flex-row sm:items-start sm:justify-between'
+                  : undefined
+              }
+            >
+              <h1 className="min-w-0 font-[family-name:var(--font-georgia)] text-6xl leading-[0.92] text-text-secondary sm:text-7xl md:text-8xl lg:text-[7.5rem]">
+                {title}
+              </h1>
+              {cta ? <HeroCta label={cta.label} href={cta.href} /> : null}
+            </div>
 
-            <h1 className="font-[family-name:var(--font-georgia)] text-6xl leading-[0.92] text-text-secondary sm:text-7xl md:text-8xl lg:text-[7.5rem]">
-              {title}
-            </h1>
-
-            <p className="max-w-xl text-xl font-[family-name:var(--font-ppvalve)] font-medium leading-snug text-text-secondary md:text-2xl">
-              {subtitle}
-            </p>
-
-            <dl className="grid grid-cols-1 gap-6 pt-4 sm:grid-cols-2">
-              {meta.map((item) => (
-                <div key={item.label} className="space-y-2">
-                  <dt className="text-xs font-[family-name:var(--font-ppvalve)] font-medium uppercase tracking-[0.18em] text-text-secondary/45">
-                    {item.label}
-                  </dt>
-                  <dd className="text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary md:text-lg">
-                    {item.value}
-                  </dd>
+            <div className="space-y-6">
+              <p
+                className={`text-xl font-[family-name:var(--font-ppvalve)] font-medium leading-snug text-text-secondary md:text-2xl ${
+                  subtitleFullWidth ? 'w-full max-w-none' : 'max-w-2xl'
+                }`}
+              >
+                {subtitle}
+              </p>
+              {role || team ? (
+                <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-start sm:gap-x-10 sm:gap-y-4 md:gap-x-12">
+                  {role ? <HeroMetaItem label="Role" value={role} /> : null}
+                  {team ? <HeroMetaItem label="Team" value={team} /> : null}
+                  {timeline ? <HeroMetaItem label="Timeline" value={timeline} /> : null}
                 </div>
-              ))}
-            </dl>
-
-            {cta ? (
-              <div className="pt-2">
-                <Link
-                  href={cta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-accent-tertiary px-6 py-3 text-base font-[family-name:var(--font-ppvalve)] font-medium text-[#222222] transition-opacity hover:opacity-90"
-                >
-                  {cta.label}
-                </Link>
-              </div>
-            ) : null}
-          </div>
-
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl bg-text-secondary/[0.03] shadow-[0_24px_80px_-32px_rgba(34,34,34,0.18)]">
-              <img
-                src={imageSrc}
-                alt={imageAlt}
-                className="aspect-[4/3] w-full object-cover"
-              />
+              ) : timeline ? (
+                <p className="text-base font-[family-name:var(--font-sfpro)] leading-relaxed text-text-secondary/65 md:text-lg">
+                  {timeline}
+                </p>
+              ) : null}
             </div>
           </div>
+
+          {hasImage ? (
+            <div className="relative">
+              {imageFrame === 'purple' ? (
+                <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-[#6E3FFF] p-4 md:p-6">
+                  <img
+                    src={imageSrc}
+                    alt={imageAlt}
+                    className="h-full w-full rounded-xl object-cover shadow-lg"
+                  />
+                </div>
+              ) : (
+                <div className="overflow-hidden rounded-2xl bg-text-secondary/[0.03] shadow-[0_24px_80px_-32px_rgba(34,34,34,0.18)]">
+                  <img
+                    src={imageSrc}
+                    alt={imageAlt}
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                </div>
+              )}
+            </div>
+          ) : null}
         </div>
       </div>
     </header>

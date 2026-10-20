@@ -24,7 +24,7 @@ const TESTIMONIALS = [
     id: 3,
     quote: "Thomas in future",
     author: "Konstantina Diamantopoulou,",
-    role: "Design Manager",
+    role: "Snr. Design Manager",
     company: "Sitecore"
   }
 ];
