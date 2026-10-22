@@ -1,0 +1,267 @@
+/* Apple-style work folders. Hover peeks stay inside each tile — no layout
+   shift, no extra scroll, no viewport overflow. */
+
+.work-section-title {
+  margin-left: -0.35rem;
+}
+
+@media (min-width: 768px) {
+  .work-section-title {
+    margin-left: -0.5rem;
+  }
+}
+
+.work-folder-tile {
+  --folder: #6e3fff;
+  --folder-front: color-mix(in srgb, var(--folder) 88%, white);
+  --folder-lip: color-mix(in srgb, var(--folder) 70%, #2a1478);
+  --folder-icon: color-mix(in srgb, var(--folder) 38%, white);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: 1.25rem;
+  outline: none;
+}
+
+.work-folder-tile.is-live:focus-visible {
+  outline: 2px solid var(--accent-tertiary, #e5ff20);
+  outline-offset: 8px;
+}
+
+.work-folder-stage {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1.06;
+  padding: 0 7% 4%;
+  overflow: clip;
+  contain: paint;
+  isolation: isolate;
+}
+
+.work-folder-bob {
+  position: relative;
+  width: 88%;
+}
+
+.work-folder-backdrop {
+  position: absolute;
+  left: 50%;
+  bottom: 54px;
+  z-index: 0;
+  width: 118%;
+  aspect-ratio: 16 / 10;
+  transform: translateX(-50%);
+  border-radius: 1rem;
+  opacity: 0.28;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.work-folder-backdrop img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.work-folder-scene {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 200 / 156;
+  transform-origin: 50% 80%;
+  transition: transform 0.55s cubic-bezier(0.22, 1.2, 0.36, 1);
+}
+
+.work-folder-back,
+.work-folder-front {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.work-folder-back {
+  z-index: 1;
+}
+
+.work-folder-back svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.work-folder-papers {
+  position: absolute;
+  left: 48%;
+  top: 16%;
+  z-index: 2;
+  width: 62%;
+  aspect-ratio: 16 / 10;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.work-folder-paper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 0.7rem;
+  background: #fff;
+  box-shadow:
+    0 10px 28px rgba(34, 34, 34, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: translate3d(0, 34%, 0) rotate(var(--rest-rot, 0deg)) scale(0.9);
+  transform-origin: 50% 100%;
+  transition: transform 0.6s cubic-bezier(0.22, 1.22, 0.36, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.work-folder-paper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.work-folder-front {
+  z-index: 3;
+}
+
+.work-folder-front svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+  transition: transform 0.5s cubic-bezier(0.22, 1.15, 0.36, 1);
+}
+
+.work-folder-icon {
+  position: absolute;
+  left: 50%;
+  top: 66%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 42%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  color: var(--folder-icon);
+  pointer-events: none;
+}
+
+.work-folder-icon-glyph {
+  display: block;
+  width: 58%;
+  height: 58%;
+}
+
+.work-folder-caption {
+  margin-top: 1.15rem;
+  transition: transform 0.45s cubic-bezier(0.22, 1.1, 0.36, 1);
+}
+
+.work-folder-caption-subtitle {
+  display: grid;
+}
+
+.work-folder-caption-label,
+.work-folder-caption-hover {
+  grid-area: 1 / 1;
+  font-family: var(--font-sfpro);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  transition: opacity 0.35s ease;
+}
+
+@media (min-width: 768px) {
+  .work-folder-caption-label,
+  .work-folder-caption-hover {
+    font-size: 1.25rem;
+  }
+}
+
+.work-folder-caption-label {
+  margin: 0;
+  color: var(--text-secondary);
+  opacity: 0.9;
+}
+
+.work-folder-caption-hover {
+  margin: 0;
+  color: color-mix(in srgb, var(--text-secondary) 52%, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.work-folder-tile.is-live:is(:hover, :focus-visible, :focus-within)
+  .work-folder-caption-label {
+  opacity: 0;
+}
+
+.work-folder-tile.is-live:is(:hover, :focus-visible, :focus-within)
+  .work-folder-caption-hover {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .work-folder-caption-hover {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-folder-caption-label,
+  .work-folder-caption-hover {
+    transition: none;
+  }
+}
+
+.work-folder-tile.is-live:is(:hover, :focus-visible, :focus-within) .work-folder-scene {
+  transform: translate3d(0, -6px, 0) rotate(-2.8deg);
+}
+
+.work-folder-tile.is-live:is(:hover, :focus-visible, :focus-within) .work-folder-front svg {
+  transform: scaleY(0.985);
+}
+
+.work-folder-tile.is-live:is(:hover, :focus-visible, :focus-within) .work-folder-paper {
+  transform: translate3d(var(--x), var(--y), 0) rotate(var(--rot)) scale(1);
+}
+
+.work-folder-tile.is-live:is(:hover, :focus-visible, :focus-within) .work-folder-caption {
+  transform: translate3d(0, 2px, 0);
+}
+
+@media (hover: none) {
+  .work-folder-tile.is-live .work-folder-paper {
+    transform: translate3d(var(--x-touch, 0), -18%, 0) rotate(var(--rest-rot, 0deg))
+      scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-folder-scene,
+  .work-folder-paper,
+  .work-folder-front svg,
+  .work-folder-caption {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .work-folder-tile.is-live .work-folder-paper {
+    transform: translate3d(0, 18%, 0) rotate(var(--rest-rot, 0deg)) scale(0.92);
+  }
+
+  .work-folder-tile.is-live:is(:hover, :focus-visible, :focus-within) .work-folder-paper {
+    transform: translate3d(var(--x), -36%, 0) rotate(var(--rot)) scale(1);
+  }
+}

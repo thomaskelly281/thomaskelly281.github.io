@@ -8,23 +8,23 @@ import Image from 'next/image';
 const TESTIMONIALS = [
   {
     id: 1,
+    quote: "Thomas in future",
+    author: "Konstantina Diamantopoulou,",
+    role: "Snr. Design Manager",
+    company: "Sitecore"
+  },
+  {
+    id: 2,
     quote: "True story. The first time I heard of Thomas was via his project posters and the NCAD final year exhibition. He had built a camera based AI app that helped people improve their public speaking; ‘Actually’ built it. It looked clean and simple to use. It stood out. I thought ‘we should talk to him - this kid's got depth’. A year later we still haven't found the bottom.",
     author: "Rob Coyle,",
     role: "Head of Product",
     company: "Finch"
   },
   {
-    id: 2,
+    id: 3,
     quote: "Your [Thomas] flexibility, agility, and creativity never cease to amaze me, especially your ability to deeply focus on the user journey. Looking forward to all the new and upcoming great stuff ;)",
     author: "Mo Cherif,",
     role: "VP, AI & Innovation",
-    company: "Sitecore"
-  },
-  {
-    id: 3,
-    quote: "Thomas in future",
-    author: "Konstantina Diamantopoulou,",
-    role: "Snr. Design Manager",
     company: "Sitecore"
   }
 ];
@@ -175,7 +175,7 @@ export const TestimonialsSection = forwardRef<HTMLElement>((props, ref) => {
           {/* Spacer to maintain container height */}
           <div className="invisible">
             <blockquote className="text-lg md:text-xl lg:text-2xl text-text-secondary mb-6">
-              {TESTIMONIALS[2].quote}
+              {TESTIMONIALS[0].quote}
             </blockquote>
             <div className="mb-6">
               <Image
@@ -188,9 +188,9 @@ export const TestimonialsSection = forwardRef<HTMLElement>((props, ref) => {
               />
             </div>
             <div>
-              <p className="font-medium text-text-secondary font-[family-name:var(--font-ppvalve)]">{TESTIMONIALS[2].author}</p>
+              <p className="font-medium text-text-secondary font-[family-name:var(--font-ppvalve)]">{TESTIMONIALS[0].author}</p>
               <p className="text-text-secondary font-[family-name:var(--font-ppvalve)]">
-                {TESTIMONIALS[2].role} at {TESTIMONIALS[2].company}
+                {TESTIMONIALS[0].role} at {TESTIMONIALS[0].company}
               </p>
             </div>
           </div>
@@ -209,6 +209,16 @@ export const TestimonialsSection = forwardRef<HTMLElement>((props, ref) => {
             <blockquote className="text-lg md:text-xl lg:text-2xl text-text-secondary mb-6">
               {TESTIMONIALS[0].quote}
             </blockquote>
+            <div className="mb-6">
+              <Image
+                src="/GIFs/iron-man.gif"
+                alt="Iron Man"
+                width={500}
+                height={500}
+                className="w-full max-w-md h-auto"
+                unoptimized
+              />
+            </div>
             <div>
               <p className="font-medium text-text-secondary font-[family-name:var(--font-ppvalve)]">{TESTIMONIALS[0].author}</p>
               <p className="text-text-secondary font-[family-name:var(--font-ppvalve)]">
@@ -253,16 +263,6 @@ export const TestimonialsSection = forwardRef<HTMLElement>((props, ref) => {
             <blockquote className="text-lg md:text-xl lg:text-2xl text-text-secondary mb-6">
               {TESTIMONIALS[2].quote}
             </blockquote>
-            <div className="mb-6">
-              <Image
-                src="/GIFs/iron-man.gif"
-                alt="Iron Man"
-                width={500}
-                height={500}
-                className="w-full max-w-md h-auto"
-                unoptimized
-              />
-            </div>
             <div>
               <p className="font-medium text-text-secondary font-[family-name:var(--font-ppvalve)]">{TESTIMONIALS[2].author}</p>
               <p className="text-text-secondary font-[family-name:var(--font-ppvalve)]">
