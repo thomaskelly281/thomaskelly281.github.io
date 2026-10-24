@@ -41,6 +41,82 @@
   isolation: isolate;
 }
 
+/* Badge sits on the folder corner; half the ring sits outside the folder. */
+.work-folder-tile-wrap {
+  overflow: visible;
+}
+
+.work-folder-tile:has(.work-recent-badge) {
+  overflow: visible;
+}
+
+.work-folder-stage:has(.work-recent-badge) {
+  overflow: visible;
+  contain: none;
+  isolation: auto;
+}
+
+.work-folder-badge-anchor {
+  position: absolute;
+  bottom: 4%;
+  left: 6%;
+  width: 88%;
+  aspect-ratio: 200 / 156;
+  overflow: visible;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.work-recent-badge {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  z-index: 6;
+  width: 7.25rem;
+  height: 7.25rem;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.work-recent-ring {
+  position: absolute;
+  inset: 0;
+  animation: work-recent-spin 18s linear infinite;
+}
+
+.work-recent-ring span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.55rem;
+  font-family: var(--font-ppvalve);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text-secondary);
+  white-space: pre;
+  transform: rotate(calc(var(--char-index) * 360deg / var(--char-count)));
+}
+
+@keyframes work-recent-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .work-recent-badge {
+    width: 8.75rem;
+    height: 8.75rem;
+  }
+
+  .work-recent-ring span {
+    padding-top: 0.7rem;
+    font-size: 0.9375rem;
+  }
+}
+
 .work-folder-bob {
   position: relative;
   width: 88%;
@@ -249,6 +325,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .work-recent-ring,
   .work-folder-scene,
   .work-folder-paper,
   .work-folder-front svg,

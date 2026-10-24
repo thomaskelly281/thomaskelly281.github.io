@@ -40,10 +40,11 @@ interface WorkProject {
   folderColor: string;
   peekImages: readonly { src: string; alt: string }[];
   backdropImage: string;
-  icon: 'blok' | 'star';
+  icon: 'blok' | 'star' | 'dam';
   title: string;
   description: string;
   hoverSubheading: string;
+  badge?: string;
 }
 
 const WORK_PROJECTS: WorkProject[] = [
@@ -78,6 +79,32 @@ const WORK_PROJECTS: WorkProject[] = [
     description: 'AI agents',
     hoverSubheading:
       'Agents, flows, and chat marketers can open from anywhere in SitecoreAI.',
+  },
+  {
+    id: 'dam',
+    href: '/dam',
+    folderColor: FOLDER_PURPLE,
+    peekImages: [
+      {
+        src: '/images/sitecoreai-review-queue.png',
+        alt: 'Review queue with Approve and Reject on each asset before distribution',
+      },
+      {
+        src: '/images/sitecoreai-asset-details.png',
+        alt: 'Asset details with variants, renditions, brand, description, and comments',
+      },
+      {
+        src: '/images/sitecoreai-studio-transform.png',
+        alt: 'Assets Studio transform view with focal point and variant layers on a living-room asset',
+      },
+    ],
+    backdropImage: '/images/sitecoreai-asset-library.png',
+    icon: 'dam',
+    title: 'SitecoreAI DAM',
+    description: 'Content lifecycle',
+    hoverSubheading:
+      'A DAM that generates, governs, and learns, instead of only storing assets.',
+    badge: 'Most recent',
   },
 ];
 
@@ -135,6 +162,12 @@ function FolderGlyph({ icon }: { icon: WorkProject['icon'] }) {
           <rect width="14" height="8" fill="currentColor" />
           <rect x="22" width="14" height="8" fill="currentColor" />
         </svg>
+      ) : icon === 'dam' ? (
+        <svg viewBox="0 0 36 32" className="work-folder-icon-glyph" aria-hidden>
+          <rect x="6" y="0" width="24" height="18" fill="currentColor" opacity="0.4" />
+          <rect x="3" y="5" width="24" height="18" fill="currentColor" opacity="0.7" />
+          <rect y="10" width="24" height="18" fill="currentColor" />
+        </svg>
       ) : (
         <svg viewBox="0 0 36 36" className="work-folder-icon-glyph" aria-hidden>
           <path
@@ -143,6 +176,25 @@ function FolderGlyph({ icon }: { icon: WorkProject['icon'] }) {
           />
         </svg>
       )}
+    </div>
+  );
+}
+
+function CircularSpinText({ text }: { text: string }) {
+  const chars = Array.from(`${text} \u00b7 ${text} \u00b7 `);
+
+  return (
+    <div className="work-recent-badge" aria-hidden>
+      <div
+        className="work-recent-ring"
+        style={{ '--char-count': chars.length } as CSSProperties}
+      >
+        {chars.map((char, index) => (
+          <span key={index} style={{ '--char-index': index } as CSSProperties}>
+            {char}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -165,11 +217,17 @@ function WorkFolderTile({
       style={style}
       data-work-image
     >
+      {project.badge ? <span className="sr-only">{project.badge}</span> : null}
       <div
         data-project-image
         {...{ [`data-project-${index + 1}-image`]: true }}
         className="work-folder-stage"
       >
+        {project.badge ? (
+          <div className="work-folder-badge-anchor">
+            <CircularSpinText text={project.badge} />
+          </div>
+        ) : null}
         <div className="work-folder-bob">
           <div className="work-folder-backdrop" aria-hidden>
             <img
@@ -222,6 +280,7 @@ function WorkFolderTile({
 
             <FolderGlyph icon={project.icon} />
           </div>
+
         </div>
       </div>
 
@@ -310,9 +369,9 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
     <section
       ref={sectionRef}
       id="work"
-      className="relative w-full overflow-clip px-4 pt-12 pb-20 sm:px-6 md:pt-20 md:pb-32 lg:px-8 bg-background"
+      className="relative w-full px-4 pt-12 pb-20 sm:px-6 md:pt-20 md:pb-32 lg:px-8 bg-background"
     >
-      <div className="mx-auto w-full max-w-5xl space-y-12 md:space-y-16">
+      <div className="mx-auto w-full max-w-6xl space-y-12 md:space-y-16">
         <h2
           data-work-title
           className="work-section-title text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary"
@@ -322,11 +381,12 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
 
         <div
           data-work-content
-          className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-16 lg:gap-x-20"
+          className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-16 lg:gap-x-20"
         >
           {WORK_PROJECTS.map((project, index) => (
             <div
               key={project.id}
+              className={project.badge ? 'work-folder-tile-wrap' : undefined}
               ref={(el) => {
                 projectRefs.current[index] = el;
               }}
