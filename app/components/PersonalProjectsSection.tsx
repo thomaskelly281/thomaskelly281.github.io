@@ -164,7 +164,7 @@ export const PersonalProjectsSection = forwardRef<HTMLElement>((props, ref) => {
       id="personal-projects"
       className="relative w-full px-4 sm:px-6 lg:px-8 bg-background overflow-hidden mt-32 md:mt-48"
     >
-      <div className="max-w-5xl mx-auto w-full pt-20 pb-8">
+      <div className="mx-auto w-full max-w-6xl pt-20 pb-8">
         <div className="space-y-12 md:space-y-16">
           {/* Heading */}
           <h2

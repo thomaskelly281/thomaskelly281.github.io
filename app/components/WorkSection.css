@@ -1,4 +1,4 @@
-/* Apple-style work folders. Hover peeks stay inside each tile — no layout
+/* Apple-style work folders. Hover peeks stay inside each tile, no layout
    shift, no extra scroll, no viewport overflow. */
 
 .work-section-title {
@@ -8,6 +8,173 @@
 @media (min-width: 768px) {
   .work-section-title {
     margin-left: -0.5rem;
+  }
+}
+
+.work-outcome {
+  margin: 0;
+  max-width: 40rem;
+  font-family: var(--font-sfpro);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--text-secondary) 78%, transparent);
+}
+
+@media (min-width: 768px) {
+  .work-outcome {
+    font-size: 1.25rem;
+  }
+}
+
+.work-featured {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+.work-featured:focus-visible,
+.work-folder-tile.is-live:focus-visible {
+  outline: 2px solid var(--accent-tertiary, #e5ff20);
+  outline-offset: 8px;
+}
+
+.work-featured {
+  overflow: visible;
+}
+
+.work-featured-stage {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+}
+
+@media (min-width: 768px) {
+  .work-featured-stage {
+    margin-inline: clamp(-2.5rem, -10vw, -5.5rem);
+    padding-inline: clamp(0.5rem, 2vw, 1.25rem);
+  }
+}
+
+[data-work-content] {
+  overflow: visible;
+}
+
+.work-featured-badge-anchor {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.5rem;
+  left: auto;
+  z-index: 6;
+  width: 8.75rem;
+  height: 8.75rem;
+  pointer-events: none;
+}
+
+.work-featured-peeks {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.work-featured-peek {
+  position: absolute;
+  top: 50%;
+  z-index: 0;
+  width: 46%;
+  aspect-ratio: 16 / 9;
+  padding: 0.65rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #6e3fff;
+  opacity: 0;
+  box-shadow: 0 18px 40px rgba(34, 34, 34, 0.12);
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1.15, 0.36, 1),
+    opacity 0.45s ease;
+}
+
+/* Center on side anchors so cards sit in the scaled frame wings, not under it */
+.work-featured-peek.is-left {
+  left: 2%;
+  transform: translate3d(-50%, -50%, 0) rotate(-4.5deg) scale(0.96);
+}
+
+.work-featured-peek.is-right {
+  left: 98%;
+  transform: translate3d(-50%, -50%, 0) rotate(4.5deg) scale(0.96);
+}
+
+.work-featured-peek-image {
+  object-fit: contain;
+  object-position: center center;
+}
+
+.work-featured-frame {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 1.25rem;
+  background: #6e3fff;
+  transform-origin: 50% 50%;
+  transition: transform 0.65s cubic-bezier(0.22, 1.15, 0.36, 1);
+}
+
+.work-featured-image {
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.work-featured .work-recent-badge {
+  left: auto;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.work-featured-caption {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.15rem;
+}
+
+.work-featured:is(:hover, :focus-visible, :focus-within) .work-featured-frame {
+  transform: scale(0.9);
+}
+
+.work-featured:is(:hover, :focus-visible, :focus-within) .work-featured-peek.is-left {
+  opacity: 0.48;
+  transform: translate3d(-50%, -50%, 0) rotate(-4.5deg) scale(1);
+}
+
+.work-featured:is(:hover, :focus-visible, :focus-within) .work-featured-peek.is-right {
+  opacity: 0.48;
+  transform: translate3d(-50%, -50%, 0) rotate(4.5deg) scale(1);
+}
+
+@media (hover: none) {
+  @media (min-width: 768px) {
+    .work-featured-frame {
+      transform: scale(0.92);
+    }
+
+    .work-featured-peek.is-left {
+      opacity: 0.4;
+      transform: translate3d(-50%, -50%, 0) rotate(-4deg) scale(0.98);
+    }
+
+    .work-featured-peek.is-right {
+      opacity: 0.4;
+      transform: translate3d(-50%, -50%, 0) rotate(4deg) scale(0.98);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .work-featured-peek {
+    display: none;
   }
 }
 
@@ -23,11 +190,6 @@
   outline: none;
 }
 
-.work-folder-tile.is-live:focus-visible {
-  outline: 2px solid var(--accent-tertiary, #e5ff20);
-  outline-offset: 8px;
-}
-
 .work-folder-stage {
   position: relative;
   display: flex;
@@ -41,36 +203,10 @@
   isolation: isolate;
 }
 
-/* Badge sits on the folder corner; half the ring sits outside the folder. */
-.work-folder-tile-wrap {
-  overflow: visible;
-}
-
-.work-folder-tile:has(.work-recent-badge) {
-  overflow: visible;
-}
-
-.work-folder-stage:has(.work-recent-badge) {
-  overflow: visible;
-  contain: none;
-  isolation: auto;
-}
-
-.work-folder-badge-anchor {
-  position: absolute;
-  bottom: 4%;
-  left: 6%;
-  width: 88%;
-  aspect-ratio: 200 / 156;
-  overflow: visible;
-  z-index: 10;
-  pointer-events: none;
-}
-
 .work-recent-badge {
   position: absolute;
-  top: 5%;
-  left: 0%;
+  top: 0;
+  left: 0;
   z-index: 6;
   width: 7.25rem;
   height: 7.25rem;
@@ -326,6 +462,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .work-recent-ring,
+  .work-featured-peek,
+  .work-featured-frame,
   .work-folder-scene,
   .work-folder-paper,
   .work-folder-front svg,
