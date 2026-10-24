@@ -2,6 +2,7 @@
 
 import { forwardRef, useRef, useEffect, type CSSProperties } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useGSAP } from '../contexts/GSAPContext';
 import './WorkSection.css';
 
@@ -34,20 +35,57 @@ const PAPER_TRANSFORMS = [
   },
 ] as const;
 
-interface WorkProject {
+interface WorkImage {
+  src: string;
+  alt: string;
+}
+
+interface FeaturedProject {
   id: string;
   href: string;
-  folderColor: string;
-  peekImages: readonly { src: string; alt: string }[];
-  backdropImage: string;
-  icon: 'blok' | 'star' | 'dam';
+  coverImage: WorkImage;
+  peekImages: readonly [WorkImage, WorkImage];
   title: string;
-  description: string;
-  hoverSubheading: string;
+  outcome: string;
   badge?: string;
 }
 
-const WORK_PROJECTS: WorkProject[] = [
+interface FolderProject {
+  id: string;
+  href: string;
+  folderColor: string;
+  peekImages: readonly WorkImage[];
+  backdropImage: string;
+  icon: 'blok' | 'star';
+  title: string;
+  description: string;
+  hoverSubheading: string;
+}
+
+const FEATURED_PROJECT: FeaturedProject = {
+  id: 'dam',
+  href: '/dam',
+  coverImage: {
+    src: '/images/sitecoreai-asset-library.png',
+    alt: 'SitecoreAI asset library with brand filters and a grid of product photography',
+  },
+  peekImages: [
+    {
+      src: '/images/sitecoreai-studio-transform.png',
+      alt: 'Assets Studio transform view with focal point and variant layers on a living-room asset',
+    },
+    {
+      src: '/images/sitecoreai-asset-details.png',
+      alt: 'Asset details with variants, renditions, and comments',
+    },
+  ],
+  title: 'SitecoreAI DAM',
+  outcome:
+    'A DAM that generates, governs, and learns, instead of only storing assets.',
+  badge: 'Most recent',
+};
+
+const FOLDER_PROJECTS: FolderProject[] = [
   {
     id: 'blok',
     href: '/blok',
@@ -79,32 +117,6 @@ const WORK_PROJECTS: WorkProject[] = [
     description: 'AI agents',
     hoverSubheading:
       'Agents, flows, and chat marketers can open from anywhere in SitecoreAI.',
-  },
-  {
-    id: 'dam',
-    href: '/dam',
-    folderColor: FOLDER_PURPLE,
-    peekImages: [
-      {
-        src: '/images/sitecoreai-review-queue.png',
-        alt: 'Review queue with Approve and Reject on each asset before distribution',
-      },
-      {
-        src: '/images/sitecoreai-asset-details.png',
-        alt: 'Asset details with variants, renditions, brand, description, and comments',
-      },
-      {
-        src: '/images/sitecoreai-studio-transform.png',
-        alt: 'Assets Studio transform view with focal point and variant layers on a living-room asset',
-      },
-    ],
-    backdropImage: '/images/sitecoreai-asset-library.png',
-    icon: 'dam',
-    title: 'SitecoreAI DAM',
-    description: 'Digital asset management within a CMS',
-    hoverSubheading:
-      'A DAM that generates, governs, and learns, instead of only storing assets.',
-    badge: 'Most recent',
   },
 ];
 
@@ -153,7 +165,7 @@ function FolderFront({ id }: { id: string }) {
   );
 }
 
-function FolderGlyph({ icon }: { icon: WorkProject['icon'] }) {
+function FolderGlyph({ icon }: { icon: FolderProject['icon'] }) {
   return (
     <div className="work-folder-icon">
       {icon === 'blok' ? (
@@ -161,12 +173,6 @@ function FolderGlyph({ icon }: { icon: WorkProject['icon'] }) {
           <rect y="10" width="36" height="22" fill="currentColor" />
           <rect width="14" height="8" fill="currentColor" />
           <rect x="22" width="14" height="8" fill="currentColor" />
-        </svg>
-      ) : icon === 'dam' ? (
-        <svg viewBox="0 0 36 32" className="work-folder-icon-glyph" aria-hidden>
-          <rect x="6" y="0" width="24" height="18" fill="currentColor" opacity="0.4" />
-          <rect x="3" y="5" width="24" height="18" fill="currentColor" opacity="0.7" />
-          <rect y="10" width="24" height="18" fill="currentColor" />
         </svg>
       ) : (
         <svg viewBox="0 0 36 36" className="work-folder-icon-glyph" aria-hidden>
@@ -199,11 +205,58 @@ function CircularSpinText({ text }: { text: string }) {
   );
 }
 
+function WorkFeaturedTile({ project }: { project: FeaturedProject }) {
+  return (
+    <Link href={project.href} className="work-featured" data-work-image>
+      {project.badge ? <span className="sr-only">{project.badge}</span> : null}
+      <div className="work-featured-stage">
+        {project.badge ? (
+          <div className="work-featured-badge-anchor">
+            <CircularSpinText text={project.badge} />
+          </div>
+        ) : null}
+        <div className="work-featured-peeks" aria-hidden>
+          {project.peekImages.map((image, index) => (
+            <div
+              key={image.src}
+              className={`work-featured-peek ${index === 0 ? 'is-left' : 'is-right'}`}
+            >
+              <Image
+                src={image.src}
+                alt=""
+                fill
+                className="work-featured-peek-image"
+                sizes="42vw"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="work-featured-frame">
+          <Image
+            src={project.coverImage.src}
+            alt={project.coverImage.alt}
+            fill
+            className="work-featured-image"
+            sizes="(min-width: 72rem) 72rem, 100vw"
+            priority
+          />
+        </div>
+      </div>
+      <div className="work-featured-caption">
+        <h3 className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary mb-1.5">
+          {project.title}
+        </h3>
+        <p className="work-outcome">{project.outcome}</p>
+      </div>
+    </Link>
+  );
+}
+
 function WorkFolderTile({
   project,
   index,
 }: {
-  project: WorkProject;
+  project: FolderProject;
   index: number;
 }) {
   const style = {
@@ -217,17 +270,11 @@ function WorkFolderTile({
       style={style}
       data-work-image
     >
-      {project.badge ? <span className="sr-only">{project.badge}</span> : null}
       <div
         data-project-image
         {...{ [`data-project-${index + 1}-image`]: true }}
         className="work-folder-stage"
       >
-        {project.badge ? (
-          <div className="work-folder-badge-anchor">
-            <CircularSpinText text={project.badge} />
-          </div>
-        ) : null}
         <div className="work-folder-bob">
           <div className="work-folder-backdrop" aria-hidden>
             <img
@@ -280,7 +327,6 @@ function WorkFolderTile({
 
             <FolderGlyph icon={project.icon} />
           </div>
-
         </div>
       </div>
 
@@ -369,9 +415,9 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
     <section
       ref={sectionRef}
       id="work"
-      className="relative w-full px-4 pt-12 pb-20 sm:px-6 md:pt-20 md:pb-32 lg:px-8 bg-background"
+      className="relative w-full overflow-visible px-4 pt-12 pb-20 sm:px-6 md:pt-20 md:pb-32 lg:px-8 bg-background"
     >
-      <div className="mx-auto w-full max-w-6xl space-y-12 md:space-y-16">
+      <div className="mx-auto w-full max-w-6xl overflow-visible space-y-12 md:space-y-16">
         <h2
           data-work-title
           className="work-section-title text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary"
@@ -379,21 +425,21 @@ export const WorkSection = forwardRef<HTMLElement>((props, ref) => {
           Work
         </h2>
 
-        <div
-          data-work-content
-          className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-16 lg:gap-x-20"
-        >
-          {WORK_PROJECTS.map((project, index) => (
-            <div
-              key={project.id}
-              className={project.badge ? 'work-folder-tile-wrap' : undefined}
-              ref={(el) => {
-                projectRefs.current[index] = el;
-              }}
-            >
-              <WorkFolderTile project={project} index={index} />
-            </div>
-          ))}
+        <div data-work-content className="space-y-14 md:space-y-16">
+          <WorkFeaturedTile project={FEATURED_PROJECT} />
+
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-16 lg:gap-x-20">
+            {FOLDER_PROJECTS.map((project, index) => (
+              <div
+                key={project.id}
+                ref={(el) => {
+                  projectRefs.current[index] = el;
+                }}
+              >
+                <WorkFolderTile project={project} index={index} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
