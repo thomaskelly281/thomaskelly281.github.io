@@ -101,7 +101,7 @@ const WORK_PROJECTS: WorkProject[] = [
     backdropImage: '/images/sitecoreai-asset-library.png',
     icon: 'dam',
     title: 'SitecoreAI DAM',
-    description: 'Content lifecycle',
+    description: 'Digital asset management within a CMS',
     hoverSubheading:
       'A DAM that generates, governs, and learns, instead of only storing assets.',
     badge: 'Most recent',
