@@ -590,7 +590,7 @@ export function AgenticStudioCaseStudy() {
         </div>
       </section>
 
-      <CaseStudyFooter next={{ label: 'Blok', href: '/blok' }} />
+      <CaseStudyFooter next={{ label: 'SitecoreAI DAM', href: '/dam' }} />
     </div>
   );
 }
