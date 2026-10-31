@@ -1,0 +1,33 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="vinylBody" cx="42%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#3a3a3a"/>
+      <stop offset="38%" stop-color="#161616"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="vinylShine" x1="18" y1="16" x2="92" y2="78">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="42%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <circle cx="64" cy="64" r="61" fill="url(#vinylBody)"/>
+  <g fill="none" stroke="#0a0a0a" stroke-opacity="0.55">
+    <circle cx="64" cy="64" r="56" stroke-width="0.6"/>
+    <circle cx="64" cy="64" r="51" stroke-width="0.6"/>
+    <circle cx="64" cy="64" r="46" stroke-width="0.55"/>
+    <circle cx="64" cy="64" r="41" stroke-width="0.55"/>
+    <circle cx="64" cy="64" r="36" stroke-width="0.5"/>
+    <circle cx="64" cy="64" r="32" stroke-width="0.5"/>
+  </g>
+  <g fill="none" stroke="#6a6a6a" stroke-opacity="0.18">
+    <circle cx="64" cy="64" r="53.5" stroke-width="0.4"/>
+    <circle cx="64" cy="64" r="43.5" stroke-width="0.4"/>
+    <circle cx="64" cy="64" r="34" stroke-width="0.4"/>
+  </g>
+  <path d="M28 30c18-16 58-14 72 8" stroke="url(#vinylShine)" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <circle cx="64" cy="64" r="23" fill="#E5FF20"/>
+  <circle cx="64" cy="64" r="23" fill="none" stroke="#111111" stroke-width="1.2"/>
+  <circle cx="64" cy="64" r="18.5" fill="none" stroke="#111111" stroke-opacity="0.2" stroke-width="0.8"/>
+  <circle cx="64" cy="64" r="6.5" fill="#111111"/>
+  <circle cx="64" cy="64" r="2.4" fill="#d0d0d0"/>
+</svg>

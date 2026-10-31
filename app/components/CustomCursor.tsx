@@ -6,7 +6,7 @@ import { MoveHorizontal } from 'lucide-react';
 import { CornerDownLeftIcon } from '@/components/animate-ui/icons/corner-down-left';
 import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
 
-type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart' | 'external-link' | 'confetti' | 'swipe';
+type CursorState = 'default' | 'header' | 'button' | 'ring' | 'work-image' | 'sidepanel' | 'heart' | 'external-link' | 'confetti' | 'swipe' | 'about-paint';
 
 export function CustomCursor() {
   const cursorX = useMotionValue(0);
@@ -136,7 +136,10 @@ export function CustomCursor() {
     }
 
     const swipeable = element.closest('[data-swipeable]');
-    if (swipeable) {
+    const swipeOverLink = Boolean(
+      swipeable && element.closest('a, button, [role="button"]'),
+    );
+    if (swipeable && !swipeOverLink) {
       setCursorState('swipe');
       setIsInSidepanel(false);
       stopLoopingAnimation();
@@ -272,12 +275,14 @@ export function CustomCursor() {
           const recheckParent = findInteractiveParent(recheckElement);
           if (!recheckParent) {
             lastDetectedElementRef.current = null;
-            setCursorState('default');
+            const recheckAbout = recheckElement?.closest('#about');
+            setCursorState(recheckAbout ? 'about-paint' : 'default');
             stopLoopingAnimation();
           }
         } else {
           lastDetectedElementRef.current = null;
-          setCursorState('default');
+          const recheckAbout = recheckElement?.closest('#about');
+          setCursorState(recheckAbout ? 'about-paint' : 'default');
           stopLoopingAnimation();
         }
         stateChangeTimeoutRef.current = null;
@@ -286,6 +291,15 @@ export function CustomCursor() {
     }
 
     // No interactive parent and we weren't over one before
+    const aboutSection = element.closest('#about');
+    if (aboutSection) {
+      lastDetectedElementRef.current = null;
+      setCursorState('about-paint');
+      setIsInSidepanel(false);
+      stopLoopingAnimation();
+      return;
+    }
+
     setCursorState('default');
     setIsInSidepanel(false);
     // Note: isOverAccentBg is already set above, don't reset it here
@@ -370,13 +384,25 @@ export function CustomCursor() {
     }
   }, [cursorState, startLoopingAnimation, stopLoopingAnimation]);
 
-  const size = cursorState === 'default' ? 64 : cursorState === 'work-image' ? 120 : cursorState === 'heart' ? 48 : cursorState === 'confetti' ? 48 : cursorState === 'swipe' ? 48 : 36;
+  const size =
+    cursorState === 'default'
+      ? 64
+      : cursorState === 'work-image'
+        ? 120
+        : cursorState === 'heart'
+          ? 48
+          : cursorState === 'confetti'
+            ? 48
+            : cursorState === 'swipe'
+              ? 48
+              : 36;
   const iconSize = cursorState === 'work-image' ? 40 : 20;
   const showIcon = cursorState === 'button' || cursorState === 'work-image';
   const showExternalLinkIcon = cursorState === 'external-link';
   const showHeart = cursorState === 'heart';
   const showConfetti = cursorState === 'confetti';
   const showSwipe = cursorState === 'swipe';
+  const showMarker = cursorState === 'about-paint';
   const isRing = cursorState === 'ring';
   const isSidepanelState = cursorState === 'sidepanel';
 
@@ -387,8 +413,8 @@ export function CustomCursor() {
           ref={cursorRef}
           className="fixed pointer-events-none z-[9999]"
           style={{
-            x,
-            y,
+            x: showMarker ? cursorX : x,
+            y: showMarker ? cursorY : y,
           }}
           transformTemplate={(values, generated) => {
             // Use the generated transform from x/y and add centering
@@ -399,6 +425,21 @@ export function CustomCursor() {
           exit={{ opacity: 0, scale: 0 }}
           transition={{ duration: 0.2 }}
         >
+          {showMarker ? (
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              aria-hidden
+              className="overflow-visible"
+            >
+              <g transform="translate(40 40) rotate(-38)">
+                <rect x="-5.5" y="-36" width="11" height="22" rx="2.2" fill="#f7f7f5" stroke="#222222" strokeWidth="1.4" />
+                <rect x="-5.5" y="-16.5" width="11" height="5" fill="#2F6CFF" />
+                <polygon points="-5.5,-11.5 5.5,-11.5 0,0" fill="#2F6CFF" />
+              </g>
+            </svg>
+          ) : (
           <motion.div
             className="rounded-full flex items-center justify-center"
             style={{
@@ -487,6 +528,7 @@ export function CustomCursor() {
               </motion.div>
             )}
           </motion.div>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

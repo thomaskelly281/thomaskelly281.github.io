@@ -1,0 +1,167 @@
+/* Idle loops for the About collage. Transform/opacity only. */
+
+#about,
+#about * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+#about img,
+#about a {
+  -webkit-user-drag: none;
+}
+
+#about *::selection {
+  background: transparent;
+}
+
+.about-vinyl-notes {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: visible;
+  transform: translateX(30px);
+}
+
+.about-vinyl-notes-side {
+  pointer-events: none;
+  position: absolute;
+  top: 8%;
+  width: 5.6rem;
+  height: 8.75rem;
+}
+
+.about-vinyl-notes-side.is-left {
+  left: 0;
+  transform: translate(-35%, -78%);
+}
+
+.about-vinyl-notes-side.is-right {
+  right: 0;
+  transform: translate(35%, -78%);
+}
+
+.about-vinyl-note {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 14px;
+  line-height: 1;
+  image-rendering: pixelated;
+  animation: about-vinyl-note-rise 2.6s linear infinite;
+}
+
+.about-vinyl-clef {
+  font-family: 'Segoe UI Symbol', 'Apple Symbols', 'Noto Music', serif;
+  font-size: 16px;
+  image-rendering: auto;
+}
+
+@keyframes about-vinyl-note-rise {
+  0% {
+    transform: translate(var(--note-start-x, 0px), 0) rotate(var(--note-rotation, 0deg))
+      scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--note-end-x, 0px), var(--note-end-y, -90px))
+      rotate(var(--note-rotation, 0deg)) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.about-sticker-breathe {
+  transform-origin: center;
+  animation: about-sticker-breathe 4.6s ease-in-out infinite;
+}
+
+.about-cv-arrow {
+  animation: about-cv-bob 2.2s ease-in-out infinite;
+}
+
+.about-sheen-host {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-sheen {
+  position: absolute;
+  inset: -8%;
+  pointer-events: none;
+  background: linear-gradient(
+    108deg,
+    transparent 36%,
+    rgba(255, 255, 255, 0.08) 44%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 56%,
+    transparent 64%
+  );
+  transform: translate3d(-130%, 0, 0);
+  animation: about-sheen 8.5s ease-in-out infinite;
+  animation-delay: var(--about-sheen-delay, 0s);
+}
+
+.about-text-plate {
+  isolation: isolate;
+}
+
+.about-text-plate .about-sheen {
+  background: linear-gradient(
+    108deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.22) 48%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.18) 52%,
+    transparent 62%
+  );
+  mix-blend-mode: overlay;
+  animation-duration: 9.5s;
+}
+
+@keyframes about-sticker-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes about-cv-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 6px, 0);
+  }
+}
+
+@keyframes about-sheen {
+  0%,
+  58% {
+    transform: translate3d(-130%, 0, 0);
+  }
+  78%,
+  100% {
+    transform: translate3d(130%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-sticker-breathe,
+  .about-cv-arrow,
+  .about-sheen,
+  .about-vinyl-note {
+    animation: none !important;
+  }
+
+  .about-vinyl-notes {
+    display: none;
+  }
+}
