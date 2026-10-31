@@ -1,8 +1,13 @@
 'use client';
 
-import { forwardRef, useRef, useEffect, useMemo, useState, ReactNode } from 'react';
+import { forwardRef, useRef, useEffect, useLayoutEffect, useMemo, useState, ReactNode, CSSProperties } from 'react';
+import { Caveat, Press_Start_2P } from 'next/font/google';
 import { useTheme } from 'next-themes';
 import { useGSAP } from '../contexts/GSAPContext';
+import { AboutArchitecturalPlaneBackground } from './AboutArchitecturalPlaneBackground';
+import { AboutPolaroid } from './AboutPolaroid';
+import './AboutIdle.css';
+import { AboutPaintLayer } from './AboutPaintLayer';
 
 // Stock images from Unsplash - same as WorkSection
 const ABOUT_IMAGES = [
@@ -11,6 +16,231 @@ const ABOUT_IMAGES = [
   '/images/about-3.webp', // Image 3
   '/images/about-4.jpg', // Image 4
 ];
+
+const SITECORE_MARK = '/images/sitecore-mark.svg';
+const STICKER_VINYL = '/images/sticker-vinyl-record.svg?v=3';
+const STICKER_100 = '/images/sticker-100.png';
+const STICKER_BRAIN = '/images/sticker-brain.png';
+
+const noteHand = Caveat({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+});
+
+const pixelNotes = Press_Start_2P({
+  subsets: ['latin'],
+  weight: '400',
+});
+
+type VinylNote = {
+  glyph: string;
+  color: string;
+  delay: string;
+  duration: string;
+  startX: string;
+  endX: string;
+  endY: string;
+  rotation: string;
+};
+
+const VINYL_NOTES_LEFT: VinylNote[] = [
+  { glyph: '♪', color: '#FF9B85', delay: '0s', duration: '3.28s', startX: '5px', endX: '-30px', endY: '-118px', rotation: '8deg' },
+  { glyph: '♬', color: '#FEE440', delay: '0.7s', duration: '3.43s', startX: '-4px', endX: '-40px', endY: '-111px', rotation: '-6deg' },
+  { glyph: '♫', color: '#00F5D4', delay: '1.4s', duration: '2.06s', startX: '-4px', endX: '-39px', endY: '-85px', rotation: '-13deg' },
+  { glyph: '𝄞', color: '#FF9B85', delay: '0.35s', duration: '3.44s', startX: '-4px', endX: '-41px', endY: '-99px', rotation: '1deg' },
+  { glyph: '♪', color: '#FEE440', delay: '1.05s', duration: '3.25s', startX: '1px', endX: '-45px', endY: '-86px', rotation: '-10deg' },
+];
+
+const VINYL_NOTES_RIGHT: VinylNote[] = [
+  { glyph: '𝄞', color: '#F15BB5', delay: '0.35s', duration: '2.49s', startX: '4px', endX: '36px', endY: '-108px', rotation: '-8deg' },
+  { glyph: '♪', color: '#00BBF9', delay: '1.05s', duration: '3.49s', startX: '3px', endX: '28px', endY: '-96px', rotation: '11deg' },
+  { glyph: '♬', color: '#C2F970', delay: '0s', duration: '2.88s', startX: '3px', endX: '50px', endY: '-122px', rotation: '5deg' },
+  { glyph: '♫', color: '#F15BB5', delay: '0.7s', duration: '3.41s', startX: '-3px', endX: '28px', endY: '-90px', rotation: '-4deg' },
+  { glyph: '♪', color: '#00BBF9', delay: '1.4s', duration: '2.62s', startX: '5px', endX: '29px', endY: '-104px', rotation: '9deg' },
+];
+
+function VinylNoteGlyph({ note }: { note: VinylNote }) {
+  const isClef = note.glyph === '𝄞';
+  return (
+    <span
+      className={`about-vinyl-note ${isClef ? 'about-vinyl-clef' : pixelNotes.className}`}
+      style={{
+        color: note.color,
+        animationDelay: note.delay,
+        animationDuration: note.duration,
+        '--note-start-x': note.startX,
+        '--note-end-x': note.endX,
+        '--note-end-y': note.endY,
+        '--note-rotation': note.rotation,
+      } as CSSProperties}
+    >
+      {note.glyph}
+    </span>
+  );
+}
+
+function VinylNoteEmitter() {
+  return (
+    <div className="about-vinyl-notes" aria-hidden>
+      <div className="about-vinyl-notes-side is-left">
+        {VINYL_NOTES_LEFT.map((note, index) => (
+          <VinylNoteGlyph key={`left-${index}`} note={note} />
+        ))}
+      </div>
+      <div className="about-vinyl-notes-side is-right">
+        {VINYL_NOTES_RIGHT.map((note, index) => (
+          <VinylNoteGlyph key={`right-${index}`} note={note} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AboutTextPlate({
+  text,
+  isDark,
+  mounted,
+  className = '',
+}: {
+  text: string;
+  isDark: boolean;
+  mounted: boolean;
+  className?: string;
+}) {
+  if (!mounted) return <div className={`min-h-16 ${className}`} />;
+
+  const src = createTextImage(text, isDark);
+  if (!src) return null;
+
+  return (
+    <div
+      className={`about-sheen-host about-text-plate ${className}`}
+      style={{ '--about-sheen-delay': `${(text.length % 5) * 1.6}s` } as CSSProperties}
+    >
+      <img src={src} alt={text} className="h-auto w-full" />
+      <span className="about-sheen" aria-hidden />
+    </div>
+  );
+}
+
+function AboutNote({
+  children,
+  rotation = -2,
+  className = '',
+}: {
+  children: ReactNode;
+  rotation?: number;
+  className?: string;
+}) {
+  return (
+    <p
+      className={`${noteHand.className} relative z-20 max-w-[16rem] text-[1.45rem] leading-snug text-text-secondary ${className}`}
+      style={{ transform: `rotate(${rotation}deg)` }}
+    >
+      {children}
+    </p>
+  );
+}
+
+function AboutSticker({
+  src,
+  alt,
+  rotation = -8,
+  className = '',
+  size = 'md',
+  imageClass = 'h-full w-full',
+  idle,
+  interactive = false,
+}: {
+  src: string;
+  alt: string;
+  rotation?: number;
+  className?: string;
+  size?: 'sm' | 'md' | 'lg' | 'vinyl' | 'sitecore';
+  imageClass?: string;
+  idle?: 'breathe';
+  interactive?: boolean;
+}) {
+  const shell = {
+    sm: 'h-[3.75rem] w-[3.75rem] p-2',
+    md: 'h-28 w-28 p-3 md:h-32 md:w-32 md:p-3.5',
+    lg: 'h-32 w-32 p-3.5 md:h-36 md:w-36 md:p-4',
+    vinyl: 'h-32 w-32 p-1.5 md:h-36 md:w-36 md:p-2',
+    sitecore: 'h-[5.75rem] w-[5.75rem] p-4 md:h-[6.75rem] md:w-[6.75rem] md:p-5',
+  }[size];
+
+  return (
+    <div
+      className={`shrink-0 ${interactive ? '' : 'pointer-events-none'} ${className}`}
+      style={{ transform: `rotate(${rotation}deg)` }}
+    >
+      <div
+        className={`flex items-center justify-center rounded-full bg-white ${shell} ${idle === 'breathe' ? 'about-sticker-breathe' : ''}`}
+      >
+        <img
+          src={src}
+          alt={alt}
+          className={`${imageClass} object-contain`}
+        />
+      </div>
+    </div>
+  );
+}
+
+function AboutCredential({
+  award,
+  programme,
+  place,
+  dates,
+  rotation = 0,
+  width = '18rem',
+  showBrain = false,
+}: {
+  award: string;
+  programme: string;
+  place: string;
+  dates: string;
+  rotation?: number;
+  width?: string;
+  showBrain?: boolean;
+}) {
+  return (
+    <article
+      className="relative overflow-visible bg-white px-6 pb-7 pt-6 shadow-[0_10px_24px_rgba(34,34,34,0.08)]"
+      style={{
+        transform: `rotate(${rotation}deg)`,
+        width,
+        backgroundImage:
+          'repeating-linear-gradient(to bottom, transparent 0, transparent 30px, rgba(34,34,34,0.055) 30px, rgba(34,34,34,0.055) 31px)',
+        backgroundPosition: '0 4.15rem',
+      }}
+    >
+      <span className="absolute inset-y-0 left-0 w-[3px] bg-[#e24b4b]/80" aria-hidden />
+      {showBrain && (
+        <AboutSticker
+          src={STICKER_BRAIN}
+          alt="Brain"
+          size="sm"
+          rotation={12}
+          idle="breathe"
+          className="absolute -right-4 -top-5 z-20"
+        />
+      )}
+      <p className="pl-2 font-[family-name:var(--font-sfpro)] text-[0.7rem] font-medium uppercase tracking-[0.18em] text-neutral-400">
+        {award}
+      </p>
+      <h3 className="mt-2 pl-2 font-[family-name:var(--font-sfpro)] text-[1.65rem] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-950">
+        {programme}
+      </h3>
+      <p className={`${noteHand.className} mt-6 pl-2 text-[1.5rem] leading-tight text-neutral-800`}>
+        {place}
+      </p>
+      <p className={`${noteHand.className} mt-0.5 pl-2 text-[1.28rem] leading-tight text-neutral-500`}>
+        {dates}
+      </p>
+    </article>
+  );
+}
 
 // Helper function to generate text image as data URL
 const createTextImage = (text: string, isDark: boolean = false): string => {
@@ -105,7 +335,10 @@ const createTextImage = (text: string, isDark: boolean = false): string => {
 
 // Customize the horizontal scroll items here
 // Add or remove items from this array to change what appears in the horizontal scroll
-const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Array<{
+const place = (spread: boolean, compact: string, positioned: string) =>
+  spread ? `absolute ${positioned}` : compact;
+
+const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false, spread: boolean = false): Array<{
   id: string;
   content: ReactNode;
   width?: string; // Optional: override default width (e.g., 'w-[50vw]')
@@ -113,115 +346,294 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
 }> => [
   {
     id: 'title',
-    yOffset: 'mt-[15vh]',
+    yOffset: spread ? '' : 'mt-[6vh]',
+    width: 'w-max',
     content: (
-      <div className="flex flex-col items-start h-full pl-32 md:pl-48 lg:pl-64">
-        <h2 className="text-6xl md:text-8xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary dark:text-text-secondary whitespace-nowrap">
+      <div className={spread ? 'relative h-[88vh] w-[56vw] min-w-[42rem] pl-[18vw]' : 'pl-28 md:pl-52 lg:pl-72'}>
+        <h2
+          className={`whitespace-nowrap font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary ${spread ? 'absolute left-[14%] top-[12%] text-7xl xl:text-8xl' : 'ml-[10vw] text-6xl md:text-8xl'}`}
+          style={{ transform: 'rotate(-2deg)' }}
+        >
           Who is Thomas?
         </h2>
+        <p
+          className={`font-[family-name:var(--font-sfpro)] font-medium leading-[1.05] tracking-[-0.02em] text-text-secondary ${spread ? 'absolute left-[28%] top-[62%] max-w-[20ch] text-4xl xl:text-5xl' : 'mt-16 ml-[6vw] max-w-[18ch] text-3xl md:ml-[8vw] md:text-4xl'}`}
+          style={{ transform: 'rotate(-2.5deg)' }}
+        >
+          Bringing initiatives from 0 → 1.
+        </p>
       </div>
     ),
-    width: 'w-auto',
   },
   {
-    id: 'image-1',
-    yOffset: 'mt-[10vh]',
+    id: 'sitecore',
+    yOffset: spread ? '' : 'mt-[2vh]',
+    width: 'w-max',
     content: (
-      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
-          <img 
+      <div
+        className={
+          spread
+            ? 'relative h-[88vh] w-[max(calc(82vw*0.76),calc(64vw*0.76+17rem))] max-w-[76vw]'
+            : 'flex items-start'
+        }
+      >
+        <div
+          className={place(
+            spread,
+            'relative mt-[2vh] w-[62vw] max-w-[18rem] md:max-w-[21rem]',
+            'left-0 top-[6%] w-[calc(38vw*0.76)]',
+          )}
+        >
+          <AboutPolaroid
             src={ABOUT_IMAGES[0]}
-            alt="Work at Sitecore" 
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-        {mounted && (() => {
-          const textImageSrc = createTextImage('Thomas joined Sitecore in 2024 as their AI designer, a role that quickly evolved into leading the rebuild of the company\'s design system.', isDark);
-          return textImageSrc ? (
-            <img 
-              src={textImageSrc}
-              alt="Text image"
-              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
+            alt="Thomas with colleagues in the Sitecore office"
+            caption="Sitecore, since Aug 2024"
+            rotation={-4}
+            className="w-[94%]"
+          >
+            <AboutSticker
+              src={SITECORE_MARK}
+              alt="Sitecore"
+              rotation={-8}
+              size="sitecore"
+              className="absolute -bottom-5 -left-6 z-20"
             />
-          ) : null;
-        })()}
+          </AboutPolaroid>
+        </div>
+        <div
+          className={place(
+            spread,
+            'relative z-10 mt-[14vh] w-[76vw] max-w-md md:mt-[18vh] md:max-w-lg',
+            'left-[calc(40vw*0.76)] top-[58%] z-10 w-[calc(42vw*0.76)]',
+          )}
+        >
+          <AboutTextPlate
+            text="Thomas joined Sitecore in August 2024 as their AI designer. The role grew into owning AI-enablement, rebuilding the design system, and taking new products from idea to execution."
+            isDark={isDark}
+            mounted={mounted}
+            className="-rotate-1"
+          />
+          <AboutNote rotation={2.5} className="mt-3 ml-6 max-w-[22rem] md:ml-12">
+            Thomas has designed Agentic Studio, SitecoreAI DAM, Blok, and merged CDP and Personalize into SitecoreAI.
+          </AboutNote>
+        </div>
+        <div className={place(spread, 'mt-[4vh] ml-3 w-[14rem]', 'left-[calc(64vw*0.76)] top-[6%] w-[17rem]')}>
+          <AboutSticker
+            src={STICKER_100}
+            alt="Hundred points"
+            rotation={8}
+            size={spread ? 'lg' : 'md'}
+            imageClass="h-[84%] w-[84%]"
+            className="mb-3 ml-2"
+          />
+          <AboutNote rotation={-6} className="max-w-[18rem]">
+            Selected for the Sitecore Top100 programme for being “the future of the company”. Thomas is now mentored by Sitecore executives.
+          </AboutNote>
+        </div>
       </div>
     ),
   },
   {
-    id: 'image-2',
-    yOffset: 'mt-[30vh]',
+    id: 'education',
+    yOffset: spread ? '' : 'mt-[1vh]',
+    width: 'w-max',
     content: (
-      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        {mounted && (() => {
-          const textImageSrc = createTextImage('He studied Interaction Design (BA Hons) alongside a postgraduate qualification in AI Applications. Why? Because he wanted a challenge.', isDark);
-          return textImageSrc ? (
-            <img 
-              src={textImageSrc}
-              alt="Text image"
-              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
-            />
-          ) : null;
-        })()}
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
-          <img 
+      <div
+        className={
+          spread
+            ? 'relative h-[88vh] w-[max(76rem,calc(66vw*0.92))] max-w-[92vw]'
+            : 'mr-10 flex items-start gap-10 md:mr-20 md:gap-16'
+        }
+      >
+        <div
+          className={place(
+            spread,
+            'mb-3 mt-[20vh] w-full',
+            'absolute left-[calc(1vw*0.92)] top-[54%]',
+          )}
+        >
+          <h3
+            className="font-[family-name:var(--font-ppvalve)] text-4xl font-medium text-text-secondary xl:text-5xl"
+            style={{ transform: 'rotate(-2deg)' }}
+          >
+            Education
+          </h3>
+        </div>
+        <div className={place(spread, 'mt-[16vh] md:mt-[26vh]', 'left-[54rem] top-[74%]')}>
+          <AboutCredential
+            award="Bachelor of Arts"
+            programme="Interaction Design"
+            place="NCAD, Dublin"
+            dates="Aug 2020 – Jun 2024"
+            rotation={-5}
+            width={spread ? '22rem' : '19rem'}
+          />
+        </div>
+        <div
+          className={place(
+            spread,
+            'relative z-10 mt-[5vh] w-[74vw] max-w-sm md:mt-[11vh] md:max-w-md',
+            'left-0 top-[8%] z-10 w-[calc(32vw*0.92)]',
+          )}
+        >
+          <AboutTextPlate
+            text="He studied Interaction Design at NCAD, and partway through added a higher diploma in AI Applications at CCT. In August 2026 he started an MSc in Leadership, Innovation & Technology at TU Dublin."
+            isDark={isDark}
+            mounted={mounted}
+            className="rotate-[0.6deg]"
+          />
+        </div>
+        <div
+          className={place(
+            spread,
+            'mt-[1vh] w-[62vw] max-w-[16.5rem] md:max-w-[18.5rem]',
+            'left-[calc(42vw*0.92)] top-[8%] w-[calc(24vw*0.92)]',
+          )}
+        >
+          <AboutPolaroid
             src={ABOUT_IMAGES[1]}
-            alt="Hobbies" 
-            className="w-full h-full object-cover"
-            loading="lazy"
+            alt="Thomas at his NCAD degree show, in front of the Recite project"
+            caption="NCAD, degree show"
+            rotation={4}
+            className="w-full"
           />
+          <AboutNote rotation={-2} className="mt-2 ml-4 max-w-[18rem]">
+            Recite being showcased at the NCAD degree show. It was an interactive exhibition where viewers could improve their public speaking skills.
+          </AboutNote>
+        </div>
+        <div className={place(spread, 'mt-[22vh] md:mt-[32vh]', 'left-[28rem] top-[74%]')}>
+          <AboutCredential
+            award="Higher Diploma"
+            programme="AI Applications"
+            place="CCT, Dublin"
+            dates="Jun 2022 – Apr 2023"
+            rotation={6}
+            width={spread ? '19rem' : '16.5rem'}
+          />
+        </div>
+        <div className={place(spread, 'mt-[10vh] md:mt-[18vh]', 'left-[calc(1vw*0.92)] top-[65%]')}>
+          <AboutCredential
+            award="Masters of Science"
+            programme="Leadership, Innovation & Technology"
+            place="TU Dublin"
+            dates="Aug 2026 – now"
+            rotation={-3}
+            width={spread ? '24rem' : '21rem'}
+            showBrain
+          />
+          <AboutNote rotation={3} className="mt-3 ml-3 max-w-[20rem]">
+            Thomas is trying to upskill by learning management and leadership skills for when he gets a design team of his own.
+          </AboutNote>
         </div>
       </div>
     ),
   },
   {
-    id: 'image-3',
-    yOffset: 'mt-[5vh]',
+    id: 'making',
+    yOffset: spread ? '' : 'mt-[3vh]',
+    width: 'w-max',
     content: (
-      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
-          <img 
+      <div className={spread ? 'relative h-[88vh] w-[52vw]' : 'flex items-start'}>
+        <div
+          className={place(
+            spread,
+            'mt-[6vh] mr-2 w-[13rem] md:mt-[10vh]',
+            'left-[calc(2vw*0.68)] top-[8%] w-[16rem]',
+          )}
+        >
+          <div className="relative mb-4 w-max">
+            <a
+              href="https://www.littlerecordplayer.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative block w-max cursor-none"
+              aria-label="Open Littlerecordplayer in a new tab"
+            >
+              <AboutSticker
+                src={STICKER_VINYL}
+                alt="Vinyl record — Littlerecordplayer"
+                rotation={-12}
+                size="vinyl"
+                interactive
+              />
+              <VinylNoteEmitter />
+            </a>
+          </div>
+          <AboutNote rotation={-6} className="max-w-[18rem]">
+            Littlerecordplayer, one of Thomas' favourite projects. It is now used in schools to play music for kids.
+          </AboutNote>
+        </div>
+        <div
+          className={place(
+            spread,
+            'relative z-10 mt-[20vh] w-[74vw] max-w-md md:mt-[32vh] md:max-w-lg',
+            'left-[calc(4vw*0.68)] top-[66%] z-10 w-[calc(46vw*0.68)]',
+          )}
+        >
+          <AboutTextPlate
+            text="Outside of work, he builds his own products. Mostly because he can’t leave an idea sitting there."
+            isDark={isDark}
+            mounted={mounted}
+            className="-rotate-[1.4deg]"
+          />
+        </div>
+        <div
+          className={place(
+            spread,
+            'mt-[2vh] ml-0 w-[66vw] max-w-[19rem] md:max-w-[22rem]',
+            'left-[calc(32vw*0.68)] top-[8%] w-[calc(44vw*0.68)]',
+          )}
+        >
+          <AboutPolaroid
             src={ABOUT_IMAGES[2]}
-            alt="Webapps" 
-            className="w-full h-full object-cover"
-            loading="lazy"
+            alt="A desk at night, design on one screen and code on the other"
+            caption="After hours"
+            rotation={5}
+            className="w-[88%]"
           />
         </div>
-        {mounted && (() => {
-          const textImageSrc = createTextImage('Outside of work, Thomas builds SaaS products. Mostly because he can\'t stop himself from turning ideas into things.', isDark);
-          return textImageSrc ? (
-            <img 
-              src={textImageSrc}
-              alt="Text image"
-              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
-            />
-          ) : null;
-        })()}
       </div>
     ),
   },
   {
-    id: 'image-4',
-    yOffset: 'mt-[25vh]',
+    id: 'cars',
+    yOffset: spread ? '' : 'mt-[2vh]',
+    width: 'w-max',
     content: (
-      <div className="flex flex-col items-start gap-4 w-[50vw] md:w-[35vw]">
-        {mounted && (() => {
-          const textImageSrc = createTextImage('When he\'s not designing or coding, he\'s usually working on his cars. It\'s an obsession.', isDark);
-          return textImageSrc ? (
-            <img 
-              src={textImageSrc}
-              alt="Text image"
-              className="w-full max-w-md md:max-w-lg lg:max-w-2xl"
-            />
-          ) : null;
-        })()}
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800">
-          <img 
+      <div
+        className={
+          spread
+            ? 'relative h-[88vh] w-[34vw] min-w-[20rem] max-w-[28rem]'
+            : 'flex flex-col items-start gap-8'
+        }
+      >
+        <div
+          className={place(
+            spread,
+            'relative z-10 w-[74vw] max-w-md md:max-w-lg',
+            'left-[4%] top-[13%] z-10 w-[30vw]',
+          )}
+        >
+          <AboutTextPlate
+            text="When he’s not designing or coding, he’s usually working on his cars. It’s an obsession."
+            isDark={isDark}
+            mounted={mounted}
+            className="rotate-1"
+          />
+        </div>
+        <div
+          className={place(
+            spread,
+            'w-full max-w-[24rem] md:max-w-[27rem]',
+            'left-[4%] top-[46%] w-[96%] max-w-[27rem]',
+          )}
+        >
+          <AboutPolaroid
             src={ABOUT_IMAGES[3]}
-            alt="Design and Technology" 
-            className="w-full h-full object-cover"
-            loading="lazy"
+            alt="A dark green Mazda MX-5 with the front end off, tools across the driveway"
+            caption="The driveway"
+            rotation={-4}
+            className="w-full"
           />
         </div>
       </div>
@@ -229,17 +641,22 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
   },
   {
     id: 'cv-resume',
-    yOffset: 'mt-[15vh]',
+    yOffset: spread ? '' : 'mt-[20vh]',
+    width: 'w-max',
     content: (
-      <div className="relative flex flex-col items-center justify-center gap-2 w-[50vw] md:w-[35vw] min-w-[280px] px-4">
+      <div className={spread ? 'relative h-[88vh] w-[34rem]' : ''}>
+      <div
+        className={`relative flex min-w-[280px] flex-col items-center justify-center gap-2 px-4 ${spread ? 'absolute top-[34%] left-8' : 'mr-16 ml-8 md:mr-28 md:ml-16'}`}
+        style={{ transform: 'rotate(4deg)' }}
+      >
         <p
-          className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-ppvalve)] font-medium text-text-secondary text-center leading-tight"
-          style={{ transform: 'rotate(-4deg)' }}
+          className="text-center text-3xl font-[family-name:var(--font-ppvalve)] font-medium leading-tight text-text-secondary md:text-4xl lg:text-5xl"
+          style={{ transform: 'rotate(-7deg)' }}
         >
           Check out his CV
         </p>
         <svg
-          className="text-text-secondary"
+          className="about-cv-arrow text-text-secondary"
           width="72"
           height="56"
           viewBox="0 0 72 56"
@@ -267,279 +684,52 @@ const getHorizontalScrollItems = (isDark: boolean, mounted: boolean = false): Ar
           href="/pdfs/thomas_cv.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 bg-accent-tertiary text-[#222222] font-medium rounded-lg hover:opacity-90 transition-opacity"
+          className="rounded-lg bg-accent-tertiary px-6 py-3 font-medium text-[#222222] transition-opacity hover:opacity-90"
         >
           View CV/Resume
         </a>
       </div>
+      </div>
     ),
-    width: 'w-auto',
   },
 ];
 
+/** Vertical bands above/below the pin: grid bleeds here, fades live here, then you pin past them */
+const ABOUT_GRID_FADE_VH = 20;
 
 export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   const internalRef = useRef<HTMLElement>(null);
   const sectionRef = (ref as React.RefObject<HTMLElement>) || internalRef;
-  const containerRef = useRef<HTMLDivElement>(null);
-  const vantaRef = useRef<HTMLDivElement>(null);
-  const vantaEffectRef = useRef<{ destroy: () => void } | null>(null);
+  const pinWrapperRef = useRef<HTMLDivElement>(null);
   const horizontalScrollRef = useRef<HTMLDivElement>(null);
   const { gsap, ScrollTrigger } = useGSAP();
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  
-  // Ensure component is mounted before generating text images to prevent hydration mismatch
-  useEffect(() => {
+  const [spread, setSpread] = useState(false);
+
+  useLayoutEffect(() => {
+    const query = window.matchMedia('(min-width: 1200px) and (min-height: 880px)');
+    const update = () => setSpread(query.matches);
+    update();
     setMounted(true);
-  }, []);
-  
-  // Memoize horizontal scroll items based on theme and mounted state
-  const isDark = resolvedTheme === 'dark' || (typeof document !== 'undefined' && document.documentElement.classList.contains('dark'));
-  const horizontalScrollItems = useMemo(() => getHorizontalScrollItems(isDark, mounted), [isDark, mounted]);
-
-  useEffect(() => {
-    if (!vantaRef.current) return;
-
-    let cancelled = false;
-    let scriptThree: HTMLScriptElement | null = null;
-    let scriptVanta: HTMLScriptElement | null = null;
-
-    const initVanta = () => {
-      // Load THREE.js from CDN
-      scriptThree = document.createElement('script');
-      scriptThree.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
-      scriptThree.async = true;
-      
-      scriptThree.onload = () => {
-        if (cancelled) return;
-        
-        // Load Vanta after THREE is loaded
-        scriptVanta = document.createElement('script');
-        scriptVanta.src = 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js';
-        scriptVanta.async = true;
-        
-        scriptVanta.onload = () => {
-          if (cancelled || !vantaRef.current) return;
-          
-          // Wait a tick for VANTA to be available
-          setTimeout(() => {
-            if (cancelled || !vantaRef.current || !(window as typeof window & { VANTA?: { DOTS: (options: Record<string, unknown>) => { destroy: () => void } } }).VANTA) return;
-            
-            try {
-              const rootStyles = getComputedStyle(document.documentElement);
-              const accentColor = rootStyles.getPropertyValue('--accent-tertiary').trim() || '#E5FF20';
-              // Use the CSS variable which automatically changes based on theme
-              const backgroundColor = rootStyles.getPropertyValue('--background').trim() || '#ffffff';
-              
-              // Determine dot color based on theme: lighter in light mode, darker in dark mode
-              const isDarkMode = resolvedTheme === 'dark' || document.documentElement.classList.contains('dark');
-              // Lighter gray for light mode, darker version of accent for dark mode
-              const dotColor = isDarkMode ? '#666666' : '#CCCCCC';
-
-              vantaEffectRef.current = (window as typeof window & { VANTA: { DOTS: (options: Record<string, unknown>) => { destroy: () => void } } }).VANTA.DOTS({
-                el: vantaRef.current,
-                mouseControls: false,
-                touchControls: false,
-                gyroControls: false,
-                minHeight: 200,
-                minWidth: 200,
-                scale: 1,
-                scaleMobile: 1,
-                color: dotColor,
-                color2: dotColor,
-                backgroundColor: backgroundColor,
-                showLines: false,
-                size: 2,
-                spacing: 15,
-                rotationSpeed: 0,
-                rotation: 0,
-                camera: {
-                  position: {
-                    x: 0,
-                    y: 200,
-                    z: 0,
-                  },
-                },
-              });
-
-              // Make dots circular by creating a circular texture and applying it to sprites
-              if (vantaEffectRef.current && typeof window !== 'undefined' && (window as typeof window & { THREE?: any }).THREE) {
-                const THREE = (window as typeof window & { THREE: any }).THREE;
-                const vantaInstance = vantaEffectRef.current as any;
-                
-                // Create a circular texture
-                const createCircularTexture = (color: string = '#ffffff') => {
-                  const canvas = document.createElement('canvas');
-                  canvas.width = 64;
-                  canvas.height = 64;
-                  const ctx = canvas.getContext('2d');
-                  if (ctx) {
-                    // Draw a circular dot with smooth edges
-                    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 30);
-                    gradient.addColorStop(0, color);
-                    gradient.addColorStop(0.8, color);
-                    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                    ctx.fillStyle = gradient;
-                    ctx.beginPath();
-                    ctx.arc(32, 32, 30, 0, Math.PI * 2);
-                    ctx.fill();
-                  }
-                  return new THREE.CanvasTexture(canvas);
-                };
-
-                // Wait for Vanta to fully initialize, then modify sprites
-                setTimeout(() => {
-                  if (vantaInstance && vantaInstance.scene) {
-                    const circularTexture = createCircularTexture(dotColor);
-                    circularTexture.needsUpdate = true;
-                    
-                    // Traverse the scene to find all sprites and update their textures
-                    vantaInstance.scene.traverse((object: any) => {
-                      if (object.isSprite && object.material) {
-                        object.material.map = circularTexture;
-                        object.material.needsUpdate = true;
-                      }
-                    });
-                  }
-                }, 300);
-              }
-
-              // Lock camera position after initialization and keep it locked
-              if (vantaEffectRef.current) {
-                const vantaInstance = vantaEffectRef.current as any;
-                
-                // Wait a frame for Vanta to fully initialize
-                requestAnimationFrame(() => {
-                  if (vantaInstance.camera) {
-                    const camera = vantaInstance.camera;
-                    const targetPosition = { x: 0, y: 200, z: 0 };
-                    
-                    // Set initial position - camera above looking down
-                    camera.position.set(targetPosition.x, targetPosition.y, targetPosition.z);
-                    camera.lookAt(0, 0, 0);
-                    camera.up.set(0, 0, -1); // Rotate up vector for proper top-down orientation
-                    
-                    // Continuously lock camera position in animation loop
-                    const lockCamera = () => {
-                      if (camera && !cancelled) {
-                        camera.position.set(targetPosition.x, targetPosition.y, targetPosition.z);
-                        camera.lookAt(0, 0, 0);
-                        camera.up.set(0, 0, -1);
-                        requestAnimationFrame(lockCamera);
-                      }
-                    };
-                    
-                    // Start locking loop
-                    lockCamera();
-                  }
-                });
-              }
-
-              ScrollTrigger.refresh();
-            } catch (error) {
-              console.error('Failed to initialize Vanta:', error);
-            }
-          }, 100);
-        };
-        
-        scriptVanta.onerror = () => {
-          console.error('Failed to load Vanta script');
-        };
-        
-        document.head.appendChild(scriptVanta);
-      };
-      
-      scriptThree.onerror = () => {
-        console.error('Failed to load THREE.js script');
-      };
-      
-      document.head.appendChild(scriptThree);
-    };
-
-    initVanta();
-
+    query.addEventListener('change', update);
+    window.addEventListener('resize', update);
     return () => {
-      cancelled = true;
-      
-      // Cleanup Vanta effect
-      if (vantaEffectRef.current) {
-        vantaEffectRef.current.destroy();
-        vantaEffectRef.current = null;
-      }
-      
-      // Remove scripts
-      if (scriptThree && document.head.contains(scriptThree)) {
-        document.head.removeChild(scriptThree);
-      }
-      if (scriptVanta && document.head.contains(scriptVanta)) {
-        document.head.removeChild(scriptVanta);
-      }
+      query.removeEventListener('change', update);
+      window.removeEventListener('resize', update);
     };
-  }, [ScrollTrigger, resolvedTheme]);
+  }, []);
 
-  // Update Vanta background color and dot colors when theme changes
-  useEffect(() => {
-    if (!vantaEffectRef.current) return;
-
-    const rootStyles = getComputedStyle(document.documentElement);
-    const backgroundColor = rootStyles.getPropertyValue('--background').trim() || '#ffffff';
-    
-    // Determine dot color based on theme: lighter in light mode, darker in dark mode
-    const isDarkMode = resolvedTheme === 'dark' || document.documentElement.classList.contains('dark');
-    const dotColor = isDarkMode ? '#666666' : '#CCCCCC';
-
-    try {
-      const vantaInstance = vantaEffectRef.current as any;
-      if (vantaInstance && vantaInstance.setOptions) {
-        vantaInstance.setOptions({ backgroundColor, color: dotColor, color2: dotColor });
-      } else if (vantaInstance && vantaInstance.renderer && vantaInstance.scene) {
-        // Update background directly if possible
-        if (vantaInstance.renderer.domElement) {
-          vantaInstance.renderer.setClearColor(backgroundColor, 1);
-        }
-      }
-      
-      // Update dot textures with new color
-      if (vantaInstance && vantaInstance.scene && typeof window !== 'undefined' && (window as typeof window & { THREE?: any }).THREE) {
-        const THREE = (window as typeof window & { THREE: any }).THREE;
-        const createCircularTexture = (color: string = '#ffffff') => {
-          const canvas = document.createElement('canvas');
-          canvas.width = 64;
-          canvas.height = 64;
-          const ctx = canvas.getContext('2d');
-          if (ctx) {
-            const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 30);
-            gradient.addColorStop(0, color);
-            gradient.addColorStop(0.8, color);
-            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(32, 32, 30, 0, Math.PI * 2);
-            ctx.fill();
-          }
-          return new THREE.CanvasTexture(canvas);
-        };
-        
-        const circularTexture = createCircularTexture(dotColor);
-        circularTexture.needsUpdate = true;
-        
-        vantaInstance.scene.traverse((object: any) => {
-          if (object.isSprite && object.material) {
-            object.material.map = circularTexture;
-            object.material.needsUpdate = true;
-          }
-        });
-      }
-    } catch (error) {
-      console.error('Failed to update Vanta background:', error);
-    }
-  }, [resolvedTheme]);
+  const isDark = resolvedTheme === 'dark' || (typeof document !== 'undefined' && document.documentElement.classList.contains('dark'));
+  const horizontalScrollItems = useMemo(
+    () => getHorizontalScrollItems(isDark, mounted, spread),
+    [isDark, mounted, spread],
+  );
 
   useEffect(() => {
-    if (!containerRef.current || !horizontalScrollRef.current) return;
+    if (!pinWrapperRef.current || !horizontalScrollRef.current) return;
 
-    const container = containerRef.current;
+    const pinWrapper = pinWrapperRef.current;
     const horizontalScroll = horizontalScrollRef.current;
 
     // Calculate the total scroll distance needed
@@ -549,8 +739,9 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
     const scrollTween = gsap.to(horizontalScroll, {
       x: -scrollWidth,
       ease: 'power1.out',
+      roundProps: 'x',
       scrollTrigger: {
-        trigger: container,
+        trigger: pinWrapper,
         start: 'top top',
         end: () => `+=${scrollWidth}`, // Normal scroll distance
         scrub: 1, // Standard response
@@ -564,30 +755,77 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
       scrollTween.scrollTrigger?.kill();
       scrollTween.kill();
     };
-  }, [gsap, ScrollTrigger]);
+  }, [gsap, ScrollTrigger, horizontalScrollItems]);
+
+  // Recalculate horizontal scroll when track width changes (images, text images)
+  useEffect(() => {
+    if (!horizontalScrollRef.current) return;
+
+    const track = horizontalScrollRef.current;
+    let lastWidth = track.offsetWidth;
+    let refreshTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    const scheduleRefresh = () => {
+      if (refreshTimeout) clearTimeout(refreshTimeout);
+      refreshTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 150);
+    };
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      if (!entry) return;
+      const nextWidth = Math.round(entry.contentRect.width);
+      if (nextWidth === lastWidth) return;
+      lastWidth = nextWidth;
+      scheduleRefresh();
+    });
+
+    resizeObserver.observe(track);
+
+    return () => {
+      resizeObserver.disconnect();
+      if (refreshTimeout) clearTimeout(refreshTimeout);
+    };
+  }, [ScrollTrigger, horizontalScrollItems]);
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="relative w-full overflow-hidden mt-48 sm:mt-64 md:mt-80 lg:mt-96 mb-32"
+      className="about-no-select relative w-full select-none overflow-hidden mt-48 sm:mt-64 md:mt-80 lg:mt-96 mb-32"
     >
-      {/* Spacer above horizontal scroll (20vh) */}
-      <div className="h-[20vh]" />
+      {/* Scroll through this fade before the pin; grid bleeds up into this band */}
+      <div
+        className="relative z-10 pointer-events-none"
+        style={{ height: `${ABOUT_GRID_FADE_VH}vh` }}
+        aria-hidden
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-background to-transparent" />
+      </div>
 
-      {/* Horizontal Scroll Container */}
-      <div ref={containerRef} className="relative h-screen overflow-hidden">
-        <div ref={vantaRef} className="absolute inset-0 z-0 pointer-events-none" />
+      {/* Pinned horizontal scroll: full viewport of grid, no fade overlay */}
+      <div
+        ref={pinWrapperRef}
+        className="relative z-0 h-screen"
+        style={{ clipPath: `inset(-${ABOUT_GRID_FADE_VH}vh 0)` }}
+        data-about-paint
+      >
         <div
           ref={horizontalScrollRef}
-          className="relative z-10 flex items-start gap-24 h-full px-8"
+          className="absolute left-0 top-0 flex h-full items-start gap-24 px-8"
           style={{ width: 'fit-content' }}
         >
-          {/* Horizontal Scroll Items - Customize by editing horizontalScrollItems array above */}
+          <AboutArchitecturalPlaneBackground
+            className="absolute inset-x-0 z-0 pointer-events-none bg-background"
+            fadeVh={ABOUT_GRID_FADE_VH}
+            onReady={() => ScrollTrigger.refresh()}
+          />
+          <AboutPaintLayer containerRef={horizontalScrollRef} />
           {horizontalScrollItems.map((item) => (
-            <div 
-              key={item.id} 
-              className={`flex-shrink-0 ${item.width || 'w-[60vw] md:w-[40vw]'} ${item.yOffset || ''}`.trim()}
+            <div
+              key={item.id}
+              className={`relative z-10 flex-shrink-0 ${item.width || 'w-[60vw] md:w-[40vw]'} ${item.yOffset || ''}`.trim()}
             >
               {item.content}
             </div>
@@ -595,8 +833,14 @@ export const AboutSection = forwardRef<HTMLElement>((props, ref) => {
         </div>
       </div>
 
-      {/* Spacer below horizontal scroll (20vh) */}
-      <div className="h-[20vh]" />
+      {/* After the pin, scroll through this fade as the grid leaves */}
+      <div
+        className="relative z-10 pointer-events-none"
+        style={{ height: `${ABOUT_GRID_FADE_VH}vh` }}
+        aria-hidden
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+      </div>
     </section>
   );
 });

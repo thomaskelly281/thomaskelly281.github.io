@@ -1,0 +1,25 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="vinylDisc" cx="46%" cy="40%" r="62%">
+      <stop offset="0%" stop-color="#333333"/>
+      <stop offset="50%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#070707"/>
+    </radialGradient>
+  </defs>
+  <circle cx="78" cy="84" r="68" fill="url(#vinylDisc)"/>
+  <g fill="none" stroke="#cfcfcf" stroke-opacity="0.32" stroke-width="1.1">
+    <circle cx="78" cy="84" r="62"/>
+    <circle cx="78" cy="84" r="55"/>
+    <circle cx="78" cy="84" r="48"/>
+    <circle cx="78" cy="84" r="41"/>
+  </g>
+  <circle cx="78" cy="84" r="32" fill="#E5FF20"/>
+  <circle cx="78" cy="84" r="32" stroke="#111" stroke-width="1.4"/>
+  <circle cx="78" cy="84" r="7.5" fill="#111"/>
+  <circle cx="78" cy="84" r="2.6" fill="#d8d8d8"/>
+  <path d="M128 28 L124 36" stroke="#2a2a2a" stroke-width="7" stroke-linecap="round"/>
+  <path d="M124 36 C110 42, 108 70, 98 88" stroke="#2a2a2a" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <path d="M98 88 L90 96" stroke="#2a2a2a" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="128" cy="28" r="7" fill="#2a2a2a"/>
+  <circle cx="128" cy="28" r="3" fill="#E5FF20"/>
+</svg>
